@@ -13,11 +13,8 @@ public class PlayerMovement : MonoBehaviour
     public float jumpSpeed = 8.0f;
     public float peen1 = 0.0f;
     public float gravity = 20.0f;
-<<<<<<< HEAD
     public float peen = 0.0f;
-    private Vector3 moveDirection;
-=======
->>>>>>> 74017f66ed4a645cdc75d90cd3a4d68304611083
+
 
     void Start()
     {
