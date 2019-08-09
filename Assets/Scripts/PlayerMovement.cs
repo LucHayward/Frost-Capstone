@@ -11,8 +11,10 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 6.0f;
     public float jumpSpeed = 8.0f;
+    public float peen1 = 0.0f;
     public int sexy = 696969;
     public float gravity = 20.0f;
+    public float peen = 0.0f;
 
 
     void Start()
