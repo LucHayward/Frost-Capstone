@@ -112,6 +112,47 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &11212726 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 767295299343678833, guid: d1d2414c7a0395f4ba731daa41fcf783,
+    type: 3}
+  m_PrefabInstance: {fileID: 1938113762}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &11212727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11212726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf7babb1d8fde4498f70102ccb4cd3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPos: {fileID: 0}
+  playerPos: {fileID: 0}
+  coolDown: 5
+  abLevel: 0
+  shootTime: 0
+  waitTime: 0
+  abStart: 0
+  currentTime: 0
+--- !u!114 &11212728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11212726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6210c0977dfef74ba32c61c80e689b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  lvl: 0
+  health: 0
 --- !u!1001 &31647866
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3212,6 +3253,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a7997a64b129b94ca9f98fe4b927a7a, type: 3}
+--- !u!1 &1118881600 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 107140, guid: 9ae484dd877d0e941918a539eb0b1959,
+    type: 3}
+  m_PrefabInstance: {fileID: 1950065511}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1118881601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1118881600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f46f4006d9e8d2046a60733a35fdf84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  health: 10
+  healthText: {fileID: 0}
+  hasShield: 0
+  lvl: 0
+  isFast: 0
 --- !u!1001 &1177815095
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5166,20 +5231,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Capsule (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 767295299343678833, guid: d1d2414c7a0395f4ba731daa41fcf783,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5367875257285932218, guid: d1d2414c7a0395f4ba731daa41fcf783,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -37.740723
+      value: -0.43
       objectReference: {fileID: 0}
     - target: {fileID: 5367875257285932218, guid: d1d2414c7a0395f4ba731daa41fcf783,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.8564
+      value: 1.53
       objectReference: {fileID: 0}
     - target: {fileID: 5367875257285932218, guid: d1d2414c7a0395f4ba731daa41fcf783,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.14
+      value: 9.082
       objectReference: {fileID: 0}
     - target: {fileID: 5367875257285932218, guid: d1d2414c7a0395f4ba731daa41fcf783,
         type: 3}
@@ -5359,6 +5429,10 @@ PrefabInstance:
     - target: {fileID: 107140, guid: 9ae484dd877d0e941918a539eb0b1959, type: 3}
       propertyPath: m_Name
       value: Lancer
+      objectReference: {fileID: 0}
+    - target: {fileID: 107140, guid: 9ae484dd877d0e941918a539eb0b1959, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 497310, guid: 9ae484dd877d0e941918a539eb0b1959, type: 3}
       propertyPath: m_LocalPosition.x
