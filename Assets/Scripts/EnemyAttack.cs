@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class EnemyAttack : MonoBehaviour
 {
-    private Enemy enemy;
-    public Transform enemyPos;
-    private Player player;
-    public Transform playerPos;
+	public Transform enemyPos;
+	public Transform playerPos;
+
+	private Enemy enemyScript;
+	private GameObject enemy;
+	private GameObject player;
+    private Player playerScript;
 
     public float coolDown;
     public int abLevel;
@@ -19,18 +22,24 @@ public class EnemyAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+		// TODO: Store a reference to the game object as well rather than just the components.
+		// Use that to reference anyhting else (See Enemy.cs)
+		player = GameObject.FindGameObjectWithTag("Player");
+		playerScript = player.GetComponent<Player>();
 
-        enemy = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
-        enemyPos = GameObject.FindGameObjectWithTag("Enemy").transform;
-        
-    }
+		enemy = GameObject.FindGameObjectWithTag("Enemy");
+		enemyScript = enemy.GetComponent<Enemy>();
 
-    // Update is called once per frame
-    void Update()
+		enemyPos = enemy.transform;
+		playerPos = player.transform;
+	}
+
+	// Update is called once per frame
+	void Update()
     {
-
+		// Please consider a better way of doing this that isn't going to break if someone leaves the game running forever
+		// Current time is unused, 
+		// if(currentTime - lastShotTime > shot delay)  do shoot and update shotime or something. 
         currentTime = Time.time;
         
         // Check if shoot ability is on cooldown (attack speed)
@@ -41,15 +50,17 @@ public class EnemyAttack : MonoBehaviour
         }
         
     }
-    // Atack Method
-    void attack()
+	// TODO: Do some testing here please Jesse, you want the distance from the player in move than just the X axis. 
+	//		 Probably want to look up Distance() theres a method for it.
+	void attack()
     {
         // Calculate the distance between the player and the enemy
         float dist = Vector3.Distance(playerPos.position, enemyPos.position);
         if (dist < 2.0f)
         {
+			Debug.Log(playerPos.position.x - enemyPos.position.x);
             print("Attack");
-            player.health--;
+            playerScript.health--;
         }
     }
 }
