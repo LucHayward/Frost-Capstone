@@ -11,10 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float speed = 6.0f;
     public float jumpSpeed = 8.0f;
-    public float peen1 = 0.0f;
-    public int sexy = 696969;
     public float gravity = 20.0f;
-    public float peen = 0.0f;
 
 
     void Start()
@@ -24,8 +21,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        animator.SetBool("IsJump", false);
-
+		//TODO; implement jump?
+		//animator.SetBool("IsJump", false);
+		animator.SetBool("Idle", true);
+		animator.SetBool("run", false);
+		//Debug.Log("IsGorunded: "+ characterController.isGrounded);
         if (characterController.isGrounded)
         {
 
@@ -41,12 +41,18 @@ public class PlayerMovement : MonoBehaviour
             moveDirection += right;
             moveDirection *= speed;
 
-
-            if (Input.GetButton("Jump"))
-            {
-                moveDirection.y = jumpSpeed;
-                animator.SetBool("IsJump", true);
-            }
+			//TODO Change character controller to use forces
+			if(moveDirection.sqrMagnitude > 1)
+			{
+				animator.SetBool("Idle", false);
+				animator.SetBool("run", true);
+			}
+			//if (Input.GetButton("Jump"))
+			//{
+			//moveDirection.y = jumpSpeed;
+			//animator.SetBool("IsJump", true);
+			//}
+			moveDirection.y = -characterController.stepOffset/Time.deltaTime;
         }
         else
         {
@@ -65,7 +71,8 @@ public class PlayerMovement : MonoBehaviour
 
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
-        animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+        //animator.SetFloat("Speed", moveDirection.sqrMagnitude);
+		// TODO: Change the animation controller to work using speed for run/idle transitions
     }
 
 

@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-	
+		
     }
 	
 	/// <summary>
@@ -39,9 +39,9 @@ public class Enemy : MonoBehaviour
 	/// </list>
 	/// </summary>
 	/// <param name="collision"></param>
-    private void OnTriggerEnter3D(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        
+		Debug.Log("TriggerEntered", collision);
         if (collision.CompareTag("Bullet"))
         {
             // if collider is a bullet deal damage
@@ -54,4 +54,14 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
+
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		Debug.Log("ColliderEnter", collision.collider);
+
+	}
+
+
 }

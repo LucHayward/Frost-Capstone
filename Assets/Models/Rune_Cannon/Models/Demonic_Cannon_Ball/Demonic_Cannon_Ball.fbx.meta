@@ -1,20 +1,21 @@
 fileFormatVersion: 2
-guid: 2faea4006479a426f92ecbefea134bad
+guid: 623b6d54f9487dc4ea2b852d5888bfd5
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     400000: //RootNode
-    2100000: Arkyn's_Helm_Helmet
+    2100000: Demonic_Cannon_Ball
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Arkyn_s_Helm_Helmet
+    4300000: Demonic_Cannon_Ball
+    6400000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Arkyn's_Helm_Helmet
-    second: {fileID: 2100000, guid: a5712cbc1663a98488d27ae46b25b37a, type: 2}
+      name: Demonic_Cannon_Ball
+    second: {fileID: 2100000, guid: fdf5f93e1034ed444aad454efee63e7d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
