@@ -4,17 +4,17 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     public float mouseSensitivity = 1;
-    public Transform orbitTransform;
-    public float orbitSpeed = 1;
+    //public Transform orbitTransform;
+    //public float orbitSpeed = 1;
     public float smoothSpeed = 10f;
     public float distanceScale = 1;
     public float heightScale = 1;
     public Transform followTransform;
     public Transform fpsTransform;
-    public Transform playerHead;
-    public Transform playerTransform;
+	//public Transform playerHead;
+	public Transform playerTransform;
 
-    public GameObject crosshair;
+	//public GameObject crosshair;
     
     enum Variant { ThirdPerson, FirstPerson, Orbit };
 
@@ -77,47 +77,55 @@ public class CameraController : MonoBehaviour
 
     CameraState targetCameraState = new CameraState();
 
-    void OnEnable()
+    void Start()
     {
-        //// Hide and lock cursor to screen
+        // Hide and lock cursor to screen
         Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
 
 
-        targetCameraState.SetFromTransform(orbitTransform);
+        targetCameraState.SetFromTransform(followTransform);
         targetCameraState.UpdateTransform(transform);
-        cameraState = Variant.Orbit;
+        cameraState = Variant.ThirdPerson;
 
     }
 
-    void Update()
-    {
+    //void Update()
+    //{
         
-        handleCameraStateInput();
+    //    handleCameraStateInput();
        
-    }
+    //}
 
     private void LateUpdate()
     {
         switch (cameraState)
         {
-            case Variant.Orbit:
-                targetCameraState.SetFromTransform(orbitTransform);
 
-                Orbit();
-                break;
+			case Variant.ThirdPerson:
+				// Handle mouse look-around
+				Vector2 mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") * -1);
+				mouseMovement *= mouseSensitivity;
 
-            case Variant.ThirdPerson:
-                Vector3 smoothPosition = Vector3.Lerp(transform.position, followTransform.position, smoothSpeed * Time.deltaTime);
+				Vector3 smoothPosition = Vector3.Lerp(transform.position, followTransform.position, smoothSpeed * Time.deltaTime);
 
-                targetCameraState.SetRotationFromTransform(followTransform);
+				//TODO Could probably keep this and have mouse movement alter the character controller rotation
+                //targetCameraState.SetRotationFromTransform(followTransform);
                 targetCameraState.x = smoothPosition.x;
                 targetCameraState.y = smoothPosition.y;
                 targetCameraState.z = smoothPosition.z;
-                break;
+				
+				// TODO Tweak camera controller feel (should the character move with the camera?)
+				//Prevent player from rotating through themselves
+				targetCameraState.pitch = Mathf.Clamp(targetCameraState.pitch + mouseMovement.y, -18, 36);
+				targetCameraState.yaw += mouseMovement.x;
+				
+				
+				
+				break;
 
             case Variant.FirstPerson:
-                var mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") * -1);
+                mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") * -1);
                 mouseMovement *= mouseSensitivity;
 
                 targetCameraState.SetPositionFromTransform(fpsTransform);
@@ -136,76 +144,69 @@ public class CameraController : MonoBehaviour
         targetCameraState.UpdateTransform(transform);
     }
 
-    // Change camera state 
-    // I = First Person Camera
-    // O = Orbit Camera
-    // P = 3rd Person Camera
-    private void handleCameraStateInput()
+	// Change camera state 
+	// I = First Person Camera
+	// O = Orbit Camera
+	// P = 3rd Person Camera
+	//private void handleCameraStateInput()
+	//{
+		//    if (Input.GetKeyDown(KeyCode.I))
+		//    {
+		//        crosshair.SetActive(true);
+		//        cameraState = Variant.FirstPerson;
+		//        //Debug.Log("FPS");
+
+		//        targetCameraState.SetFromTransform(fpsTransform);
+		//        targetCameraState.UpdateTransform(transform);
+		//    }
+		//    else if (Input.GetKeyDown(KeyCode.O))
+		//    {
+		//        crosshair.SetActive(false);
+
+		//        cameraState = Variant.Orbit;
+		//        Debug.Log("Orbit");
+		//        targetCameraState.SetFromTransform(orbitTransform);
+		//        targetCameraState.UpdateTransform(transform);
+
+		//    }
+		//    else if (Input.GetKeyDown(KeyCode.P))
+		//    {
+		//        crosshair.SetActive(false);
+
+		//        cameraState = Variant.ThirdPerson;
+		//        Debug.Log("Thrid person");
+
+		//        targetCameraState.SetFromTransform(followTransform);
+		//        targetCameraState.UpdateTransform(transform);
+
+		//    }
+
+		//if (cameraState != Variant.FirstPerson)
+		//{
+		//	// Camera down/up
+		//	if (Input.GetKeyDown(KeyCode.Q))
+		//	{
+		//		orbitTransform.position += Vector3.down*heightScale;
+		//		followTransform.position += Vector3.down*heightScale;
+		//	}
+		//	else if (Input.GetKeyDown(KeyCode.E))
+		//	{
+		//		orbitTransform.position += Vector3.up*heightScale;
+		//		followTransform.position += Vector3.up*heightScale;
+
+		//	}
+		//}
+
+	//}
+
+	private void OnGUI()
     {
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            crosshair.SetActive(true);
-            cameraState = Variant.FirstPerson;
-            //Debug.Log("FPS");
-
-            targetCameraState.SetFromTransform(fpsTransform);
-            targetCameraState.UpdateTransform(transform);
-        }
-        else if (Input.GetKeyDown(KeyCode.O))
-        {
-            crosshair.SetActive(false);
-
-            cameraState = Variant.Orbit;
-            Debug.Log("Orbit");
-            targetCameraState.SetFromTransform(orbitTransform);
-            targetCameraState.UpdateTransform(transform);
-
-        }
-        else if (Input.GetKeyDown(KeyCode.P))
-        {
-            crosshair.SetActive(false);
-
-            cameraState = Variant.ThirdPerson;
-            Debug.Log("Thrid person");
-
-            targetCameraState.SetFromTransform(followTransform);
-            targetCameraState.UpdateTransform(transform);
-
-        }
-
-        if (cameraState != Variant.FirstPerson)
-        {
-            // Camera down/up
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                orbitTransform.position += Vector3.down*heightScale;
-                followTransform.position += Vector3.down*heightScale;
-            }
-            else if (Input.GetKeyDown(KeyCode.E))
-            {
-                orbitTransform.position += Vector3.up*heightScale;
-                followTransform.position += Vector3.up*heightScale;
-
-            }
-        }
-        
     }
 
-    private void OnGUI()
-    {
-        if (cameraState != Variant.FirstPerson)
-        {
-            Vector3 offset = new Vector3(0, 0, Input.mouseScrollDelta.y)*distanceScale;
-            orbitTransform.Translate(offset, Space.Self);
-
-            followTransform.Translate(offset, Space.Self);
-        }
-    }
-
-    private void Orbit()
-    {
-        orbitTransform.RotateAround(playerHead.transform.position, Vector3.up, orbitSpeed * Time.deltaTime);
-    }
+    //private void Orbit()
+    //{
+    //    orbitTransform.RotateAround(playerHead.transform.position, Vector3.up, orbitSpeed * Time.deltaTime);
+    //}
 }
 
 
