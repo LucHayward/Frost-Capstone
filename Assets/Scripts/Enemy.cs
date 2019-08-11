@@ -39,8 +39,9 @@ public class Enemy : MonoBehaviour
 	/// </list>
 	/// </summary>
 	/// <param name="collision"></param>
-    private void OnTriggerEnter3D(Collider collision)
+    private void OnTriggerEnter(Collider collision)
     {
+		Debug.Log("TriggerEntered", collision);
         if (collision.CompareTag("Bullet"))
         {
             health--;
@@ -52,4 +53,14 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
+
+
+	private void OnCollisionEnter(Collision collision)
+	{
+		Debug.Log("ColliderEnter", collision.collider);
+
+	}
+
+
 }
