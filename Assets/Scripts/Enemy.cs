@@ -6,24 +6,39 @@ using UnityEngine.SceneManagement;
 public class Enemy : MonoBehaviour
 {
     public float speed;
-    private Transform playerPos;
-    private Player player;
     public int lvl;
     public int health;
 
-    // Start is called before the first frame update
-    void Start()
+	private GameObject playerGO;
+	private Player player;
+	private Transform playerPos;
+
+	// Start is called before the first frame update
+	void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+		playerGO = GameObject.FindGameObjectWithTag("Player");
+        player = playerGO.GetComponent<Player>();
+        playerPos = playerGO.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+	
     }
-
+	
+	/// <summary>
+	/// Handle interaction with triggers.
+	/// <list type="bullet">
+	/// <item>
+	/// <term>Bullet</term>
+	/// <description>
+	/// Reduce health and initiate "death" if health < 1
+	/// </description>
+	/// </item>
+	/// </list>
+	/// </summary>
+	/// <param name="collision"></param>
     private void OnTriggerEnter3D(Collider collision)
     {
         if (collision.CompareTag("Bullet"))
