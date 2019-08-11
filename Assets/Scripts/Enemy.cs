@@ -26,8 +26,10 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter3D(Collider collision)
     {
+        
         if (collision.CompareTag("Bullet"))
         {
+            // if collider is a bullet deal damage
             health--;
             if (health < 1)
             {

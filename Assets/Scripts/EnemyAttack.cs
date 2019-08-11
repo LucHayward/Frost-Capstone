@@ -33,7 +33,7 @@ public class EnemyAttack : MonoBehaviour
 
         currentTime = Time.time;
         
-
+        // Check if shoot ability is on cooldown (attack speed)
         if (Time.time > shootTime)
         {
             shootTime = Time.time + coolDown;
@@ -41,10 +41,12 @@ public class EnemyAttack : MonoBehaviour
         }
         
     }
-
+    // Atack Method
     void attack()
     {
-        if ((playerPos.position.x - enemyPos.position.x) < 10)
+        // Calculate the distance between the player and the enemy
+        float dist = Vector3.Distance(playerPos.position, enemyPos.position);
+        if (dist < 2.0f)
         {
             print("Attack");
             player.health--;
