@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Rocky_Window_Half_Iron_Black_Dull
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 92e3c09648bc48647a4fa5fe34f69d6c, type: 3}
+        m_Texture: {fileID: 2800000, guid: fe6bae5069efb4fd09fefeb79af80218, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,15 +40,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ffcd0d1769ba6a64ca55b8cbbfc8c78d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 49d8cc9cab2bd43a385b82c7da657f19, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 94f5a64cb7fbc5b42ba05bb625144806, type: 3}
+        m_Texture: {fileID: 2800000, guid: 166614fb22b9b4c53806de92ca79beb7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: cbdbcc31adf7f9348a61a3df55d1cfa4, type: 3}
+        m_Texture: {fileID: 2800000, guid: c512be705383b467bb7a02af64999a23, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

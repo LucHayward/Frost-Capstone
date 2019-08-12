@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Rune_Plaque_Stone_Grey_Glow
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: c19d7758a61e6d84e8b866a400072c29, type: 3}
+        m_Texture: {fileID: 2800000, guid: feccd64a07ff442639d377877578d280, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 565580a27a9daa2408702861333134e3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1b79e49d6f3ab46d58b8cdf6f0070341, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e16d0938b1f036b4da07edb527d964fc, type: 3}
+        m_Texture: {fileID: 2800000, guid: ccccee1a8a89a4ef9b223f66d8c51e72, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 11a41aad6b91cf24398db437ea839bba, type: 3}
+        m_Texture: {fileID: 2800000, guid: d1d4e7deeae9e483daabb90b22762cee, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 3f0020fa695c75b4abbfd3cd3fb83324, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9f7758608d1a74a059ddfee6e1605a87, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

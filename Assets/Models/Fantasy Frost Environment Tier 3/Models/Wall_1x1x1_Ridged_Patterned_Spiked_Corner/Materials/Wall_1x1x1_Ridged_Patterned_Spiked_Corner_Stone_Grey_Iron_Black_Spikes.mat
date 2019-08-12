@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Wall_1x1x1_Ridged_Patterned_Spiked_Corner_Stone_Grey_Iron_Black_Spikes
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 909bcbf05e06a174aac3d11ca3d713af, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7414e6020edeb498685da0874716a611, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,15 +40,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 53f5b4802dc24204e8a64614d39d450f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 60f27d44373af46aaaee5c868b56cb04, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 91fe9192d34f6ab4c9b4ed6714813a42, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8fa34c4df917340078aae1a0cef67910, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: e8e61e7031db9bc45bbe5c48b2d697e0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0fc7e4524b00e4977ad01658d13f7a8e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Pannel_2x2x0.5_Ring_Stone_Grey_Glow
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: b133eefd52da5764bbce50118c7f81a7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 099c1205301024cdfb5c2831652b9b56, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 709a40545cab3634a8e8a2d89b457216, type: 3}
+        m_Texture: {fileID: 2800000, guid: 22a18b177e58047299bbc83c64f6d67d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 71fa785e449897645861cccd83b48a8d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 13744aa2c7e0d4a25b4d3c3037f01951, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 1227f6b993066574ba03516578ecfea6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0f9e59ab2ed7d42f786a5161d22a69d2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: eae1699a9ac6fbf46b8e09d997cb4f99, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9007d42762c7543d29b6e817200c6795, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

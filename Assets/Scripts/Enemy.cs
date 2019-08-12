@@ -44,6 +44,7 @@ public class Enemy : MonoBehaviour
 		Debug.Log("TriggerEntered", collision);
         if (collision.CompareTag("Bullet"))
         {
+            // if collider is a bullet deal damage
             health--;
             if (health < 1)
             {
