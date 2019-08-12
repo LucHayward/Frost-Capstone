@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Forge_Inner_Arch_Stone_Grey_Glow
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: ec7e712c06987b14f97e87424548d99e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0317dce25f54f47f49db755f46222c17, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: afd7289f4e890fc41bbea61f11513bdc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 297896f311fb743419cbdf3b298b279f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e57cce1db6a2185408bee599f104e9ce, type: 3}
+        m_Texture: {fileID: 2800000, guid: f7d8596737a6e42b289b049a79c76661, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 044e86348dcc0bb48a2d4bb7cbca73e8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1633962ed2de34e6592883aeccc1c0ad, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 924e36944599e72418182b8124ff5bdb, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7e1d0512a0d1f4e33b306199d5d03dbd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

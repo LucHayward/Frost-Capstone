@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Dragon_Tooth_Large
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dragon_Tooth_Large
+    second: {fileID: 2100000, guid: 910b150b99d93a345be8ede667bb908e, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

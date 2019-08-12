@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Forge_Skull_Iron_Black_Glow
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: bb4f7e341c21c43439336558d988336e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6bd3a909eb2dc4896946e6565f8aaf4c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 287e5513dc12e2e4ea5c5910600c813f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 22ec8ba88681b4095abf8d8681710586, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9393af17d317ae3498cb4d7d365c636e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0048bd08f49d34d999f5417b14128243, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 81e306dce0308874ab18d28407d58bcf, type: 3}
+        m_Texture: {fileID: 2800000, guid: e748690fcb12642a08ab2fc5993fdec0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: f7eaa73adf1bbf14793b1296c38a6fec, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4c137b4d122ef49cfbdf1ab9cbf38fc7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Block_2x2x1_Patterned_Lined_Half_Stone_Grey
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 8535cd642bda8d240ae9ed3a02c6c46b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7b2c04887827e4d73a87a9e24d3761cd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,15 +40,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 15128d03c4e0c084eb9c2e91693f5fb9, type: 3}
+        m_Texture: {fileID: 2800000, guid: f7ea4ef9693454f72b17e5631bce029c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: c6bd5add9233bc04b8d331d0971ca5dd, type: 3}
+        m_Texture: {fileID: 2800000, guid: a8faea4ae6e11487e9e1dab6feb65924, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 2635a0eb81207d941890b6476fe67fe7, type: 3}
+        m_Texture: {fileID: 2800000, guid: c0da9462bf5d440879d273213eb96d17, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

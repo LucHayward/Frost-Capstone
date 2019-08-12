@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Crystal_Regular_Fantasy_Blue
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _SPECGLOSSMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: d33807ee3c8dd57408fd61199231118c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 896a9657f498a4fb8bcf10837d71f8b2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 495368264148328468e62fbd68ec5558, type: 3}
+        m_Texture: {fileID: 2800000, guid: 32684f84773024848ba0547c8d300a50, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9604ffed13c4d3d488658abf1110cc05, type: 3}
+        m_Texture: {fileID: 2800000, guid: 16b4d51f6afea4105a109c036a0a45e8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 683886686df0b2748adcee06287089a8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0dba3cb83f1ac4c12b20ebfc9bed810d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: d53713bb526f2bb43af61bc01a608cb0, type: 3}
+        m_Texture: {fileID: 2800000, guid: b9a03b8696c6b46ad96d9c5a3f55ade4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

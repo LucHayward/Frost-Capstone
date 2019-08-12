@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Jester_Demon_Mask_1_Crystal_Fantasy_Blue
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _SPECGLOSSMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 9a8df10aa1f43b44097b044829fb6273, type: 3}
+        m_Texture: {fileID: 2800000, guid: ed17130ab38184a2ba971bd5f0e78703, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: a5c21df62fd34de448d60cddd1c1c368, type: 3}
+        m_Texture: {fileID: 2800000, guid: ecff5ce7b6736429a84eac10a7ffad66, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 20a0c6002f3e59141aa398e4e0bf797a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4062721eae6b74afa8402d8397c4ea8b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 9883036fa0014f948b375f921034f942, type: 3}
+        m_Texture: {fileID: 2800000, guid: 563c5440ce32d428eb009871bb8c7e38, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: dd4671dfdc4e97647864d9b4538dc240, type: 3}
+        m_Texture: {fileID: 2800000, guid: dccd20d8c87864e46b70dcdead853af8, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

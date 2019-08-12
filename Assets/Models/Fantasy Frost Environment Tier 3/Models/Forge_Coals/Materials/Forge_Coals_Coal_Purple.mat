@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Forge_Coals_Coal_Purple
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 2e25067f8944b5c4b80d893fd48b054e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 55e5f119d61074c798e0900a4ca36256, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: b0c632f045747f144ada959fa0b1b56d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 20073ce469cc44d50afdd8f364461bdc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 76fb261ac3f790d4b91d41b1ca2f9365, type: 3}
+        m_Texture: {fileID: 2800000, guid: 96e9354b1c5c64640b300f6ae5abf4d9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 2fd1b7431be07084dae3bf27fda4b571, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9f6874e4e238c492393b96c47011acb1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 2680541482cd4ab499ecd6c46033972e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 15fac90f0e00c4c8ba79819c31e7003c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

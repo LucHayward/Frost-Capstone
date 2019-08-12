@@ -14,7 +14,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Crystal_Regular
-    second: {fileID: 2100000, guid: d6fa1b458277a457da9db851dc9cfd78, type: 3}
+    second: {fileID: 2100000, guid: 35590c6be8ea9ab4abb505a0b534380d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

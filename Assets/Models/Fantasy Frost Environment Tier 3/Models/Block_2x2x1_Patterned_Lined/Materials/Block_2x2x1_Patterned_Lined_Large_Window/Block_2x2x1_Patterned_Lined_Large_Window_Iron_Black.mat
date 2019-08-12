@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Block_2x2x1_Patterned_Lined_Large_Window_Iron_Black
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 9ff03d19dc6b2a544bb8220287eefb6e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 43a2d4f5afd584e708bc3fe8ad774c90, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,15 +40,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d9679e8ca2a979c45b1d281758aaa0d6, type: 3}
+        m_Texture: {fileID: 2800000, guid: defd07b0ccaee486cbb29b40f0aad2a7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: e3ea8380e20fdcc4fb68c14acccd07a7, type: 3}
+        m_Texture: {fileID: 2800000, guid: c3331e87eb63846a4b31c654bb613fb5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 9ef668324951bca47bd4bebdfdd97b35, type: 3}
+        m_Texture: {fileID: 2800000, guid: b700849945a3348a9b4c158c1740cf13, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

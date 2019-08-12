@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Arkyn's_Helm_Horn_Plate_Iron_Black_Glow
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: d566199500c1ec047b4f33d5f4db2ca7, type: 3}
+        m_Texture: {fileID: 2800000, guid: df63b283a37d24fef9db060e828a8388, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 358540fbd8b36414d94839f8a53cadb6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9bfa7131fbf5a4c8494ddd7a6e0a7ef9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 0c3645a211471074ca87bb73152b289b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6996ffbfef6b1444a8b95eb041a19f07, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 6eb8cf1068505194fae740ea22b1df61, type: 3}
+        m_Texture: {fileID: 2800000, guid: da64578f99efc48fe83611ca04c0436e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: c3ca788201c8bff4889d3b5c8cf99801, type: 3}
+        m_Texture: {fileID: 2800000, guid: c298267f7917c4a219802c548d8d970c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

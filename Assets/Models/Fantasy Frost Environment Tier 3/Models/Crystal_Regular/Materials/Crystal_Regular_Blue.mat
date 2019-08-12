@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Crystal_Regular_Blue
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _EMISSION _SPECGLOSSMAP
+  m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _SPECGLOSSMAP
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: d33807ee3c8dd57408fd61199231118c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 896a9657f498a4fb8bcf10837d71f8b2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -36,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 315ad5b01478d1d4ca14dca4953958aa, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3d0b04e1f19ac463a96bbf5826b788a4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 585cda1202e14f54c86fb757f6f7f12a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9edac74dd7137466a99af7224f1d775e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: e3fdd24dcb5eb7f468d5fd5ea0affe9a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 669da9d36f350490090e9db24d6675d7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 354bbfad5d6c9f1449ada92e81d71782, type: 3}
+        m_Texture: {fileID: 2800000, guid: 648557902e97045febd32aeddc48d902, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Dragon_Tooth_Regular_Bone
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 42ccf6e51fe6e5744b39761ede75cc36, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3cc689c27e8cb41238a152021b672bae, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,15 +40,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 6bb23ae68fb410e4c87e065403aa71ae, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9efb93b63ab0e4ab1beae978bda9483e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 802bf2dd05acc6f48a9517c7c98ea12b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2ca16506432cd4eb9aecfd1ebbcbdf17, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 0f11290c5740d204e89440c6e7a3e068, type: 3}
+        m_Texture: {fileID: 2800000, guid: cfa404fc9c4ce4f71b39476c2dc3b805, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

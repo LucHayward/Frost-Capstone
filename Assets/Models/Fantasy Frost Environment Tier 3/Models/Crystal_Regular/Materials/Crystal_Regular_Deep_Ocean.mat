@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Crystal_Regular_Deep_Ocean
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _SPECGLOSSMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: d33807ee3c8dd57408fd61199231118c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 896a9657f498a4fb8bcf10837d71f8b2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 87d63452e3fbbbd4ab47762fbf1d5497, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6e5d06ebcd6ed42ef8d2269595a535be, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ad7a4e2219ed600419b003a8690a7ef9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4c4b9cd00d70a47d1824e6c2b2b88e44, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 16df3ff7fb5336e4c9434ac99876eb83, type: 3}
+        m_Texture: {fileID: 2800000, guid: da894ff31291841c78388e02a1e7bf0c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: b7dced9bd3ae52e4d98f24d990db785b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 18560bbd9c7fb4337aa9e36f1400f211, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

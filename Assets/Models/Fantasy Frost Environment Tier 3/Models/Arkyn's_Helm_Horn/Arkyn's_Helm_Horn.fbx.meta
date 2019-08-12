@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Arkyn_s_Helm_Horn
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Arkyn's_Helm_Horn
+    second: {fileID: 2100000, guid: 69fe8591e38f152409196559bde346b9, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

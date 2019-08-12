@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Demon_Statue_Stone_Grey_Soft_Glow
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 4f4a8a8bad366ca41b8e14f1277db50e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 39ce0831daa4d4f348ab9be6e0e3c688, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: d75ccbf58ffbca540b8cdfcd0ad4e5b5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 16099a13004c64fd7ab294c212b9b4eb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 7fd5622b733ca8d4a922e8a9f1efa95a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 24e8834c3351a45d6abb00968d61ff2b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: e503af8657c617e489b89ba3fa1cfb92, type: 3}
+        m_Texture: {fileID: 2800000, guid: 98c0c7fe0d6d64b3197ae5aae6a27ca0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 60ebea2abf556044985fba0127821773, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2d2dccef9e6c742ccbe5ef9638af1464, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

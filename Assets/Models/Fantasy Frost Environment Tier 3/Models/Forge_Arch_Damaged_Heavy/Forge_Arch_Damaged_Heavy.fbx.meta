@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Forge_Arch_Damaged_Heavy
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Forge_Arch_Damaged_Heavy
+    second: {fileID: 2100000, guid: f3bb5dcc520177b46b1ffb3fc5bc9a26, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

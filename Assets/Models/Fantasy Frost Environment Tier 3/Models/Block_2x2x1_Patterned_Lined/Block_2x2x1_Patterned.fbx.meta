@@ -9,7 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: Block_2x2x1_Patterned
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Block_2x2x1_Patterned
+    second: {fileID: 2100000, guid: 862640f0117621a4d8b26a3ea7ba4d87, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

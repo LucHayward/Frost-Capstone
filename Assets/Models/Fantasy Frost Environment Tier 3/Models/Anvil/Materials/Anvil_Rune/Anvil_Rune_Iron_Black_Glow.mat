@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Anvil_Rune_Iron_Black_Glow
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _SPECGLOSSMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: cdf0e992fb51ec048a3da3f266a43c08, type: 3}
+        m_Texture: {fileID: 2800000, guid: e2e289028129c4384a68908d0b7b4647, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 6696c420fe14ebf49a8d39ae622aff17, type: 3}
+        m_Texture: {fileID: 2800000, guid: ae1a12a03f71743baac78142a91e4e12, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 38e9942f52c2f874690e4578a04c367a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9f07f1788daa64f9dad9d53e90abb5de, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 5f2d246ce386595468a538d05c3c0e72, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5c17e2910372742cdad34e7296c4c024, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: b25dd0685cda247479d18c7a982c7ffc, type: 3}
+        m_Texture: {fileID: 2800000, guid: d57a48eae908f4adaa40be8498d2ba4e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

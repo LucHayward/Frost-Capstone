@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Jester_Demon_Mask_2_Crystal_Deep_Ocean
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _SPECGLOSSMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 1b0c39ded2dca9d40846864f2b4e8ecf, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8555eb79f4a6443e7844f66ef53c7fbd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: b3ef1caae0cbb144791b275a4ee694b4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6b80ac75ee5bd45ab97ff4cdec980369, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 83fdfd6347b056d41ab7b0affcbc2f72, type: 3}
+        m_Texture: {fileID: 2800000, guid: 88f0ab58f300f4b70b3993931750458d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 315b01b0388389a4eb1cb89e26a85686, type: 3}
+        m_Texture: {fileID: 2800000, guid: d5eab964ee9b742aea1b14e6e68b6bdb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 6c1844060f33ceb4289b02f80037f3a7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 692bf62d9aa624849b9823bac494038c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
