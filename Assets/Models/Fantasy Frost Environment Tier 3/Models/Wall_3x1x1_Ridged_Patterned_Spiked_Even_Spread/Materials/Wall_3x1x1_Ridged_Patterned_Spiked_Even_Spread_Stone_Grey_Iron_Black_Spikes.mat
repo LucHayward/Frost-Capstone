@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Wall_3x1x1_Ridged_Patterned_Spiked_Even_Spread_Stone_Grey_Iron_Black_Spikes
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 942b1cf49a52aca4e88007252485b94f, type: 3}
+        m_Texture: {fileID: 2800000, guid: ae547c1b0eea548f0b323a16f691a6ad, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -39,15 +40,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5dc933557ec508346af29457adc160ce, type: 3}
+        m_Texture: {fileID: 2800000, guid: d40a535fcb4d64c98b590baa21eeb933, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: ce94a75214e7d5b47a9c91031cc3892b, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0f4a92f7efa964a31a174202d7bf1ec6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: fe3fa366f6ee1bd4c8a15657fda1e9b6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2f1ce005030d4413baaa546e878b61b6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

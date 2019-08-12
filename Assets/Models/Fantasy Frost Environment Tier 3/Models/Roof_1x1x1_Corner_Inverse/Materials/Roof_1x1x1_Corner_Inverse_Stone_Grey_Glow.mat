@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Roof_1x1x1_Corner_Inverse_Stone_Grey_Glow
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 4601ca6d91c358f4b9e10fd5505f7119, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0dd3edbee451f4b71be7ea4a6588456b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 56e36b79ea9ccbd44992770b670ca335, type: 3}
+        m_Texture: {fileID: 2800000, guid: 991c107d469c64d52b030bbf2cfc71a0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 20d27db82f1d29f4c8dd1bdcfed14d48, type: 3}
+        m_Texture: {fileID: 2800000, guid: 473a9dce29fad4a2bb41876ea2279482, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: de10fe98cfcce4343b217c36df1b7c1e, type: 3}
+        m_Texture: {fileID: 2800000, guid: a7a422d9311e445138acb49cd709132a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 1ddcf3fe13990724996be16d8fad0313, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9d08ce1f479f2423ca3318650bbf3913, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

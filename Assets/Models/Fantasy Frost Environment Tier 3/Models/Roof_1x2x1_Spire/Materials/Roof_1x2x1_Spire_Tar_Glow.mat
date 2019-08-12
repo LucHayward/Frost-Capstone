@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Roof_1x2x1_Spire_Tar_Glow
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: fe413845b704b734bbda7257c52413f8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 3cfeed4de86cc490e90ceda847176816, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: 293c65f3ffb660f419e81535aa80def5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 32894fe0352fc4e708776301f45b19e0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 57716e85161d1084d8a0a1e4ef83fa8b, type: 3}
+        m_Texture: {fileID: 2800000, guid: c88d00683917b430dbb21d17457d5d32, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 7a9adabf7c30d3f49b3bbf09ff45a874, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1297cb34abdaf4d648ff2c0911f4dd6a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 16a2e280165e9014a810be2aef3849d9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7804081074a5e4356b246d663ab772ba, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:

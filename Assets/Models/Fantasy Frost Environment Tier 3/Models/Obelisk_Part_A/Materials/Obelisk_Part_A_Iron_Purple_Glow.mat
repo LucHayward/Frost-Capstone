@@ -4,8 +4,9 @@
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_Name: Obelisk_Part_A_Iron_Purple_Glow
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _EMISSION _METALLICGLOSSMAP _NORMALMAP _SPECGLOSSMAP
@@ -19,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 6c38256c1cdc18546b42f540e3298ab6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7bba39c232b3c4cd689a82dcbf26a84d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -35,19 +36,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
-        m_Texture: {fileID: 2800000, guid: e79c446f81c74334a9feb4ca058a9237, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7e084528fe3eb4a949879f6b51f587c3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 5b0e6853b4b98e74b89a48e6bed2e677, type: 3}
+        m_Texture: {fileID: 2800000, guid: f277f6505fbe144549728a4a549f4dcf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 2d02b3337927fa44d88b6e0fec69a6c4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 0c3a0a7c5f0bb49e0b359fc1efff89f3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: b42fdbb06b7bcf94da4c47539f8f5df0, type: 3}
+        m_Texture: {fileID: 2800000, guid: b7fd53395c8494c47aa456169d09e204, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
