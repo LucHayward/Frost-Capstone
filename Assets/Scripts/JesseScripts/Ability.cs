@@ -6,7 +6,7 @@ using TMPro;
 public class Ability : MonoBehaviour
 {
 
-    private Player player;
+    private PlayerJ player;
     public float coolDown=10.0f;
     public int abLevel;
     public float abTime=0;
@@ -18,7 +18,7 @@ public class Ability : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerJ>();
         speedTime = GameObject.FindGameObjectWithTag("SpeedTxt").GetComponent<TextMeshProUGUI>();
     }
 
@@ -53,7 +53,7 @@ public class Ability : MonoBehaviour
         }
     }
 
-    void speedUp(Player player)
+    void speedUp(PlayerJ player)
     {
         player.speed = 30;
         player.isFast = true;

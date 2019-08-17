@@ -21,31 +21,7 @@ public class BossShooter : MonoBehaviour
     {
         boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
         bossPos = GameObject.FindGameObjectWithTag("Boss").transform; ;
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            waitTime = 4.0f;
-            coolDown = waitTime;
-        }
-        else if (SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            waitTime = 3.0f;
-            coolDown = waitTime;
-        }
-        else if (SceneManager.GetActiveScene().buildIndex == 3)
-        {
-            waitTime = 2.0f;
-            coolDown = waitTime;
-        }
-        else if (SceneManager.GetActiveScene().buildIndex == 4)
-        {
-            waitTime = 1.0f;
-            coolDown = waitTime;
-        }
-        else if(SceneManager.GetActiveScene().buildIndex == 5)
-        {
-            waitTime = 0.5f;
-            coolDown = waitTime;
-        }
+        
         
     }
 
