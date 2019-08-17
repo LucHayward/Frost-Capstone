@@ -6,21 +6,53 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent agent;
-    private GameObject playerGO;
+    private GameObject playerGameObject;
     private Player player;
-    private Transform playerPos;
+    private Transform playerTrasnform;
     // Update is called once per frame
 
     void Start()
     {
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-        player = playerGO.GetComponent<Player>();
-        playerPos = playerGO.transform;
+        playerGameObject = GameObject.FindGameObjectWithTag("Player");
+        player = playerGameObject.GetComponent<Player>();
+        playerTrasnform = playerGameObject.transform;
     }
 
-    void Update()
+    private void Update()
     {
-        agent.SetDestination(playerPos.position); // moves the enemy to the players position
-        // TODO: Account for other enemies in the scene, account for a second player, have different terrain for different enemy types.
+
+        makeDecision();
+    }
+
+    private void move()
+    {
+        agent.SetDestination(playerTrasnform.position);
+    }
+
+    private void wander()
+    {
+        // move in general direction of enemy
+    }
+
+    private void makeDecision()
+    {
+        // decide what action to take
+        Vector3 directionToPlayer = playerTrasnform.position - transform.position; // vector pointing from the enemy to the player
+        Ray eyeLine = new Ray(transform.position, directionToPlayer);
+        if (Physics.Raycast(eyeLine, out RaycastHit hit))
+        {
+            if (hit.collider.tag.Equals("Player"))
+            {
+                Debug.Log("Enemy sees player");
+                agent.SetDestination(playerTrasnform.position);
+
+            }
+            else if (hit.collider.tag.Equals("Obstacle"))
+            {
+                Debug.Log("Enemy cannot see player");
+                wander();
+            }
+
+        }
     }
 }

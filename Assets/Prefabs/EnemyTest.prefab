@@ -112,10 +112,11 @@ MonoBehaviour:
   playerPos: {fileID: 0}
   coolDown: 5
   abLevel: 0
-  shootTime: 0
   waitTime: 0
   abStart: 0
   currentTime: 0
+  lastShotTime: 0
+  shotDelay: 0
 --- !u!114 &7182126503728286832
 MonoBehaviour:
   m_ObjectHideFlags: 0

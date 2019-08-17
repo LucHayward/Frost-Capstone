@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -290,6 +290,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_1x1x1_Damaged_Slight (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1367688110102025064, guid: 7394ba67a399fb04babf96e7852953ea,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 1367688110102515528, guid: 7394ba67a399fb04babf96e7852953ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -405,6 +410,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Block_1x1x1_Damaged_Slight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367688110102025064, guid: 7394ba67a399fb04babf96e7852953ea,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 1367688110102515528, guid: 7394ba67a399fb04babf96e7852953ea,
         type: 3}
@@ -725,6 +735,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Block_1x1x1_Damaged_Slight (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1367688110102025064, guid: 7394ba67a399fb04babf96e7852953ea,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 1367688110102515528, guid: 7394ba67a399fb04babf96e7852953ea,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -861,6 +876,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
+--- !u!1 &2041740971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7182126503728286846, guid: 0df82fdb448290a40ac6c36126a54398,
+    type: 3}
+  m_PrefabInstance: {fileID: 1968334644}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2041740972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041740971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5500be89b7834428acb2902e12f6333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 2041740973}
+--- !u!195 &2041740973 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 2059833818, guid: 0df82fdb448290a40ac6c36126a54398,
+    type: 3}
+  m_PrefabInstance: {fileID: 1968334644}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1367688108700031493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -872,6 +912,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Block_1x1x1_Damaged_Slight
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367688110102025064, guid: 7394ba67a399fb04babf96e7852953ea,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
       objectReference: {fileID: 0}
     - target: {fileID: 1367688110102515528, guid: 7394ba67a399fb04babf96e7852953ea,
         type: 3}
