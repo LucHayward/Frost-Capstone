@@ -6,7 +6,7 @@ public class BossBullet : MonoBehaviour
 {
     private Vector2 shot;
     public float speed;
-    private Player player;
+    private PlayerJ player;
     private Boss boss;
     private Transform playerPos;
     private Transform bossPos;
@@ -17,7 +17,7 @@ public class BossBullet : MonoBehaviour
         boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
         bossPos = GameObject.FindGameObjectWithTag("Boss").transform; ;
 
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerJ>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
 
         shot = playerPos.position - bossPos.position;

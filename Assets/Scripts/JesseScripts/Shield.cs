@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class Shield : MonoBehaviour
 {
-    private Player player;
+    private PlayerJ player;
     public float coolDown = 20.0f;
     public int abLevel;
     public float abTime = 0;
@@ -18,7 +18,7 @@ public class Shield : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerJ>();
         shieldTime = GameObject.FindGameObjectWithTag("ShieldTxt").GetComponent<TextMeshProUGUI>();
     }
 
@@ -52,7 +52,7 @@ public class Shield : MonoBehaviour
         }
     }
 
-    void shieldUp(Player player)
+    void shieldUp(PlayerJ player)
     {
         player.hasShield = true;
 
