@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class EnemyAttack : MonoBehaviour
 {
-	public Transform enemyPos;
-	public Transform playerPos;
+	private Transform enemyPos;
+	private Transform playerPos;
 
 	private Enemy enemy;
 	private GameObject enemyGO;
