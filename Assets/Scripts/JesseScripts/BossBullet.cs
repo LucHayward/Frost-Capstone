@@ -4,31 +4,37 @@ using UnityEngine;
 
 public class BossBullet : MonoBehaviour
 {
-    private Vector2 shot;
-    public float speed;
-    private PlayerJ player;
-    private Boss boss;
+    private Vector3 shotPath;
+    public float shotSpeed;
+
+    private GameObject playerGO;
+    private Player player;
     private Transform playerPos;
-    private Transform bossPos;
+    
+    public GameObject rangedEnemyGO;
+    public Transform rePos;
+    public Enemy rangedEnemy;
 
     // Start is called before the first frame update
     void Start()
     {
-        boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
-        bossPos = GameObject.FindGameObjectWithTag("Boss").transform; ;
+        rangedEnemyGO = GameObject.FindGameObjectWithTag("EnemyRanged");
+        rangedEnemy = rePos.GetComponent<Enemy>();
+        rePos = rangedEnemy.transform;
 
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerJ>();
-        playerPos = GameObject.FindGameObjectWithTag("Player").transform;
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        player = player.GetComponent<Player>();
+        playerPos = player.transform;
 
-        shot = playerPos.position - bossPos.position;
+        shotPath = playerPos.position - rePos.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, shot*2, speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, shotPath*2, shotSpeed * Time.deltaTime);
 
-        if(Vector2.Distance(transform.position,shot*2) <0.2f)
+        if(Vector3.Distance(transform.position,shotPath*2) <0.2f)
         {
             Destroy(gameObject);
         }
