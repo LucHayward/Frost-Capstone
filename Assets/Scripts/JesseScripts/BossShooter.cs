@@ -5,24 +5,38 @@ using UnityEngine.SceneManagement;
 public class BossShooter : MonoBehaviour
 {
     public GameObject bullet;
-    private Transform bossPos;
-    private Boss boss;
+    
+
+    public Transform enemyTransform;
+    public Transform playerTransform;
+
+    private Enemy enemy;
+    private GameObject enemyGO;
+    private GameObject playerGO;
+    private Player player;
 
 
     public float coolDown;
     public int abLevel;
-    public float shootTime = 0;
-    public float waitTime;
-    public float abStart;
+    
+    
     public float currentTime;
+    public float lastShotTime = 0.0f;
+    public float shotDelay;
 
     // Start is called before the first frame update
     void Start()
     {
-        boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<Boss>();
-        bossPos = GameObject.FindGameObjectWithTag("Boss").transform; ;
-        
-        
+        playerGO = GameObject.FindGameObjectWithTag("Player");
+        player = player.GetComponent<Player>();
+
+        enemyGO = GameObject.FindGameObjectWithTag("Enemy");
+        enemy = enemy.GetComponent<Enemy>();
+
+        enemyTransform = enemy.transform;
+        playerTransform = player.transform;
+
+
     }
 
     // Update is called once per frame
@@ -31,21 +45,27 @@ public class BossShooter : MonoBehaviour
 
         currentTime = Time.time;
         
-
-        if (Time.time > shootTime)
+        // Check if basic attack is on cooldown (attack speed)
+        if (currentTime -  lastShotTime > shotDelay)
         {
-            shootTime = Time.time + coolDown;
+            lastShotTime = currentTime + coolDown;
             Shoot();
         }
+        
         
     }
 
     void Shoot()
     {
-        for(int i = 0; i< SceneManager.GetActiveScene().buildIndex+1; i++)
+
+        // Calculate the distance between the player and the enemy
+        float dist = Vector3.Distance(playerTransform.position, enemyTransform.position);
+        // If close enough, attack player
+        if (dist < 4.5f)
         {
-            Instantiate(bullet, bossPos.position, Quaternion.identity);
+            Debug.Log(playerTransform.position.x - enemyTransform.position.x);
+            print("Shot Fired");
+            Instantiate(bullet, enemyTransform.position, enemyTransform.rotation);
         }
-        
     }
 }

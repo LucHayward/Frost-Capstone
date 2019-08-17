@@ -14,26 +14,6 @@ public class EnemyJ : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            lvl = 1;
-        }
-        else if(SceneManager.GetActiveScene().buildIndex == 2)
-        {
-            lvl = 2;
-        }
-        else if(SceneManager.GetActiveScene().buildIndex == 3)
-        {
-            lvl = 3;
-        }
-        else if(SceneManager.GetActiveScene().buildIndex == 4)
-        {
-            lvl = 4;
-        }
-        else if(SceneManager.GetActiveScene().buildIndex == 5)
-        {
-            lvl = 5;
-        }
         speed = lvl * 2 + 12;
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerJ>();
         playerPos = GameObject.FindGameObjectWithTag("Player").transform;
