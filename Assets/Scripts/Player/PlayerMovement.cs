@@ -7,7 +7,9 @@ public class PlayerMovement : MonoBehaviour
     CharacterController characterController;
     public Animator animator;
 
+	public Transform cameraTransform;
     private Vector3 moveDirection;
+
 
     public float speed = 6.0f;
     public float jumpSpeed = 8.0f;
@@ -17,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
     }
 
     void Update()
@@ -31,10 +35,10 @@ public class PlayerMovement : MonoBehaviour
 
             moveDirection = new Vector3();
 
-            Vector3 forward = transform.TransformDirection(Vector3.forward);
+            Vector3 forward = transform.TransformDirection(cameraTransform.forward);
             forward *= Input.GetAxis("Vertical");
 
-            Vector3 right = transform.TransformDirection(Vector3.right);
+            Vector3 right = transform.TransformDirection(cameraTransform.right);
             right *= Input.GetAxis("Horizontal");
 
             moveDirection += forward;
