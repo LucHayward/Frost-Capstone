@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Flock/Behaviour/SteeredCohesion")]
-public class SteeredCohesionBehaviour : FlockBehaviour
+[CreateAssetMenu(menuName = "Flock/Behaviour/Cohesion")]
+public class CohesionBehaviour : FlockBehaviour
 {
     Vector3 currentVelocity;
     public float agentSmoothTime = 0.5f;
-
 
     /// <summary>
     /// Finds middle point between all neighbours and tries to move there (smoothed version).
