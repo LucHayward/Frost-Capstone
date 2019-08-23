@@ -13,12 +13,12 @@ public class EnemyAttack : MonoBehaviour
     private Player player;
 
     public float coolDown;
-    public int abLevel;
-    public float waitTime;
-    public float abStart;
-    public float currentTime;
-    public float lastShotTime = 0.0f;
-    public float shotDelay;
+    private int abLevel;
+    private float waitTime;
+    private float abStart;
+    private float currentTime;
+    private float lastShotTime = 0.0f;
+    private float shotDelay = 2.0f;
 
     // Start is called before the first frame update
     void Start()
