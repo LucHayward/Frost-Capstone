@@ -4,59 +4,48 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class EnemyAttack : MonoBehaviour
 {
-	private Transform enemyPos;
-	private Transform playerPos;
+    public Transform enemyWeaponTransform;
+    private Transform playerTransform;
 
-	private Enemy enemy;
-	private GameObject enemyGO;
 	private GameObject playerGO;
-    private Player player;
-
-    public float coolDown;
-    private int abLevel;
-    private float waitTime;
-    private float abStart;
-    private float currentTime;
-    private float lastShotTime = 0.0f;
+    
+    public float range = 5f;
+    private float currentTime = 0.0f;
+    private float lastAttackTime = 0.0f;
     private float shotDelay = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
 		playerGO = GameObject.FindGameObjectWithTag("Player");
-		player = player.GetComponent<Player>();
 
-		enemyGO = GameObject.FindGameObjectWithTag("Enemy");
-		enemy = enemy.GetComponent<Enemy>();
-
-		enemyPos = enemy.transform;
-		playerPos = player.transform;
-	}
+        playerTransform = playerGO.GetComponent<Transform>();
+    }
 
 	// Update is called once per frame
 	void Update()
     {
         currentTime = Time.time;
-        
-        // Check if basic attack is on cooldown (attack speed)
-        if (currentTime -  lastShotTime > shotDelay)
+
+        if (Vector3.Distance(playerTransform.position, enemyWeaponTransform.position) <= range)
         {
-            lastShotTime = currentTime + coolDown;
-            attack();
+            //Debug.Log("Close enough");
+            if (currentTime - lastAttackTime > shotDelay)
+            {
+                attack();
+                lastAttackTime = currentTime + shotDelay;
+            }
+
         }
-        
+
     }
 
 	void attack()
     {
         // Calculate the distance between the player and the enemy
-        float dist = Vector3.Distance(playerPos.position, enemyPos.position);
+        
         // If close enough, attack player
-        if (dist < 1.5f)
-        {
-			Debug.Log(playerPos.position.x - enemyPos.position.x);
-            print("Attack");
-            player.health--;
-        }
+		Debug.Log("Attack");
+        
     }
 }
