@@ -22,9 +22,10 @@ public class ProjectileAttack : MonoBehaviour
 	}
 
 
-	public void OnTriggerEnter(Collider coll)
+	public void OnCollisionEnter(Collision other)
 	{
-		Instantiate(impactPrefab, transform.position, Quaternion.Inverse(transform.rotation));
+		// Instantiate the impact effect at the projectile transform pointing in the direction of the contact normals
+		Instantiate(impactPrefab, transform.position, Quaternion.Euler(other.GetContact(0).normal));
 		Destroy(gameObject);
 	}
 
