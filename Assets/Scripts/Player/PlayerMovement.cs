@@ -15,6 +15,9 @@ public class PlayerMovement : MonoBehaviour
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
 
+	[Range (0,1)]
+	public float turnSpeed;
+
 
     void Start()
     {
@@ -27,29 +30,39 @@ public class PlayerMovement : MonoBehaviour
     {
 		//TODO; implement jump?
 		//animator.SetBool("IsJump", false);
-		animator.SetBool("Idle", true);
-		animator.SetBool("run", false);
 		//Debug.Log("IsGorunded: "+ characterController.isGrounded);
         if (characterController.isGrounded)
         {
 
             moveDirection = new Vector3();
 
-            Vector3 forward = transform.TransformDirection(cameraTransform.forward);
+            Vector3 forward = cameraTransform.forward;
             forward *= Input.GetAxis("Vertical");
 
-            Vector3 right = transform.TransformDirection(cameraTransform.right);
+            Vector3 right = cameraTransform.right;
             right *= Input.GetAxis("Horizontal");
 
             moveDirection += forward;
             moveDirection += right;
             moveDirection *= speed;
 
-			//TODO Change character controller to use forces
-			if(moveDirection.sqrMagnitude > 1)
+
+			// Prevernts the chraacter from "moving" when against a wall
+			float velocity = characterController.velocity.sqrMagnitude;
+			animator.SetFloat("velocity", velocity);
+			if (velocity > 0)
 			{
-				animator.SetBool("Idle", false);
-				animator.SetBool("run", true);
+				//Turn character
+				Quaternion newLookRotation = Quaternion.LookRotation(cameraTransform.forward, Vector3.up);
+				newLookRotation.x = 0;
+				newLookRotation.z = 0;
+				//transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, Time.deltaTime * turnSpeed);
+				//transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, turnSpeed);
+				//transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, Time.deltaTime * turnSpeed);
+				transform.rotation = Quaternion.Lerp(transform.rotation, newLookRotation, turnSpeed);
+
+
+
 			}
 			//if (Input.GetButton("Jump"))
 			//{
