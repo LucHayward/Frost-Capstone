@@ -4,26 +4,35 @@ using System.Collections;
 public class ProjectileAttack : MonoBehaviour
 {
 	public int damage;
-	public int duration;
+	public int objectLife;
 	public bool canFriendlyFire;
 
-	public ParticleSystem ps;
-	public AudioClip impactAudio;
+	public GameObject impactPrefab;
 
-	public void OnCollisionEnter(Collision coll)
+	private ParticleSystem ps;
+	private AudioSource audioSource;
+
+
+
+	public void Start()
 	{
-		if (ps != null)
-		{
-			//TODO: check this is correct style
-			//ParticleSystem tempPs = Instantiate(ps);
-			//Destroy(tempPs, tempPs.main.duration);
-			ps.Play();
-			Destroy(gameObject, ps.main.duration);
-		}
-		else
-		{
-			Debug.Log("Destroyed projectile", gameObject);
-		}
+		ps = gameObject.GetComponentInChildren<ParticleSystem>();
+		audioSource = gameObject.GetComponent<AudioSource>();
+		Destroy(gameObject, objectLife); // TODO Do we need this>?
 	}
+
+
+	public void OnCollisionEnter(Collision other)
+	{
+		// Instantiate the impact effect at the projectile transform pointing in the direction of the contact normals
+		Instantiate(impactPrefab, transform.position, Quaternion.Euler(other.GetContact(0).normal));
+		Destroy(gameObject);
+	}
+
+	//TODO implement object pooling for player projectiles 
+	//public void OnDestroy()
+	//{
+	//	// Return object to projectile pool
+	//}
 
 }
