@@ -32,52 +32,56 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        if (agent.isStopped)
+        float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
+        if (distance > 2)
+        {
             agent.isStopped = false;
-        agent.SetDestination(playerTrasnform.position);
+            agent.SetDestination(playerTrasnform.position);
+        }
+        else
+        {
+            agent.isStopped = true;
+        }  
     }
     /// <summary>
     /// Controls the movment of the NPC for when they cannot see the player.
     /// </summary>
     private void Wander()
     {
-        float distance = Vector3.Distance(playerTrasnform.position, transform.position);
-        if(distance > 10)
+        float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
+        //Debug.Log(distance);
+        if(distance < 5)
         {
-            agent.isStopped = true;
-        }
-        else
-        {
-            if (agent.isStopped)
-                agent.isStopped = false;
             agent.SetDestination(playerTrasnform.position);
         }
-
+        agent.isStopped = true;
     }
     /// <summary>
     /// Determines whether the NPC can see the player and makes decisions based on this information
     /// </summary>
     private void MakeDecision()
     {
-        Vector3 directionToPlayer = playerTrasnform.position - transform.position; /// vector pointing from the enemy to the player
+        Vector3 currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
+        Vector3 directionToPlayer = playerTrasnform.position - currentPosition; /// vector pointing from the enemy to the player       
         Ray eyeLine = new Ray(transform.position, directionToPlayer);
-        Debug.DrawRay(transform.position, directionToPlayer);
+        Debug.DrawRay(currentPosition, directionToPlayer);
         if (Physics.Raycast(eyeLine, out RaycastHit hit))
         {
             if (hit.collider.tag.Equals("Player"))
             {
-                Debug.Log("Enemy sees player");
+                //Debug.Log("Enemy sees player");
                 Move();
             }
             else
             {
-                Debug.Log("Enemy cannot see player but sees other object");
+                //Debug.Log("Enemy cannot see player but sees other object");
+                //Debug.Log(hit.collider.tag);
                 Wander();
             }
         }
         else
         {
-            Debug.Log("Enemy cannot see player");
+            //Debug.Log("Enemy cannot see player");
             Wander();
         }
     }
