@@ -47,17 +47,7 @@ public class Player : MonoBehaviour
 	// TODO: Get around to implementing a use case for this
 	private void OnTriggerEnter3D(Collider collision)
 	{
-		if (collision.CompareTag("BossBullet"))
-		{
-			if (hasShield == false)
-			{
-				health--;
-
-			}
-
-
-		}
-
+		
 	}
 
 
