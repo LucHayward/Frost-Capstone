@@ -14,13 +14,11 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent agent;
     public float speed;
     private GameObject playerGameObject;
-    private Player player;
     private Transform playerTrasnform;
 
     void Start()
     {
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
-        player = playerGameObject.GetComponent<Player>();
         playerTrasnform = playerGameObject.transform;
     }
 
@@ -34,6 +32,8 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void Move()
     {
+        if (agent.isStopped)
+            agent.isStopped = false;
         agent.SetDestination(playerTrasnform.position);
     }
     /// <summary>
@@ -44,10 +44,12 @@ public class EnemyController : MonoBehaviour
         float distance = Vector3.Distance(playerTrasnform.position, transform.position);
         if(distance > 10)
         {
-            agent.SetDestination(transform.position);
+            agent.isStopped = true;
         }
         else
         {
+            if (agent.isStopped)
+                agent.isStopped = false;
             agent.SetDestination(playerTrasnform.position);
         }
 
@@ -66,7 +68,6 @@ public class EnemyController : MonoBehaviour
             {
                 Debug.Log("Enemy sees player");
                 Move();
-
             }
             else
             {

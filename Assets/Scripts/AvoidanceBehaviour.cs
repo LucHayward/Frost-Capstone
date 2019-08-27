@@ -11,7 +11,7 @@ public class AvoidanceBehaviour : FlockBehaviour
         if (context.Count == 0)
             return Vector3.zero;
 
-        ///add all points tgether and average
+        ///add all points together and average
         Vector3 avoidanceMove = Vector3.zero;
         int numberOfObjectsToAvoid = 0;
         foreach (Transform item in context)
