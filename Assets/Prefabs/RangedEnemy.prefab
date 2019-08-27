@@ -12,13 +12,12 @@ GameObject:
   - component: {fileID: 9020788822569638096}
   - component: {fileID: 5118494809400203219}
   - component: {fileID: 9009597773599741785}
-  - component: {fileID: 7182126503728286847}
   - component: {fileID: 7182126503728286832}
   - component: {fileID: 2059833817}
   - component: {fileID: 2059833818}
   - component: {fileID: 8608599891528689697}
   m_Layer: 0
-  m_Name: EnemyTest
+  m_Name: RangedEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,19 +96,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7182126503728286847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7182126503728286846}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bf7babb1d8fde4498f70102ccb4cd3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coolDown: 5
 --- !u!114 &7182126503728286832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +163,5 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 0}
   projectile: {fileID: 0}
   animator: {fileID: 0}
-  cam: {fileID: 0}
   attackParticles: {fileID: 0}
   attackClip: {fileID: 0}
