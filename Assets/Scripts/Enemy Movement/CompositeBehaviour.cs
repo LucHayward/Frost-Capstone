@@ -7,7 +7,14 @@ public class CompositeBehaviour : FlockBehaviour
 {
     public FlockBehaviour[] behaviours;
     public float[] weights;
-
+    /// <summary>
+    /// Combines all behaviour vectors into one to calculate the vector along which
+    /// the agent should move
+    /// </summary>
+    /// <param name="agent"> the current agent </param>
+    /// <param name="context"> a list of transforms of the gameobjects surrounding the agent </param>
+    /// <param name="flock"> the flock the agent belongs to </param>
+    /// <returns> the final vecctor along which the agent should move </returns>
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
         if(weights.Length!=behaviours.Length)

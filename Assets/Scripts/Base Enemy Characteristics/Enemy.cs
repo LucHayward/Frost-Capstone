@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
 	/// <item>
 	/// <term>Bullet</term>
 	/// <description>
-	/// Reduce health and initiate "death" if health < 1
+	/// Reduce health and initiate "death" if health is less than 1
 	/// </description>
 	/// </item>
 	/// </list>

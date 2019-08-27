@@ -62,6 +62,11 @@ public class Flock : MonoBehaviour
 		}
     }
 
+    /// <summary>
+    /// Populates a list with the transforms of nearby object.
+    /// </summary>
+    /// <param name="agent"> the agent around which the search will take place</param>
+    /// <returns> A list of trasnforms of gameobjects around the agent </returns>
     List<Transform> GetNearbyObjects(FlockAgent agent)
 	{
         List<Transform> context = new List<Transform>();

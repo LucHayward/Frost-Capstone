@@ -4460,26 +4460,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7182126503728286847, guid: 0df82fdb448290a40ac6c36126a54398,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182126503728286847, guid: 0df82fdb448290a40ac6c36126a54398,
-        type: 3}
-      propertyPath: shotDelay
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182126503728286847, guid: 0df82fdb448290a40ac6c36126a54398,
-        type: 3}
-      propertyPath: coolDown
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182126503728286847, guid: 0df82fdb448290a40ac6c36126a54398,
-        type: 3}
-      propertyPath: enemyWeaponTransform
-      value: 
-      objectReference: {fileID: 30758603}
     - target: {fileID: 8608599891528689697, guid: 0df82fdb448290a40ac6c36126a54398,
         type: 3}
       propertyPath: projectileSpawnPoint
@@ -4504,6 +4484,26 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7182126503728286847, guid: 0df82fdb448290a40ac6c36126a54398,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182126503728286847, guid: 0df82fdb448290a40ac6c36126a54398,
+        type: 3}
+      propertyPath: shotDelay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182126503728286847, guid: 0df82fdb448290a40ac6c36126a54398,
+        type: 3}
+      propertyPath: coolDown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182126503728286847, guid: 0df82fdb448290a40ac6c36126a54398,
+        type: 3}
+      propertyPath: enemyWeaponTransform
+      value: 
+      objectReference: {fileID: 30758603}
     - target: {fileID: 2059833818, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
       propertyPath: m_StoppingDistance
       value: 0.2
@@ -4828,6 +4828,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SkinWidth
       value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5987790763869465882, guid: 800c4ebf4a5b9c14bb8197d717582348,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 800c4ebf4a5b9c14bb8197d717582348, type: 3}

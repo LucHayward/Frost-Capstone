@@ -7,8 +7,6 @@ using UnityEngine.AI;
 ///  A class that handles the enemy non-player character's movement
 /// Contains all methods for performing the basic AI and path finding
 /// </summary>
-
-
 public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent agent;
@@ -62,10 +60,12 @@ public class EnemyController : MonoBehaviour
     private void MakeDecision()
     {
         Vector3 currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
-        Vector3 directionToPlayer = playerTrasnform.position - currentPosition; /// vector pointing from the enemy to the player       
+        Vector3 directionToPlayer = playerTrasnform.position - currentPosition; // vector pointing from the enemy to the player       
         Ray eyeLine = new Ray(transform.position, directionToPlayer);
         Debug.DrawRay(currentPosition, directionToPlayer);
-        if (Physics.Raycast(eyeLine, out RaycastHit hit))
+        int layerMask = LayerMask.GetMask("Player", "Obstacle"); // this is not working.
+        // TODO fix the line of sight
+        if (Physics.Raycast(eyeLine, out RaycastHit hit, layerMask))
         {
             if (hit.collider.tag.Equals("Player"))
             {
