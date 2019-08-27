@@ -11,10 +11,17 @@ public class CameraController : MonoBehaviour
 	public float yMinLimit = -20f;
 	public float yMaxLimit = 80f;
 
+	[Range(0, 1)]
+	public float cameraSmoothingFactor;
+	public Transform bufferPos;
+
+
 	public float distanceMin = .5f;
 	public float distanceMax = 15f;
 
 	private Rigidbody rb;
+	private float desiredDistance; // Allows for return after pulling camera in front of geometry
+	private bool canResetDistance = true;
 
 	float x = 0.0f;
 	float y = 0.0f;
@@ -33,10 +40,18 @@ public class CameraController : MonoBehaviour
 		{
 			rb.freezeRotation = true;
 		}
+
+		desiredDistance = distance;
 	}
-	// .205 1.528 -1.58
+
+	void OnTriggerStay(Collider other)
+	{
+		canResetDistance = false;
+	}
+
 	void LateUpdate()
 	{
+		canResetDistance = true;
 		if (orbitTarget)
 		{
 			x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
@@ -46,7 +61,14 @@ public class CameraController : MonoBehaviour
 
 			Quaternion rotation = Quaternion.Euler(y, x, 0);
 
-			distance = Mathf.Clamp(distance - Input.GetAxis("Mouse ScrollWheel")*5, distanceMin, distanceMax);
+			// TODO Do we want to be able to zoom in/out with the camera
+			float scrollAmount = Input.GetAxis("Mouse ScrollWheel");
+			if (scrollAmount != 0)
+			{
+				distance = Mathf.Clamp(distance - scrollAmount*5, distanceMin, distanceMax);
+				desiredDistance = Mathf.Clamp(desiredDistance - scrollAmount*5, distanceMin, distanceMax);
+			}
+
 
 			// Handle preventing the camera being BEHIND an object
 			RaycastHit hit;
@@ -57,7 +79,15 @@ public class CameraController : MonoBehaviour
 				{
 					distance -=  hit.distance;
 				}
+			} else if (!Mathf.Approximately(distance, desiredDistance)) // If the camera is not at the desired distance, perform a raycast backwards to check for intersections.
+			{
+				//RaycastHit backhit;
+				if (!Physics.Linecast(transform.position, bufferPos.position))
+				{
+					distance = Mathf.SmoothStep(distance, desiredDistance, cameraSmoothingFactor);
+				}
 			}
+
 			Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
 			Vector3 position = rotation * negDistance + orbitTarget.position;
 

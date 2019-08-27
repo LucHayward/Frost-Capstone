@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 9009597773599741785}
   - component: {fileID: 7182126503728286832}
   - component: {fileID: 2059833817}
-  - component: {fileID: 2059833818}
   - component: {fileID: 8608599891528689697}
+  - component: {fileID: 2059833818}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Enemy
@@ -96,6 +96,20 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7182126503728286847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182126503728286846}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bf7babb1d8fde4498f70102ccb4cd3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyWeaponTransform: {fileID: 0}
+  range: 5
 --- !u!114 &7182126503728286832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,6 +139,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 2059833818}
   speed: 0
+--- !u!114 &8608599891528689697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182126503728286846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46213b40c556468458a4db3d9d6b6c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 25
+  projectileSpawnPoint: {fileID: 0}
+  projectile: {fileID: 0}
+  animator: {fileID: 0}
+  attackParticles: {fileID: 0}
+  attackClip: {fileID: 0}
 --- !u!195 &2059833818
 NavMeshAgent:
   m_ObjectHideFlags: 0

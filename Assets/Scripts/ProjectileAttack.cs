@@ -25,7 +25,9 @@ public class ProjectileAttack : MonoBehaviour
 	public void OnCollisionEnter(Collision other)
 	{
 		// Instantiate the impact effect at the projectile transform pointing in the direction of the contact normals
-		Instantiate(impactPrefab, transform.position, Quaternion.Euler(other.GetContact(0).normal));
+		Vector3 contactNormal = other.GetContact(0).normal;
+		Quaternion rotation = Quaternion.LookRotation(contactNormal);
+		Instantiate(impactPrefab, transform.position, rotation);
 		Destroy(gameObject);
 	}
 

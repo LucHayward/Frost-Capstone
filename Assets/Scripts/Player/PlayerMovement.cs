@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
 
 
-    public float speed = 6.0f;
+    public float speedMultiplier = 6.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
 
@@ -44,13 +44,26 @@ public class PlayerMovement : MonoBehaviour
 
             moveDirection += forward;
             moveDirection += right;
-            moveDirection *= speed;
+
+			if(moveDirection.sqrMagnitude > 1)
+			{
+				Debug.Log("Diagonal Movement");
+				moveDirection.Normalize();
+			}
+
+            moveDirection *= speedMultiplier;
 
 
-			// Prevernts the chraacter from "moving" when against a wall
-			float velocity = characterController.velocity.sqrMagnitude;
-			animator.SetFloat("velocity", velocity);
-			if (velocity > 0)
+
+
+			Vector3 velocity = characterController.velocity;
+			float speed = velocity.magnitude;
+			animator.SetFloat("velocity", speed);
+			animator.SetFloat("velocityX", characterController.velocity.x);
+			animator.SetFloat("velocityZ", characterController.velocity.z);
+
+			// Prevents the character from "moving" when against a wall
+			if (speed > 0)
 			{
 				//Turn character
 				Quaternion newLookRotation = Quaternion.LookRotation(cameraTransform.forward, Vector3.up);
@@ -74,10 +87,10 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             Vector3 forward = transform.TransformDirection(Vector3.forward);
-            forward *= Input.GetAxis("Vertical") * speed;
+            forward *= Input.GetAxis("Vertical") * speedMultiplier;
 
             Vector3 right = transform.TransformDirection(Vector3.right);
-            right *= Input.GetAxis("Horizontal") * speed;
+            right *= Input.GetAxis("Horizontal") * speedMultiplier;
 
             moveDirection.x = forward.x + right.x;
             moveDirection.z = forward.z + right.z;
