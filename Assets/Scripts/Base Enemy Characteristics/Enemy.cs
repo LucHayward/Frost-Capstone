@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
-    public float speed;
-    public int lvl;
     public int health;
 
 	private GameObject playerGO;
@@ -44,12 +42,12 @@ public class Enemy : MonoBehaviour
 		Debug.Log("TriggerEntered", collision);
         if (collision.CompareTag("Bullet"))
         {
+            Destroy(collision.gameObject);
             // if collider is a bullet deal damage
             health--;
             if (health < 1)
             {
                 print("dead");
-                Destroy(collision.gameObject);
                 Destroy(gameObject);
             }
         }
