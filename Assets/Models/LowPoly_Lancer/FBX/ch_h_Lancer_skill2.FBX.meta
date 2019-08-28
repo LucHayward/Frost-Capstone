@@ -135,6 +135,7 @@ ModelImporter:
     13700000: lod_dark_knight
     13700002: lod_spear
     13700004: lod_sword
+    2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
     importMaterials: 0
@@ -147,7 +148,8 @@ ModelImporter:
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Avatar creation failed:\n\tTransform 'Bip001 Pelvis' for human
+      bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
