@@ -764,9 +764,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9176910311190146148}
-  speed: 6
+  cameraTransform: {fileID: 0}
+  speedMultiplier: 6
   jumpSpeed: 8
   gravity: 20
+  turnSpeed: 0
 --- !u!143 &7943516544882520999
 CharacterController:
   m_ObjectHideFlags: 0

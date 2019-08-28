@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
 			if(moveDirection.sqrMagnitude > 1)
 			{
-				Debug.Log("Diagonal Movement");
+				//Debug.Log("Diagonal Movement");
 				moveDirection.Normalize();
 			}
 

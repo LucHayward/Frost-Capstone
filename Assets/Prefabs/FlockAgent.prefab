@@ -103,11 +103,12 @@ GameObject:
   - component: {fileID: 7177992344019330684}
   - component: {fileID: 7717319042820759540}
   - component: {fileID: 1815468178881704242}
-  - component: {fileID: 5788169226610897371}
   - component: {fileID: 9152231295131619047}
+  - component: {fileID: 4444324842886037798}
+  - component: {fileID: 5677351940283581353}
   m_Layer: 0
   m_Name: FlockAgent
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,20 +154,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a05f3805b1a84e769015b342f3ef56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5788169226610897371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5762272500587874726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c47113012a70544ba98c03fa0425c7be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 9152231295131619047}
-  speed: 0
 --- !u!195 &9152231295131619047
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -189,3 +176,32 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &4444324842886037798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5762272500587874726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6b79f2f842f4e5c853b6b5ccfc350e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 9152231295131619047}
+  speed: 0
+--- !u!114 &5677351940283581353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5762272500587874726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6210c0977dfef74ba32c61c80e689b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  lvl: 0
+  health: 1
