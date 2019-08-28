@@ -1910,7 +1910,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300032, guid: 8acec1164e7a8014dbcef11ce3d105f7, type: 3}
+  m_Sprite: {fileID: 21300032, guid: 00737026e5a6e254b9a5de10168042f8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4506,6 +4506,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9009597773599741785, guid: 0df82fdb448290a40ac6c36126a54398,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7182126503728286832, guid: 0df82fdb448290a40ac6c36126a54398,
+        type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 2059833818, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
       propertyPath: m_StoppingDistance
       value: 0.2
@@ -4530,16 +4540,6 @@ PrefabInstance:
       propertyPath: enemyWeaponTransform
       value: 
       objectReference: {fileID: 30758603}
-    - target: {fileID: 9009597773599741785, guid: 0df82fdb448290a40ac6c36126a54398,
-        type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7182126503728286832, guid: 0df82fdb448290a40ac6c36126a54398,
-        type: 3}
-      propertyPath: health
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2059833817, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
