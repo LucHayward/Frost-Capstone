@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the movement calculations as well as communication with the animation controller for the player
+/// </summary>
 public class PlayerMovement : MonoBehaviour
 {
     CharacterController characterController;
@@ -10,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
 	public Transform cameraTransform;
     private Vector3 moveDirection;
 
-
     public float speedMultiplier = 6.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
@@ -18,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
 	[Range (0,1)]
 	public float turnSpeed;
 
+	public Vector3 debugVelocity;
 
     void Start()
     {
@@ -26,12 +29,14 @@ public class PlayerMovement : MonoBehaviour
 		Cursor.visible = false;
     }
 
+	/// <summary>
+	/// 
+	/// </summary>
     void Update()
     {
-		//TODO; implement jump?
-		//animator.SetBool("IsJump", false);
+		
 		//Debug.Log("IsGorunded: "+ characterController.isGrounded);
-        if (characterController.isGrounded)
+		if (characterController.isGrounded)
         {
 
             moveDirection = new Vector3();
@@ -56,11 +61,12 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-			Vector3 velocity = characterController.velocity;
-			float speed = velocity.magnitude;
+			Vector3 localVelocity = transform.InverseTransformDirection(characterController.velocity);
+			//debugVelocity = localVelocity;
+			float speed = localVelocity.magnitude;
 			animator.SetFloat("velocity", speed);
-			animator.SetFloat("velocityX", characterController.velocity.x);
-			animator.SetFloat("velocityZ", characterController.velocity.z);
+			animator.SetFloat("velocityX", localVelocity.x);
+			animator.SetFloat("velocityZ", localVelocity.z);
 
 			// Prevents the character from "moving" when against a wall
 			if (speed > 0)
@@ -77,11 +83,16 @@ public class PlayerMovement : MonoBehaviour
 
 
 			}
-			//if (Input.GetButton("Jump"))
-			//{
-			//moveDirection.y = jumpSpeed;
-			//animator.SetBool("IsJump", true);
-			//}
+
+			if (Input.GetButton("Jump"))
+			{
+				moveDirection.y = jumpSpeed;
+				animator.SetBool("isJump", true);
+			}
+			else
+			{
+				animator.SetBool("isJump", false);
+			}
 			moveDirection.y = -characterController.stepOffset/Time.deltaTime;
         }
         else
@@ -101,8 +112,6 @@ public class PlayerMovement : MonoBehaviour
 
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
-        //animator.SetFloat("Speed", moveDirection.sqrMagnitude);
-		// TODO: Change the animation controller to work using speed for run/idle transitions
     }
 
 

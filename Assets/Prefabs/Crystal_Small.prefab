@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 969931580914544876}
   - component: {fileID: 2389222222226472175}
   - component: {fileID: 4048531482405273694}
-  - component: {fileID: 865296155}
   m_Layer: 0
   m_Name: Crystal_Small
   m_TagString: Bullet
@@ -31,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2455828574316593261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.1405182, y: 0.5, z: 1.1839077}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3058191958057835981}
@@ -247,23 +246,6 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!114 &865296155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2455828574316593261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df97558c2aac2c142a3f9ce9158f6b1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 2
-  objectLife: 5
-  canFriendlyFire: 0
-  impactPrefab: {fileID: 9141597624335300536, guid: a7deb43d86e8a4c4b8f1f411533a5ca2,
-    type: 3}
 --- !u!1 &3652043768935939313
 GameObject:
   m_ObjectHideFlags: 0
