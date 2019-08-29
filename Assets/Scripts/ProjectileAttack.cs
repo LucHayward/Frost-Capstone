@@ -12,6 +12,7 @@ public class ProjectileAttack : MonoBehaviour
 	private ParticleSystem ps;
 	private AudioSource audioSource;
 
+    private Enemy enemy;
 
 
 	public void Start()
@@ -24,6 +25,12 @@ public class ProjectileAttack : MonoBehaviour
 
 	public void OnCollisionEnter(Collision other)
 	{
+        if (other.gameObject.tag == "Enemy")
+        {
+            enemy = other.gameObject.GetComponent<Enemy>();
+            enemy.takeDamage(damage);
+            
+        }
 		// Instantiate the impact effect at the projectile transform pointing in the direction of the contact normals
 		Vector3 contactNormal = other.GetContact(0).normal;
 		Quaternion rotation = Quaternion.LookRotation(contactNormal);

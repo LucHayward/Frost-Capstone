@@ -22,44 +22,32 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-		
+        if (health < 1)
+        {
+            print("dead");
+            Destroy(gameObject);
+        }
     }
 	
 	/// <summary>
 	/// Handle interaction with triggers.
-	/// <list type="bullet">
+	/// <list type="Bullet">
 	/// <item>
 	/// <term>Bullet</term>
 	/// <description>
-	/// Reduce health and initiate "death" if health is less than 1
+	/// Reduce health 
 	/// </description>
 	/// </item>
 	/// </list>
 	/// </summary>
 	/// <param name="collision"></param>
-    private void OnTriggerEnter(Collider collision)
+    public void takeDamage(int dmg)
     {
-		Debug.Log("TriggerEntered", collision);
-        if (collision.CompareTag("Bullet"))
-        {
-            Destroy(collision.gameObject);
-            // if collider is a bullet deal damage
-            health--;
-            if (health < 1)
-            {
-                print("dead");
-                Destroy(gameObject);
-            }
-        }
+        health = health - dmg;
     }
 
 
 
-	private void OnCollisionEnter(Collision collision)
-	{
-		Debug.Log("ColliderEnter", collision.collider);
-
-	}
 
 
 }
