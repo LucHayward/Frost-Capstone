@@ -582,7 +582,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 91045399}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalPosition: {x: -1.47, y: 1.2, z: -9.03}
   m_LocalScale: {x: 1, y: 2.6824, z: 2.7114}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4866,6 +4866,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179879930428073115, guid: 800c4ebf4a5b9c14bb8197d717582348,
+        type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179879930428073115, guid: 800c4ebf4a5b9c14bb8197d717582348,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179879930428073115, guid: 800c4ebf4a5b9c14bb8197d717582348,
+        type: 3}
+      propertyPath: InitialModule.gravityModifier.scalar
+      value: 0.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179879930428073115, guid: 800c4ebf4a5b9c14bb8197d717582348,
+        type: 3}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179879930428073115, guid: 800c4ebf4a5b9c14bb8197d717582348,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7179879930428073115, guid: 800c4ebf4a5b9c14bb8197d717582348,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 800c4ebf4a5b9c14bb8197d717582348, type: 3}

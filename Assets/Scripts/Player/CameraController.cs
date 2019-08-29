@@ -44,11 +44,6 @@ public class CameraController : MonoBehaviour
 		desiredDistance = distance;
 	}
 
-	void OnTriggerStay(Collider other)
-	{
-		canResetDistance = false;
-	}
-
 	void LateUpdate()
 	{
 		canResetDistance = true;
@@ -72,17 +67,24 @@ public class CameraController : MonoBehaviour
 
 			// Handle preventing the camera being BEHIND an object
 			RaycastHit hit;
-			if (Physics.Linecast(orbitTarget.position, transform.position, out hit))
+			if (distance>desiredDistance)
+			{
+				distance = desiredDistance;
+			} else if (Physics.Linecast(orbitTarget.position, transform.position, out hit))
 			{
 				// Allow enemy and player to pass in front of camera target
 				if (!(hit.collider.CompareTag("Player") || hit.collider.CompareTag("Enemy")))
 				{
-					distance -=  hit.distance;
+					distance =  hit.distance;
 				}
 			} else if (!Mathf.Approximately(distance, desiredDistance)) // If the camera is not at the desired distance, perform a raycast backwards to check for intersections.
 			{
 				//RaycastHit backhit;
-				if (!Physics.Linecast(transform.position, bufferPos.position))
+				if (Physics.Linecast(transform.position, bufferPos.position, out hit))
+				{
+					distance += hit.distance;
+				}
+				else
 				{
 					distance = Mathf.SmoothStep(distance, desiredDistance, cameraSmoothingFactor);
 				}
