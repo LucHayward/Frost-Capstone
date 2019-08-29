@@ -29,10 +29,10 @@ public class Enemy : MonoBehaviour
 	/// Handle interaction with triggers.
 	/// <list type="bullet">
 	/// <item>
-	/// <term>Bullet</term>
-	/// <description>
-	/// Reduce health and initiate "death" if health is less than 1
-	/// </description>
+	///		<term>Bullet</term>
+	///		<description>
+	///		Reduce health and initiate "death" if health is less than 1
+	///		</description>
 	/// </item>
 	/// </list>
 	/// </summary>

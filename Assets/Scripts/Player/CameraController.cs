@@ -21,7 +21,6 @@ public class CameraController : MonoBehaviour
 
 	private Rigidbody rb;
 	private float desiredDistance; // Allows for return after pulling camera in front of geometry
-	private bool canResetDistance = true;
 
 	float x = 0.0f;
 	float y = 0.0f;
@@ -44,9 +43,12 @@ public class CameraController : MonoBehaviour
 		desiredDistance = distance;
 	}
 
+	/// <summary>
+	/// Translates mouse/joystick movement into camera orbit around a fixed point.
+	/// Prevents environment from passsing in front of camera and player by zooming camera in closer and returning when there is no longer an obstacle
+	/// </summary>
 	void LateUpdate()
 	{
-		canResetDistance = true;
 		if (orbitTarget)
 		{
 			x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
@@ -98,6 +100,13 @@ public class CameraController : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Returns an angle clamped within the given bounds specified in degrees
+	/// </summary>
+	/// <param name="angle"> to be clamped </param>
+	/// <param name="min"></param>
+	/// <param name="max"></param>
+	/// <returns> clamped angle</returns>
 	public static float ClampAngle(float angle, float min, float max)
 	{
 		if (angle < -360F)

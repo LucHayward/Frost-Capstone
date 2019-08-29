@@ -11,7 +11,6 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
 
 	public Transform cameraTransform;
-    private Vector3 moveDirection;
 
     public float speedMultiplier = 6.0f;
     public float jumpSpeed = 8.0f;
@@ -22,11 +21,18 @@ public class PlayerMovement : MonoBehaviour
 
 	public Vector3 debugVelocity;
 
-    void Start()
+	private Vector3 moveDirection;
+	[SerializeField]
+	private AnimationClip jumpAnim;
+	private float jumpAnimTime;
+
+	void Start()
     {
         characterController = GetComponent<CharacterController>();
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
+
+		jumpAnimTime = jumpAnim.length;
     }
 
 	/// <summary>
@@ -84,18 +90,15 @@ public class PlayerMovement : MonoBehaviour
 
 			}
 
-			if (Input.GetButton("Jump"))
+			if (Input.GetButtonDown("Jump"))
 			{
-				moveDirection.y = jumpSpeed;
-				animator.SetBool("isJump", true);
-			}
-			else
-			{
-				animator.SetBool("isJump", false);
+				//moveDirection.y = jumpSpeed;
+				animator.SetTrigger("jump");
+				StartCoroutine(GravityPauseForJump());
 			}
 			moveDirection.y = -characterController.stepOffset/Time.deltaTime;
-        }
-        else
+		}
+		else
         {
             Vector3 forward = transform.TransformDirection(Vector3.forward);
             forward *= Input.GetAxis("Vertical") * speedMultiplier;
@@ -105,14 +108,22 @@ public class PlayerMovement : MonoBehaviour
 
             moveDirection.x = forward.x + right.x;
             moveDirection.z = forward.z + right.z;
-            moveDirection.y -= gravity * Time.deltaTime;
+			moveDirection.y -= gravity * Time.deltaTime;
 
-        }
+		}
 
 
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
     }
+
+	IEnumerator GravityPauseForJump()
+	{
+		float tGrav = gravity;
+		gravity = 0;
+		yield return new WaitForSeconds(3);
+		gravity = tGrav;
+	}
 
 
 }

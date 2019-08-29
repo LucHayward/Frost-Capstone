@@ -4852,6 +4852,11 @@ PrefabInstance:
       propertyPath: turnSpeed
       value: 0.075
       objectReference: {fileID: 0}
+    - target: {fileID: 5048431004472485266, guid: 800c4ebf4a5b9c14bb8197d717582348,
+        type: 3}
+      propertyPath: jumpAnim
+      value: 
+      objectReference: {fileID: 7400000, guid: 44bdd9a301942f046af439871591115a, type: 2}
     - target: {fileID: 7943516544882520999, guid: 800c4ebf4a5b9c14bb8197d717582348,
         type: 3}
       propertyPath: m_Center.y
@@ -4897,7 +4902,18 @@ PrefabInstance:
       propertyPath: EmissionModule.rateOverTime.scalar
       value: 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7179879930428073115, guid: 800c4ebf4a5b9c14bb8197d717582348,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 3104474957417457583, guid: 800c4ebf4a5b9c14bb8197d717582348,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3104474957417457583, guid: 800c4ebf4a5b9c14bb8197d717582348, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 800c4ebf4a5b9c14bb8197d717582348, type: 3}
 --- !u!4 &8039765368610801730 stripped
 Transform:
