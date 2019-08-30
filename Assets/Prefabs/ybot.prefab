@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3379936004766954565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5265814413093172087}
+  m_Layer: 0
+  m_Name: orbitTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5265814413093172087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379936004766954565}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 1.689, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9176910311197590030}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9176910311197433344
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,6 +721,7 @@ Transform:
   - {fileID: 9176910311197590404}
   - {fileID: 9176910311197590406}
   - {fileID: 9176910311197590412}
+  - {fileID: 5265814413093172087}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -744,7 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 25
-  projectileSpawnPoint: {fileID: 0}
+  projectileSpawnPoint: {fileID: 2528227847017093144}
   projectile: {fileID: 2047500474522875096, guid: c06e12f8c98b91b43acebb83f61dd3c3,
     type: 3}
   animator: {fileID: 9176910311190146148}
@@ -769,6 +800,7 @@ MonoBehaviour:
   jumpSpeed: 8
   gravity: 20
   turnSpeed: 0
+  debugVelocity: {x: 0, y: 0, z: 0}
 --- !u!143 &7943516544882520999
 CharacterController:
   m_ObjectHideFlags: 0
@@ -2589,6 +2621,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c21509f08011828468c38aed97595c0c, type: 3}
+--- !u!4 &2528227847017093144 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 28877461722476291, guid: c21509f08011828468c38aed97595c0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2553688534054598427}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7273930371319461093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5152882216638088190, guid: c21509f08011828468c38aed97595c0c,

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 29733349}
   - component: {fileID: 29733348}
   - component: {fileID: 29733347}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (3)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -259,9 +259,9 @@ GameObject:
   - component: {fileID: 77291553}
   - component: {fileID: 77291552}
   - component: {fileID: 77291551}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground Plane
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -606,7 +606,7 @@ GameObject:
   - component: {fileID: 135250984}
   - component: {fileID: 135250983}
   - component: {fileID: 135250982}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (3)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 148674171}
   - component: {fileID: 148674170}
   - component: {fileID: 148674169}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (4)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -854,36 +854,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148674167}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &150814434
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 150814435}
-  m_Layer: 0
-  m_Name: FollowTransform
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &150814435
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 150814434}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.226, y: 1.649, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 8039765368610801730}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &234140785
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,9 +863,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 234140786}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Object1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1005,7 +975,7 @@ GameObject:
   - component: {fileID: 299986510}
   - component: {fileID: 299986509}
   - component: {fileID: 299986508}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (5)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -1223,7 +1193,7 @@ GameObject:
   - component: {fileID: 451626640}
   - component: {fileID: 451626639}
   - component: {fileID: 451626638}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -1328,7 +1298,7 @@ GameObject:
   - component: {fileID: 472037033}
   - component: {fileID: 472037032}
   - component: {fileID: 472037031}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (5)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -1433,7 +1403,7 @@ GameObject:
   - component: {fileID: 512213214}
   - component: {fileID: 512213213}
   - component: {fileID: 512213212}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -1538,7 +1508,7 @@ GameObject:
   - component: {fileID: 615246914}
   - component: {fileID: 615246913}
   - component: {fileID: 615246912}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (5)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -1643,7 +1613,7 @@ GameObject:
   - component: {fileID: 616120913}
   - component: {fileID: 616120912}
   - component: {fileID: 616120911}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (5)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -1744,9 +1714,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 640379192}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Object2 (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1821,7 +1791,7 @@ PrefabInstance:
     - target: {fileID: 5619136212803396408, guid: 0df82fdb448290a40ac6c36126a54398,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5619136212803396408, guid: 0df82fdb448290a40ac6c36126a54398,
         type: 3}
@@ -1836,10 +1806,6 @@ PrefabInstance:
     - target: {fileID: 5619136212803396408, guid: 0df82fdb448290a40ac6c36126a54398,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2059833817, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8608599891528689697, guid: 0df82fdb448290a40ac6c36126a54398,
@@ -1863,6 +1829,10 @@ PrefabInstance:
       propertyPath: health
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2059833817, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2059833817, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
@@ -1879,7 +1849,7 @@ GameObject:
   - component: {fileID: 748201893}
   - component: {fileID: 748201892}
   - component: {fileID: 748201891}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (4)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2054,9 +2024,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 760043598}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Object1 (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2094,7 +2064,7 @@ GameObject:
   - component: {fileID: 780508654}
   - component: {fileID: 780508653}
   - component: {fileID: 780508652}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (5)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2199,7 +2169,7 @@ GameObject:
   - component: {fileID: 788113009}
   - component: {fileID: 788113008}
   - component: {fileID: 788113007}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (6)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2422,7 +2392,7 @@ GameObject:
   - component: {fileID: 792382220}
   - component: {fileID: 792382219}
   - component: {fileID: 792382218}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2527,7 +2497,7 @@ GameObject:
   - component: {fileID: 869092030}
   - component: {fileID: 869092029}
   - component: {fileID: 869092028}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2632,7 +2602,7 @@ GameObject:
   - component: {fileID: 873193680}
   - component: {fileID: 873193679}
   - component: {fileID: 873193678}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2733,9 +2703,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 894535125}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Object2
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2790,6 +2760,36 @@ Transform:
   - {fileID: 89597489}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &988567136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 988567137}
+  m_Layer: 0
+  m_Name: Player Spawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &988567137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988567136}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1222894320}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1075782785
 GameObject:
@@ -2885,7 +2885,7 @@ GameObject:
   - component: {fileID: 1105909655}
   - component: {fileID: 1105909654}
   - component: {fileID: 1105909653}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -2990,7 +2990,7 @@ GameObject:
   - component: {fileID: 1153613550}
   - component: {fileID: 1153613549}
   - component: {fileID: 1153613548}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (3)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -3091,9 +3091,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1168773252}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Object2 (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3118,6 +3118,59 @@ Transform:
   m_Father: {fileID: 1417747651}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1222894319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1222894320}
+  - component: {fileID: 1222894321}
+  m_Layer: 0
+  m_Name: Game Manger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1222894320
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222894319}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 988567137}
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1222894321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222894319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139944295eaf3461bb93fb809e87a2ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDelay: 3
+  endDelay: 3
+  playerPrefab: {fileID: 9176910311197433390, guid: 800c4ebf4a5b9c14bb8197d717582348,
+    type: 3}
+  players:
+  - instanceOfPlayer: {fileID: 0}
+    spawnPoint: {fileID: 988567137}
+    camera: {fileID: 1556669888}
+    playerNumber: 0
 --- !u!1 &1175316910
 GameObject:
   m_ObjectHideFlags: 0
@@ -3210,7 +3263,7 @@ GameObject:
   - component: {fileID: 1238020540}
   - component: {fileID: 1238020539}
   - component: {fileID: 1238020538}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -3315,7 +3368,7 @@ GameObject:
   - component: {fileID: 1301235864}
   - component: {fileID: 1301235863}
   - component: {fileID: 1301235862}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (4)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -3420,7 +3473,7 @@ GameObject:
   - component: {fileID: 1360958981}
   - component: {fileID: 1360958980}
   - component: {fileID: 1360958979}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (6)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -3654,7 +3707,7 @@ Transform:
   - {fileID: 640379192}
   - {fileID: 760043598}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1430508428
 GameObject:
@@ -3828,7 +3881,7 @@ GameObject:
   - component: {fileID: 1515631353}
   - component: {fileID: 1515631352}
   - component: {fileID: 1515631351}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (4)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -4016,7 +4069,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a522eb056f914edfb0c2d666b547f72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitTarget: {fileID: 150814435}
+  orbitTarget: {fileID: 0}
   distance: 1.5
   xSpeed: 30
   ySpeed: 30
@@ -4039,7 +4092,7 @@ GameObject:
   - component: {fileID: 1659326329}
   - component: {fileID: 1659326328}
   - component: {fileID: 1659326327}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (3)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -4175,7 +4228,7 @@ GameObject:
   - component: {fileID: 1674382112}
   - component: {fileID: 1674382111}
   - component: {fileID: 1674382110}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -4419,7 +4472,7 @@ GameObject:
   - component: {fileID: 1767211844}
   - component: {fileID: 1767211843}
   - component: {fileID: 1767211842}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (4)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -4642,7 +4695,7 @@ GameObject:
   - component: {fileID: 1830556159}
   - component: {fileID: 1830556158}
   - component: {fileID: 1830556157}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -4783,7 +4836,7 @@ GameObject:
   - component: {fileID: 1854518145}
   - component: {fileID: 1854518144}
   - component: {fileID: 1854518143}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (6)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -5006,7 +5059,7 @@ GameObject:
   - component: {fileID: 1868303010}
   - component: {fileID: 1868303009}
   - component: {fileID: 1868303008}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (3)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -5111,7 +5164,7 @@ GameObject:
   - component: {fileID: 1959913739}
   - component: {fileID: 1959913738}
   - component: {fileID: 1959913737}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -5270,14 +5323,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2059833817, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
-      propertyPath: speed
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2059833817, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8608599891528689697, guid: 0df82fdb448290a40ac6c36126a54398,
         type: 3}
       propertyPath: projectileSpawnPoint
@@ -5304,9 +5349,13 @@ PrefabInstance:
       propertyPath: health
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 2059833818, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0.2
+    - target: {fileID: 2059833817, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
+      propertyPath: speed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059833817, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7182126503728286847, guid: 0df82fdb448290a40ac6c36126a54398,
         type: 3}
@@ -5328,6 +5377,10 @@ PrefabInstance:
       propertyPath: enemyWeaponTransform
       value: 
       objectReference: {fileID: 30758603}
+    - target: {fileID: 2059833818, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2059833817, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
@@ -5350,7 +5403,7 @@ GameObject:
   - component: {fileID: 1976669336}
   - component: {fileID: 1976669335}
   - component: {fileID: 1976669334}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (6)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -5455,7 +5508,7 @@ GameObject:
   - component: {fileID: 1995988964}
   - component: {fileID: 1995988963}
   - component: {fileID: 1995988962}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (6)
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -5547,149 +5600,3 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995988960}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1996969380 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2528227847017093144, guid: 800c4ebf4a5b9c14bb8197d717582348,
-    type: 3}
-  m_PrefabInstance: {fileID: 1209237730425670220}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &1209237730425670220
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 9176910311197433390, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_Name
-      value: Player_ybot
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176910311197590030, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.38
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176910311197590030, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176910311197590030, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176910311197590030, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176910311197590030, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176910311197590030, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176910311197590030, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176910311197590030, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176910311197590030, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176910311197590030, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9176910311197590030, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7032153780395422605, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: cam
-      value: 
-      objectReference: {fileID: 1556669888}
-    - target: {fileID: 7032153780395422605, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: projectileSpawnPoint
-      value: 
-      objectReference: {fileID: 1996969380}
-    - target: {fileID: 5048431004472485266, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: cameraTransform
-      value: 
-      objectReference: {fileID: 1556669889}
-    - target: {fileID: 5048431004472485266, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: turnSpeed
-      value: 0.075
-      objectReference: {fileID: 0}
-    - target: {fileID: 7943516544882520999, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 7943516544882520999, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_SkinWidth
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 5987790763869465882, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7179879930428073115, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7179879930428073115, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7179879930428073115, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 0.025
-      objectReference: {fileID: 0}
-    - target: {fileID: 7179879930428073115, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: ShapeModule.type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7179879930428073115, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 7179879930428073115, guid: 800c4ebf4a5b9c14bb8197d717582348,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 800c4ebf4a5b9c14bb8197d717582348, type: 3}
---- !u!4 &8039765368610801730 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9176910311197590030, guid: 800c4ebf4a5b9c14bb8197d717582348,
-    type: 3}
-  m_PrefabInstance: {fileID: 1209237730425670220}
-  m_PrefabAsset: {fileID: 0}
