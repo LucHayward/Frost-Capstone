@@ -32,10 +32,13 @@ public class GameManager : MonoBehaviour
         for(int i = 0; i <numberOfEnemies; i++)
 		{
             enemyTypes[0].CalculateSpawnPoint();
-            meleeEnemies[i].instanceOfEnemy = Instantiate(meleeEnemyPrefab,
-                enemyTypes[0].spawnPoint.position,
-                enemyTypes[0].spawnPoint.rotation) as GameObject;
-            meleeEnemies[i].Setup();
+			meleeEnemies [i] = new EnemyManager
+			{
+				instanceOfEnemy = Instantiate(meleeEnemyPrefab,
+				enemyTypes [0].spawnPoint.position,
+				enemyTypes [0].spawnPoint.rotation) as GameObject
+			};
+			meleeEnemies [i].Setup();
             agents.Add(meleeEnemies[i].GetFlockAgent());
 		}
 	}
