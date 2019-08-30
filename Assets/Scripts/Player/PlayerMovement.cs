@@ -7,62 +7,61 @@ using UnityEngine;
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
-    CharacterController characterController;
-    public Animator animator;
+	CharacterController characterController;
+	public Animator animator;
+	[SerializeField] private AnimationClip jumpAnim;
 
 	public Transform cameraTransform;
 
-    public float speedMultiplier = 6.0f;
-    public float jumpSpeed = 8.0f;
-    public float gravity = 20.0f;
+	public float speedMultiplier = 6.0f;
+	public float jumpSpeed = 8.0f;
+	public float gravity = 20.0f;
 
-	[Range (0,1)]
+	[Range(0, 1)]
 	public float turnSpeed;
 
 	public Vector3 debugVelocity;
 
 	private Vector3 moveDirection;
-	[SerializeField]
-	private AnimationClip jumpAnim;
 	private float jumpAnimTime;
 
 	void Start()
-    {
-        characterController = GetComponent<CharacterController>();
+	{
+		characterController = GetComponent<CharacterController>();
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 
 		jumpAnimTime = jumpAnim.length;
-    }
+	}
 
 	/// <summary>
 	/// 
 	/// </summary>
-    void Update()
-    {
-		
+	void Update()
+	{
+
 		//Debug.Log("IsGorunded: "+ characterController.isGrounded);
 		if (characterController.isGrounded)
-        {
+		{
 
-            moveDirection = new Vector3();
+			moveDirection = new Vector3();
 
-            Vector3 forward = cameraTransform.forward;
-            forward *= Input.GetAxis("Vertical");
+			Vector3 forward = cameraTransform.forward;
+			forward *= Input.GetAxis("Vertical");
 
-            Vector3 right = cameraTransform.right;
-            right *= Input.GetAxis("Horizontal");
+			Vector3 right = cameraTransform.right;
+			right *= Input.GetAxis("Horizontal");
 
-            moveDirection += forward;
-            moveDirection += right;
+			moveDirection += forward;
+			moveDirection += right;
 
-			if(moveDirection.sqrMagnitude > 1)
+			if (moveDirection.sqrMagnitude > 1)
 			{
 				//Debug.Log("Diagonal Movement");
 				moveDirection.Normalize();
 			}
 
-            moveDirection *= speedMultiplier;
+			moveDirection *= speedMultiplier;
 
 
 
@@ -99,23 +98,23 @@ public class PlayerMovement : MonoBehaviour
 			moveDirection.y = -characterController.stepOffset/Time.deltaTime;
 		}
 		else
-        {
-            Vector3 forward = transform.TransformDirection(Vector3.forward);
-            forward *= Input.GetAxis("Vertical") * speedMultiplier;
+		{
+			Vector3 forward = transform.TransformDirection(Vector3.forward);
+			forward *= Input.GetAxis("Vertical") * speedMultiplier;
 
-            Vector3 right = transform.TransformDirection(Vector3.right);
-            right *= Input.GetAxis("Horizontal") * speedMultiplier;
+			Vector3 right = transform.TransformDirection(Vector3.right);
+			right *= Input.GetAxis("Horizontal") * speedMultiplier;
 
-            moveDirection.x = forward.x + right.x;
-            moveDirection.z = forward.z + right.z;
+			moveDirection.x = forward.x + right.x;
+			moveDirection.z = forward.z + right.z;
 			moveDirection.y -= gravity * Time.deltaTime;
 
 		}
 
 
-        // Move the controller
-        characterController.Move(moveDirection * Time.deltaTime);
-    }
+		// Move the controller
+		characterController.Move(moveDirection * Time.deltaTime);
+	}
 
 	IEnumerator GravityPauseForJump()
 	{

@@ -758,10 +758,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   health: 10
+  lvl: 0
   healthText: {fileID: 0}
   hasShield: 0
-  lvl: 0
   isFast: 0
+  playerMovement: {fileID: 5048431004472485266}
+  playerAttack: {fileID: 7032153780395422605}
 --- !u!114 &7032153780395422605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -801,6 +803,7 @@ MonoBehaviour:
   gravity: 20
   turnSpeed: 0
   debugVelocity: {x: 0, y: 0, z: 0}
+  jumpAnim: {fileID: 7400000, guid: 44bdd9a301942f046af439871591115a, type: 2}
 --- !u!143 &7943516544882520999
 CharacterController:
   m_ObjectHideFlags: 0
