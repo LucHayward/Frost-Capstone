@@ -22,7 +22,7 @@ public class EnemyRangedAttack : MonoBehaviour
     public ParticleSystem attackParticles; //TODO: Add particles
     public AudioSource attackClip; //TODO: Add attack audio
 
-    private void Awake()
+    private void Start()
     {
         playerGO = GameObject.FindGameObjectWithTag("Player");
         playerTransform = playerGO.GetComponent<Transform>();
