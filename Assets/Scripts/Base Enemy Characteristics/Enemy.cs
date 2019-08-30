@@ -11,9 +11,12 @@ public class Enemy : MonoBehaviour
 	private Player player;
 	private Transform playerPos;
 
+    Vector3 velocity;
+    private Transform prevTransform;
 	// Start is called before the first frame update
 	void Start()
     {
+        prevTransform = transform;
 		playerGO = GameObject.FindGameObjectWithTag("Player");
         player = playerGO.GetComponent<Player>();
         playerPos = playerGO.transform;
@@ -22,6 +25,9 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        
+
         if (health < 1)
         {
             print("dead");

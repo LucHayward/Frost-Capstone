@@ -70,6 +70,7 @@ public class EnemyController : MonoBehaviour
             if (hit.collider.tag.Equals("Player"))
             {
                 //Debug.Log("Enemy sees player");
+
                 Move();
             }
             else
