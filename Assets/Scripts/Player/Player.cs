@@ -14,28 +14,23 @@ public class Player : MonoBehaviour
     public bool hasShield=false;
     public int lvl;
     public bool isFast=false;
+
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerAttack playerAttack;
     // Start is called before the first frame update
     void Start()
     {
-
         health = 10 + lvl * 2;
-        
-
-       // healthText = GameObject.FindGameObjectWithTag("HealthTxt").GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-		//healthText.text = "Health: " + health.ToString();
 		if (health <= 0)
 		{
 			Debug.Log("Player Died");
 			OnDeath();
 		}
-
-		
-
 	}
 
 	private void OnDeath()
@@ -44,14 +39,15 @@ public class Player : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	// TODO: Get around to implementing a use case for this
-	private void OnTriggerEnter3D(Collider collision)
-	{
-		
-	}
+    public void OnDisable()
+    {
+        playerMovement.enabled = false;
+        playerAttack.enabled = false;
+    }
 
-
-
-
-
+    public void OnEnable()
+    {
+        playerMovement.enabled = true;
+        playerAttack.enabled = true;
+    }
 }
