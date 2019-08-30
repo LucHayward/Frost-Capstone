@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3379936004766954565}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 1.689, z: 0}
+  m_LocalPosition: {x: 0.25, y: 1.689, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9176910311197590030}
@@ -797,13 +797,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9176910311190146148}
+  jumpAnim: {fileID: 7400000, guid: 44bdd9a301942f046af439871591115a, type: 2}
   cameraTransform: {fileID: 0}
   speedMultiplier: 6
   jumpSpeed: 8
   gravity: 20
-  turnSpeed: 0
+  turnSpeed: 0.1
   debugVelocity: {x: 0, y: 0, z: 0}
-  jumpAnim: {fileID: 7400000, guid: 44bdd9a301942f046af439871591115a, type: 2}
 --- !u!143 &7943516544882520999
 CharacterController:
   m_ObjectHideFlags: 0

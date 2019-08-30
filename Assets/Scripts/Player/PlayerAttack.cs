@@ -66,8 +66,6 @@ public class PlayerAttack : MonoBehaviour
 		if (!firedGO.tag.Equals("Bullet")) Debug.LogError("Attack projectile has no bullet tag", firedGO);
 
 		//Destroy(firedGO, 30);
-
-		animator.ResetTrigger("atk");
 	}
 
 	private void CastHeal()
