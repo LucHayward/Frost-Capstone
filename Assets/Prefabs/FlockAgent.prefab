@@ -189,7 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 9152231295131619047}
-  speed: 0
+  speed: 1
 --- !u!114 &5677351940283581353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6210c0977dfef74ba32c61c80e689b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  lvl: 0
   health: 1
+  enemyController: {fileID: 4444324842886037798}
+  flockAgent: {fileID: 1815468178881704242}

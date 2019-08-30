@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+[RequireComponent(typeof(Collider))]
 public class Enemy : MonoBehaviour
 {
     public int health;
@@ -10,6 +10,9 @@ public class Enemy : MonoBehaviour
 	private GameObject playerGO;
 	private Player player;
 	private Transform playerPos;
+    [SerializeField] private EnemyController enemyController;
+    Collider agentCollider;
+    public Collider AgentCollider { get { return agentCollider; } }
 
     Vector3 velocity;
     private Transform prevTransform;
@@ -20,6 +23,7 @@ public class Enemy : MonoBehaviour
 		playerGO = GameObject.FindGameObjectWithTag("Player");
         player = playerGO.GetComponent<Player>();
         playerPos = playerGO.transform;
+        agentCollider = GetComponent<Collider>();
     }
 
     // Update is called once per frame
@@ -43,14 +47,30 @@ public class Enemy : MonoBehaviour
 	/// </item>
 	/// </list>
 	/// </summary>
-	/// <param name="collision"></param>
+	/// <param name="dmg"></param>
     public void takeDamage(int dmg)
     {
         health = health - dmg;
     }
 
 
+	public void OnDisable()
+	{
+		enemyController.enabled = false;
+	}
 
+	public void OnEnable()
+	{
+		enemyController.enabled = true;
+	}
 
-
+    /// <summary>
+    /// Moves the agent by calculating a distance uing a vecotr and time
+    /// </summary>
+    /// <param name="velocity"> the vector along which the agent will move </param>
+    public void Move(Vector3 velocity)
+    {
+        transform.forward = velocity;
+        transform.position += velocity * Time.deltaTime;
+    }
 }
