@@ -1,12 +1,21 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager instance = null;
+    public static GameManager Get()
+    {
+        if (instance == null)
+            instance = (GameManager)FindObjectOfType(typeof(GameManager));
+        return instance;
+    }
+
     public float startDelay = 3f;
     public float endDelay = 3f;
-    public static List<FlockAgent> agents = new List<FlockAgent>();
+    public List<FlockAgent> agents = new List<FlockAgent>();
     public GameObject playerPrefab;
     public PlayerManager[] players;
     public EnemyManager[] enemyTypes;
