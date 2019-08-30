@@ -15,13 +15,12 @@ public class Player : MonoBehaviour
     public bool hasShield=false;
     public bool isFast=false;
 
-	private Vector3 velocity;
-
-	// Start is called before the first frame update
-	void Start()
+    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerAttack playerAttack;
+    // Start is called before the first frame update
+    void Start()
     {
         health = 10 + lvl * 2;
-        //healthText = GameObject.FindGameObjectWithTag("HealthTxt").GetComponent<TextMeshProUGUI>();
     }
 
  
@@ -30,7 +29,6 @@ public class Player : MonoBehaviour
 	/// </summary>
     void Update()
     {
-		//healthText.text = "Health: " + health.ToString();
 		if (health <= 0)
 		{
 			Debug.Log("Player Died");
@@ -62,4 +60,16 @@ public class Player : MonoBehaviour
 		Instantiate(gameObject);
 		Destroy(gameObject);
 	}
+
+    public void OnDisable()
+    {
+        playerMovement.enabled = false;
+        playerAttack.enabled = false;
+    }
+
+    public void OnEnable()
+    {
+        playerMovement.enabled = true;
+        playerAttack.enabled = true;
+    }
 }

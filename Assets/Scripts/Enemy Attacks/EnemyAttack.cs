@@ -18,7 +18,8 @@ public class EnemyAttack : MonoBehaviour
     void Start()
     {
 		playerGO = GameObject.FindGameObjectWithTag("Player");
-
+        if (playerGO == null)
+            Debug.Log("Fuck my titties");
         playerTransform = playerGO.GetComponent<Transform>();
     }
 
