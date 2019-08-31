@@ -170,11 +170,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2059833818, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
       propertyPath: m_Speed
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2059833818, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
       propertyPath: m_Radius
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059833818, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2059833818, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
+      propertyPath: m_AutoBraking
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8608599891528689697, guid: 0df82fdb448290a40ac6c36126a54398, type: 3}
