@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,20 +35,13 @@ public class PauseMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        
 
         pausePanel.SetActive(false);
         isPaused = false;
-        //Time.timeScale = 1f;
-        //player.GetComponent<PlayerMovement>().enabled = true;
-
-
-
     }
     public void PauseGame()
     {
         pausePanel.SetActive(true);
-        //Time.timeScale = 0f;
         isPaused = true;
 
         Cursor.lockState = CursorLockMode.Confined;

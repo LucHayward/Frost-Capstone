@@ -1,27 +1,54 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager instance = null;
+    public static GameManager Get()
+    {
+        if (instance == null)
+            instance = (GameManager)FindObjectOfType(typeof(GameManager));
+        return instance;
+    }
+
     public float startDelay = 3f;
     public float endDelay = 3f;
-
+    public List<FlockAgent> agents = new List<FlockAgent>();
     public GameObject playerPrefab;
     public PlayerManager[] players;
-
+    public EnemyManager[] enemyTypes;
+	public GameObject meleeEnemyPrefab;
+	public List<EnemyManager> meleeEnemies;
     private WaitForSeconds startWait;
     private WaitForSeconds endWait;
     private int roundNumber = 0;
-    private PlayerManager[] deadPlayers;
+
     private void Start()
     {
         startWait = new WaitForSeconds(startDelay);
         endWait = new WaitForSeconds(endDelay);
 
         SpawnPlayer();
-        
+        StartCoroutine(GameLoop());    
     }
+
+    private void SpawnMeleeEnemies(int numberOfEnemies)
+	{
+        //meleeEnemies = new EnemyManager[numberOfEnemies];
+        for(int i = 0; i <numberOfEnemies; i++)
+		{
+            enemyTypes[0].CalculateSpawnPoint();
+            meleeEnemies.Add(new EnemyManager());
+            meleeEnemies[i].instanceOfEnemy = Instantiate(meleeEnemyPrefab,
+                enemyTypes[0].spawnPoint.position,
+                enemyTypes[0].spawnPoint.rotation) as GameObject;
+			
+			meleeEnemies [i].Setup(i);
+            agents.Add(meleeEnemies[i].GetFlockAgent());
+		}
+	}
 
     private void SpawnPlayer()
     {
@@ -38,10 +65,10 @@ public class GameManager : MonoBehaviour
     private IEnumerator GameLoop()
     {
         yield return StartCoroutine(RoundStarting());
-        //yield return StartCoroutine(RoundPLaying());
-        //yield return StartCoroutine(RoundEnding());
+        yield return StartCoroutine(RoundPlaying());
+        yield return StartCoroutine(RoundEnding());
 
-        if(deadPlayers.Length == players.Length)
+        if(!ThereIsAPlayer())
         {
             //END GAME
         }
@@ -55,16 +82,24 @@ public class GameManager : MonoBehaviour
     {
         ResetAllPlayers();
         roundNumber++;
+        SpawnMeleeEnemies(1);
         // TODO update UI
-
-
         yield return startWait;
     }
 
-    //private IEnumerator RoundPLaying()
-    //{
+    private IEnumerator RoundPlaying()
+    {
+        while(ThereIsAPlayer() && ThereIsAEnemy())
+        {
+            yield return null;
+        }
+        if(ThereIsAPlayer() && !ThereIsAEnemy())
+        {
+            yield return StartCoroutine(GameLoop());
+        }
 
-    //}
+        
+    }
 
     private IEnumerator RoundEnding()
     {
@@ -78,9 +113,34 @@ public class GameManager : MonoBehaviour
             players[i].RoundReset();
         }
     }
-    // Update is called once per frame
-    void Update()
+
+    private bool ThereIsAPlayer()
     {
-        
+        if (players.Length != 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private bool ThereIsAEnemy()
+    {
+        int numberOfNull = 0;
+        foreach(FlockAgent agent in agents)
+        {
+            if (agent == null)
+                numberOfNull++;
+        }
+        if (numberOfNull == agents.Count)
+        {
+            Debug.Log("Returned False");
+            return false;
+        }
+            
+        else
+            return true;
     }
 }

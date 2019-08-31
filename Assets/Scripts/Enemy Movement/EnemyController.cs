@@ -13,11 +13,13 @@ public class EnemyController : MonoBehaviour
     public float speed;
     private GameObject playerGameObject;
     private Transform playerTrasnform;
+    [SerializeField]private FlockAgent flockAgent;
 
     void Start()
     {
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
         playerTrasnform = playerGameObject.transform;
+
     }
 
     private void Update()
@@ -31,14 +33,16 @@ public class EnemyController : MonoBehaviour
     private void Move()
     {
         float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-        if (distance > 2)
+        if (distance > 1)
         {
+            flockAgent.enabled = false;
             agent.isStopped = false;
             agent.SetDestination(playerTrasnform.position);
         }
         else
         {
             agent.isStopped = true;
+            flockAgent.enabled = true;
         }  
     }
     /// <summary>
@@ -47,12 +51,16 @@ public class EnemyController : MonoBehaviour
     private void Wander()
     {
         float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-        //Debug.Log(distance);
         if(distance < 5)
         {
+            flockAgent.enabled = false;
             agent.SetDestination(playerTrasnform.position);
         }
-        agent.isStopped = true;
+        else
+        {
+            agent.isStopped = true;
+            flockAgent.enabled = true;
+        }
     }
     /// <summary>
     /// Determines whether the NPC can see the player and makes decisions based on this information
@@ -69,20 +77,15 @@ public class EnemyController : MonoBehaviour
         {
             if (hit.collider.tag.Equals("Player"))
             {
-                //Debug.Log("Enemy sees player");
-
                 Move();
             }
             else
             {
-                //Debug.Log("Enemy cannot see player but sees other object");
-                //Debug.Log(hit.collider.tag);
                 Wander();
             }
         }
         else
         {
-            //Debug.Log("Enemy cannot see player");
             Wander();
         }
     }

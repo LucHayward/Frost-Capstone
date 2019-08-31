@@ -1,11 +1,13 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
+[RequireComponent(typeof(Collider))]
 public class Enemy : MonoBehaviour
 {
     public int health;
+    private int identificationNumber;
+    [SerializeField] private EnemyController enemyController;
+    [SerializeField] private FlockAgent flockAgent;
 
 	private GameObject playerGO;
 	private Player player;
@@ -34,30 +36,43 @@ public class Enemy : MonoBehaviour
         prevTransform = transform.position;
         if (health < 1)
         {
-            print("dead");
             Destroy(gameObject);
         }
     }
-	
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="ID"></param>
+    public void setIdentifier(int ID)
+    {
+        identificationNumber = ID;
+    }
+
+    public int getIdentifier()
+    {
+        return identificationNumber;
+    }
+
 	/// <summary>
-	/// Handle interaction with triggers.
-	/// <list type="Bullet">
-	/// <item>
-	/// <term>Bullet</term>
-	/// <description>
-	/// Reduce health 
-	/// </description>
-	/// </item>
-	/// </list>
-	/// </summary>
-	/// <param name="collision"></param>
+    /// 
+    /// </summary>
+    /// <param name="dmg"></param>
     public void takeDamage(int dmg)
     {
         health = health - dmg;
     }
 
 
+	public void OnDisable()
+	{
+		enemyController.enabled = false;
+        flockAgent.enabled = false;
+	}
 
-
-
+	public void OnEnable()
+	{
+		enemyController.enabled = true;
+        flockAgent.enabled = true;
+	}
 }

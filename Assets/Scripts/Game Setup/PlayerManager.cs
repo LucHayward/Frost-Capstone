@@ -9,8 +9,8 @@ public class PlayerManager
     private CameraController cameraController;
     private Player playerScript;
     private PlayerAttack playerAttack;
-    //public GameObject canvasGameObject;
     public Transform spawnPoint;
+  
     public Camera camera;
     [HideInInspector] public int playerNumber;
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Flock : MonoBehaviour
 {
     public FlockAgent agentPrefab;
-    List<FlockAgent> agents = new List<FlockAgent>();
+    //List<FlockAgent> agents = new List<FlockAgent>();
     public FlockBehaviour behaviour;
 
     [Range(1, 100)]
@@ -33,32 +33,36 @@ public class Flock : MonoBehaviour
         squareNeighbourRadius = neighbourRadius * neighbourRadius;
         squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
 
-        for(int i = 0; i < startingCount; i++)
-        {
-            Vector2 spawnArea = Random.insideUnitCircle;
-            FlockAgent newAgent = Instantiate(
-                agentPrefab,
-                transform.position + new Vector3(spawnArea.x * startingCount * agentDensity, 1, spawnArea.y * startingCount * agentDensity),
-                Quaternion.Euler(Vector3.forward),
-                transform);
-            newAgent.name = "Agent " + i;
-            agents.Add(newAgent);
-        }
+        //for(int i = 0; i < startingCount; i++)
+        //{
+        //    Vector2 spawnArea = Random.insideUnitCircle;
+        //    FlockAgent newAgent = Instantiate(
+        //        agentPrefab,
+        //        transform.position + new Vector3(spawnArea.x * startingCount * agentDensity, 1, spawnArea.y * startingCount * agentDensity),
+        //        Quaternion.Euler(Vector3.forward),
+        //        transform);
+        //    newAgent.name = "Agent " + i;
+        //    agents.Add(newAgent);
+        //}
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach(FlockAgent agent in agents)
+        foreach (FlockAgent agent in GameManager.Get().agents)
 		{
-			List<Transform> context = GetNearbyObjects(agent);
-            Vector3 move = behaviour.CalculateMove(agent, context, this);
-            move *= driveFactor;
-            if(move.sqrMagnitude > squareMaxSpeed)
+            if(agent != null)
             {
-                move = move.normalized * maxSpeed; /// make it one then times by max speed
+                List<Transform> context = GetNearbyObjects(agent);
+                Vector3 move = behaviour.CalculateMove(agent, context, this);
+                move *= driveFactor;
+                if (move.sqrMagnitude > squareMaxSpeed)
+                {
+                    move = move.normalized * maxSpeed; /// make it one then times by max speed
+                }
+
+                agent.Move(move);
             }
-            agent.Move(move);
 		}
     }
 

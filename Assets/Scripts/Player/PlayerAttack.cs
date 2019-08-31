@@ -53,6 +53,9 @@ public class PlayerAttack : MonoBehaviour
 		}
 
 		firedGO.GetComponent<Rigidbody>().AddForce(firedGO.transform.forward * 10, ForceMode.VelocityChange);
+		firedGO.transform.rotation = Quaternion.AngleAxis(90, firedGO.transform.right);
+
+
 
 		// DEBUG TO BE REMOVED
 		if (hit.collider != null)
@@ -62,10 +65,12 @@ public class PlayerAttack : MonoBehaviour
 		}
 		if (!firedGO.tag.Equals("Bullet")) Debug.LogError("Attack projectile has no bullet tag", firedGO);
 
-		Destroy(firedGO, 30);
-
-		animator.ResetTrigger("atk");
+		//Destroy(firedGO, 30);
 	}
 
+	private void CastHeal()
+	{
+
+	}
 
 }
