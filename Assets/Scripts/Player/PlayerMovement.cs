@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Handles the movement calculations as well as communication with the animation controller for the player
+/// Handles the movement calculations as well as communication with the animation controller for the player movement
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
@@ -36,7 +36,23 @@ public class PlayerMovement : MonoBehaviour
 	}
 
 	/// <summary>
-	/// 
+	/// <list type="number">
+	/// <item>
+	/// <description>Handles all the movement calculations required each frame</description>
+	/// </item>
+	/// <item>
+	/// <description>Input-axis are multiplied onto a forward vector (take from the camera horizontal) and converted to local coordinates</description>
+	/// </item>
+	/// <item>
+	/// <description>Relative velocity is sent to the animator along with x/y speeds for use in animation blending</description>
+	/// </item>
+	/// <item>
+	/// <description>Provided the player is moving, turns the character to face in the direction of the camera</description>
+	/// </item>
+	/// <item>
+	/// <description>Allows for jumping when grounded, otherwise applies pseudo-gravity (fixed speed)</description>
+	/// </item>
+	/// </list>
 	/// </summary>
 	void Update()
 	{
@@ -75,10 +91,9 @@ public class PlayerMovement : MonoBehaviour
 			//transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, Time.deltaTime * turnSpeed);
 			//transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, turnSpeed);
 			//transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, Time.deltaTime * turnSpeed);
-			transform.rotation = Quaternion.Lerp(transform.rotation, newLookRotation, turnSpeed);
+			transform.rotation = Quaternion.Lerp(transform.rotation, newLookRotation, turnSpeed); //TODO: Decide on one of these 4 lines lines
 		}
-
-		//Debug.Log("IsGorunded: "+ characterController.isGrounded);
+		
 		if (characterController.isGrounded)
 		{
 			animator.SetFloat("velocityX", localVelocity.x);
@@ -86,7 +101,6 @@ public class PlayerMovement : MonoBehaviour
 
 			if (Input.GetButtonDown("Jump"))
 			{
-				//moveDirection.y = jumpSpeed;
 				animator.SetTrigger("jump");
 				StartCoroutine(GravityPauseForJump());
 			}
@@ -96,7 +110,6 @@ public class PlayerMovement : MonoBehaviour
 		{
 			moveDirection.y -= gravity * Time.deltaTime;
 		}
-
 
 		// Move the controller
 		characterController.Move(moveDirection * Time.deltaTime);
