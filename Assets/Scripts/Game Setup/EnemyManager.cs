@@ -31,12 +31,14 @@ public class EnemyManager
 
     public void EnableMovement()
     {
-        enemyScript.enabled = true;
+        flockAgent.enabled = true;
+        enemyController.enabled = true;
     }
 
     public void DisableMovement()
     {
-        enemyScript.enabled = false;
+        flockAgent.enabled = false;
+        enemyController.enabled = false;
     }
 
     public void CalculateSpawnPoint()
@@ -48,10 +50,10 @@ public class EnemyManager
         while (complete != true)
         {
             Vector2 spawnArea = Random.insideUnitCircle * 10;
-            pointOfSpawn = new Vector3(spawnPoint.position.x + spawnArea.x, 1, spawnPoint.position.z + spawnArea.y);
-            for(int i = 0; i < colliders.Length; i++)
+            pointOfSpawn = new Vector3(spawnPoint.position.x + spawnArea.x, 0, spawnPoint.position.z + spawnArea.y);
+            for (int i = 0; i < colliders.Length; i++)
             {
-                if(colliders[i].bounds.Contains(pointOfSpawn))
+                if (colliders[i].bounds.Contains(pointOfSpawn))
                 {
                     spawnHere = false;
                 }
@@ -60,7 +62,7 @@ public class EnemyManager
                     spawnHere = true;
                 }
             }
-            if(spawnHere == true)
+            if (spawnHere == true)
             {
                 complete = true;
             }

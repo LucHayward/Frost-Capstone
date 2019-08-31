@@ -32,17 +32,18 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void Move()
     {
+        transform.LookAt(playerTrasnform.position);
         float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-        if (distance > 1)
+        if (distance > 5)
         {
             flockAgent.enabled = false;
             agent.isStopped = false;
-            agent.SetDestination(playerTrasnform.position);
+            agent.SetDestination(playerTrasnform.position);          
         }
         else
         {
             agent.isStopped = true;
-            flockAgent.enabled = true;
+            flockAgent.enabled = false ;
         }  
     }
     /// <summary>
@@ -67,9 +68,11 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void MakeDecision()
     {
-        Vector3 currentPosition = new Vector3(transform.position.x, 0, transform.position.z);
-        Vector3 directionToPlayer = playerTrasnform.position - currentPosition; // vector pointing from the enemy to the player       
-        Ray eyeLine = new Ray(transform.position, directionToPlayer);
+       
+        Vector3 currentPosition = new Vector3(transform.position.x, 1, transform.position.z);
+        Vector3 centralizedPlayerPosition = new Vector3(playerTrasnform.position.x, 1, playerTrasnform.position.z);
+        Vector3 directionToPlayer = centralizedPlayerPosition - currentPosition; // vector pointing from the enemy to the player       
+        Ray eyeLine = new Ray(currentPosition, directionToPlayer);
         Debug.DrawRay(currentPosition, directionToPlayer);
         int layerMask = LayerMask.GetMask("Player", "Obstacle"); // this is not working.
         // TODO fix the line of sight
@@ -77,10 +80,13 @@ public class EnemyController : MonoBehaviour
         {
             if (hit.collider.tag.Equals("Player"))
             {
+                Debug.Log("Sees player");
                 Move();
             }
             else
             {
+                Debug.Log("Does not see enemy");
+                Debug.Log(hit.transform.tag);
                 Wander();
             }
         }
