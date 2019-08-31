@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private AnimationClip jumpAnim;
 
 	public Transform cameraTransform;
+	private Transform horizontalCameraTransform;
 
 	public float speedMultiplier = 6.0f;
 	public float jumpSpeed = 8.0f;
@@ -41,7 +42,8 @@ public class PlayerMovement : MonoBehaviour
 	{
 		moveDirection = new Vector3();
 
-		Vector3 forward = cameraTransform.forward;
+		Vector3 forward = cameraTransform.GetChild(1).transform.forward;
+		forward.y = 0;
 		forward *= Input.GetAxis("Vertical");
 
 		Vector3 right = cameraTransform.right;
@@ -81,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
 		{
 			animator.SetFloat("velocityX", localVelocity.x);
 			animator.SetFloat("velocityZ", localVelocity.z);
-			
+
 			if (Input.GetButtonDown("Jump"))
 			{
 				//moveDirection.y = jumpSpeed;
@@ -108,5 +110,17 @@ public class PlayerMovement : MonoBehaviour
 		gravity = tGrav;
 	}
 
+	/// <summary>
+	/// Copys local Pos, Rotation and Scale onto a transform
+	/// </summary>
+	/// <param name="lhs"> the new copy</param>
+	/// <param name="toBeCopied"> the transform from which to copy values</param>
+	private void ShallowCopyTransform(Transform lhs, Transform toBeCopied)
+	{
+		lhs.localPosition = toBeCopied.localPosition;
+		lhs.localRotation = toBeCopied.localRotation;
+		lhs.localScale    = toBeCopied.localScale;
+	}
 
 }
+

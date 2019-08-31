@@ -4,6 +4,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 	public Transform orbitTarget;
+	public Transform horizontalTransform;
 	public float distance = 5.0f;
 	public float xSpeed = 120.0f;
 	public float ySpeed = 120.0f;
@@ -14,6 +15,7 @@ public class CameraController : MonoBehaviour
 	[Range(0, 1)]
 	public float cameraSmoothingFactor;
 	public Transform bufferPos;
+	
 
 
 	public float distanceMin = .5f;
@@ -28,9 +30,9 @@ public class CameraController : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		Vector3 angles = transform.eulerAngles;
-		x = angles.y;
-		y = angles.x;
+		//Vector3 angles = transform.eulerAngles;
+		//x = angles.y;
+		//y = angles.x;
 
 		rb = GetComponent<Rigidbody>();
 
@@ -97,6 +99,12 @@ public class CameraController : MonoBehaviour
 
 			transform.rotation = rotation;
 			transform.position = position;
+
+			horizontalTransform.rotation = rotation;
+			horizontalTransform.position = position;
+			Vector3 rot = horizontalTransform.eulerAngles;
+			rot.x = 0;
+			horizontalTransform.eulerAngles = rot;
 		}
 	}
 
