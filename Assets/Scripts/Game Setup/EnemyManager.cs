@@ -11,11 +11,22 @@ public class EnemyManager
     private Enemy enemyScript;
     private EnemyController enemyController;
     private FlockAgent flockAgent;
-    public void Setup()
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="ID"></param>
+    public void Setup(int ID)
     {
         enemyController = instanceOfEnemy.GetComponent<EnemyController>();
         enemyScript = instanceOfEnemy.GetComponent<Enemy>();
         flockAgent = instanceOfEnemy.GetComponent<FlockAgent>();
+        enemyScript.setIdentifier(ID);
+    }
+
+    public int getID()
+    {
+        return enemyScript.getIdentifier();
     }
 
     public void EnableMovement()
@@ -61,6 +72,4 @@ public class EnemyManager
     {
         return flockAgent;
     }
-
-
 }

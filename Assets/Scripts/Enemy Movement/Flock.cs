@@ -49,18 +49,20 @@ public class Flock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("peen");
         foreach (FlockAgent agent in GameManager.Get().agents)
 		{
-			List<Transform> context = GetNearbyObjects(agent);
-            Vector3 move = behaviour.CalculateMove(agent, context, this);
-            move *= driveFactor;
-            if(move.sqrMagnitude > squareMaxSpeed)
+            if(agent != null)
             {
-                move = move.normalized * maxSpeed; /// make it one then times by max speed
+                List<Transform> context = GetNearbyObjects(agent);
+                Vector3 move = behaviour.CalculateMove(agent, context, this);
+                move *= driveFactor;
+                if (move.sqrMagnitude > squareMaxSpeed)
+                {
+                    move = move.normalized * maxSpeed; /// make it one then times by max speed
+                }
+
+                agent.Move(move);
             }
-            
-            agent.Move(move);
 		}
     }
 
