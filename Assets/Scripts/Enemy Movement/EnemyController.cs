@@ -32,17 +32,18 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void Move()
     {
+        transform.LookAt(playerTrasnform.position);
         float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-        if (distance > 1)
+        if (distance > 5)
         {
             flockAgent.enabled = false;
             agent.isStopped = false;
-            agent.SetDestination(playerTrasnform.position);
+            agent.SetDestination(playerTrasnform.position);          
         }
         else
         {
             agent.isStopped = true;
-            flockAgent.enabled = true;
+            flockAgent.enabled = false ;
         }  
     }
     /// <summary>

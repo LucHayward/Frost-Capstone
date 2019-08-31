@@ -18,7 +18,10 @@ public class FlockAgent : MonoBehaviour
     /// <param name="velocity"> the vector along which the agent will move </param>
     public void Move(Vector3 velocity)
     {
-        transform.forward = velocity;
-        transform.position += velocity * Time.deltaTime;
+        if(this.enabled)
+        {
+            transform.forward = velocity;
+            transform.position += velocity * Time.deltaTime;
+        }   
     }
 }
