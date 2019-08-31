@@ -1374,7 +1374,7 @@ MonoBehaviour:
   enemyTypes:
   - instanceOfEnemy: {fileID: 0}
     spawnPoint: {fileID: 1848089037}
-  meleeEnemyPrefab: {fileID: 3636180929720355919, guid: 917d86f23c2f3d048b931542fdaa7ff2,
+  meleeEnemyPrefab: {fileID: 720003689127736480, guid: 2a75f05f963d48b49a5533fecaeae0b9,
     type: 3}
   meleeEnemies: []
 --- !u!4 &593047593

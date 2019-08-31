@@ -504,6 +504,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 720003689127504000}
+  - component: {fileID: 7768273403288973673}
   - component: {fileID: 720003689127637897}
   - component: {fileID: 720003689127637898}
   - component: {fileID: 5848736932314586638}
@@ -534,6 +535,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7768273403288973673
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720003689127736480}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 87f803d940262954e84e26092ba69082, type: 3}
+  m_Controller: {fileID: 9100000, guid: 21af400bbaf7de844a3de5638c6b7da6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!136 &720003689127637897
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -545,9 +565,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2.230216
+  m_Height: 2.0911884
   m_Direction: 1
-  m_Center: {x: 0, y: 1.0058494, z: 0}
+  m_Center: {x: 0, y: 1.0753632, z: 0}
 --- !u!114 &720003689127637898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -563,6 +583,7 @@ MonoBehaviour:
   health: 5
   enemyController: {fileID: 5848736932314586638}
   flockAgent: {fileID: 8352413979453468287}
+  animator: {fileID: 7768273403288973673}
 --- !u!114 &5848736932314586638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,6 +598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 2275738578554044500}
   speed: 1
+  animator: {fileID: 7768273403288973673}
   flockAgent: {fileID: 8352413979453468287}
 --- !u!114 &8352413979453468287
 MonoBehaviour:
@@ -603,6 +625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyWeaponTransform: {fileID: 1826371623606624712}
+  animator: {fileID: 7768273403288973673}
   range: 5
 --- !u!195 &2275738578554044500
 NavMeshAgent:

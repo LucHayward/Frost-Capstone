@@ -6,7 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
     public Transform enemyWeaponTransform;
     private Transform playerTransform;
-    //public Animator animator;
+    public Animator animator;
 	private GameObject playerGO;
     
     public float range = 5f;
@@ -33,8 +33,11 @@ public class EnemyAttack : MonoBehaviour
             //Debug.Log("Close enough");
             if (currentTime - lastAttackTime > shotDelay)
             {
+                animator.SetTrigger("atk");
                 attack();
                 lastAttackTime = currentTime + shotDelay;
+
+                
             }
 
         }
@@ -47,7 +50,7 @@ public class EnemyAttack : MonoBehaviour
         
         // If close enough, attack player
 		Debug.Log("Attack");
-        //animator.SetTrigger("atk");
+        
         
 
 

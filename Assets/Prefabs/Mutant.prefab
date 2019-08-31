@@ -887,6 +887,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7963060599362251254}
   speed: 1
+  animator: {fileID: 3636180929729888197}
   flockAgent: {fileID: 7461909706279491092}
 --- !u!114 &5417109251280290599
 MonoBehaviour:
@@ -901,6 +902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyWeaponTransform: {fileID: 3940704558257094860}
+  animator: {fileID: 3636180929729888197}
   range: 5
 --- !u!114 &7461909706279491092
 MonoBehaviour:
@@ -951,6 +953,7 @@ MonoBehaviour:
   health: 5
   enemyController: {fileID: 6781322121223817581}
   flockAgent: {fileID: 7461909706279491092}
+  animator: {fileID: 3636180929729888197}
 --- !u!1 &3636180929720355937
 GameObject:
   m_ObjectHideFlags: 0

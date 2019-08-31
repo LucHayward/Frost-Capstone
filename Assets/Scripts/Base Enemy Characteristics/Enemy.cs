@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 	private GameObject playerGO;
 	private Player player;
 	private Transform playerPos;
-    //public Animator animator;
+    public Animator animator;
     Vector3 velocity;
     
     private Vector3 prevTransform;
@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
 		playerGO = GameObject.FindGameObjectWithTag("Player");
         player = playerGO.GetComponent<Player>();
         playerPos = playerGO.transform;
+
+        animator.SetBool("isDead", false);
     }
 
     // Update is called once per frame
@@ -37,7 +39,7 @@ public class Enemy : MonoBehaviour
         if (health < 1)
         {
             //animator.SetBool("isDead", true);
-            //Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
