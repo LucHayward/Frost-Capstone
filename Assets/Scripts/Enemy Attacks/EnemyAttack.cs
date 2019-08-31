@@ -6,7 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
     public Transform enemyWeaponTransform;
     private Transform playerTransform;
-
+    //public Animator animator;
 	private GameObject playerGO;
     
     public float range = 5f;
@@ -47,6 +47,9 @@ public class EnemyAttack : MonoBehaviour
         
         // If close enough, attack player
 		Debug.Log("Attack");
+        //animator.SetTrigger("atk");
         
+
+
     }
 }

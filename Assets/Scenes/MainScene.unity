@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -729,63 +729,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 148674167}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &195642033
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 100068, guid: b0dc7617fe58dce4b97e936996a48ec3, type: 3}
-      propertyPath: m_Name
-      value: nightshade_j_friedrich@T-Pose
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: b0dc7617fe58dce4b97e936996a48ec3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.513109
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: b0dc7617fe58dce4b97e936996a48ec3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: b0dc7617fe58dce4b97e936996a48ec3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 33.434673
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: b0dc7617fe58dce4b97e936996a48ec3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: b0dc7617fe58dce4b97e936996a48ec3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: b0dc7617fe58dce4b97e936996a48ec3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: b0dc7617fe58dce4b97e936996a48ec3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: b0dc7617fe58dce4b97e936996a48ec3, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: b0dc7617fe58dce4b97e936996a48ec3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: b0dc7617fe58dce4b97e936996a48ec3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400068, guid: b0dc7617fe58dce4b97e936996a48ec3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b0dc7617fe58dce4b97e936996a48ec3, type: 3}
 --- !u!1 &234140785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,7 +1394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f31db7c8f3bed4f2e878a9f51de14131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentPrefab: {fileID: 2926258109839187414, guid: d14bd2c0c5f1d7c49b2dbddf136ba483,
+  agentPrefab: {fileID: 8352413979453468287, guid: 2a75f05f963d48b49a5533fecaeae0b9,
     type: 3}
   behaviour: {fileID: 11400000, guid: fba65b04c1d7b404fa1b9e34e4cc4c39, type: 2}
   startingCount: 5
@@ -1484,8 +1427,9 @@ MonoBehaviour:
   enemyTypes:
   - instanceOfEnemy: {fileID: 0}
     spawnPoint: {fileID: 1848089037}
-  meleeEnemyPrefab: {fileID: 7666922568611764325, guid: d14bd2c0c5f1d7c49b2dbddf136ba483,
+  meleeEnemyPrefab: {fileID: 720003689127736480, guid: 2a75f05f963d48b49a5533fecaeae0b9,
     type: 3}
+  meleeEnemies: []
 --- !u!4 &593047593
 Transform:
   m_ObjectHideFlags: 0
@@ -4663,7 +4607,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848089036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.8879986, y: -4.3954, z: -7.030007}
+  m_LocalPosition: {x: 4.37, y: -4.35, z: -7.030007}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 593047593}

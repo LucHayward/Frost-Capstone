@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
 	private GameObject playerGO;
 	private Player player;
 	private Transform playerPos;
-    public Animator animator;
+    //public Animator animator;
     Vector3 velocity;
     
     private Vector3 prevTransform;
@@ -31,12 +31,13 @@ public class Enemy : MonoBehaviour
     {
         velocity = ((transform.position - prevTransform) / Time.deltaTime);
         v = velocity.magnitude;
-        animator.SetFloat("Velocity", v);
+        //animator.SetFloat("Velocity", v);
 
         prevTransform = transform.position;
         if (health < 1)
         {
-            Destroy(gameObject);
+            //animator.SetBool("isDead", true);
+            //Destroy(gameObject);
         }
     }
 

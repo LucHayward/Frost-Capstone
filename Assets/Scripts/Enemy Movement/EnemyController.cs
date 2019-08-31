@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public float speed;
     private GameObject playerGameObject;
     private Transform playerTrasnform;
+    //Animator animator;
     [SerializeField]private FlockAgent flockAgent;
 
     void Start()
@@ -32,6 +33,8 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void Move()
     {
+        
+        
         float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
         if (distance > 1)
         {
@@ -43,13 +46,16 @@ public class EnemyController : MonoBehaviour
         {
             agent.isStopped = true;
             flockAgent.enabled = true;
-        }  
+        }
+        
     }
     /// <summary>
     /// Controls the movment of the NPC for when they cannot see the player.
     /// </summary>
     private void Wander()
     {
+        
+        //animator.SetTrigger("walk");
         float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
         if(distance < 5)
         {
@@ -61,6 +67,7 @@ public class EnemyController : MonoBehaviour
             agent.isStopped = true;
             flockAgent.enabled = true;
         }
+        //animator.ResetTrigger("walk");
     }
     /// <summary>
     /// Determines whether the NPC can see the player and makes decisions based on this information
@@ -77,10 +84,17 @@ public class EnemyController : MonoBehaviour
         {
             if (hit.collider.tag.Equals("Player"))
             {
+                //animator.SetTrigger("seePlayer");
+
+                //animator.SetTrigger("run");
                 Move();
+                
+                //animator.SetBool("hasSeen", true);
+                
             }
             else
             {
+                //animator.SetTrigger("walk");
                 Wander();
             }
         }
