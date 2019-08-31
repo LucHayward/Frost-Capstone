@@ -38,9 +38,8 @@ public class PauseMenu : MonoBehaviour
         
 
         pausePanel.SetActive(false);
-        Time.timeScale = 1f;
         isPaused = false;
-
+        //Time.timeScale = 1f;
         //player.GetComponent<PlayerMovement>().enabled = true;
 
 
@@ -49,7 +48,7 @@ public class PauseMenu : MonoBehaviour
     public void PauseGame()
     {
         pausePanel.SetActive(true);
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
         isPaused = true;
 
         Cursor.lockState = CursorLockMode.Confined;

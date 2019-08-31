@@ -10,13 +10,15 @@ public class Enemy : MonoBehaviour
 	private GameObject playerGO;
 	private Player player;
 	private Transform playerPos;
-
+    public Animator animator;
     Vector3 velocity;
-    private Transform prevTransform;
+    
+    private Vector3 prevTransform;
+    float v;
 	// Start is called before the first frame update
 	void Start()
     {
-        prevTransform = transform;
+        prevTransform = transform.position;
 		playerGO = GameObject.FindGameObjectWithTag("Player");
         player = playerGO.GetComponent<Player>();
         playerPos = playerGO.transform;
@@ -25,9 +27,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        velocity = ((transform.position - prevTransform) / Time.deltaTime);
+        v = velocity.magnitude;
+        animator.SetFloat("Velocity", v);
 
-        
-
+        prevTransform = transform.position;
         if (health < 1)
         {
             print("dead");
