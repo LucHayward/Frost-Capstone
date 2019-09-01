@@ -102,8 +102,8 @@ public class GameManager : MonoBehaviour
     {
         ResetAllPlayers();
         roundNumber++;
-        SpawnMeleeEnemies(2);
-        SpawnRangedEnemies(2);
+        SpawnMeleeEnemies(10);
+        SpawnRangedEnemies(10);
         // TODO update UI
         yield return startWait;
     }
