@@ -85,7 +85,7 @@ public class EnemyController : MonoBehaviour
                 Debug.Log("Sees player");
 
 
-                enemy.v = 0;
+                enemy.velocityMagnitude = 0;
                 if(enemy.hasScreamed == false)
                 {
                     enemy.Scream();

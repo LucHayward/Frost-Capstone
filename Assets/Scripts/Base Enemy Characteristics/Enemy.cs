@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     public bool hasScreamed = false;
 
     private Vector3 prevTransform;
-    public float v = 0.0f;
+    public float velocityMagnitude = 0.0f;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -34,21 +34,21 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         velocity = ((transform.position - prevTransform) / Time.deltaTime);
-        v = velocity.magnitude;
+        velocityMagnitude = velocity.magnitude;
 
-        if (v == 0)
+        if (velocityMagnitude == 0)
         {
             animator.SetBool("Idle", true);
             animator.SetBool("Run", false);
             animator.SetBool("Walk", false);
         }
-        else if (v < 2f)
+        else if (velocityMagnitude < 2f)
         {
             animator.SetBool("Idle", false);
             animator.SetBool("Run", false);
             animator.SetBool("Walk", true);
         }
-        else if(v > 2f)
+        else if(velocityMagnitude > 2f)
         {
             animator.SetBool("Idle", false);
             animator.SetBool("Run", true);

@@ -12,6 +12,10 @@ public class EnemyAttack : MonoBehaviour
     private Enemy enemy;
     
     public float range = 0.0f;
+    public float abilityRange = 0.0f;
+    public float abilityCD = 0.0f;
+    private float lastAbilityTime = 0.0f;
+
     private float currentTime = 0.0f;
     private float lastAttackTime = 0.0f;
     public float shotDelay = 0.0f;
@@ -30,10 +34,25 @@ public class EnemyAttack : MonoBehaviour
 	void Update()
     {
         currentTime = Time.time;
+        if (Vector3.Distance(playerTransform.position, enemyWeaponTransform.position) <= abilityRange)
+        {
+            enemy.velocityMagnitude = 0;
+
+            if (currentTime - lastAbilityTime > abilityCD)
+            {
+
+                
+                //enemy.ability();
+                lastAbilityTime = currentTime + abilityCD;
+
+
+            }
+
+        }
 
         if (Vector3.Distance(playerTransform.position, enemyWeaponTransform.position) <= range)
         {
-            enemy.v = 0;
+            enemy.velocityMagnitude = 0;
             
             //Debug.Log("Close enough");
             if (currentTime - lastAttackTime > shotDelay)
@@ -61,4 +80,6 @@ public class EnemyAttack : MonoBehaviour
 
 
     }
+
+    
 }

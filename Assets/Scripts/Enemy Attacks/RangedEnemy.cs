@@ -18,7 +18,7 @@ public class RangedEnemy : MonoBehaviour
     
 
     private Vector3 prevTransform;
-    public float v = 0.0f;
+    public float velocityMagnitude = 0.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,9 +34,9 @@ public class RangedEnemy : MonoBehaviour
     void Update()
     {
         velocity = ((transform.position - prevTransform) / Time.deltaTime);
-        v = velocity.magnitude;
+        velocityMagnitude = velocity.magnitude;
 
-        if (v == 0)
+        if (velocityMagnitude == 0)
         {
             animator.SetBool("Idle", true);
             animator.SetBool("Walk", false);
