@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     private WaitForSeconds startWait;
     private WaitForSeconds endWait;
     private int roundNumber = 0;
+    private bool spawnedEnemy = false;
 
     private void Start()
     {
@@ -102,15 +103,17 @@ public class GameManager : MonoBehaviour
     {
         ResetAllPlayers();
         roundNumber++;
-        SpawnMeleeEnemies(10);
-        SpawnRangedEnemies(10);
+        spawnedEnemy = false;
         // TODO update UI
         yield return startWait;
     }
 
     private IEnumerator RoundPlaying()
     {
-        while(ThereIsAPlayer() && ThereIsAEnemy())
+        SpawnMeleeEnemies(10);
+        SpawnRangedEnemies(10);
+        spawnedEnemy = true;
+        while (ThereIsAPlayer() && ThereIsAEnemy())
         {
             yield return null;
         }
