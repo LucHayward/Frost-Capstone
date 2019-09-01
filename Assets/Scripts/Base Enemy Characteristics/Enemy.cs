@@ -9,14 +9,57 @@ public class Enemy : MonoBehaviour
     [SerializeField] private EnemyController enemyController;
     [SerializeField] private FlockAgent flockAgent;
 
-    Vector3 velocity;
-    private Transform prevTransform;
+	private GameObject playerGO;
+	private Player player;
+	private Transform playerPos;
+    public Animator animator;
+    private Vector3 velocity;
+
+    public bool hasScreamed = false;
+
+    private Vector3 prevTransform;
+    public float velocityMagnitude = 0.0f;
+	// Start is called before the first frame update
+	void Start()
+    {
+        prevTransform = transform.position;
+		playerGO = GameObject.FindGameObjectWithTag("Player");
+        player = playerGO.GetComponent<Player>();
+        playerPos = playerGO.transform;
+
+        animator.SetBool("isDead", false);
+    }
 
     // Update is called once per frame
     void Update()
     {
+        velocity = ((transform.position - prevTransform) / Time.deltaTime);
+        velocityMagnitude = velocity.magnitude;
+
+        if (velocityMagnitude == 0)
+        {
+            animator.SetBool("Idle", true);
+            animator.SetBool("Run", false);
+            animator.SetBool("Walk", false);
+        }
+        else if (velocityMagnitude < 2f)
+        {
+            animator.SetBool("Idle", false);
+            animator.SetBool("Run", false);
+            animator.SetBool("Walk", true);
+        }
+        else if(velocityMagnitude > 2f)
+        {
+            animator.SetBool("Idle", false);
+            animator.SetBool("Run", true);
+            animator.SetBool("Walk", false);
+        }
+        
+
+        prevTransform = transform.position;
         if (health < 1)
         {
+            //animator.SetBool("isDead", true);
             Destroy(gameObject);
         }
     }
@@ -56,4 +99,13 @@ public class Enemy : MonoBehaviour
 		enemyController.enabled = true;
         flockAgent.enabled = true;
 	}
+
+    public void Scream()
+    {
+        //agent.isStopped = true;
+        //flockAgent.enabled = false;
+        animator.SetTrigger("scream");
+        
+
+    }
 }

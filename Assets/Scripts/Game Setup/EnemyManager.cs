@@ -49,20 +49,32 @@ public class EnemyManager
 	/// </summary>
     public void CalculateSpawnPoint()
     {
-		const int Radius = 10;
-		nearbyColliders = Physics.OverlapSphere(spawnPoint.position, Radius);
-        bool foundSpawnPoint = false;
-        //Vector3 offsetSpawnPoint = Vector3.zero;
+		const int Radius = 2;
+        bool foundSpawnPoint;
+        foundSpawnPoint = false;
+        Vector3 originalSpawnPoint = spawnPoint.position;
+        nearbyColliders = Physics.OverlapSphere(spawnPoint.position, Radius);
+        if(!Physics.CheckSphere(spawnPoint.position, Radius))
+        {
+            foundSpawnPoint = true;
+            Vector2 spawnOffset = Random.insideUnitCircle * Radius;
+            Vector3 newSpawnpoint = new Vector3(originalSpawnPoint.x + spawnOffset.x, 0, originalSpawnPoint.z + spawnOffset.y);
+            spawnPoint.position = newSpawnpoint;
+        }
+      
         while (!foundSpawnPoint)
         {
             Vector2 spawnOffset = Random.insideUnitCircle * Radius;
-            spawnPoint.position = new Vector3(spawnPoint.position.x + spawnOffset.x, 0, spawnPoint.position.y + spawnOffset.y);
-			
-
+            Vector3 newSpawnpoint = new Vector3(originalSpawnPoint.x + spawnOffset.x, 0, originalSpawnPoint.z + spawnOffset.y);
+            spawnPoint.position = newSpawnpoint;
+            if (nearbyColliders[0] == null)
+            {
+                foundSpawnPoint = true;
+            }
             foreach (Collider collider in nearbyColliders)
             {
 				foundSpawnPoint = true;
-                if (collider.bounds.Contains(spawnPoint.position))
+                if (collider.bounds.Contains(newSpawnpoint) && collider.tag != "Ground")
                 {
 					foundSpawnPoint = false;
 					break;

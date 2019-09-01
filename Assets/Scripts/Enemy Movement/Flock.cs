@@ -4,45 +4,24 @@ using UnityEngine;
 
 public class Flock : MonoBehaviour
 {
-    //List<FlockAgent> agents = new List<FlockAgent>();
     public FlockBehaviour behaviour;
-
-    [Range(1, 100)]
-    public int startingCount = 5;
-    const float agentDensity = 0.8f;
-
     [Range(1f, 100f)]
     public float driveFactor = 10f;
-    [Range(1f, 100f)]
-    public float maxSpeed = 5f;
     [Range(1f, 10f)]
     public float neighbourRadius = 1.5f;
     [Range(0f, 1f)]
     public float avoidanceRadiusMultiplier = 0.5f;
-
     float squareMaxSpeed;
     float squareNeighbourRadius;
     float squareAvoidanceRadius;
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
+    private float maxSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
-        squareMaxSpeed = maxSpeed * maxSpeed;
         squareNeighbourRadius = neighbourRadius * neighbourRadius;
         squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
-
-        //for(int i = 0; i < startingCount; i++)
-        //{
-        //    Vector2 spawnArea = Random.insideUnitCircle;
-        //    FlockAgent newAgent = Instantiate(
-        //        agentPrefab,
-        //        transform.position + new Vector3(spawnArea.x * startingCount * agentDensity, 1, spawnArea.y * startingCount * agentDensity),
-        //        Quaternion.Euler(Vector3.forward),
-        //        transform);
-        //    newAgent.name = "Agent " + i;
-        //    agents.Add(newAgent);
-        //}
     }
 
     // Update is called once per frame
@@ -52,6 +31,14 @@ public class Flock : MonoBehaviour
 		{
             if(agent != null)
             {
+                string type = agent.getType();
+                if (type == "Witch")
+                    maxSpeed = 1.5f;
+                else if(type == "Vampire")
+                    maxSpeed = 1.5f;
+                else
+                    maxSpeed = 5;
+                squareMaxSpeed = maxSpeed * maxSpeed;
                 List<Transform> context = GetNearbyObjects(agent);
                 Vector3 move = behaviour.CalculateMove(agent, context, this);
                 move *= driveFactor;

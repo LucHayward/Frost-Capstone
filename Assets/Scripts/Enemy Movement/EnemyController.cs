@@ -10,15 +10,16 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public float speed;
     private GameObject playerGameObject;
     private Transform playerTrasnform;
+    private Enemy enemy;
     [SerializeField]private FlockAgent flockAgent;
 
     void Start()
     {
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
         playerTrasnform = playerGameObject.transform;
+        enemy = gameObject.GetComponent<Enemy>();
 
     }
 
@@ -34,14 +35,14 @@ public class EnemyController : MonoBehaviour
     {
         transform.LookAt(playerTrasnform.position);
         float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-        if (distance > 5)
+        if (distance > 3)
         {
             flockAgent.enabled = false;
             agent.isStopped = false;
-            agent.SetDestination(playerTrasnform.position);          
+            agent.SetDestination(playerTrasnform.position);
         }
         else
-        {
+        {  
             agent.isStopped = true;
             flockAgent.enabled = false ;
         }  
@@ -62,6 +63,7 @@ public class EnemyController : MonoBehaviour
             agent.isStopped = true;
             flockAgent.enabled = true;
         }
+        
     }
     /// <summary>
     /// Determines whether the NPC can see the player and makes decisions based on this information
@@ -81,8 +83,20 @@ public class EnemyController : MonoBehaviour
             if (hit.collider.tag.Equals("Player"))
             {
                 Debug.Log("Sees player");
+
+
+                enemy.velocityMagnitude = 0;
+                if(enemy.hasScreamed == false)
+                {
+                    enemy.Scream();
+                    enemy.hasScreamed = true;
+                }
+                
+                
                 Move();
+                
             }
+            
             else
             {
                 Debug.Log("Does not see enemy");
@@ -95,4 +109,6 @@ public class EnemyController : MonoBehaviour
             Wander();
         }
     }
+
+    
 }
