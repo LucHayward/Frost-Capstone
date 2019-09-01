@@ -1346,7 +1346,7 @@ MonoBehaviour:
   behaviour: {fileID: 11400000, guid: fba65b04c1d7b404fa1b9e34e4cc4c39, type: 2}
   startingCount: 5
   driveFactor: 10
-  maxSpeed: 2
+  maxSpeed: 4.1
   neighbourRadius: 5
   avoidanceRadiusMultiplier: 0.7
 --- !u!114 &593047592
@@ -1374,7 +1374,7 @@ MonoBehaviour:
   enemyTypes:
   - instanceOfEnemy: {fileID: 0}
     spawnPoint: {fileID: 1848089037}
-  meleeEnemyPrefab: {fileID: 720003689127736480, guid: 2a75f05f963d48b49a5533fecaeae0b9,
+  meleeEnemyPrefab: {fileID: 5915185049464012269, guid: 4bcf5d60c9c5a5f46b8a3106df5f401f,
     type: 3}
   meleeEnemies: []
 --- !u!4 &593047593

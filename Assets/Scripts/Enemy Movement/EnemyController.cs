@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     public float speed;
     private GameObject playerGameObject;
     private Transform playerTrasnform;
+    private Enemy enemy;
     public Animator animator;
     [SerializeField]private FlockAgent flockAgent;
 
@@ -20,7 +21,7 @@ public class EnemyController : MonoBehaviour
     {
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
         playerTrasnform = playerGameObject.transform;
-
+        enemy = gameObject.GetComponent<Enemy>();
 
     }
 
@@ -34,20 +35,16 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        animator.SetBool("Walk", false);
-        animator.SetBool("Idle", false);
-        animator.SetBool("Run", true);
-        
         transform.LookAt(playerTrasnform.position);
         float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-        if (distance > 5)
+        if (distance > 3)
         {
             flockAgent.enabled = false;
             agent.isStopped = false;
             agent.SetDestination(playerTrasnform.position);          
         }
         else
-        {
+        {  
             agent.isStopped = true;
             flockAgent.enabled = false ;
         }  
@@ -57,10 +54,6 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void Wander()
     {
-        animator.SetBool("Walk", true);
-        animator.SetBool("Idle", false);
-        animator.SetBool("Run", false);
-
         float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
         if(distance < 5)
         {
@@ -92,19 +85,24 @@ public class EnemyController : MonoBehaviour
             if (hit.collider.tag.Equals("Player"))
             {
                 Debug.Log("Sees player");
-                animator.SetTrigger("scream");
 
-                //animator.SetTrigger("run");
+
+                enemy.v = 0;
+                if(enemy.hasScreamed == false)
+                {
+                    enemy.Scream();
+                    enemy.hasScreamed = true;
+                }
+                
+                
                 Move();
                 
-                //animator.SetBool("hasSeen", true);
-                
             }
+            
             else
             {
                 Debug.Log("Does not see enemy");
                 Debug.Log(hit.transform.tag);
-                //animator.SetTrigger("walk");
                 Wander();
             }
         }
@@ -113,4 +111,6 @@ public class EnemyController : MonoBehaviour
             Wander();
         }
     }
+
+    
 }

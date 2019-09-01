@@ -13,10 +13,12 @@ public class Enemy : MonoBehaviour
 	private Player player;
 	private Transform playerPos;
     public Animator animator;
-    Vector3 velocity;
-    
+    private Vector3 velocity;
+
+    public bool hasScreamed = false;
+
     private Vector3 prevTransform;
-    float v;
+    public float v = 0.0f;
 	// Start is called before the first frame update
 	void Start()
     {
@@ -33,7 +35,26 @@ public class Enemy : MonoBehaviour
     {
         velocity = ((transform.position - prevTransform) / Time.deltaTime);
         v = velocity.magnitude;
-        //animator.SetFloat("Velocity", v);
+
+        if (v == 0)
+        {
+            animator.SetBool("Idle", true);
+            animator.SetBool("Run", false);
+            animator.SetBool("Walk", false);
+        }
+        else if (v < 2f)
+        {
+            animator.SetBool("Idle", false);
+            animator.SetBool("Run", false);
+            animator.SetBool("Walk", true);
+        }
+        else if(v > 2f)
+        {
+            animator.SetBool("Idle", false);
+            animator.SetBool("Run", true);
+            animator.SetBool("Walk", false);
+        }
+        
 
         prevTransform = transform.position;
         if (health < 1)
@@ -78,4 +99,13 @@ public class Enemy : MonoBehaviour
 		enemyController.enabled = true;
         flockAgent.enabled = true;
 	}
+
+    public void Scream()
+    {
+        //agent.isStopped = true;
+        //flockAgent.enabled = false;
+        animator.SetTrigger("scream");
+        
+
+    }
 }
