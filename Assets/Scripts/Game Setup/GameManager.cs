@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,12 +15,16 @@ public class GameManager : MonoBehaviour
 
     public float startDelay = 3f;
     public float endDelay = 3f;
-    public List<FlockAgent> agents = new List<FlockAgent>();
+    [HideInInspector]public List<FlockAgent> agents = new List<FlockAgent>();
     public GameObject playerPrefab;
     public PlayerManager[] players;
     public EnemyManager[] enemyTypes;
 	public GameObject meleeEnemyPrefab;
-	public List<EnemyManager> meleeEnemies;
+    [HideInInspector] public List<EnemyManager> meleeEnemies;
+    public GameObject rangedEnemyPrefab;
+    [HideInInspector] public List<EnemyManager> rangedEnemies;
+    public GameObject bossEnemyPrefab;
+    [HideInInspector] public List<EnemyManager> bossEnemies;
     private WaitForSeconds startWait;
     private WaitForSeconds endWait;
     private int roundNumber = 0;
@@ -49,6 +53,22 @@ public class GameManager : MonoBehaviour
             agents.Add(meleeEnemies[i].GetFlockAgent());
 		}
 	}
+
+
+    private void SpawnRangedEnemies(int numberOfEnemies)
+    {
+        for (int i = 0; i < numberOfEnemies; i++)
+        {
+            enemyTypes[1].CalculateSpawnPoint();
+            rangedEnemies.Add(new EnemyManager());
+            rangedEnemies[i].instanceOfEnemy = Instantiate(rangedEnemyPrefab,
+                enemyTypes[1].spawnPoint.position,
+                enemyTypes[1].spawnPoint.rotation) as GameObject;
+
+            rangedEnemies[i].Setup(i);
+            agents.Add(rangedEnemies[i].GetFlockAgent());
+        }
+    }
 
     private void SpawnPlayer()
     {
@@ -82,7 +102,8 @@ public class GameManager : MonoBehaviour
     {
         ResetAllPlayers();
         roundNumber++;
-        SpawnMeleeEnemies(1);
+        SpawnMeleeEnemies(2);
+        //SpawnRangedEnemies(2);
         // TODO update UI
         yield return startWait;
     }

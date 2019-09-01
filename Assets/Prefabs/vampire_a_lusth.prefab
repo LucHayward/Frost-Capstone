@@ -584,6 +584,7 @@ MonoBehaviour:
   enemyController: {fileID: 5848736932314586638}
   flockAgent: {fileID: 8352413979453468287}
   animator: {fileID: 7768273403288973673}
+  hasScreamed: 0
   v: 0
 --- !u!114 &5848736932314586638
 MonoBehaviour:
@@ -598,8 +599,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 2275738578554044500}
-  speed: 1
-  animator: {fileID: 7768273403288973673}
   flockAgent: {fileID: 8352413979453468287}
 --- !u!114 &8352413979453468287
 MonoBehaviour:
@@ -613,6 +612,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a05f3805b1a84e769015b342f3ef56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: Vampire
 --- !u!114 &2217154010073140909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -627,8 +627,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyWeaponTransform: {fileID: 1826371623606624712}
   animator: {fileID: 7768273403288973673}
-  agent: {fileID: 2275738578554044500}
-  flockAgent: {fileID: 8352413979453468287}
   range: 3
   shotDelay: 1
 --- !u!195 &2275738578554044500

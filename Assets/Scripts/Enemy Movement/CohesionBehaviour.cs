@@ -6,7 +6,7 @@ using UnityEngine;
 public class CohesionBehaviour : FlockBehaviour
 {
     Vector3 currentVelocity;
-    public float agentSmoothTime = 0.5f;
+    public float agentSmoothTime = 1.5f;
 
     /// <summary>
     /// Finds middle point between all neighbours and tries to move there (smoothed version).

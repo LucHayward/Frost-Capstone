@@ -6,12 +6,18 @@ public class FlockAgent : MonoBehaviour
 {
     Collider agentCollider;
     public Collider AgentCollider { get { return agentCollider; } }
-
+    public string type;
     // Start is called before the first frame update
     void Start()
     {
         agentCollider = GetComponent<Collider>();
     }
+
+    public string getType()
+    {
+        return type;
+    }
+
     /// <summary>
     /// Moves the agent by calculating a distance uing a vecotr and time
     /// </summary>
@@ -19,7 +25,7 @@ public class FlockAgent : MonoBehaviour
     public void Move(Vector3 velocity)
     {
         if(this.enabled)
-        {
+        {     
             transform.forward = velocity;
             transform.position += velocity * Time.deltaTime;
         }   

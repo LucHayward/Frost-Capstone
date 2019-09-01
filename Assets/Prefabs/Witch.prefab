@@ -2052,8 +2052,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 3457713459428453073}
-  speed: 1
-  animator: {fileID: 5915185049473486441}
   flockAgent: {fileID: 6003557633375194241}
 --- !u!114 &6003557633375194241
 MonoBehaviour:
@@ -2067,6 +2065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a05f3805b1a84e769015b342f3ef56e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: Witch
 --- !u!195 &3457713459428453073
 NavMeshAgent:
   m_ObjectHideFlags: 0

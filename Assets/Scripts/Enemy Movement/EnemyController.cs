@@ -10,11 +10,9 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     public NavMeshAgent agent;
-    public float speed;
     private GameObject playerGameObject;
     private Transform playerTrasnform;
     private Enemy enemy;
-    public Animator animator;
     [SerializeField]private FlockAgent flockAgent;
 
     void Start()
