@@ -35,7 +35,7 @@ public class Flock : MonoBehaviour
                 if (type == "Witch")
                     maxSpeed = 1.5f;
                 else if(type == "Vampire")
-                    maxSpeed = 1.9f;
+                    maxSpeed = 1.5f;
                 else
                     maxSpeed = 5;
                 squareMaxSpeed = maxSpeed * maxSpeed;

@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
         {
             flockAgent.enabled = false;
             agent.isStopped = false;
-            agent.SetDestination(playerTrasnform.position);          
+            agent.SetDestination(playerTrasnform.position);
         }
         else
         {  
