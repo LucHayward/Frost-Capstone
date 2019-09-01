@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Linq;
 
 public class ProjectileAttack : MonoBehaviour
 {
 	public int damage;
 	public int objectLife;
-	public bool canFriendlyFire;
+
+	[TagSelector]
+	public string [] damageableTags;
 
 	public GameObject impactPrefab;
 
 	private ParticleSystem ps;
 	private AudioSource audioSource;
-
-    private Enemy enemy;
-
 
 	public void Start()
 	{
@@ -22,15 +22,26 @@ public class ProjectileAttack : MonoBehaviour
 		Destroy(gameObject, objectLife); // TODO Do we need this>?
 	}
 
-
+	/// <summary>
+	/// On colliding with another collider, check whether the object is able to be damaged by this projectile and deal damage.
+	/// Spawns an impact prefab and destroys this projectile
+	/// </summary>
+	/// <param name="other"> collision representing this interaction</param>
 	public void OnCollisionEnter(Collision other)
 	{
-        if (other.gameObject.tag == "Enemy")
-        {
-            enemy = other.gameObject.GetComponent<Enemy>();
-            enemy.takeDamage(damage);
-            
-        }
+		if (damageableTags.Contains(other.gameObject.tag))
+		{
+			if (other.gameObject.CompareTag("Enemy"))
+			{
+				Enemy enemy = other.gameObject.GetComponent<Enemy>();
+				enemy.TakeDamage(damage);
+			}
+			else if (other.gameObject.CompareTag("Player"))
+			{
+				Player player = other.gameObject.GetComponent<Player>();
+				player.TakeDamage(damage);
+			}
+		}
 		// Instantiate the impact effect at the projectile transform pointing in the direction of the contact normals
 		Vector3 contactNormal = other.GetContact(0).normal;
 		Quaternion rotation = Quaternion.LookRotation(contactNormal);

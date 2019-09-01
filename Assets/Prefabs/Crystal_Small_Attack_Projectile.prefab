@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 2
   objectLife: 5
-  canFriendlyFire: 0
+  damageableTags:
+  - Enemy
   impactPrefab: {fileID: 9141597624335300536, guid: a7deb43d86e8a4c4b8f1f411533a5ca2,
     type: 3}
 --- !u!1001 &4503306912263320757

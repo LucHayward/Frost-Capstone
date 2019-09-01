@@ -6,29 +6,42 @@ using UnityEngine.UI;
 using TMPro;
 public class Player : MonoBehaviour
 {
-    
-    public float speed;
-    public int health=10;
+    public int health;
 	public int lvl;
 
 	public TextMeshProUGUI healthText;
     public bool hasShield=false;
     public bool isFast=false;
 
-    [SerializeField] private PlayerMovement playerMovement;
-    [SerializeField] private PlayerAttack playerAttack;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private PlayerMovement playerMovement = null; //Assigned in inspector
+	[SerializeField] private PlayerAttack playerAttack = null; //Assigned in inspector
+
+	// Start is called before the first frame update
+	void Start()
     {
-        health = 10 + lvl * 2;
+        health += lvl * 2;
     }
 
- 
+	/// <summary>
+	/// Reduce player health and perform death check
+	/// </summary>
+	/// <param name="dmg"> the amount of health to remove from the player</param>
+	public void TakeDamage(int dmg)
+	{
+		health -= dmg;
+		if (health <= 0)
+		{
+			Debug.Log("Player Died");
+			OnDeath();
+		}
+	}
+
 	/// <summary>
 	/// Monitor player health
 	/// </summary>
     void Update()
     {
+		// TODO: remove this if still redundant in TakeDamage()
 		if (health <= 0)
 		{
 			Debug.Log("Player Died");

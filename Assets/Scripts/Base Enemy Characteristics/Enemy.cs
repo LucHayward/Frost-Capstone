@@ -82,7 +82,7 @@ public class Enemy : MonoBehaviour
     /// 
     /// </summary>
     /// <param name="dmg"></param>
-    public void takeDamage(int dmg)
+    public void TakeDamage(int dmg)
     {
         health = health - dmg;
     }

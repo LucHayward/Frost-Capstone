@@ -4,14 +4,16 @@ using UnityEngine;
 [Serializable]
 public class PlayerManager
 {
-    [HideInInspector] public GameObject instanceOfPlayer;
+	[HideInInspector] public GameObject instanceOfPlayer;
     private PlayerMovement playerMovement;
     private CameraController cameraController;
     private Player playerScript;
     private PlayerAttack playerAttack;
-    public Transform spawnPoint;
-  
-    public Camera camera;
+	private int healthResetValue;
+
+	public Transform spawnPoint;
+
+	public Camera camera;
     [HideInInspector] public int playerNumber;
 
     public void Setup()
@@ -26,6 +28,8 @@ public class PlayerManager
         {
             cameraController.orbitTarget = instanceOfPlayer.transform.GetChild(3);
         }
+
+		healthResetValue = playerScript.health;
     }
 
     public void RoundReset()
@@ -35,6 +39,6 @@ public class PlayerManager
 
     private void ResetHealth()
     {
-        playerScript.health = 10;
+        playerScript.health = healthResetValue;
     }
 }

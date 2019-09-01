@@ -757,7 +757,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  health: 10
+  health: 1000
   lvl: 0
   healthText: {fileID: 0}
   hasShield: 0

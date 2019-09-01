@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 {
 	CharacterController characterController;
 	public Animator animator;
-	[SerializeField] private AnimationClip jumpAnim;
+	[SerializeField] private AnimationClip jumpAnim = null; //Assigned in inspector
 
 	public Transform cameraTransform;
 	private Transform horizontalCameraTransform;
