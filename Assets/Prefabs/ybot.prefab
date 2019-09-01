@@ -800,8 +800,8 @@ MonoBehaviour:
   jumpAnim: {fileID: 7400000, guid: 44bdd9a301942f046af439871591115a, type: 2}
   cameraTransform: {fileID: 0}
   speedMultiplier: 6
-  jumpSpeed: 8
-  gravity: 20
+  jumpSpeed: 200
+  gravity: 250
   turnSpeed: 0.1
   debugVelocity: {x: 0, y: 0, z: 0}
 --- !u!143 &7943516544882520999
