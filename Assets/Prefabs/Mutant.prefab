@@ -902,6 +902,8 @@ MonoBehaviour:
   enemyWeaponTransform: {fileID: 745614005611608246}
   animator: {fileID: 3636180929729888197}
   range: 3
+  abilityRange: 0
+  abilityCD: 0
   shotDelay: 2
 --- !u!114 &7461909706279491092
 MonoBehaviour:
@@ -954,8 +956,9 @@ MonoBehaviour:
   enemyController: {fileID: 6781322121223817581}
   flockAgent: {fileID: 7461909706279491092}
   animator: {fileID: 3636180929729888197}
+  damage: 3
   hasScreamed: 0
-  v: 0
+  velocityMagnitude: 0
 --- !u!1 &3636180929720355937
 GameObject:
   m_ObjectHideFlags: 0

@@ -41,8 +41,8 @@ public class EnemyRangedAttack : MonoBehaviour
             enemy.velocityMagnitude = 0;
             if (currentTime - lastShotTime > shotDelay)
             {
-                
-                Shoot();
+                //Animation event calls shoot at end of attack animation
+                animator.SetTrigger("atk");
                 lastShotTime = currentTime + shotDelay;
             }
                 
@@ -51,9 +51,7 @@ public class EnemyRangedAttack : MonoBehaviour
 
     private void Shoot()
     {
-        
 
-        animator.SetTrigger("atk");
         //RaycastHit hit;
         //if(Physics.Raycast(raycastSource.position, raycastSource.forward, out hit, range)){
 

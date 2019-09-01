@@ -2018,8 +2018,9 @@ MonoBehaviour:
   enemyController: {fileID: 8471785993963130964}
   flockAgent: {fileID: 6003557633375194241}
   animator: {fileID: 5915185049473486441}
+  damage: 2
   hasScreamed: 0
-  v: 0
+  velocityMagnitude: 0
 --- !u!114 &1860593735834247553
 MonoBehaviour:
   m_ObjectHideFlags: 0

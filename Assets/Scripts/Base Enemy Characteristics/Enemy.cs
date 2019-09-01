@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     private Vector3 velocity;
 
+    public int damage = 0;
+
     public bool hasScreamed = false;
 
     private Vector3 prevTransform;
@@ -102,9 +104,9 @@ public class Enemy : MonoBehaviour
 
     public void Scream()
     {
+        animator.SetTrigger("scream");
         //agent.isStopped = true;
         //flockAgent.enabled = false;
-        animator.SetTrigger("scream");
         
 
     }

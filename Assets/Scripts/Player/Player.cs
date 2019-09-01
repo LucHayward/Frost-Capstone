@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 	/// <param name="dmg"> the amount of health to remove from the player</param>
 	public void TakeDamage(int dmg)
 	{
+        Debug.Log("Took " + dmg + " damage");
 		health -= dmg;
 		if (health <= 0)
 		{
