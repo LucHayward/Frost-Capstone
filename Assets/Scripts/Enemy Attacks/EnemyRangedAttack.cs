@@ -38,7 +38,7 @@ public class EnemyRangedAttack : MonoBehaviour
 
         if (Vector3.Distance(playerTransform.position, projectileSpawnPoint.position) <= range)
         {
-            enemy.v = 0;
+            enemy.velocityMagnitude = 0;
             if (currentTime - lastShotTime > shotDelay)
             {
                 
@@ -78,6 +78,8 @@ public class EnemyRangedAttack : MonoBehaviour
 
 
     }
+
+    
 
 
 }
