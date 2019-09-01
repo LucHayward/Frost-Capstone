@@ -41,7 +41,6 @@ public class GameManager : MonoBehaviour
 
     private void SpawnMeleeEnemies(int numberOfEnemies)
 	{
-        //meleeEnemies = new EnemyManager[numberOfEnemies];
         for(int i = 0; i <numberOfEnemies; i++)
 		{
             enemyTypes[0].CalculateSpawnPoint();
@@ -55,6 +54,27 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+
+    private int CalcuateNumberOfMeleeEnemies()
+    {
+        int numberOfEnemies = roundNumber * 3;
+        return numberOfEnemies;
+    }
+
+    private int CalcuateNumberOfRangedEnemies()
+    {
+        int numberOfEnemies = roundNumber * 2;
+        return numberOfEnemies;
+    }
+
+    private int CalculateBossEnemies()
+    {
+        if (roundNumber % 5 != 1)
+            return 0;
+        else
+            return 2;
+
+    }
 
     private void SpawnRangedEnemies(int numberOfEnemies)
     {
@@ -91,7 +111,7 @@ public class GameManager : MonoBehaviour
 
         if(!ThereIsAPlayer())
         {
-            //END GAME
+            SpawnPlayer(); //TODO END GAME
         }
         else
         {
@@ -110,8 +130,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator RoundPlaying()
     {
-        SpawnMeleeEnemies(10);
-        SpawnRangedEnemies(10);
+        SpawnMeleeEnemies(CalcuateNumberOfMeleeEnemies());
+        SpawnRangedEnemies(CalcuateNumberOfRangedEnemies());
         spawnedEnemy = true;
         while (ThereIsAPlayer() && ThereIsAEnemy())
         {
@@ -120,9 +140,7 @@ public class GameManager : MonoBehaviour
         if(ThereIsAPlayer() && !ThereIsAEnemy())
         {
             yield return StartCoroutine(GameLoop());
-        }
-
-        
+        }   
     }
 
     private IEnumerator RoundEnding()
