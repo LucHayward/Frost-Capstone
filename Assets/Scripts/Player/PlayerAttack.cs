@@ -31,7 +31,7 @@ public class PlayerAttack : MonoBehaviour
 
 	private void Shoot()
 	{
-		animator.SetTrigger("atk");
+		animator.SetTrigger("attack");
 		
 		Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
 

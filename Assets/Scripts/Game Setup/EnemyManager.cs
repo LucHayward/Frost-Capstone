@@ -7,7 +7,7 @@ public class EnemyManager
 {
     [HideInInspector] public GameObject instanceOfEnemy;
     public Transform spawnPoint;
-    private Collider[] colliders;
+    private Collider[] nearbyColliders;
     private Enemy enemyScript;
     private EnemyController enemyController;
     private FlockAgent flockAgent;
@@ -41,33 +41,34 @@ public class EnemyManager
         enemyController.enabled = false;
     }
 
+
+	/// <summary>
+	/// Calculates the spawn point for this enemy as a random offset from the predetermined spawn locaiton
+	/// 
+	/// For each collider within the radius of this enemy, ensure that the spawn point does not overlap. Generate new spawn offset if it does and try again.
+	/// </summary>
     public void CalculateSpawnPoint()
     {
-        colliders = Physics.OverlapSphere(spawnPoint.position, 10);
-        bool spawnHere = false;
-        bool complete = false;
-        Vector3 pointOfSpawn = Vector3.zero;
-        while (complete != true)
+		const int Radius = 10;
+		nearbyColliders = Physics.OverlapSphere(spawnPoint.position, Radius);
+        bool foundSpawnPoint = false;
+        //Vector3 offsetSpawnPoint = Vector3.zero;
+        while (!foundSpawnPoint)
         {
-            Vector2 spawnArea = Random.insideUnitCircle * 10;
-            pointOfSpawn = new Vector3(spawnPoint.position.x + spawnArea.x, 0, spawnPoint.position.z + spawnArea.y);
-            for (int i = 0; i < colliders.Length; i++)
+            Vector2 spawnOffset = Random.insideUnitCircle * Radius;
+            spawnPoint.position = new Vector3(spawnPoint.position.x + spawnOffset.x, 0, spawnPoint.position.y + spawnOffset.y);
+			
+
+            foreach (Collider collider in nearbyColliders)
             {
-                if (colliders[i].bounds.Contains(pointOfSpawn))
+				foundSpawnPoint = true;
+                if (collider.bounds.Contains(spawnPoint.position))
                 {
-                    spawnHere = false;
-                }
-                else
-                {
-                    spawnHere = true;
-                }
-            }
-            if (spawnHere == true)
-            {
-                complete = true;
+					foundSpawnPoint = false;
+					break;
+				}
             }
         }
-        spawnPoint.position = pointOfSpawn;  
     }
 
     public FlockAgent GetFlockAgent()

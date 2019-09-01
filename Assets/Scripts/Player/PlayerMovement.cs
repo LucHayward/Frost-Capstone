@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// Handles the movement calculations as well as communication with the animation controller for the player
+/// Handles the movement calculations as well as communication with the animation controller for the player movement
 /// </summary>
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 	[SerializeField] private AnimationClip jumpAnim;
 
 	public Transform cameraTransform;
+	private Transform horizontalCameraTransform;
 
 	public float speedMultiplier = 6.0f;
 	public float jumpSpeed = 8.0f;
@@ -35,13 +36,30 @@ public class PlayerMovement : MonoBehaviour
 	}
 
 	/// <summary>
-	/// 
+	/// <list type="number">
+	/// <item>
+	/// <description>Handles all the movement calculations required each frame</description>
+	/// </item>
+	/// <item>
+	/// <description>Input-axis are multiplied onto a forward vector (take from the camera horizontal) and converted to local coordinates</description>
+	/// </item>
+	/// <item>
+	/// <description>Relative velocity is sent to the animator along with x/y speeds for use in animation blending</description>
+	/// </item>
+	/// <item>
+	/// <description>Provided the player is moving, turns the character to face in the direction of the camera</description>
+	/// </item>
+	/// <item>
+	/// <description>Allows for jumping when grounded, otherwise applies pseudo-gravity (fixed speed)</description>
+	/// </item>
+	/// </list>
 	/// </summary>
 	void Update()
 	{
 		moveDirection = new Vector3();
 
-		Vector3 forward = cameraTransform.forward;
+		Vector3 forward = cameraTransform.GetChild(1).transform.forward;
+		forward.y = 0;
 		forward *= Input.GetAxis("Vertical");
 
 		Vector3 right = cameraTransform.right;
@@ -73,18 +91,16 @@ public class PlayerMovement : MonoBehaviour
 			//transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, Time.deltaTime * turnSpeed);
 			//transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, turnSpeed);
 			//transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, Time.deltaTime * turnSpeed);
-			transform.rotation = Quaternion.Lerp(transform.rotation, newLookRotation, turnSpeed);
+			transform.rotation = Quaternion.Lerp(transform.rotation, newLookRotation, turnSpeed); //TODO: Decide on one of these 4 lines lines
 		}
-
-		//Debug.Log("IsGorunded: "+ characterController.isGrounded);
+		
 		if (characterController.isGrounded)
 		{
 			animator.SetFloat("velocityX", localVelocity.x);
 			animator.SetFloat("velocityZ", localVelocity.z);
-			
+
 			if (Input.GetButtonDown("Jump"))
 			{
-				//moveDirection.y = jumpSpeed;
 				animator.SetTrigger("jump");
 				StartCoroutine(GravityPauseForJump());
 			}
@@ -94,7 +110,6 @@ public class PlayerMovement : MonoBehaviour
 		{
 			moveDirection.y -= gravity * Time.deltaTime;
 		}
-
 
 		// Move the controller
 		characterController.Move(moveDirection * Time.deltaTime);
@@ -108,5 +123,17 @@ public class PlayerMovement : MonoBehaviour
 		gravity = tGrav;
 	}
 
+	/// <summary>
+	/// Copys local Pos, Rotation and Scale onto a transform
+	/// </summary>
+	/// <param name="lhs"> the new copy</param>
+	/// <param name="toBeCopied"> the transform from which to copy values</param>
+	private void ShallowCopyTransform(Transform lhs, Transform toBeCopied)
+	{
+		lhs.localPosition = toBeCopied.localPosition;
+		lhs.localRotation = toBeCopied.localRotation;
+		lhs.localScale    = toBeCopied.localScale;
+	}
 
 }
+
