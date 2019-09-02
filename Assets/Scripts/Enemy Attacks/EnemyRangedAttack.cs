@@ -3,7 +3,8 @@ using UnityEngine.AI;
 
 public class EnemyRangedAttack : MonoBehaviour
 {
-    public float range = 25f;
+    public float range = 0.0f;
+    public float abilityRange = 0.0f;
     //public Transform skull;
     public Transform projectileSpawnPoint;
     public GameObject projectile;
@@ -23,6 +24,9 @@ public class EnemyRangedAttack : MonoBehaviour
     private float currentTime = 0.0f;
     private float lastShotTime = 0.0f;
     private float shotDelay = 2.0f;
+
+    private float lastAbilityTime = 0.0f;
+    public float abilityCD = 0.0f;
 
     
     //public SpawnManager spawnManager;
@@ -47,7 +51,21 @@ public class EnemyRangedAttack : MonoBehaviour
         shotPath = playerTransform.position - projectileSpawnPoint.position;
         currentTime = Time.time;
 
-        if (Vector3.Distance(playerTransform.position, projectileSpawnPoint.position) <= range)
+        if (currentTime - lastAbilityTime > abilityCD)   
+        {
+            if (Vector3.Distance(playerTransform.position, projectileSpawnPoint.position) < abilityRange)
+            {
+
+
+                animator.SetTrigger("ability");
+                lastAbilityTime = currentTime + abilityCD;
+
+
+            }
+
+        }
+
+        else if (Vector3.Distance(playerTransform.position, projectileSpawnPoint.position) <= range)
         {
             if (currentTime - lastShotTime > shotDelay)
             {
@@ -57,6 +75,8 @@ public class EnemyRangedAttack : MonoBehaviour
             }
                 
         }
+
+        
     }
 
     private void shootStart()
@@ -100,11 +120,6 @@ public class EnemyRangedAttack : MonoBehaviour
         enemyController.enabled = true;
         flockAgent.enabled = true;
         navMeshAgent.enabled = true;
-    }
-
-    private void witchSpawnEnemies(int numberOfEnemies)
-    {
-        
     }
 
 
