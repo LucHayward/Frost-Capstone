@@ -13,6 +13,7 @@ public class EnemyAttack : MonoBehaviour
 	private GameObject playerGO;
     private Enemy enemy;
     private Player player;
+
     public float range = 0.0f;
     public float abilityRange = 0.0f;
     public float abilityCD = 0.0f;
@@ -38,23 +39,9 @@ public class EnemyAttack : MonoBehaviour
 	void Update()
     {
         currentTime = Time.time;
-        if (Vector3.Distance(playerTransform.position, enemyTransform.position) <= abilityRange)
-        {
-            enemy.velocityMagnitude = 0;
+        
 
-            if (currentTime - lastAbilityTime > abilityCD)
-            {
-
-                
-                //enemy.ability();
-                lastAbilityTime = currentTime + abilityCD;
-
-
-            }
-
-        }
-
-        if (Vector3.Distance(playerTransform.position, enemyWeaponTransform.position) <= range)
+        if (Vector3.Distance(playerTransform.position, enemyTransform.position) < range)
         {
             enemy.velocityMagnitude = 0;
             
@@ -70,6 +57,21 @@ public class EnemyAttack : MonoBehaviour
             }
 
         }
+        else if (Vector3.Distance(playerTransform.position, enemyTransform.position) < abilityRange)
+        {
+            enemy.velocityMagnitude = 0;
+
+            if (currentTime - lastAbilityTime > abilityCD)
+            {
+
+
+                animator.SetTrigger("ability");
+                lastAbilityTime = currentTime + abilityCD;
+
+
+            }
+
+        }
 
     }
 
@@ -78,13 +80,28 @@ public class EnemyAttack : MonoBehaviour
         // Calculate the distance between the player and the enemy
         float dist = Vector3.Distance(playerTransform.position, enemyWeaponTransform.position);
 
-        if (dist <= range)
+        if (dist <= 2.0f)
         {
             player.TakeDamage(enemy.damage);
         }
         // If close enough, attack player
 		//Debug.Log("Attack");
         
+
+    }
+
+    void jumpAttack()
+    {
+        float dist = Vector3.Distance(playerTransform.position, enemyWeaponTransform.position);
+        enemy.velocityMagnitude = 0;
+        if (dist < 3.0f)
+        {
+            player.TakeDamage(enemy.abilityDamage);
+        }
+    }
+
+    void witchAbility()
+    {
 
     }
 

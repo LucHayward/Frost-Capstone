@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
     private GameObject playerGameObject;
     private Transform playerTrasnform;
     private Enemy enemy;
+    private bool hasSeen = false;
     [SerializeField]private FlockAgent flockAgent;
 
     void Start()
@@ -82,10 +83,11 @@ public class EnemyController : MonoBehaviour
         {
             if (hit.collider.tag.Equals("Player"))
             {
+                hasSeen = true;
                 Debug.Log("Sees player");
+                
+                
 
-
-                enemy.velocityMagnitude = 0;
                 if(enemy.hasScreamed == false)
                 {
                     enemy.Scream();
@@ -101,7 +103,17 @@ public class EnemyController : MonoBehaviour
             {
                 Debug.Log("Does not see enemy");
                 Debug.Log(hit.transform.tag);
-                Wander();
+
+                //prevent enemies wandering when line of sight is blocked by other enemies
+                if (hasSeen == false)
+                {
+                    Wander();
+                }
+                else
+                {
+                    Move();
+                }
+                
             }
         }
         else

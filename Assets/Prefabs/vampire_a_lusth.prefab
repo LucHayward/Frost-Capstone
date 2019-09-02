@@ -628,7 +628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyWeaponTransform: {fileID: 1826371623606624712}
   animator: {fileID: 7768273403288973673}
-  range: 2
+  range: 3
   abilityRange: 0
   abilityCD: 0
   shotDelay: 1

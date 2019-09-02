@@ -196,7 +196,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.47612616
+      - time: 0.4658522
         functionName: Shoot
         data: 
         objectReferenceParameter: {fileID: 4440679398622339157, guid: 1cc41222f7bf0d14d86cbe2dba6b456e,
@@ -204,7 +204,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.5856164
+      - time: 0.63013697
         functionName: OnEnable
         data: 
         objectReferenceParameter: {instanceID: 0}
