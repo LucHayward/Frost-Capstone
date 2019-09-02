@@ -508,6 +508,7 @@ GameObject:
   - component: {fileID: 720003689127637897}
   - component: {fileID: 720003689127637898}
   - component: {fileID: 5848736932314586638}
+  - component: {fileID: 4207828154626167842}
   - component: {fileID: 8352413979453468287}
   - component: {fileID: 2217154010073140909}
   - component: {fileID: 2275738578554044500}
@@ -584,6 +585,7 @@ MonoBehaviour:
   enemyController: {fileID: 5848736932314586638}
   flockAgent: {fileID: 8352413979453468287}
   animator: {fileID: 7768273403288973673}
+  abilityDamage: 0
   damage: 1
   hasScreamed: 0
   velocityMagnitude: 0
@@ -599,8 +601,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6b79f2f842f4e5c853b6b5ccfc350e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 7768273403288973673}
   agent: {fileID: 2275738578554044500}
   flockAgent: {fileID: 8352413979453468287}
+--- !u!114 &4207828154626167842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720003689127736480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cf0cf001f9e1b4d871c7f648689dcf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 2275738578554044500}
+  animator: {fileID: 7768273403288973673}
 --- !u!114 &8352413979453468287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,6 +645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyWeaponTransform: {fileID: 1826371623606624712}
   animator: {fileID: 7768273403288973673}
+  navMeshAgent: {fileID: 2275738578554044500}
   range: 3
   abilityRange: 0
   abilityCD: 0

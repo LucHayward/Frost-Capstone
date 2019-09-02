@@ -9,6 +9,8 @@ using UnityEngine.AI;
 /// </summary>
 public class EnemyController : MonoBehaviour
 {
+
+    public Animator animator;
     public NavMeshAgent agent;
     private GameObject playerGameObject;
     private Transform playerTrasnform;
@@ -90,7 +92,7 @@ public class EnemyController : MonoBehaviour
 
                 if(enemy.hasScreamed == false)
                 {
-                    enemy.Scream();
+                    animator.SetTrigger("scream");
                     enemy.hasScreamed = true;
                 }
                 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyRangedAttack : MonoBehaviour
 {
@@ -9,9 +10,15 @@ public class EnemyRangedAttack : MonoBehaviour
     public Animator animator;
     private Enemy enemy;
 
+    private EnemyController enemyController;
+    private FlockAgent flockAgent;
+    public NavMeshAgent navMeshAgent;
+
     Vector3 shotPath;
     private GameObject playerGO;
     private Transform playerTransform;
+
+    
 
     private float currentTime = 0.0f;
     private float lastShotTime = 0.0f;
@@ -28,6 +35,10 @@ public class EnemyRangedAttack : MonoBehaviour
         enemy = gameObject.GetComponent<Enemy>();
         playerGO = GameObject.FindGameObjectWithTag("Player");
         playerTransform = playerGO.GetComponent<Transform>();
+
+        enemyController = gameObject.GetComponent<EnemyController>();
+        flockAgent = gameObject.GetComponent<FlockAgent>();
+
         //skull.gameObject.GetComponent<ParticleSystem>().Play();
     }
 
@@ -38,7 +49,6 @@ public class EnemyRangedAttack : MonoBehaviour
 
         if (Vector3.Distance(playerTransform.position, projectileSpawnPoint.position) <= range)
         {
-            enemy.velocityMagnitude = 0;
             if (currentTime - lastShotTime > shotDelay)
             {
                 //Animation event calls shoot at end of attack animation
@@ -49,7 +59,15 @@ public class EnemyRangedAttack : MonoBehaviour
         }
     }
 
-    private void Shoot()
+    private void shootStart()
+    {
+        enemyController.enabled = false;
+        flockAgent.enabled = false;
+        navMeshAgent.enabled = false;
+    }
+
+
+    private void shoot()
     {
 
         //RaycastHit hit;
@@ -77,7 +95,19 @@ public class EnemyRangedAttack : MonoBehaviour
 
     }
 
-    
+    private void shootEnd()
+    {
+        enemyController.enabled = true;
+        flockAgent.enabled = true;
+        navMeshAgent.enabled = true;
+    }
+
+    private void witchSpawnEnemies(int numberOfEnemies)
+    {
+        
+    }
+
+
 
 
 }

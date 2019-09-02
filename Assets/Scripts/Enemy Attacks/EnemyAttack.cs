@@ -14,6 +14,10 @@ public class EnemyAttack : MonoBehaviour
     private Enemy enemy;
     private Player player;
 
+    private EnemyController enemyController;
+    private FlockAgent flockAgent;
+    public NavMeshAgent navMeshAgent;
+
     public float range = 0.0f;
     public float abilityRange = 0.0f;
     public float abilityCD = 0.0f;
@@ -28,7 +32,11 @@ public class EnemyAttack : MonoBehaviour
     {
         enemy = gameObject.GetComponent<Enemy>();
         enemyTransform = enemy.GetComponent<Transform>();
-		playerGO = GameObject.FindGameObjectWithTag("Player");
+
+        enemyController = gameObject.GetComponent<EnemyController>();
+        flockAgent = gameObject.GetComponent<FlockAgent>();
+
+        playerGO = GameObject.FindGameObjectWithTag("Player");
         if (playerGO == null)
             Debug.Log("Fuck my titties");
         playerTransform = playerGO.GetComponent<Transform>();
@@ -75,7 +83,14 @@ public class EnemyAttack : MonoBehaviour
 
     }
 
-	void attack()
+    void attackStart()
+    {
+        enemyController.enabled = false;
+        flockAgent.enabled = false;
+        navMeshAgent.enabled = false;
+    }
+
+	void attackDamage()
     {  
         // Calculate the distance between the player and the enemy
         float dist = Vector3.Distance(playerTransform.position, enemyWeaponTransform.position);
@@ -86,24 +101,17 @@ public class EnemyAttack : MonoBehaviour
         }
         // If close enough, attack player
 		//Debug.Log("Attack");
-        
-
     }
 
-    void jumpAttack()
+    void attackEnd()
     {
-        float dist = Vector3.Distance(playerTransform.position, enemyWeaponTransform.position);
-        enemy.velocityMagnitude = 0;
-        if (dist < 3.0f)
-        {
-            player.TakeDamage(enemy.abilityDamage);
-        }
+        enemyController.enabled = true;
+        flockAgent.enabled = true;
+        navMeshAgent.enabled = true;
     }
 
-    void witchAbility()
-    {
 
-    }
+    
 
     
 }

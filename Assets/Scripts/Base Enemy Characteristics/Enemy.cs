@@ -106,12 +106,5 @@ public class Enemy : MonoBehaviour
         flockAgent.enabled = true;
 	}
 
-    public void Scream()
-    {
-        animator.SetTrigger("scream");
-        //agent.isStopped = true;
-        //flockAgent.enabled = false;
-        
-
-    }
+    
 }

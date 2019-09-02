@@ -133,22 +133,36 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.67783505
-        functionName: OnDisable
+      - time: 0
+        functionName: jumpAttackStart
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.69710034
-        functionName: jumpAttack
+      - time: 0.12419567
+        functionName: jumpAttackMove
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.56478405
+        functionName: jumpAttackLand
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.6692619
+        functionName: jumpAttackDamage
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 1
-        functionName: OnEnable
+        functionName: jumpAttackEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

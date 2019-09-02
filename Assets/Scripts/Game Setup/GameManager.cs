@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+    
+
 
     private int CalcuateNumberOfMeleeEnemies()
     {

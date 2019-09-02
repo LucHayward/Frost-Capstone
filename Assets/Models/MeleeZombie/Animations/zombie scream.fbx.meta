@@ -190,14 +190,21 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: OnDisable
+        functionName: screamStart
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 1
-        functionName: OnEnable
+        functionName: screamEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.55209196
+        functionName: scream
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
