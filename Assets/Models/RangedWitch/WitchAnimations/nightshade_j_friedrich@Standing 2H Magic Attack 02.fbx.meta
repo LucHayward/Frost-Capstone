@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 442e0fd5c7bce344187a092b0e0f713e
+guid: c8c2cc667d78aff44bbf8b03a660bd9b
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -135,7 +135,7 @@ ModelImporter:
     400126: Spine
     400128: Spine1
     400130: Spine2
-    7400000: Standing 2H Cast Spell 01
+    7400000: Standing 2H Magic Attack 02
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -166,10 +166,10 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Standing 2H Cast Spell 01
+      name: Standing 2H Magic Attack 02
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 75
+      lastFrame: 79
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -190,21 +190,21 @@ ModelImporter:
       curves: []
       events:
       - time: 0
-        functionName: abilityStart
+        functionName: ability2Start
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.7088672
-        functionName: ability
+      - time: 0.5933303
+        functionName: ability2
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.9892045
-        functionName: abilityEnd
+      - time: 0.9931507
+        functionName: ability2End
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

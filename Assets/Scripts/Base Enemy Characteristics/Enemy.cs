@@ -15,6 +15,10 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     private Vector3 velocity;
 
+    public int abilityDamage = 0;
+
+    public int damage = 0;
+
     public bool hasScreamed = false;
 
     private Vector3 prevTransform;
@@ -44,9 +48,11 @@ public class Enemy : MonoBehaviour
         }
         else if (velocityMagnitude < 2f)
         {
+
+            //removed walking animation for now
             animator.SetBool("Idle", false);
-            animator.SetBool("Run", false);
-            animator.SetBool("Walk", true);
+            animator.SetBool("Run", true);
+            animator.SetBool("Walk", false);
         }
         else if(velocityMagnitude > 2f)
         {
@@ -100,12 +106,5 @@ public class Enemy : MonoBehaviour
         flockAgent.enabled = true;
 	}
 
-    public void Scream()
-    {
-        //agent.isStopped = true;
-        //flockAgent.enabled = false;
-        animator.SetTrigger("scream");
-        
-
-    }
+    
 }

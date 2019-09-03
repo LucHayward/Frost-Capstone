@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
 	public void TakeDamage(int dmg)
 	{
 		playerMovement.animator.SetTrigger("takeDamage");
+        Debug.Log("Took " + dmg + " damage");
 		health -= dmg;
 		if (health <= 0)
 		{

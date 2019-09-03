@@ -1,21 +1,32 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyRangedAttack : MonoBehaviour
 {
-    public float range = 25f;
+    public float range = 0.0f;
+    public float abilityRange = 0.0f;
     //public Transform skull;
     public Transform projectileSpawnPoint;
     public GameObject projectile;
     public Animator animator;
     private Enemy enemy;
 
+    private EnemyController enemyController;
+    private FlockAgent flockAgent;
+    public NavMeshAgent navMeshAgent;
+
     Vector3 shotPath;
     private GameObject playerGO;
     private Transform playerTransform;
 
+    
+
     private float currentTime = 0.0f;
     private float lastShotTime = 0.0f;
     private float shotDelay = 2.0f;
+
+    private float lastAbilityTime = 0.0f;
+    public float abilityCD = 0.0f;
 
     
     //public SpawnManager spawnManager;
@@ -28,6 +39,10 @@ public class EnemyRangedAttack : MonoBehaviour
         enemy = gameObject.GetComponent<Enemy>();
         playerGO = GameObject.FindGameObjectWithTag("Player");
         playerTransform = playerGO.GetComponent<Transform>();
+
+        enemyController = gameObject.GetComponent<EnemyController>();
+        flockAgent = gameObject.GetComponent<FlockAgent>();
+
         //skull.gameObject.GetComponent<ParticleSystem>().Play();
     }
 
@@ -36,24 +51,45 @@ public class EnemyRangedAttack : MonoBehaviour
         shotPath = playerTransform.position - projectileSpawnPoint.position;
         currentTime = Time.time;
 
-        if (Vector3.Distance(playerTransform.position, projectileSpawnPoint.position) <= range)
+        if (currentTime - lastAbilityTime > abilityCD)   
         {
-            enemy.velocityMagnitude = 0;
+            if (Vector3.Distance(playerTransform.position, projectileSpawnPoint.position) < abilityRange)
+            {
+
+
+                animator.SetTrigger("ability");
+                lastAbilityTime = currentTime + abilityCD;
+
+
+            }
+
+        }
+
+        else if (Vector3.Distance(playerTransform.position, projectileSpawnPoint.position) <= range)
+        {
             if (currentTime - lastShotTime > shotDelay)
             {
-                
-                Shoot();
+                //Animation event calls shoot at end of attack animation
+                animator.SetTrigger("atk");
                 lastShotTime = currentTime + shotDelay;
             }
                 
         }
+
+        
     }
 
-    private void Shoot()
+    private void shootStart()
     {
-        
+        enemyController.enabled = false;
+        flockAgent.enabled = false;
+        navMeshAgent.enabled = false;
+    }
 
-        animator.SetTrigger("atk");
+
+    private void shoot()
+    {
+
         //RaycastHit hit;
         //if(Physics.Raycast(raycastSource.position, raycastSource.forward, out hit, range)){
 
@@ -79,7 +115,14 @@ public class EnemyRangedAttack : MonoBehaviour
 
     }
 
-    
+    private void shootEnd()
+    {
+        enemyController.enabled = true;
+        flockAgent.enabled = true;
+        navMeshAgent.enabled = true;
+    }
+
+
 
 
 }
