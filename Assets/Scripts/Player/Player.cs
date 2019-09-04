@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 	/// <param name="dmg"> the amount of health to remove from the player</param>
 	public void TakeDamage(int dmg)
 	{
+		playerMovement.RandomizeReactHitVariant();
 		playerMovement.animator.SetTrigger("takeDamage");
         Debug.Log("Took " + dmg + " damage");
 		health -= dmg;
@@ -71,6 +72,10 @@ public class Player : MonoBehaviour
 	/// </summary>
 	private void OnDeath()
 	{
+		playerMovement.RandomizeDeathVariant();
+		playerMovement.animator.SetTrigger("die");
+
+		//TODO: Disable colliders and movement scripts and shit
 
 		Instantiate(gameObject);
 		Destroy(gameObject);

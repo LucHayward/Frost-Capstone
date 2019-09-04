@@ -93,7 +93,7 @@ public class PlayerMovement : MonoBehaviour
 			//transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, Time.deltaTime * turnSpeed);
 			transform.rotation = Quaternion.Lerp(transform.rotation, newLookRotation, turnSpeed); //TODO: Decide on one of these 4 lines lines
 		}
-		
+
 		if (characterController.isGrounded && gravity >= 0)
 		{
 			animator.SetFloat("velocityX", localVelocity.x);
@@ -132,7 +132,7 @@ public class PlayerMovement : MonoBehaviour
 		//characterController.center = new Vector3(tCCCenter.x, 0.92f, tCCCenter.z);
 		//characterController.height = 1.391f;
 		//characterController.Move(Vector3.up * 1);
-		
+
 
 		Debug.Log("Jumping");
 
@@ -156,6 +156,22 @@ public class PlayerMovement : MonoBehaviour
 		lhs.localPosition = toBeCopied.localPosition;
 		lhs.localRotation = toBeCopied.localRotation;
 		lhs.localScale    = toBeCopied.localScale;
+	}
+	
+	private void RandomizeIdleVariant()
+	{
+		animator.SetFloat("idleVariant", Random.Range(0, 5));
+	}
+
+	public void RandomizeReactHitVariant()
+	{
+		animator.SetFloat("reachHitVariant", Random.Range(0, 5));
+	}
+
+	public void RandomizeDeathVariant()
+	{
+		animator.SetFloat("deathVariant", Random.Range(0, 5));
+
 	}
 
 }
