@@ -160,7 +160,7 @@ public class PlayerMovement : MonoBehaviour
 	
 	private void RandomizeIdleVariant()
 	{
-		animator.SetFloat("idleVariant", Random.Range(0, 5));
+		animator.SetFloat("idleVariant", Random.Range(0, 7));
 	}
 
 	public void RandomizeReactHitVariant()
