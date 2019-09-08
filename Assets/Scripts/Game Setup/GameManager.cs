@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
             instance = (GameManager)FindObjectOfType(typeof(GameManager));
         return instance;
     }
-
+    public PauseMenu pauseMenu;
     public float startDelay = 3f;
     public float endDelay = 3f;
     [HideInInspector]public List<FlockAgent> agents = new List<FlockAgent>();
@@ -53,9 +53,6 @@ public class GameManager : MonoBehaviour
             agents.Add(meleeEnemies[i].GetFlockAgent());
 		}
 	}
-
-    
-
 
     private int CalcuateNumberOfMeleeEnemies()
     {
@@ -186,5 +183,86 @@ public class GameManager : MonoBehaviour
             
         else
             return true;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (pauseMenu.isPaused)
+            {
+                ResumeGame();
+            }
+            else
+            {
+                PauseGame();
+            }
+        }
+    }
+
+    private void ResumeGame()
+    {
+        pauseMenu.ResumeGame();
+        ResumePlayerMovement();
+        ResumeEnemyMovement();
+    }
+
+    private void PauseGame()
+    {
+        pauseMenu.PauseGame();
+        PausePlayerMovement();
+        PauseEnemyMovement();
+    }
+
+    private void PausePlayerMovement()
+    {
+        foreach(PlayerManager player in players)
+        {
+            player.StopMovment();
+        }
+    }
+
+    private void ResumePlayerMovement()
+    {
+        foreach (PlayerManager player in players)
+        {
+            player.ResumeMovement();
+        }
+    }
+
+    private void PauseEnemyMovement()
+    {
+        foreach(EnemyManager meleeEnemy in meleeEnemies)
+        {
+            meleeEnemy.DisableMovement();
+        }
+
+        foreach (EnemyManager rangedEnemy in rangedEnemies)
+        {
+            rangedEnemy.DisableMovement();
+        }
+
+        foreach (EnemyManager bossEnemy in bossEnemies)
+        {
+            bossEnemy.DisableMovement();
+        }
+    }
+
+    private void ResumeEnemyMovement()
+    {
+        foreach (EnemyManager meleeEnemy in meleeEnemies)
+        {
+            meleeEnemy.EnableMovement();
+        }
+
+        foreach (EnemyManager rangedEnemy in rangedEnemies)
+        {
+            rangedEnemy.EnableMovement();
+        }
+
+        foreach (EnemyManager bossEnemy in bossEnemies)
+        {
+            bossEnemy.EnableMovement();
+        }
     }
 }

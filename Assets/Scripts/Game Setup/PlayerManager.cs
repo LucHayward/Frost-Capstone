@@ -29,7 +29,7 @@ public class PlayerManager
             cameraController.orbitTarget = instanceOfPlayer.transform.GetChild(3);
         }
 
-		healthResetValue = playerScript.health;
+		healthResetValue = playerScript.currrentHealth;
     }
 
     public void RoundReset()
@@ -39,6 +39,16 @@ public class PlayerManager
 
     private void ResetHealth()
     {
-        playerScript.health = healthResetValue;
+        playerScript.currrentHealth = healthResetValue;
+    }
+
+    public void StopMovment()
+    {
+        playerScript.enabled = false;
+    }
+
+    public void ResumeMovement()
+    {
+        playerScript.enabled = true;
     }
 }

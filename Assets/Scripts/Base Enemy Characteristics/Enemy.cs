@@ -84,13 +84,13 @@ public class Enemy : MonoBehaviour
         return identificationNumber;
     }
 
-	/// <summary>
+    /// <summary>
     /// 
     /// </summary>
-    /// <param name="dmg"></param>
-    public void TakeDamage(int dmg)
+    /// <param name="damage"></param>
+    public void TakeDamage(int damage)
     {
-        health = health - dmg;
+        health = health - damage;
     }
 
 

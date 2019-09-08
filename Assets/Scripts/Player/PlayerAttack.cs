@@ -73,4 +73,14 @@ public class PlayerAttack : MonoBehaviour
 
 	}
 
+    public void OnDisable()
+    {
+        cam.GetComponent<CameraController>().enabled = false;
+    }
+
+    public void OnEnable()
+    {
+        cam.GetComponent<CameraController>().enabled = true;
+    }
+
 }

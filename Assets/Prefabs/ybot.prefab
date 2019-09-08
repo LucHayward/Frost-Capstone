@@ -756,8 +756,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46f4006d9e8d2046a60733a35fdf84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
-  lvl: 0
+  startingHealth: 100
+  currrentHealth: 0
+  healthSlider: {fileID: 0}
+  damageImage: {fileID: 0}
+  flashSpeed: 5
+  flashColor: {r: 1, g: 0, b: 0, a: 0.1}
+  level: 0
   healthText: {fileID: 0}
   hasShield: 0
   isFast: 0
@@ -780,7 +785,6 @@ MonoBehaviour:
   projectile: {fileID: 2047500474522875096, guid: c06e12f8c98b91b43acebb83f61dd3c3,
     type: 3}
   animator: {fileID: 9176910311190146148}
-  attackAnim: {fileID: 0}
   cam: {fileID: 0}
   attackParticles: {fileID: 0}
   attackClip: {fileID: 0}
