@@ -27,6 +27,12 @@ public class Player : MonoBehaviour
         currrentHealth = startingHealth;
     }
 
+    private void Start()
+    {
+        GameObject healthUI = GameObject.Find("HealthUI");
+        healthSlider = healthUI.GetComponentInChildren<Slider>();
+    }
+
     private void Update()
     {
         if (isDamaged)

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -29,12 +30,18 @@ public class GameManager : MonoBehaviour
     private WaitForSeconds endWait;
     private int roundNumber = 0;
     private bool spawnedEnemy = false;
+    private Text levelText;
+    private Text scoreText;
+    private int score = 0;
 
     private void Start()
     {
         startWait = new WaitForSeconds(startDelay);
         endWait = new WaitForSeconds(endDelay);
-
+        GameObject levelUI = GameObject.Find("LevelUI");
+        levelText = levelUI.GetComponentInChildren<Text>();
+        GameObject scoreUI = GameObject.Find("ScoreUI");
+        scoreText = scoreUI.GetComponentInChildren<Text>();
         SpawnPlayer();
         StartCoroutine(GameLoop());    
     }
@@ -122,6 +129,7 @@ public class GameManager : MonoBehaviour
     {
         ResetAllPlayers();
         roundNumber++;
+        levelText.text = "LEVEL " + roundNumber;
         spawnedEnemy = false;
         // TODO update UI
         yield return startWait;
@@ -264,5 +272,11 @@ public class GameManager : MonoBehaviour
         {
             bossEnemy.EnableMovement();
         }
+    }
+
+    public void UpdateScore(int points)
+    {
+        score += points;
+        scoreText.text = "SCORE " + score;
     }
 }
