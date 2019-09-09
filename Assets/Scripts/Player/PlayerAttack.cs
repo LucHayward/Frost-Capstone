@@ -68,6 +68,16 @@ public class PlayerAttack : MonoBehaviour
 		//Destroy(firedGO, 30);
 	}
 
+    private void Stun()
+    {
+
+    }
+
+    private void MeleeAttack()
+    {
+
+    }
+
 	private void CastHeal()
 	{
 

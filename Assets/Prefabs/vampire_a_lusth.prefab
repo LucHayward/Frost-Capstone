@@ -588,6 +588,7 @@ MonoBehaviour:
   damage: 1
   hasScreamed: 0
   velocityMagnitude: 0
+  cantMove: 0
   enemyController: {fileID: 5848736932314586638}
   flockAgent: {fileID: 8352413979453468287}
 --- !u!114 &5848736932314586638
@@ -604,6 +605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7768273403288973673}
   agent: {fileID: 2275738578554044500}
+  stoppingDistance: 1.8
   flockAgent: {fileID: 8352413979453468287}
 --- !u!114 &4207828154626167842
 MonoBehaviour:
@@ -647,7 +649,7 @@ MonoBehaviour:
   enemyWeaponTransform: {fileID: 1826371623606624712}
   animator: {fileID: 7768273403288973673}
   navMeshAgent: {fileID: 2275738578554044500}
-  range: 3
+  range: 1.8
   abilityRange: 0
   abilityCD: 0
   shotDelay: 1
@@ -660,12 +662,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 720003689127736480}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.48
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 2
+  m_StoppingDistance: 1.8
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
