@@ -582,13 +582,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  enemyController: {fileID: 5848736932314586638}
-  flockAgent: {fileID: 8352413979453468287}
   animator: {fileID: 7768273403288973673}
+  type: Melee
   abilityDamage: 0
   damage: 1
   hasScreamed: 0
   velocityMagnitude: 0
+  enemyController: {fileID: 5848736932314586638}
+  flockAgent: {fileID: 8352413979453468287}
 --- !u!114 &5848736932314586638
 MonoBehaviour:
   m_ObjectHideFlags: 0

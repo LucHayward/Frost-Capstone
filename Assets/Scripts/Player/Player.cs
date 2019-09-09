@@ -6,44 +6,67 @@ using UnityEngine.UI;
 using TMPro;
 public class Player : MonoBehaviour
 {
-    public int health;
-	public int lvl;
-
+    public int startingHealth = 100;
+    public int currrentHealth;
+    public Slider healthSlider;
+    public Image damageImage;
+    public float flashSpeed = 5f;
+    public Color flashColor = new Color(1f, 0f, 0f, 0.1f);
+	public int level;
 	public TextMeshProUGUI healthText;
     public bool hasShield=false;
     public bool isFast=false;
 
+    private bool isDamaged;
+
     [SerializeField] private PlayerMovement playerMovement = null; //Assigned in inspector
 	[SerializeField] private PlayerAttack playerAttack = null; //Assigned in inspector
 
-	// Start is called before the first frame update
-	void Start()
+    private void Awake()
     {
-        health += lvl * 2;
+        currrentHealth = startingHealth;
     }
 
-	/// <summary>
-	/// Reduce player health and perform death check
-	/// </summary>
-	/// <param name="dmg"> the amount of health to remove from the player</param>
-	public void TakeDamage(int dmg)
-	{
-        Debug.Log("Took " + dmg + " damage");
-		health -= dmg;
-		if (health <= 0)
-		{
-			Debug.Log("Player Died");
-			OnDeath();
-		}
-	}
-
-	/// <summary>
-	/// Monitor player health
-	/// </summary>
-    void Update()
+    private void Start()
     {
-		// TODO: remove this if still redundant in TakeDamage()
-		if (health <= 0)
+        GameObject healthUI = GameObject.Find("HealthUI");
+        healthSlider = healthUI.GetComponentInChildren<Slider>();
+    }
+
+    private void Update()
+    {
+        if (isDamaged)
+        {
+            damageImage.color = flashColor;
+        }
+        else
+        {
+            damageImage.color = Color.Lerp(damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+        }
+        isDamaged = false;
+
+        // TODO: remove this if still redundant in TakeDamage()
+        if (currrentHealth <= 0)
+        {
+            Debug.Log("Player Died");
+            OnDeath();
+        }
+    }
+
+    /// <summary>
+    /// Reduce player health and perform death check
+    /// </summary>
+    /// <param name="damageAmount"> the amount of health to remove from the player</param>
+    public void TakeDamage(int damageAmount)
+	{
+        isDamaged = true;
+
+        playerMovement.RandomizeReactHitVariant();
+		playerMovement.animator.SetTrigger("takeDamage");
+        Debug.Log("Took " + damageAmount + " damage");
+		currrentHealth -= damageAmount;
+        healthSlider.value = currrentHealth;
+		if (currrentHealth <= 0)
 		{
 			Debug.Log("Player Died");
 			OnDeath();
@@ -70,6 +93,10 @@ public class Player : MonoBehaviour
 	/// </summary>
 	private void OnDeath()
 	{
+		playerMovement.RandomizeDeathVariant();
+		playerMovement.animator.SetTrigger("die");
+
+		//TODO: Disable colliders and movement scripts and shit
 
 		Instantiate(gameObject);
 		Destroy(gameObject);

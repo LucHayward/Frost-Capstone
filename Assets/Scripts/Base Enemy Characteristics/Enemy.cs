@@ -6,28 +6,26 @@ public class Enemy : MonoBehaviour
 {
     public int health;
     private int identificationNumber;
-    [SerializeField] private EnemyController enemyController;
-    [SerializeField] private FlockAgent flockAgent;
-
-	private GameObject playerGO;
-	private Player player;
-	private Transform playerPos;
     public Animator animator;
     private Vector3 velocity;
-
+    public string type;
     public int abilityDamage = 0;
-
     public int damage = 0;
-
     public bool hasScreamed = false;
+    public float velocityMagnitude = 0.0f;
     //public bool busyAttacking = false;
     //public bool busyAbility = false;
     //public bool busyShooting = false;
 
     public bool cantMove = false;
 
+    [SerializeField] private EnemyController enemyController;
+    [SerializeField] private FlockAgent flockAgent;
+	private GameObject playerGO;
+	private Player player;
+	private Transform playerPos;
     private Vector3 prevTransform;
-    public float velocityMagnitude = 0.0f;
+
 	// Start is called before the first frame update
 	void Start()
     {
@@ -72,10 +70,10 @@ public class Enemy : MonoBehaviour
             animator.SetBool("Walk", false);
         }
         
-
         prevTransform = transform.position;
         if (health < 1)
         {
+            UpdateScore();
             //animator.SetBool("isDead", true);
             Destroy(gameObject);
         }
@@ -95,13 +93,13 @@ public class Enemy : MonoBehaviour
         return identificationNumber;
     }
 
-	/// <summary>
+    /// <summary>
     /// 
     /// </summary>
-    /// <param name="dmg"></param>
-    public void TakeDamage(int dmg)
+    /// <param name="damage"></param>
+    public void TakeDamage(int damage)
     {
-        health = health - dmg;
+        health = health - damage;
     }
 
 
@@ -117,5 +115,14 @@ public class Enemy : MonoBehaviour
         flockAgent.enabled = true;
 	}
 
+    private void UpdateScore()
+    {
+        if (type == "Boss")
+            GameManager.Get().UpdateScore(5);
+        else if (type == "Melee")
+            GameManager.Get().UpdateScore(3);
+        else if (type == "Ranged")
+            GameManager.Get().UpdateScore(4);
+    }
     
 }

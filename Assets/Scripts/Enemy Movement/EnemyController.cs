@@ -47,76 +47,65 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void Move()
     {
-        transform.LookAt(playerTrasnform.position);
-        float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-        if (distance > 3)
-        {
-            flockAgent.enabled = false;
-            agent.isStopped = false;
-            agent.SetDestination(playerTrasnform.position);
-        }
-        else
-        {  
-            agent.isStopped = true;
-            flockAgent.enabled = false ;
-        }  
+            transform.LookAt(playerTrasnform.position);
+            float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
+            if (distance > 3)
+            {
+                flockAgent.enabled = false;
+                agent.isStopped = false;
+                agent.SetDestination(playerTrasnform.position);
+            }
+            else
+            {
+                agent.isStopped = true;
+                flockAgent.enabled = false;
+            }  
     }
     /// <summary>
     /// Controls the movment of the NPC for when they cannot see the player.
     /// </summary>
     private void Wander()
     {
-        float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-        if(distance < 5)
-        {
-            flockAgent.enabled = false;
-            agent.SetDestination(playerTrasnform.position);
-        }
-        else
-        {
-            agent.isStopped = true;
-            flockAgent.enabled = true;
-        }
-        
+            float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
+            if (distance < 5)
+            {
+                flockAgent.enabled = false;
+                agent.SetDestination(playerTrasnform.position);
+            }
+            else
+           {
+                agent.isStopped = true;
+                flockAgent.enabled = true;
+           }
     }
     /// <summary>
     /// Determines whether the NPC can see the player and makes decisions based on this information
     /// </summary>
     private void MakeDecision()
     {
-       
         Vector3 currentPosition = new Vector3(transform.position.x, 1, transform.position.z);
         Vector3 centralizedPlayerPosition = new Vector3(playerTrasnform.position.x, 1, playerTrasnform.position.z);
         Vector3 directionToPlayer = centralizedPlayerPosition - currentPosition; // vector pointing from the enemy to the player       
         Ray eyeLine = new Ray(currentPosition, directionToPlayer);
         Debug.DrawRay(currentPosition, directionToPlayer);
-        int layerMask = LayerMask.GetMask("Player", "Obstacle"); // this is not working.
+        int layerMask = LayerMask.GetMask("Player", "Obstacle");
         // TODO fix the line of sight
         if (Physics.Raycast(eyeLine, out RaycastHit hit, layerMask))
         {
             if (hit.collider.tag.Equals("Player"))
             {
                 hasSeen = true;
-                Debug.Log("Sees player");
-                
-                
-
                 if(enemy.hasScreamed == false)
                 {
                     animator.SetTrigger("scream");
                     enemy.hasScreamed = true;
                 }
-                
-                
-                Move();
-                
+
+                Move();                
             }
             
             else
             {
-                Debug.Log("Does not see enemy");
-                Debug.Log(hit.transform.tag);
-
                 //prevent enemies wandering when line of sight is blocked by other enemies
                 if (hasSeen == false)
                 {
@@ -125,8 +114,7 @@ public class EnemyController : MonoBehaviour
                 else
                 {
                     Move();
-                }
-                
+                }   
             }
         }
         else

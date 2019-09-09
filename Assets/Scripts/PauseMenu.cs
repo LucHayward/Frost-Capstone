@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool isPaused = false;
+    public bool isPaused = false;
     public GameObject pausePanel;
     GameObject player;
     // Update is called once per frame
@@ -15,27 +15,10 @@ public class PauseMenu : MonoBehaviour
         
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (isPaused)
-            {
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
-            }
-        }
-    }
-
     public void ResumeGame()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
-
         pausePanel.SetActive(false);
         isPaused = false;
     }
