@@ -6144,5 +6144,10 @@ PrefabInstance:
       propertyPath: abilityDamage
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 6781322121223817581, guid: 917d86f23c2f3d048b931542fdaa7ff2,
+        type: 3}
+      propertyPath: stoppingDistance
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 917d86f23c2f3d048b931542fdaa7ff2, type: 3}

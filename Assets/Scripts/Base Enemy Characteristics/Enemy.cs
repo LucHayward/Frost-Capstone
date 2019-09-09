@@ -99,7 +99,7 @@ public class Enemy : MonoBehaviour
     /// <param name="damage"></param>
     public void TakeDamage(int damage)
     {
-        health = health - damage;
+        health -= damage;
     }
 
 
@@ -124,5 +124,7 @@ public class Enemy : MonoBehaviour
         else if (type == "Ranged")
             GameManager.Get().UpdateScore(4);
     }
+
+    //add stack method - called from within projectile attack (line 38)
     
 }

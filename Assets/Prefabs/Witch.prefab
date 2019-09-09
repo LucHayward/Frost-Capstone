@@ -2154,6 +2154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 5915185049473486441}
   agent: {fileID: 3457713459428453073}
+  stoppingDistance: 3
   flockAgent: {fileID: 6003557633375194241}
 --- !u!114 &6067422093166465897
 MonoBehaviour:

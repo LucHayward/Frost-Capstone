@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
 
     public Animator animator;
     public NavMeshAgent agent;
+    public float stoppingDistance;
     private GameObject playerGameObject;
     private Transform playerTrasnform;
     private Enemy enemy;
@@ -32,7 +33,7 @@ public class EnemyController : MonoBehaviour
 
         if (enemy.cantMove == true)
         {
-            stopMove();
+            StopMove();
         }
         else
         {
@@ -49,7 +50,7 @@ public class EnemyController : MonoBehaviour
     {
             transform.LookAt(playerTrasnform.position);
             float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-            if (distance > 3)
+            if (distance > stoppingDistance)
             {
                 flockAgent.enabled = false;
                 agent.isStopped = false;
@@ -123,11 +124,16 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void stopMove()
+    public void StopMove()
     {
         agent.isStopped = true;
         flockAgent.enabled = false;
     }
 
+    public void ResumeMove()
+    {
+        agent.isStopped = false;
+        flockAgent.enabled = true;
+    }
     
 }
