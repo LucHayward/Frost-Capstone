@@ -29,6 +29,17 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         MakeDecision();
+
+        if (enemy.cantMove == true)
+        {
+            stopMove();
+        }
+        else
+        {
+            agent.isStopped = false;
+            flockAgent.enabled = true;
+            
+        }
     }
 
     /// <summary>
@@ -122,6 +133,12 @@ public class EnemyController : MonoBehaviour
         {
             Wander();
         }
+    }
+
+    public void stopMove()
+    {
+        agent.isStopped = true;
+        flockAgent.enabled = false;
     }
 
     

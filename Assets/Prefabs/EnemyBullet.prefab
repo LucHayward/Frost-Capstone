@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
-  objectLife: 4
+  objectLife: 30
   damageableTags:
   - Player
   impactPrefab: {fileID: 9141597624335300536, guid: a7deb43d86e8a4c4b8f1f411533a5ca2,

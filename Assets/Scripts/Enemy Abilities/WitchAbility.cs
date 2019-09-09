@@ -33,13 +33,7 @@ public class WitchAbility : MonoBehaviour
     private GameObject proj3;
     private GameObject proj4;
 
-    private GameObject temp1;
-    private GameObject temp2;
-    private GameObject temp3;
-    private GameObject temp4;
-
-
-
+    
 
     // Start is called before the first frame update
     void Start()
@@ -61,17 +55,20 @@ public class WitchAbility : MonoBehaviour
 
     void abilityStart()
     {
-        witchController.enabled = false;
-        flockAgent.enabled = false;
-        navMeshAgent.enabled = false;
+        witch.cantMove = true;
+        //witchController.enabled = false;
+        //flockAgent.enabled = false;
+        //navMeshAgent.enabled = false;
+
+        //navMeshAgent.isStopped = true;
     }
 
     void ability()
     {
-        temp1 = Instantiate(projectile, spawnPoints[0].position, Quaternion.identity) as GameObject;
-        temp2 = Instantiate(projectile, spawnPoints[1].position, Quaternion.identity) as GameObject;
-        temp3 = Instantiate(projectile, spawnPoints[2].position, Quaternion.identity) as GameObject;
-        temp4 = Instantiate(projectile, spawnPoints[3].position, Quaternion.identity) as GameObject;
+        proj1 = Instantiate(projectile, spawnPoints[0].position, Quaternion.identity) as GameObject;
+        proj2 = Instantiate(projectile, spawnPoints[1].position, Quaternion.identity) as GameObject;
+        proj3 = Instantiate(projectile, spawnPoints[2].position, Quaternion.identity) as GameObject;
+        proj4 = Instantiate(projectile, spawnPoints[3].position, Quaternion.identity) as GameObject;
 
         
 
@@ -80,7 +77,6 @@ public class WitchAbility : MonoBehaviour
         //temp2.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(temp2.transform.forward, shotPath2, 100f, 100f));
         //temp3.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(temp3.transform.forward, shotPath3, 100f, 100f));
         //temp4.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(temp4.transform.forward, shotPath4, 100f, 100f));
-
 
 
     }
@@ -96,19 +92,19 @@ public class WitchAbility : MonoBehaviour
 
     void ability2Start()
     {
-        witchController.enabled = false;
-        flockAgent.enabled = false;
-        navMeshAgent.enabled = false;
+        //witchController.enabled = false;
+        //flockAgent.enabled = false;
+        //navMeshAgent.enabled = false;
 
 
-        Destroy(temp1);
-        temp1 = Instantiate(projectile, spawnPoints[0].position, Quaternion.identity) as GameObject;
-        Destroy(temp2);
-        temp2 = Instantiate(projectile, spawnPoints[1].position, Quaternion.identity) as GameObject;
-        Destroy(temp3);
-        temp3 = Instantiate(projectile, spawnPoints[2].position, Quaternion.identity) as GameObject;
-        Destroy(temp4);
-        temp4 = Instantiate(projectile, spawnPoints[3].position, Quaternion.identity) as GameObject;
+        ////Destroy(temp1);
+        //temp1 = Instantiate(projectile, spawnPoints[0].position, Quaternion.identity) as GameObject;
+        //Destroy(temp2);
+        //temp2 = Instantiate(projectile, spawnPoints[1].position, Quaternion.identity) as GameObject;
+        //Destroy(temp3);
+        //temp3 = Instantiate(projectile, spawnPoints[2].position, Quaternion.identity) as GameObject;
+        //Destroy(temp4);
+        //temp4 = Instantiate(projectile, spawnPoints[3].position, Quaternion.identity) as GameObject;
 
 
         //temp1.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(temp1.transform.forward, shotPath1, 100f, 100f));
@@ -123,17 +119,17 @@ public class WitchAbility : MonoBehaviour
     void ability2()
     {
 
-        Destroy(temp1);
-        proj1 = Instantiate(projectile, spawnPoints[0].position, Quaternion.identity) as GameObject;
+        //Destroy(temp1);
+        //temp1 = Instantiate(projectile, spawnPoints[0].position, Quaternion.identity) as GameObject;
 
-        Destroy(temp2);
-        proj2 = Instantiate(projectile, spawnPoints[1].position, Quaternion.identity) as GameObject;
+        //Destroy(temp2);
+        //temp2 = Instantiate(projectile, spawnPoints[1].position, Quaternion.identity) as GameObject;
 
-        Destroy(temp3);
-        proj3 = Instantiate(projectile, spawnPoints[2].position, Quaternion.identity) as GameObject;
+        //Destroy(temp3);
+        //temp3 = Instantiate(projectile, spawnPoints[2].position, Quaternion.identity) as GameObject;
 
-        Destroy(temp4);
-        proj4 = Instantiate(projectile, spawnPoints[3].position, Quaternion.identity) as GameObject;
+        //Destroy(temp4);
+        //temp4 = Instantiate(projectile, spawnPoints[3].position, Quaternion.identity) as GameObject;
 
         shotPath1 = playerTransform.position - spawnPoints[0].position;
         shotPath2 = playerTransform.position - spawnPoints[1].position;
@@ -160,8 +156,11 @@ public class WitchAbility : MonoBehaviour
 
     void ability2End()
     {
-        witchController.enabled = true;
-        flockAgent.enabled = true;
-        navMeshAgent.enabled = true;
+        //navMeshAgent.isStopped = true;
+        witch.cantMove = false;
+        //witchController.enabled = true;
+        //flockAgent.enabled = true;
+        //navMeshAgent.enabled = true;
     }
+
 }

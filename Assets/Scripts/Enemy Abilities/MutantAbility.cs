@@ -40,16 +40,18 @@ public class MutantAbility : MonoBehaviour
     // Update is called once per frame
     void jumpAttackStart()
     {
-        mutantController.enabled = false;
-        flockAgent.enabled = false;
-        navMeshAgent.enabled = false;
+        mutant.cantMove = true;
+        //mutantController.enabled = false;
+        //flockAgent.enabled = false;
+        //navMeshAgent.enabled = false;
     }
 
     void jumpAttackMove()
     {
-        mutantController.enabled = true;
-        flockAgent.enabled = true;
-        navMeshAgent.enabled = true;
+        mutant.cantMove = false;
+        //mutantController.enabled = true;
+        //flockAgent.enabled = true;
+        //navMeshAgent.enabled = true;
     }
 
     void jumpAttackDamage()
@@ -65,15 +67,17 @@ public class MutantAbility : MonoBehaviour
 
     void jumpAttackLand()
     {
-        mutantController.enabled = false;
-        flockAgent.enabled = false;
-        navMeshAgent.enabled = false;
+        mutant.cantMove = true;
+        //mutantController.enabled = false;
+        //flockAgent.enabled = false;
+        //navMeshAgent.enabled = false;
     }
 
     void jumpAttackEnd()
     {
-        mutantController.enabled = true;
-        flockAgent.enabled = true;
-        navMeshAgent.enabled = true;
+        mutant.cantMove = false;
+        //mutantController.enabled = true;
+        //flockAgent.enabled = true;
+        //navMeshAgent.enabled = true;
     }
 }

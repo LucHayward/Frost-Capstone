@@ -19,6 +19,7 @@ public class ZombieScream : MonoBehaviour
     private Transform zombieTransform;
     private Transform playerTransform;
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -36,9 +37,10 @@ public class ZombieScream : MonoBehaviour
 
     void screamStart()
     {
-        zombieController.enabled = false;
-        flockAgent.enabled = false;
-        navMeshAgent.enabled = false;
+        zombie.cantMove = true;
+        //zombieController.enabled = false;
+        //flockAgent.enabled = false;
+        //navMeshAgent.enabled = false;
     }
 
     void scream()
@@ -48,8 +50,10 @@ public class ZombieScream : MonoBehaviour
 
     void screamEnd()
     {
-        zombieController.enabled = true;
-        flockAgent.enabled = true;
-        navMeshAgent.enabled = true;
+        zombie.cantMove = false;
+        //zombieController.enabled = true;
+        //flockAgent.enabled = true;
+        //navMeshAgent.enabled = true;
     }
+
 }

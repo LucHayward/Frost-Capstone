@@ -29,6 +29,8 @@ public class EnemyRangedAttack : MonoBehaviour
     public float abilityCD = 0.0f;
 
     
+    
+    
     //public SpawnManager spawnManager;
 
     public ParticleSystem attackParticles; //TODO: Add particles
@@ -50,12 +52,12 @@ public class EnemyRangedAttack : MonoBehaviour
     {
         shotPath = playerTransform.position - projectileSpawnPoint.position;
         currentTime = Time.time;
-
+        
         if (currentTime - lastAbilityTime > abilityCD)   
         {
             if (Vector3.Distance(playerTransform.position, projectileSpawnPoint.position) < abilityRange)
             {
-
+                //enemy.velocityMagnitude = 0;
 
                 animator.SetTrigger("ability");
                 lastAbilityTime = currentTime + abilityCD;
@@ -75,20 +77,29 @@ public class EnemyRangedAttack : MonoBehaviour
             }
                 
         }
-
         
+
+
     }
 
     private void shootStart()
     {
-        enemyController.enabled = false;
-        flockAgent.enabled = false;
-        navMeshAgent.enabled = false;
+        enemy.cantMove = true;
+        //enemyController.enabled = false;
+        //flockAgent.enabled = false;
+        //navMeshAgent.enabled = false;
+        enemy.velocityMagnitude = 0;
     }
 
 
     private void shoot()
     {
+        //enemy.velocityMagnitude = 0;
+
+        //Vector3 lookPath = 
+        //gameObject.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(gameObject.transform.forward, shotPath, 100f, 100f));
+
+
 
         //RaycastHit hit;
         //if(Physics.Raycast(raycastSource.position, raycastSource.forward, out hit, range)){
@@ -97,9 +108,9 @@ public class EnemyRangedAttack : MonoBehaviour
 
         //TODO: Pool GameObjects for performance
         //TODO: Animate the spawning of a new object and fire the current one (or animate current respawn and instantiate new)
-        
-        GameObject firedGO = Instantiate(projectile, projectileSpawnPoint.position, Quaternion.identity) as GameObject;
 
+        GameObject firedGO = Instantiate(projectile, projectileSpawnPoint.position, Quaternion.identity) as GameObject;
+        
 
         firedGO.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(firedGO.transform.forward, shotPath, 100f, 100f));
         firedGO.GetComponent<Rigidbody>().AddForce(firedGO.transform.forward * 20, ForceMode.VelocityChange);
@@ -117,9 +128,11 @@ public class EnemyRangedAttack : MonoBehaviour
 
     private void shootEnd()
     {
-        enemyController.enabled = true;
-        flockAgent.enabled = true;
-        navMeshAgent.enabled = true;
+        enemy.cantMove = false;
+        //enemyController.enabled = true;
+        //flockAgent.enabled = true;
+        //navMeshAgent.enabled = true;
+        
     }
 
 

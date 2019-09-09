@@ -20,6 +20,11 @@ public class Enemy : MonoBehaviour
     public int damage = 0;
 
     public bool hasScreamed = false;
+    //public bool busyAttacking = false;
+    //public bool busyAbility = false;
+    //public bool busyShooting = false;
+
+    public bool cantMove = false;
 
     private Vector3 prevTransform;
     public float velocityMagnitude = 0.0f;
@@ -40,7 +45,13 @@ public class Enemy : MonoBehaviour
         velocity = ((transform.position - prevTransform) / Time.deltaTime);
         velocityMagnitude = velocity.magnitude;
 
-        if (velocityMagnitude == 0)
+        if(velocityMagnitude == 0.1f)
+        {
+            animator.SetBool("Idle", false);
+            animator.SetBool("Run", false);
+            animator.SetBool("Walk", false);
+        }
+        else if (velocityMagnitude == 0)
         {
             animator.SetBool("Idle", true);
             animator.SetBool("Run", false);
