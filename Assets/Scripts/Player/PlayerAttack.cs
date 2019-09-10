@@ -15,6 +15,7 @@ public class PlayerAttack : MonoBehaviour
 
 	//public ParticleSystem attackParticles; //TODO: Add particles
 	//public AudioSource attackClip; //TODO: Add attack audio
+	public AudioSource meleeAttackClip;
 	public AudioSource attackClip;
 	public AudioSource attackFailClip;
 	public AudioSource attackStunCastClip;
@@ -41,7 +42,14 @@ public class PlayerAttack : MonoBehaviour
 
         if(Input.GetButtonDown("Fire3"))
         {
-            StartCoroutine(MeleeAttack());
+			if (animator.GetCurrentAnimatorStateInfo(0).IsName("Melee Attack Stab"))
+			{
+				//TODO: Update with unique melee fail clip
+				attackFailClip.Play();
+				return;
+			}
+			meleeAttackClip.Play();
+			StartCoroutine(MeleeAttack());
         }
 	}
 
@@ -138,8 +146,8 @@ public class PlayerAttack : MonoBehaviour
     {
         staffCollider.enabled = true;
         Debug.Log("Melee Attack");
-        //animator.SetTrigger("meleeAttack");
-        yield return new WaitForSecondsRealtime(10);
+		animator.SetTrigger("meleeAttack");
+		yield return new WaitForSecondsRealtime(10);
         staffCollider.enabled = false;
 
     }
