@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
 		playerMovement.RandomizeDeathVariant();
 		playerMovement.animator.SetTrigger("die");
 
-		//TODO: Disable colliders and movement scripts and shit
+		//TODO: Disable colliders and movement scripts etc
 
 		Instantiate(gameObject);
 		Destroy(gameObject);

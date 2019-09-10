@@ -2115,10 +2115,12 @@ MonoBehaviour:
   abilityDamage: 4
   damage: 2
   hasScreamed: 0
+  isStunned: 0
   velocityMagnitude: 0
   cantMove: 0
   enemyController: {fileID: 8471785993963130964}
   flockAgent: {fileID: 6003557633375194241}
+  isDead: 0
 --- !u!114 &1860593735834247553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2134,7 +2136,7 @@ MonoBehaviour:
   range: 10
   abilityRange: 10
   projectileSpawnPoint: {fileID: 3639774786292551187}
-  projectile: {fileID: 4440679398622339157, guid: 1cc41222f7bf0d14d86cbe2dba6b456e,
+  projectile: {fileID: 3717122402087185367, guid: ef3710a00ef9cfe459f9d2a5aa1ddb50,
     type: 3}
   animator: {fileID: 5915185049473486441}
   navMeshAgent: {fileID: 3457713459428453073}
@@ -2169,7 +2171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b3d4dfeb97879478415c2f98add785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 4440679398622339157, guid: 1cc41222f7bf0d14d86cbe2dba6b456e,
+  projectile: {fileID: 3717122402087185367, guid: ef3710a00ef9cfe459f9d2a5aa1ddb50,
     type: 3}
   navMeshAgent: {fileID: 3457713459428453073}
   animator: {fileID: 5915185049473486441}

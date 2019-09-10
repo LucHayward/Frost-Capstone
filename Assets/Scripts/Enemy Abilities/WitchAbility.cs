@@ -83,10 +83,12 @@ public class WitchAbility : MonoBehaviour
 
     void ability2()
     {
-        shotPath1 = playerTransform.position - spawnPoints[0].position;
-        shotPath2 = playerTransform.position - spawnPoints[1].position;
-        shotPath3 = playerTransform.position - spawnPoints[2].position;
-        shotPath4 = playerTransform.position - spawnPoints[3].position;
+        Vector3 shotVector = new Vector3(playerTransform.position.x, 1, playerTransform.position.z);
+
+        shotPath1 = shotVector - spawnPoints[0].position;
+        shotPath2 = shotVector - spawnPoints[1].position;
+        shotPath3 = shotVector - spawnPoints[2].position;
+        shotPath4 = shotVector - spawnPoints[3].position;
 
         if (proj1 != null)
         {
@@ -108,22 +110,18 @@ public class WitchAbility : MonoBehaviour
         if (proj1 != null)
         {
             proj1.GetComponent<Rigidbody>().AddForce(proj1.transform.forward * 20, ForceMode.VelocityChange);
-            Destroy(proj1, 30);
         }
         if (proj2 != null)
         {
             proj2.GetComponent<Rigidbody>().AddForce(proj2.transform.forward * 20, ForceMode.VelocityChange);
-            Destroy(proj2, 30);
         }
         if (proj3 != null)
         {
             proj3.GetComponent<Rigidbody>().AddForce(proj3.transform.forward * 20, ForceMode.VelocityChange);
-            Destroy(proj3, 30);
         }
         if (proj4 != null)
         {
             proj4.GetComponent<Rigidbody>().AddForce(proj4.transform.forward * 20, ForceMode.VelocityChange);
-            Destroy(proj4, 30);
         }
 
     }
@@ -157,6 +155,8 @@ public class WitchAbility : MonoBehaviour
         Destroy(proj2);
         Destroy(proj3);
         Destroy(proj4);
+
+        Destroy(witchGO);
 
     }
 

@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
+
 public class PlayerAttack : MonoBehaviour
 {
 	public float range = 25f;
@@ -8,7 +10,7 @@ public class PlayerAttack : MonoBehaviour
 	public GameObject projectile;
 	public Animator animator;
 	public Camera cam;
-
+    public Collider staffCollider; 
 	//public SpawnManager spawnManager;
 
 	//public ParticleSystem attackParticles; //TODO: Add particles
@@ -21,7 +23,8 @@ public class PlayerAttack : MonoBehaviour
 
 	private void Awake()
 	{
-		//skull.gameObject.GetComponent<ParticleSystem>().Play();
+        //skull.gameObject.GetComponent<ParticleSystem>().Play();
+        staffCollider.enabled = false;
 	}
 
 	void Update()
@@ -34,6 +37,11 @@ public class PlayerAttack : MonoBehaviour
         if(Input.GetButtonDown("Fire2"))
         {
             Stun();
+        }
+
+        if(Input.GetButtonDown("Fire3"))
+        {
+            StartCoroutine(MeleeAttack());
         }
 	}
 
@@ -126,8 +134,13 @@ public class PlayerAttack : MonoBehaviour
     /// <summary>
     /// Initiates a melee attack by the player
     /// </summary>
-    private void MeleeAttack()
+    private IEnumerator MeleeAttack()
     {
+        staffCollider.enabled = true;
+        Debug.Log("Melee Attack");
+        //animator.SetTrigger("meleeAttack");
+        yield return new WaitForSecondsRealtime(10);
+        staffCollider.enabled = false;
 
     }
 

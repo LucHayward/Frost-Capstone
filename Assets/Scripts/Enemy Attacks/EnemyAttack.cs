@@ -76,9 +76,6 @@ public class EnemyAttack : MonoBehaviour
             }
 
         }
-
-        
-
     }
 
     void attackStart()
