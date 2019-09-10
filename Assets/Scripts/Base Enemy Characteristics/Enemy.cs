@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public int abilityDamage;
     public int damage;
     public bool hasScreamed;
+    public bool isStunned;
     public float velocityMagnitude;
     public bool cantMove;
 
@@ -158,8 +159,10 @@ public class Enemy : MonoBehaviour
     private IEnumerator StunRoutine()
     {
         DisableMovement();
+        isStunned = true;
         float stunTime = GetStackCount() * 0.5f;
         yield return new WaitForSecondsRealtime(10);
+        isStunned = false;
         EnableMovement();
         ResetStackCount();
     }
