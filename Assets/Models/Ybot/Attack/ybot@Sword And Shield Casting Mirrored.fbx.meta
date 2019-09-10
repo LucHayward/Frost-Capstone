@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8bb541a8823a0d644a27ae90f5047e00
+guid: d54fb2b5039d3bf4ca5f9029667a9c2e
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -161,7 +161,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -173,7 +173,7 @@ ModelImporter:
       name: Sword And Shield Casting Mirrored
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 31
+      lastFrame: 15
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

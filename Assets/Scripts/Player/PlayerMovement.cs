@@ -143,7 +143,6 @@ public class PlayerMovement : MonoBehaviour
 		//characterController.height = tCCHeight;
 
 		Debug.Log("End Jumping");
-
 	}
 
 	/// <summary>

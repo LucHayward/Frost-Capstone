@@ -61,9 +61,15 @@ public class Player : MonoBehaviour
 	{
         isDamaged = true;
 
-        playerMovement.RandomizeReactHitVariant();
-		playerMovement.animator.SetTrigger("takeDamage");
-        Debug.Log("Took " + damageAmount + " damage");
+		// If the player is currently in it's hit animation don't set trigger again.
+		if (playerMovement.animator.GetCurrentAnimatorStateInfo(0).IsName("Hit Reaction Blend Tree"))
+		{
+			
+			playerMovement.RandomizeReactHitVariant();
+			playerMovement.animator.SetTrigger("takeDamage");
+		}
+
+		Debug.Log("Took " + damageAmount + " damage");
 		currrentHealth -= damageAmount;
         healthSlider.value = currrentHealth;
 		if (currrentHealth <= 0)
