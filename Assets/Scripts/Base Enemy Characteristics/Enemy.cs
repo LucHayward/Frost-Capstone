@@ -16,8 +16,8 @@ public class Enemy : MonoBehaviour
     public float velocityMagnitude;
     public bool cantMove;
 
-    [SerializeField] private EnemyController enemyController;
-    [SerializeField] private FlockAgent flockAgent;
+    [SerializeField] private EnemyController enemyController = null; //Assigned in inspector
+	[SerializeField] private FlockAgent flockAgent = null; //Assigned in inspector
 	private GameObject playerGO;
 	private Player player;
 	private Transform playerPos;
@@ -92,22 +92,19 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="ID"></param>
-    public void setIdentifier(int ID)
+
+    public void SetIdentifier(int ID)
     {
         identificationNumber = ID;
     }
 
-    public int getIdentifier()
+    public int GetIdentifier()
     {
         return identificationNumber;
     }
 
     /// <summary>
-    /// 
+    /// Reduce health by set amount
     /// </summary>
     /// <param name="damage"></param>
     public void TakeDamage(int damage)
@@ -161,23 +158,26 @@ public class Enemy : MonoBehaviour
     }
 
     /// <summary>
-    /// Wrapper method to run a coroutine
+    /// Wrapper method to run the stun coroutine
     /// </summary>
-    public void Stun()
+    public void StunCoroutineWrapper()
     {
         StartCoroutine(StunRoutine());
     }
 
     /// <summary>
-    /// Slows down the enemy for a particular period
+    /// Slows down the enemy for a particular period based on stack count
     /// </summary>
     private IEnumerator StunRoutine()
     {
         DisableMovement();
         isStunned = true;
         float stunTime = GetStackCount() * 0.5f;
+		Debug.Log("Stun time " + stunTime + "s");
+		// TODO: DEBUG change here
+		// yield return new WaitForSecondsRealtime(stunTime);
         yield return new WaitForSecondsRealtime(10);
-        isStunned = false;
+		isStunned = false;
         EnableMovement();
         ResetStackCount();
     }
@@ -197,13 +197,13 @@ public class Enemy : MonoBehaviour
     }
 
 
-    void startDeath()
+    void StartDeath()
     {
 
         //cantMove = true;
     }
 
-    void endDeath()
+    void EndDeath()
     {
         // Add particle effect
         //Destroy(gameObject);

@@ -91,13 +91,13 @@ public class PlayerAttack : MonoBehaviour
 	}
 
     /// <summary>
-    /// The players stun ability that stuns all the enemies for a variable period depending on how many stacks the enemy has
+    /// Activates the players stun ability, stunning all the enemies for a variable period depending on how many stacks the enemy has
     /// on it.
     /// </summary>
     private void Stun()
     {
-        //animator.SetTrigger("stun");
-        foreach (EnemyManager meleeEnemy in GameManager.Get().meleeEnemies)
+		animator.SetTrigger("castStun");
+		foreach (EnemyManager meleeEnemy in GameManager.Get().meleeEnemies)
         {
             meleeEnemy.Stun();
         }
@@ -114,17 +114,21 @@ public class PlayerAttack : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Initiates a melee attack by the player
     /// </summary>
     private void MeleeAttack()
     {
 
     }
 
+	/// <summary>
+	/// Initiates a heal ability by the player
+	/// </summary>
 	private void CastHeal()
 	{
 
 	}
+
 
     public void OnDisable()
     {
