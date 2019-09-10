@@ -199,13 +199,15 @@ public class GameManager : MonoBehaviour
         {
             if (pauseMenu.isPaused)
             {
+				Time.timeScale = 1;
                 ResumeGame();
             }
             else
             {
                 PauseGame();
-            }
-        }
+				Time.timeScale = 0;
+			}
+		}
     }
 
     private void ResumeGame()

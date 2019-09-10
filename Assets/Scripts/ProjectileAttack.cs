@@ -13,12 +13,12 @@ public class ProjectileAttack : MonoBehaviour
 	public GameObject impactPrefab;
 
 	private ParticleSystem ps;
-	private AudioSource audioSource;
+	//private AudioSource audioSource;
 
 	public void Start()
 	{
 		ps = gameObject.GetComponentInChildren<ParticleSystem>();
-		audioSource = gameObject.GetComponent<AudioSource>();
+		//audioSource = gameObject.GetComponent<AudioSource>();
 		Destroy(gameObject, objectLife); // TODO Do we need this>?
 	}
 

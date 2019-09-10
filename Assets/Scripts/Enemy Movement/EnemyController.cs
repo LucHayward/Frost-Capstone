@@ -17,9 +17,9 @@ public class EnemyController : MonoBehaviour
     private Transform playerTrasnform;
     private Enemy enemy;
     private bool hasSeen;
-    [SerializeField]private FlockAgent flockAgent;
+    [SerializeField]private FlockAgent flockAgent = null; //Assigned in inspector
 
-    void Start()
+	void Start()
     {
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
         playerTrasnform = playerGameObject.transform;

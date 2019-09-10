@@ -13,7 +13,9 @@ public class PlayerAttack : MonoBehaviour
 
 	//public ParticleSystem attackParticles; //TODO: Add particles
 	//public AudioSource attackClip; //TODO: Add attack audio
+	public AudioSource attackClip;
 	public AudioSource attackFailClip;
+	public AudioSource attackStunCastClip;
 
 	private LayerMask maskAll = -1;
 
@@ -41,7 +43,7 @@ public class PlayerAttack : MonoBehaviour
 		Vector2 camHorizontal = new Vector2(cam.transform.forward.x, cam.transform.forward.z).normalized;
 
 		float crossProd = Vector2.Dot(goHorizontal, camHorizontal);
-		Debug.Log("CrossProd: " + crossProd);
+		//Debug.Log("CrossProd: " + crossProd);
 		return crossProd;
 	}
 
@@ -59,7 +61,7 @@ public class PlayerAttack : MonoBehaviour
 			return;
 		}
 		animator.SetTrigger("attack");
-		
+		attackClip.Play();
 		
 		Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
 
@@ -96,6 +98,14 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void Stun()
     {
+		if (animator.GetCurrentAnimatorStateInfo(0).IsName("Cast Stun"))
+		{
+			// TODO: Find new fail clip
+			attackFailClip.Play();
+			return;
+		}
+		attackStunCastClip.Play();
+
 		animator.SetTrigger("castStun");
 		foreach (EnemyManager meleeEnemy in GameManager.Get().meleeEnemies)
         {
