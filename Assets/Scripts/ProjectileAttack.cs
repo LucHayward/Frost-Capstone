@@ -35,9 +35,10 @@ public class ProjectileAttack : MonoBehaviour
 			{
 				Enemy enemy = other.gameObject.GetComponent<Enemy>();
 				enemy.TakeDamage(damage);
+                enemy.AddStack();
 			}
-			else if (other.gameObject.CompareTag("Player"))
-			{
+            else if (other.gameObject.CompareTag("Player"))
+            {
 				Player player = other.gameObject.GetComponent<Player>();
 				player.TakeDamage(damage);
 			}

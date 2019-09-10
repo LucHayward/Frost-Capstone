@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     private GameObject playerGameObject;
     private Transform playerTrasnform;
     private Enemy enemy;
-    private bool hasSeen = false;
+    private bool hasSeen;
     [SerializeField]private FlockAgent flockAgent;
 
     void Start()
@@ -31,7 +31,7 @@ public class EnemyController : MonoBehaviour
     {
         MakeDecision();
 
-        if (enemy.cantMove == true)
+        if (enemy.cantMove)
         {
             StopMove();
         }
@@ -124,16 +124,21 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Stops the agent from moving
+    /// </summary>
     public void StopMove()
     {
         agent.isStopped = true;
         flockAgent.enabled = false;
     }
 
+    /// <summary>
+    /// Allows the agent to start moving
+    /// </summary>
     public void ResumeMove()
     {
         agent.isStopped = false;
         flockAgent.enabled = true;
     }
-    
 }

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-
+using System.Collections.Generic;
 public class PlayerAttack : MonoBehaviour
 {
 	public float range = 25f;
@@ -28,6 +28,11 @@ public class PlayerAttack : MonoBehaviour
 		{
 			Shoot();
 		}
+
+        if(Input.GetButtonDown("Fire2"))
+        {
+            Stun();
+        }
 	}
 
 	private float GetRelativeCameraOrientation()
@@ -84,11 +89,32 @@ public class PlayerAttack : MonoBehaviour
 		//Destroy(firedGO, 30);
 	}
 
+    /// <summary>
+    /// The players stun ability that stuns all the enemies for a variable period depending on how many stacks the enemy has
+    /// on it.
+    /// </summary>
     private void Stun()
     {
+        //animator.SetTrigger("stun");
+        foreach (EnemyManager meleeEnemy in GameManager.Get().meleeEnemies)
+        {
+            meleeEnemy.Stun();
+        }
 
+        foreach (EnemyManager rangedEnemy in GameManager.Get().rangedEnemies)
+        {
+            rangedEnemy.Stun();
+        }
+
+        foreach (EnemyManager bossEnemy in GameManager.Get().bossEnemies)
+        {
+            bossEnemy.Stun();
+        }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void MeleeAttack()
     {
 

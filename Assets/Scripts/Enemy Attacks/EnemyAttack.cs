@@ -39,8 +39,6 @@ public class EnemyAttack : MonoBehaviour
         flockAgent = gameObject.GetComponent<FlockAgent>();
 
         playerGO = GameObject.FindGameObjectWithTag("Player");
-        if (playerGO == null)
-            Debug.Log("Fuck my titties");
         playerTransform = playerGO.GetComponent<Transform>();
         player = playerGO.GetComponent<Player>();
     }
@@ -73,8 +71,6 @@ public class EnemyAttack : MonoBehaviour
 
             if (currentTime - lastAbilityTime > abilityCD)
             {
-
-
                 animator.SetTrigger("ability");
                 lastAbilityTime = currentTime + abilityCD;
 
