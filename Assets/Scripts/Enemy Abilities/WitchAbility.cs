@@ -83,11 +83,12 @@ public class WitchAbility : MonoBehaviour
 
     void ability2()
     {
+        Vector3 shotVector = new Vector3(playerTransform.position.x, 1, playerTransform.position.z);
 
-        shotPath1 = playerTransform.position - spawnPoints[0].position;
-        shotPath2 = playerTransform.position - spawnPoints[1].position;
-        shotPath3 = playerTransform.position - spawnPoints[2].position;
-        shotPath4 = playerTransform.position - spawnPoints[3].position;
+        shotPath1 = shotVector - spawnPoints[0].position;
+        shotPath2 = shotVector - spawnPoints[1].position;
+        shotPath3 = shotVector - spawnPoints[2].position;
+        shotPath4 = shotVector - spawnPoints[3].position;
 
         if (proj1 != null)
         {
