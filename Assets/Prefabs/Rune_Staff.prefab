@@ -42,6 +42,8 @@ GameObject:
   - component: {fileID: 5152882216636793822}
   - component: {fileID: 5152882216635793694}
   - component: {fileID: 8184517621541970749}
+  - component: {fileID: 6732501858770098848}
+  - component: {fileID: 7773991140060364356}
   m_Layer: 0
   m_Name: Rune_Staff
   m_TagString: Untagged
@@ -129,6 +131,33 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6732501858770098848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5152882216638062558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c44ea2300b2453db01aa380c0297b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+--- !u!136 &7773991140060364356
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5152882216638062558}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.0111375
+  m_Height: 0.10354501
+  m_Direction: 1
+  m_Center: {x: -0.00039638462, y: 0.006294121, z: 0.000033069868}
 --- !u!1001 &364837843012509784
 PrefabInstance:
   m_ObjectHideFlags: 0

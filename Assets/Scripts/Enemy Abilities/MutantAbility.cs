@@ -37,7 +37,7 @@ public class MutantAbility : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+
     void jumpAttackStart()
     {
         mutant.cantMove = true;
