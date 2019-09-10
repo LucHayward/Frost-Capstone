@@ -12,10 +12,11 @@ public class EnemyController : MonoBehaviour
 
     public Animator animator;
     public NavMeshAgent agent;
+    public float stoppingDistance;
     private GameObject playerGameObject;
     private Transform playerTrasnform;
     private Enemy enemy;
-    private bool hasSeen = false;
+    private bool hasSeen;
     [SerializeField]private FlockAgent flockAgent;
 
     void Start()
@@ -30,9 +31,9 @@ public class EnemyController : MonoBehaviour
     {
         MakeDecision();
 
-        if (enemy.cantMove == true)
+        if (enemy.cantMove)
         {
-            stopMove();
+            StopMove();
         }
         else
         {
@@ -49,7 +50,7 @@ public class EnemyController : MonoBehaviour
     {
             transform.LookAt(playerTrasnform.position);
             float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-            if (distance > 3)
+            if (distance > stoppingDistance)
             {
                 flockAgent.enabled = false;
                 agent.isStopped = false;
@@ -123,11 +124,21 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void stopMove()
+    /// <summary>
+    /// Stops the agent from moving
+    /// </summary>
+    public void StopMove()
     {
         agent.isStopped = true;
         flockAgent.enabled = false;
     }
 
-    
+    /// <summary>
+    /// Allows the agent to start moving
+    /// </summary>
+    public void ResumeMove()
+    {
+        agent.isStopped = false;
+        flockAgent.enabled = true;
+    }
 }

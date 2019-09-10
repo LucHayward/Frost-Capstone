@@ -9,15 +9,12 @@ public class Enemy : MonoBehaviour
     public Animator animator;
     private Vector3 velocity;
     public string type;
-    public int abilityDamage = 0;
-    public int damage = 0;
-    public bool hasScreamed = false;
-    public float velocityMagnitude = 0.0f;
-    //public bool busyAttacking = false;
-    //public bool busyAbility = false;
-    //public bool busyShooting = false;
-
-    public bool cantMove = false;
+    public int abilityDamage;
+    public int damage;
+    public bool hasScreamed;
+    public bool isStunned;
+    public float velocityMagnitude;
+    public bool cantMove;
 
     [SerializeField] private EnemyController enemyController;
     [SerializeField] private FlockAgent flockAgent;
@@ -25,11 +22,14 @@ public class Enemy : MonoBehaviour
 	private Player player;
 	private Transform playerPos;
     private Vector3 prevTransform;
+    private int numberOfStacks;
 
     public bool isDead = false;
 
 	// Start is called before the first frame update
 	void Start()
+    // Start is called before the first frame update
+    void Start()
     {
         prevTransform = transform.position;
 		playerGO = GameObject.FindGameObjectWithTag("Player");
@@ -114,7 +114,7 @@ public class Enemy : MonoBehaviour
     /// <param name="damage"></param>
     public void TakeDamage(int damage)
     {
-        health = health - damage;
+        health -= damage;
     }
 
 
@@ -139,6 +139,65 @@ public class Enemy : MonoBehaviour
         else if (type == "Ranged")
             GameManager.Get().UpdateScore(4);
     }
+
+    /// <summary>
+    /// Adds another stack onto the enemy
+    /// </summary>
+    public void AddStack()
+    {
+        numberOfStacks++;
+    }
+
+    /// <summary>
+    /// Accessor method for stack count
+    /// </summary>
+    /// <returns> the number of stacks the enemy currently has on it </returns>
+    public int GetStackCount()
+    {
+        return numberOfStacks;
+    }
+
+    public void ResetStackCount()
+    {
+        numberOfStacks = 0;
+    }
+
+    /// <summary>
+    /// Wrapper method to run a coroutine
+    /// </summary>
+    public void Stun()
+    {
+        StartCoroutine(StunRoutine());
+    }
+
+    /// <summary>
+    /// Slows down the enemy for a particular period
+    /// </summary>
+    private IEnumerator StunRoutine()
+    {
+        DisableMovement();
+        isStunned = true;
+        float stunTime = GetStackCount() * 0.5f;
+        yield return new WaitForSecondsRealtime(10);
+        isStunned = false;
+        EnableMovement();
+        ResetStackCount();
+    }
+
+    public void DisableMovement()
+    {
+        enemyController.StopMove();
+        flockAgent.enabled = false;
+        enemyController.enabled = false;
+    }
+
+    public void EnableMovement()
+    {
+        enemyController.ResumeMove();
+        flockAgent.enabled = true;
+        enemyController.enabled = true;
+    }
+
 
     void startDeath()
     {

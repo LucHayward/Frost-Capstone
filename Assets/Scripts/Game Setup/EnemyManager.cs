@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -31,12 +33,14 @@ public class EnemyManager
 
     public void EnableMovement()
     {
+        enemyController.ResumeMove();
         flockAgent.enabled = true;
         enemyController.enabled = true;
     }
 
     public void DisableMovement()
     {
+        enemyController.StopMove();
         flockAgent.enabled = false;
         enemyController.enabled = false;
     }
@@ -87,4 +91,10 @@ public class EnemyManager
     {
         return flockAgent;
     }
+
+    public void Stun()
+    {
+        enemyScript.Stun();
+    }
+
 }
