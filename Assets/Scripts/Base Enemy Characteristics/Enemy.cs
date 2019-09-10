@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
     private Vector3 prevTransform;
     private int numberOfStacks;
 
+    public bool isDead = false;
+	
     // Start is called before the first frame update
     void Start()
     {
@@ -69,11 +71,24 @@ public class Enemy : MonoBehaviour
         }
         
         prevTransform = transform.position;
-        if (health < 1)
+        if (health <= 0)
         {
             UpdateScore();
+
+            //if melee: SetTrigger("meleeDeath")
+            //animator.SetBool("isRanged", false);
+
             //animator.SetBool("isDead", true);
+            //animator.SetTrigger("meleeDeath");
+            isDead = true;
+
+            if (gameObject.GetType().Equals("Witch"))
+            {
+                gameObject.GetComponent<WitchAbility>().witchDead();
+            }
             Destroy(gameObject);
+
+            
         }
     }
 
@@ -181,4 +196,17 @@ public class Enemy : MonoBehaviour
         enemyController.enabled = true;
     }
 
+
+    void startDeath()
+    {
+
+        //cantMove = true;
+    }
+
+    void endDeath()
+    {
+        // Add particle effect
+        //Destroy(gameObject);
+    }
+    
 }

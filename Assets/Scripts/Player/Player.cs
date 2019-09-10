@@ -14,8 +14,8 @@ public class Player : MonoBehaviour
     public Color flashColor = new Color(1f, 0f, 0f, 0.1f);
 	public int level;
 	public TextMeshProUGUI healthText;
-    public bool hasShield=false;
-    public bool isFast=false;
+    public bool hasShield;
+    public bool isFast;
 
     private bool isDamaged;
 
@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     {
         GameObject healthUI = GameObject.Find("HealthUI");
         healthSlider = healthUI.GetComponentInChildren<Slider>();
+        GameObject damageItem = GameObject.Find("Damage");
+        damageImage = damageItem.GetComponentInChildren<Image>();
     }
 
     private void Update()
