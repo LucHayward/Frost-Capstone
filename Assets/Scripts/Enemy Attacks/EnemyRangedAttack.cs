@@ -50,15 +50,15 @@ public class EnemyRangedAttack : MonoBehaviour
 
     void Update()
     {
-        shotPath = playerTransform.position - projectileSpawnPoint.position;
+        Vector3 shotVector = new Vector3(playerTransform.position.x, 1, playerTransform.position.z);
+        shotPath = shotVector - projectileSpawnPoint.position;
         currentTime = Time.time;
         
         if (currentTime - lastAbilityTime > abilityCD)   
         {
             if (Vector3.Distance(playerTransform.position, projectileSpawnPoint.position) < abilityRange)
             {
-                //enemy.velocityMagnitude = 0;
-
+                
                 animator.SetTrigger("ability");
                 lastAbilityTime = currentTime + abilityCD;
 
@@ -85,26 +85,13 @@ public class EnemyRangedAttack : MonoBehaviour
     private void shootStart()
     {
         enemy.cantMove = true;
-        //enemyController.enabled = false;
-        //flockAgent.enabled = false;
-        //navMeshAgent.enabled = false;
+        
         enemy.velocityMagnitude = 0;
     }
 
 
     private void shoot()
     {
-        //enemy.velocityMagnitude = 0;
-
-        //Vector3 lookPath = 
-        //gameObject.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(gameObject.transform.forward, shotPath, 100f, 100f));
-
-
-
-        //RaycastHit hit;
-        //if(Physics.Raycast(raycastSource.position, raycastSource.forward, out hit, range)){
-
-        //}
 
         //TODO: Pool GameObjects for performance
         //TODO: Animate the spawning of a new object and fire the current one (or animate current respawn and instantiate new)
@@ -129,9 +116,7 @@ public class EnemyRangedAttack : MonoBehaviour
     private void shootEnd()
     {
         enemy.cantMove = false;
-        //enemyController.enabled = true;
-        //flockAgent.enabled = true;
-        //navMeshAgent.enabled = true;
+        
         
     }
 
