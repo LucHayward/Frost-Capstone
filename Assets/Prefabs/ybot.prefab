@@ -787,6 +787,8 @@ MonoBehaviour:
     type: 3}
   animator: {fileID: 9176910311190146148}
   cam: {fileID: 0}
+  staffCollider: {fileID: 7773991140060364356, guid: c21509f08011828468c38aed97595c0c,
+    type: 3}
   attackFailClip: {fileID: 4869729183207381234}
 --- !u!114 &5048431004472485266
 MonoBehaviour:
