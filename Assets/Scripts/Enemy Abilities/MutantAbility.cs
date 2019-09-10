@@ -41,17 +41,12 @@ public class MutantAbility : MonoBehaviour
     void jumpAttackStart()
     {
         mutant.cantMove = true;
-        //mutantController.enabled = false;
-        //flockAgent.enabled = false;
-        //navMeshAgent.enabled = false;
     }
 
     void jumpAttackMove()
     {
         mutant.cantMove = false;
-        //mutantController.enabled = true;
-        //flockAgent.enabled = true;
-        //navMeshAgent.enabled = true;
+
     }
 
     void jumpAttackDamage()
@@ -68,16 +63,12 @@ public class MutantAbility : MonoBehaviour
     void jumpAttackLand()
     {
         mutant.cantMove = true;
-        //mutantController.enabled = false;
-        //flockAgent.enabled = false;
-        //navMeshAgent.enabled = false;
+
     }
 
     void jumpAttackEnd()
     {
         mutant.cantMove = false;
-        //mutantController.enabled = true;
-        //flockAgent.enabled = true;
-        //navMeshAgent.enabled = true;
+
     }
 }

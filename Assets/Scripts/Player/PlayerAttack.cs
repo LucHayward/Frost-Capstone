@@ -60,13 +60,14 @@ public class PlayerAttack : MonoBehaviour
 
 	private void Shoot()
 	{
-		if (CameraFacingBackwards())
+		if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") || CameraFacingBackwards())
 		{
 			Debug.Log("Cannot shot backwards");
 			attackFailClip.Play();
 			return;
 		}
 		animator.SetTrigger("attack");
+		
 		
 		Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
 
@@ -145,7 +146,10 @@ public class PlayerAttack : MonoBehaviour
 
     public void OnEnable()
     {
-        cam.GetComponent<CameraController>().enabled = true;
+		if (cam != null)
+		{
+			cam.GetComponent<CameraController>().enabled = true;
+		}
     }
 
 }

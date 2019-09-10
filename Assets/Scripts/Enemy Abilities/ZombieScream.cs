@@ -38,9 +38,6 @@ public class ZombieScream : MonoBehaviour
     void screamStart()
     {
         zombie.cantMove = true;
-        //zombieController.enabled = false;
-        //flockAgent.enabled = false;
-        //navMeshAgent.enabled = false;
     }
 
     void scream()
@@ -51,9 +48,6 @@ public class ZombieScream : MonoBehaviour
     void screamEnd()
     {
         zombie.cantMove = false;
-        //zombieController.enabled = true;
-        //flockAgent.enabled = true;
-        //navMeshAgent.enabled = true;
     }
 
 }

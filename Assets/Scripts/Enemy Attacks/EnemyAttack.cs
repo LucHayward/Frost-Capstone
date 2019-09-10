@@ -51,7 +51,6 @@ public class EnemyAttack : MonoBehaviour
 
         if (Vector3.Distance(playerTransform.position, enemyTransform.position) < range)
         {
-            //enemy.velocityMagnitude = 0;
             
             //Debug.Log("Close enough");
             if (currentTime - lastAttackTime > shotDelay)
@@ -67,7 +66,6 @@ public class EnemyAttack : MonoBehaviour
         }
         else if (Vector3.Distance(playerTransform.position, enemyTransform.position) < abilityRange)
         {
-            //enemy.velocityMagnitude = 0;
 
             if (currentTime - lastAbilityTime > abilityCD)
             {
@@ -83,10 +81,6 @@ public class EnemyAttack : MonoBehaviour
     void attackStart()
     {
         enemy.cantMove = true;
-
-        //enemyController.enabled = false;
-        //flockAgent.enabled = false;
-        //navMeshAgent.enabled = false;
     }
 
 	void attackDamage()
@@ -106,9 +100,6 @@ public class EnemyAttack : MonoBehaviour
     {
         enemy.cantMove = false;
 
-        //enemyController.enabled = true;
-        //flockAgent.enabled = true;
-        //navMeshAgent.enabled = true;
     }
 
 
