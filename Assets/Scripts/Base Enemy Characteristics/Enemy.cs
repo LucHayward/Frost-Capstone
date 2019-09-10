@@ -26,8 +26,6 @@ public class Enemy : MonoBehaviour
 
     public bool isDead = false;
 
-	// Start is called before the first frame update
-	void Start()
     // Start is called before the first frame update
     void Start()
     {
@@ -84,11 +82,12 @@ public class Enemy : MonoBehaviour
             //animator.SetTrigger("meleeDeath");
             isDead = true;
 
-            if (gameObject.GetType().Equals("Witch"))
+            if (type == "Ranged")
             {
                 gameObject.GetComponent<WitchAbility>().witchDead();
             }
-            Destroy(gameObject);
+            else { Destroy(gameObject); }
+            
 
             
         }
