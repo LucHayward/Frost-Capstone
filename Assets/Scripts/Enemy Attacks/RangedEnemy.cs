@@ -6,10 +6,10 @@ public class RangedEnemy : MonoBehaviour
 {
     public int health;
     private int identificationNumber;
-    [SerializeField] private EnemyController enemyController;
-    [SerializeField] private FlockAgent flockAgent;
+    [SerializeField] private EnemyController enemyController = null; //Assigned in inspector
+	[SerializeField] private FlockAgent flockAgent = null; //Assigned in inspector
 
-    private GameObject playerGO;
+	private GameObject playerGO;
     private Player player;
     private Transform playerPos;
     public Animator animator;

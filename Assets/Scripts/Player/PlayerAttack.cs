@@ -15,7 +15,10 @@ public class PlayerAttack : MonoBehaviour
 
 	//public ParticleSystem attackParticles; //TODO: Add particles
 	//public AudioSource attackClip; //TODO: Add attack audio
+	public AudioSource meleeAttackClip;
+	public AudioSource attackClip;
 	public AudioSource attackFailClip;
+	public AudioSource attackStunCastClip;
 
 	private LayerMask maskAll = -1;
 
@@ -39,7 +42,14 @@ public class PlayerAttack : MonoBehaviour
 
         if(Input.GetButtonDown("Fire3"))
         {
-            StartCoroutine(MeleeAttack());
+			if (animator.GetCurrentAnimatorStateInfo(0).IsName("Melee Attack Stab"))
+			{
+				//TODO: Update with unique melee fail clip
+				attackFailClip.Play();
+				return;
+			}
+			meleeAttackClip.Play();
+			StartCoroutine(MeleeAttack());
         }
 	}
 
@@ -49,7 +59,7 @@ public class PlayerAttack : MonoBehaviour
 		Vector2 camHorizontal = new Vector2(cam.transform.forward.x, cam.transform.forward.z).normalized;
 
 		float crossProd = Vector2.Dot(goHorizontal, camHorizontal);
-		Debug.Log("CrossProd: " + crossProd);
+		//Debug.Log("CrossProd: " + crossProd);
 		return crossProd;
 	}
 
@@ -67,7 +77,7 @@ public class PlayerAttack : MonoBehaviour
 			return;
 		}
 		animator.SetTrigger("attack");
-		
+		attackClip.Play();
 		
 		Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
 
@@ -99,13 +109,21 @@ public class PlayerAttack : MonoBehaviour
 	}
 
     /// <summary>
-    /// The players stun ability that stuns all the enemies for a variable period depending on how many stacks the enemy has
+    /// Activates the players stun ability, stunning all the enemies for a variable period depending on how many stacks the enemy has
     /// on it.
     /// </summary>
     private void Stun()
     {
-        //animator.SetTrigger("stun");
-        foreach (EnemyManager meleeEnemy in GameManager.Get().meleeEnemies)
+		if (animator.GetCurrentAnimatorStateInfo(0).IsName("Cast Stun"))
+		{
+			// TODO: Find new fail clip
+			attackFailClip.Play();
+			return;
+		}
+		attackStunCastClip.Play();
+
+		animator.SetTrigger("castStun");
+		foreach (EnemyManager meleeEnemy in GameManager.Get().meleeEnemies)
         {
             meleeEnemy.Stun();
         }
@@ -122,22 +140,26 @@ public class PlayerAttack : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Initiates a melee attack by the player
     /// </summary>
     private IEnumerator MeleeAttack()
     {
         staffCollider.enabled = true;
         Debug.Log("Melee Attack");
-        //animator.SetTrigger("meleeAttack");
-        yield return new WaitForSecondsRealtime(10);
+		animator.SetTrigger("meleeAttack");
+		yield return new WaitForSecondsRealtime(10);
         staffCollider.enabled = false;
 
     }
 
+	/// <summary>
+	/// Initiates a heal ability by the player
+	/// </summary>
 	private void CastHeal()
 	{
 
 	}
+
 
     public void OnDisable()
     {

@@ -14,6 +14,7 @@ public class EnemyManager
     private EnemyController enemyController;
     private FlockAgent flockAgent;
 
+	//TODO: write docs
     /// <summary>
     /// 
     /// </summary>
@@ -23,12 +24,12 @@ public class EnemyManager
         enemyController = instanceOfEnemy.GetComponent<EnemyController>();
         enemyScript = instanceOfEnemy.GetComponent<Enemy>();
         flockAgent = instanceOfEnemy.GetComponent<FlockAgent>();
-        enemyScript.setIdentifier(ID);
+        enemyScript.SetIdentifier(ID);
     }
 
-    public int getID()
+    public int GetID()
     {
-        return enemyScript.getIdentifier();
+        return enemyScript.GetIdentifier();
     }
 
     public void EnableMovement()
@@ -92,9 +93,12 @@ public class EnemyManager
         return flockAgent;
     }
 
+	/// <summary>
+	/// Stuns this enemy
+	/// </summary>
     public void Stun()
     {
-        enemyScript.Stun();
+        enemyScript.StunCoroutineWrapper();
     }
 
 }
