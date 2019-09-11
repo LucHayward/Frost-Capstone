@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     public bool isStunned;
     public float velocityMagnitude;
     public bool cantMove;
+    public bool isDead;
+
+    private bool rangedDeath;
 
     [SerializeField] private EnemyController enemyController = null; //Assigned in inspector
 	[SerializeField] private FlockAgent flockAgent = null; //Assigned in inspector
@@ -24,7 +27,7 @@ public class Enemy : MonoBehaviour
     private Vector3 prevTransform;
     private int numberOfStacks;
 
-    public bool isDead = false;
+    //public bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +37,8 @@ public class Enemy : MonoBehaviour
         player = playerGO.GetComponent<Player>();
         playerPos = playerGO.transform;
 
-        animator.SetBool("isDead", false);
+        //animator.SetBool("isDead", false);
+        isDead = false;
     }
 
     // Update is called once per frame
@@ -71,25 +75,28 @@ public class Enemy : MonoBehaviour
         }
         
         prevTransform = transform.position;
-        if (health <= 0)
+        if (health <= 0 && isDead == false)
         {
             UpdateScore();
 
             //if melee: SetTrigger("meleeDeath")
             //animator.SetBool("isRanged", false);
+            //isDead = true;
+            if (rangedDeath && type == "Melee")
+            {
+                animator.SetTrigger("rangedDeath");
+            }
+            else
+            {
+                animator.SetTrigger("meleeDeath");
+            }
+            
 
-            //animator.SetBool("isDead", true);
-            //animator.SetTrigger("meleeDeath");
             isDead = true;
 
-            if (type == "Ranged")
-            {
-                gameObject.GetComponent<WitchAbility>().witchDead();
-            }
-            else { Destroy(gameObject); }
-            
 
-            
+
+
         }
     }
 
@@ -108,9 +115,10 @@ public class Enemy : MonoBehaviour
     /// Reduce health by set amount
     /// </summary>
     /// <param name="damage"></param>
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool isRangedAtk)
     {
         health -= damage;
+        rangedDeath = isRangedAtk;
     }
 
 
@@ -200,14 +208,21 @@ public class Enemy : MonoBehaviour
 
     void StartDeath()
     {
-
-        //cantMove = true;
+        
+        cantMove = true;
     }
 
     void EndDeath()
     {
-        // Add particle effect
-        //Destroy(gameObject);
+        if (type == "Ranged")
+        {
+            gameObject.GetComponent<WitchAbility>().witchDead();
+
+        }
+        else { Destroy(gameObject); }
+
+        
+
     }
     
 }
