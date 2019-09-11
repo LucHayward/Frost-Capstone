@@ -5,8 +5,9 @@ public class MeleeAttack : MonoBehaviour
 {
     public int damage;
     private bool isRanged = false;
-    void OnTriggerEnter(Collider other)
-	{
+    private void OnCollisionEnter(Collision other)
+    {
+        Debug.Log("Collision with staff");
         if (other.gameObject.CompareTag("Enemy"))
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
@@ -14,5 +15,4 @@ public class MeleeAttack : MonoBehaviour
             Debug.Log("Collision between staff and enemy");
         }
     }
-
 }

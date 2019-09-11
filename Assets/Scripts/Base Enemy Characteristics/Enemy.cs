@@ -179,8 +179,8 @@ public class Enemy : MonoBehaviour
         float stunTime = GetStackCount() * 0.5f;
 		Debug.Log("Stun time " + stunTime + "s");
 		// TODO: DEBUG change here
-		// yield return new WaitForSecondsRealtime(stunTime);
-        yield return new WaitForSecondsRealtime(stunTime);
+		yield return new WaitForSecondsRealtime(stunTime);
+        //yield return new WaitForSecondsRealtime(10);
 		isStunned = false;
         EnableMovement();
         ResetStackCount();
