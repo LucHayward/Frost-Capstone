@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class EnemyManager
 {
     [HideInInspector] public GameObject instanceOfEnemy;
-    public Transform spawnPoint;
+    public Transform[] spawnPoints;
     private Collider[] nearbyColliders;
     private Enemy enemyScript;
     private EnemyController enemyController;
@@ -52,26 +52,27 @@ public class EnemyManager
 	/// 
 	/// For each collider within the radius of this enemy, ensure that the spawn point does not overlap. Generate new spawn offset if it does and try again.
 	/// </summary>
-    public void CalculateSpawnPoint()
+    public Transform CalculateSpawnPoint()
     {
 		const int Radius = 2;
         bool foundSpawnPoint;
         foundSpawnPoint = false;
-        Vector3 originalSpawnPoint = spawnPoint.position;
-        nearbyColliders = Physics.OverlapSphere(spawnPoint.position, Radius);
-        if(!Physics.CheckSphere(spawnPoint.position, Radius))
+        int spawnPointRef = Random.Range(0, spawnPoints.Length - 1);
+        Vector3 originalSpawnPoint = spawnPoints[spawnPointRef].position;
+        nearbyColliders = Physics.OverlapSphere(spawnPoints[spawnPointRef].position, Radius);
+        if(!Physics.CheckSphere(spawnPoints[spawnPointRef].position, Radius))
         {
             foundSpawnPoint = true;
             Vector2 spawnOffset = Random.insideUnitCircle * Radius;
             Vector3 newSpawnpoint = new Vector3(originalSpawnPoint.x + spawnOffset.x, 0, originalSpawnPoint.z + spawnOffset.y);
-            spawnPoint.position = newSpawnpoint;
+            spawnPoints[spawnPointRef].position = newSpawnpoint;
         }
       
         while (!foundSpawnPoint)
         {
             Vector2 spawnOffset = Random.insideUnitCircle * Radius;
             Vector3 newSpawnpoint = new Vector3(originalSpawnPoint.x + spawnOffset.x, 0, originalSpawnPoint.z + spawnOffset.y);
-            spawnPoint.position = newSpawnpoint;
+            spawnPoints[spawnPointRef].position = newSpawnpoint;
             if (nearbyColliders[0] == null)
             {
                 foundSpawnPoint = true;
@@ -86,6 +87,7 @@ public class EnemyManager
 				}
             }
         }
+        return spawnPoints[spawnPointRef];
     }
 
     public FlockAgent GetFlockAgent()
