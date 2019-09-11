@@ -195,6 +195,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+		float x = Time.timeScale;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (pauseMenu.isPaused)
