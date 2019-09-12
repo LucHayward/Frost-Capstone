@@ -21,6 +21,7 @@ public class PlayerAttack : MonoBehaviour
 	public AudioSource attackStunCastClip;
 
 	private LayerMask maskAll = -1;
+	private bool canAttack = true;
 
 	private void Awake()
 	{
@@ -42,7 +43,7 @@ public class PlayerAttack : MonoBehaviour
 
         if(Input.GetButtonDown("Fire3"))
         {
-			if (animator.GetCurrentAnimatorStateInfo(0).IsName("Melee Attack Stab"))
+			if (!canAttack || animator.GetCurrentAnimatorStateInfo(0).IsName("Melee Attack Stab"))
 			{
 				//TODO: Update with unique melee fail clip
 				attackFailClip.Play();
@@ -70,12 +71,13 @@ public class PlayerAttack : MonoBehaviour
 
 	private void Shoot()
 	{
-		if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") || CameraFacingBackwards())
+		if (!canAttack || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") || CameraFacingBackwards())
 		{
 			Debug.Log("Cannot shot backwards");
 			attackFailClip.Play();
 			return;
 		}
+		canAttack = false;
 		animator.SetTrigger("attack");
 		attackClip.Play();
 		
@@ -114,12 +116,13 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void Stun()
     {
-		if (animator.GetCurrentAnimatorStateInfo(0).IsName("Cast Stun"))
+		if (!canAttack || animator.GetCurrentAnimatorStateInfo(0).IsName("Cast Stun"))
 		{
 			// TODO: Find new fail clip
 			attackFailClip.Play();
 			return;
 		}
+		canAttack = false;
 		attackStunCastClip.Play();
 
 		animator.SetTrigger("castStun");
@@ -144,12 +147,13 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private IEnumerator MeleeAttack()
     {
+		canAttack = false;
         staffCollider.enabled = true;
         Debug.Log("Melee Attack");
 		animator.SetTrigger("meleeAttack");
-		yield return new WaitForSecondsRealtime(10);
+		yield return new WaitForSecondsRealtime(1.2f); // TODO: remove magic number (melee attack animation length)
         staffCollider.enabled = false;
-
+		ResetCanAttack();
     }
 
 	/// <summary>
@@ -174,4 +178,5 @@ public class PlayerAttack : MonoBehaviour
 		}
     }
 
+	private void ResetCanAttack() { canAttack = true; }
 }

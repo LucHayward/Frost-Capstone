@@ -90,13 +90,8 @@ public class Enemy : MonoBehaviour
             {
                 animator.SetTrigger("meleeDeath");
             }
-            
-
             isDead = true;
-
-
-
-
+            GameManager.Get().RemovedDeadEnemy(identificationNumber, type);
         }
     }
 
@@ -184,8 +179,8 @@ public class Enemy : MonoBehaviour
         float stunTime = GetStackCount() * 0.5f;
 		Debug.Log("Stun time " + stunTime + "s");
 		// TODO: DEBUG change here
-		// yield return new WaitForSecondsRealtime(stunTime);
-        yield return new WaitForSecondsRealtime(10);
+		yield return new WaitForSecondsRealtime(stunTime);
+        //yield return new WaitForSecondsRealtime(10);
 		isStunned = false;
         EnableMovement();
         ResetStackCount();

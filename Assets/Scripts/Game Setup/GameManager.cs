@@ -50,11 +50,11 @@ public class GameManager : MonoBehaviour
 	{
         for(int i = 0; i <numberOfEnemies; i++)
 		{
-            enemyTypes[0].CalculateSpawnPoint();
+            Transform spawnPoint = enemyTypes[0].CalculateSpawnPoint();
             meleeEnemies.Add(new EnemyManager());
             meleeEnemies[i].instanceOfEnemy = Instantiate(meleeEnemyPrefab,
-                enemyTypes[0].spawnPoint.position,
-                enemyTypes[0].spawnPoint.rotation) as GameObject;
+                spawnPoint.position,
+                spawnPoint.rotation) as GameObject;
 			
 			meleeEnemies [i].Setup(i);
             agents.Add(meleeEnemies[i].GetFlockAgent());
@@ -75,10 +75,10 @@ public class GameManager : MonoBehaviour
 
     private int CalculateBossEnemies()
     {
-        if (roundNumber % 5 != 1)
-            return 0;
+        if (roundNumber % 5 != 0)
+            return 1;
         else
-            return 2;
+            return 0;
 
     }
 
@@ -86,14 +86,29 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < numberOfEnemies; i++)
         {
-            enemyTypes[1].CalculateSpawnPoint();
+            Transform spawnPoint = enemyTypes[1].CalculateSpawnPoint();
             rangedEnemies.Add(new EnemyManager());
             rangedEnemies[i].instanceOfEnemy = Instantiate(rangedEnemyPrefab,
-                enemyTypes[1].spawnPoint.position,
-                enemyTypes[1].spawnPoint.rotation) as GameObject;
+                spawnPoint.position,
+                spawnPoint.rotation) as GameObject;
 
             rangedEnemies[i].Setup(i);
             agents.Add(rangedEnemies[i].GetFlockAgent());
+        }
+    }
+
+    private void SpawnBossEnemy(int numberOfEnemies)
+    {
+        for (int i = 0; i < numberOfEnemies; i++)
+        {
+            Transform spawnPoint = enemyTypes[2].CalculateSpawnPoint();
+            bossEnemies.Add(new EnemyManager());
+            bossEnemies[i].instanceOfEnemy = Instantiate(bossEnemyPrefab,
+                spawnPoint.position,
+                spawnPoint.rotation) as GameObject;
+
+            bossEnemies[i].Setup(i);
+            agents.Add(bossEnemies[i].GetFlockAgent());
         }
     }
 
@@ -139,6 +154,7 @@ public class GameManager : MonoBehaviour
     {
         SpawnMeleeEnemies(CalcuateNumberOfMeleeEnemies());
         SpawnRangedEnemies(CalcuateNumberOfRangedEnemies());
+        SpawnBossEnemy(CalculateBossEnemies());
         spawnedEnemy = true;
         while (ThereIsAPlayer() && ThereIsAEnemy())
         {
@@ -195,6 +211,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+		float x = Time.timeScale;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (pauseMenu.isPaused)
@@ -280,5 +297,48 @@ public class GameManager : MonoBehaviour
     {
         score += points;
         scoreText.text = "SCORE " + score;
+    }
+
+    public void RemovedDeadEnemy(int ID, string type)
+    {
+        switch (type)
+        {
+            case "Boss":
+                {
+                    foreach (EnemyManager boss in bossEnemies)
+                    {
+                        if (boss.GetID() == ID)
+                        {
+                            bossEnemies.Remove(boss);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            case "Ranged":
+                {
+                    foreach (EnemyManager ranged in rangedEnemies)
+                    {
+                        if (ranged.GetID() == ID)
+                        {
+                            rangedEnemies.Remove(ranged);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            case "Melee":
+                {
+                    foreach (EnemyManager melee in meleeEnemies)
+                    {
+                        if (melee.GetID() == ID)
+                        {
+                            meleeEnemies.Remove(melee);
+                            break;
+                        }
+                    }
+                    break;
+                }
+        }
     }
 }
