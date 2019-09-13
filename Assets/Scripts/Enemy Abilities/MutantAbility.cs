@@ -21,6 +21,7 @@ public class MutantAbility : MonoBehaviour
     private Transform mutantTransform;
     private Transform playerTransform;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -53,7 +54,7 @@ public class MutantAbility : MonoBehaviour
     {
         float dist = Vector3.Distance(playerTransform.position, weaponTransform.position);
         
-        if (dist < 3.0f)
+        if (dist <= 3.0f)
         {
             player.TakeDamage(mutant.abilityDamage);
         }

@@ -167,6 +167,7 @@ public class Enemy : MonoBehaviour
     public void StunCoroutineWrapper()
     {
         StartCoroutine(StunRoutine());
+        //animator.SetTrigger("stunned");
     }
 
     /// <summary>
@@ -174,16 +175,32 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private IEnumerator StunRoutine()
     {
-        DisableMovement();
-        isStunned = true;
-        float stunTime = GetStackCount() * 0.5f;
-		Debug.Log("Stun time " + stunTime + "s");
-		// TODO: DEBUG change here
-		yield return new WaitForSecondsRealtime(stunTime);
-        //yield return new WaitForSecondsRealtime(10);
-		isStunned = false;
-        EnableMovement();
-        ResetStackCount();
+        //DisableMovement();
+        if (GetStackCount() > 0)
+        {
+            if(type == "Ranged")
+            {
+                gameObject.GetComponent<WitchAbility>().WitchStun();
+            }
+            //Stops movement in EnemyController Update()
+            isStunned = true;
+            //Start stun animation
+            animator.SetBool("isStunned", true);
+            //DisableMovement();
+            float stunTime = GetStackCount() * 2.0f;
+            Debug.Log("Stun time " + stunTime + "s");
+            yield return new WaitForSecondsRealtime(stunTime);
+
+            //End stun animation
+            animator.SetBool("isStunned", false);
+            //yield return new WaitForSecondsRealtime(10);
+            isStunned = false;
+            cantMove = false;
+            ResetStackCount();
+        }
+
+        //isStunned = false;
+        //cantMove = false;
     }
 
     public void DisableMovement()
@@ -219,5 +236,6 @@ public class Enemy : MonoBehaviour
         
 
     }
-    
+
+
 }

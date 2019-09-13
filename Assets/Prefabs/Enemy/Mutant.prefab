@@ -182,7 +182,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.26753432, y: 0.000003572013, z: 0.00000016050032}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 348007265482421239}
   m_Father: {fileID: 3636180929720848431}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -888,7 +889,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 3636180929729888197}
   agent: {fileID: 7963060599362251254}
-  stoppingDistance: 5
+  stoppingDistance: 3.5
   flockAgent: {fileID: 7461909706279491092}
 --- !u!114 &5417109251280290599
 MonoBehaviour:
@@ -902,10 +903,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf7babb1d8fde4498f70102ccb4cd3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyWeaponTransform: {fileID: 745614005611608246}
+  enemyWeaponTransform: {fileID: 348007265482421239}
   animator: {fileID: 3636180929729888197}
   navMeshAgent: {fileID: 7963060599362251254}
-  range: 5
+  range: 4
   abilityRange: 6
   abilityCD: 5
   shotDelay: 2
@@ -921,7 +922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5229a4971599b3f449e0bd7cb8cb1fa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponTransform: {fileID: 745614005611608246}
+  weaponTransform: {fileID: 348007265482421239}
   navMeshAgent: {fileID: 7963060599362251254}
   animator: {fileID: 3636180929729888197}
 --- !u!114 &7461909706279491092
@@ -947,11 +948,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.48
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 5
+  m_Acceleration: 6
   avoidancePriority: 50
   m_AngularSpeed: 5
-  m_StoppingDistance: 5
+  m_StoppingDistance: 3.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1076,7 +1077,6 @@ Transform:
   - {fileID: 3636180929720848391}
   - {fileID: 3636180929720848399}
   - {fileID: 3636180929720848407}
-  - {fileID: 745614005611608246}
   m_Father: {fileID: 3636180929720848443}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1480,7 +1480,7 @@ Transform:
   m_Father: {fileID: 3636180929720848487}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &8246670953655501289
+--- !u!1 &4096152239521501152
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1488,7 +1488,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 745614005611608246}
+  - component: {fileID: 348007265482421239}
   m_Layer: 0
   m_Name: MeleeTransform
   m_TagString: Untagged
@@ -1496,17 +1496,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &745614005611608246
+--- !u!4 &348007265482421239
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8246670953655501289}
+  m_GameObject: {fileID: 4096152239521501152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.4991, y: -0.02, z: 0.1267}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 3636180929720848389}
-  m_RootOrder: 3
+  m_Father: {fileID: 3636180929720848425}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

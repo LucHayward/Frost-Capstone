@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
     private GameObject playerGameObject;
     private Transform playerTrasnform;
     private Enemy enemy;
-    private bool hasSeen;
+    private bool hasSeen = false;
     [SerializeField]private FlockAgent flockAgent = null; //Assigned in inspector
 
 	void Start()
@@ -29,18 +29,24 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+
         MakeDecision();
 
-        if (enemy.cantMove)
+        if (enemy.cantMove || enemy.isStunned)
         {
             StopMove();
+            
         }
+        
         else
         {
             agent.isStopped = false;
-            flockAgent.enabled = true;
+            //flockAgent.enabled = true;
             
         }
+
+        
+
     }
 
     /// <summary>
@@ -93,14 +99,19 @@ public class EnemyController : MonoBehaviour
         // TODO fix the line of sight
         if (Physics.Raycast(eyeLine, out RaycastHit hit, layerMask))
         {
+            Debug.Log(hit.collider.tag);
             if (hit.collider.tag.Equals("Player"))
             {
                 hasSeen = true;
-                if(enemy.hasScreamed == false)
+                if(enemy.GetType().Equals("Melee"))
                 {
-                    animator.SetTrigger("scream");
-                    enemy.hasScreamed = true;
+                    if (enemy.hasScreamed == false)
+                    {
+                        animator.SetTrigger("scream");
+                        enemy.hasScreamed = true;
+                    }
                 }
+                
 
                 Move();                
             }

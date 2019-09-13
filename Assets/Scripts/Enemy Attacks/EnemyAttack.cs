@@ -88,7 +88,7 @@ public class EnemyAttack : MonoBehaviour
         // Calculate the distance between the player and the enemy
         float dist = Vector3.Distance(playerTransform.position, enemyWeaponTransform.position);
 
-        if (dist <= 2.0f)
+        if (dist <= 1.5f)
         {
             player.TakeDamage(enemy.damage);
         }

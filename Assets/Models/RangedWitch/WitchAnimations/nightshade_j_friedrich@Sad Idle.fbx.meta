@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 442e0fd5c7bce344187a092b0e0f713e
+guid: bd9d3817c3f08cc478fb0b4d11b3ca41
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -135,7 +135,7 @@ ModelImporter:
     400126: Spine
     400128: Spine1
     400130: Spine2
-    7400000: Standing 2H Cast Spell 01
+    7400000: Sad Idle
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -166,18 +166,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Standing 2H Cast Spell 01
+      name: Sad Idle
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 75
+      lastFrame: 120
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -188,21 +188,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0
-        functionName: abilityStart
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.7088672
-        functionName: ability
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

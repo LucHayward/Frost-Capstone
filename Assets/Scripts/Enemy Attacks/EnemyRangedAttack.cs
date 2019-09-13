@@ -28,7 +28,8 @@ public class EnemyRangedAttack : MonoBehaviour
     private float lastAbilityTime = 0.0f;
     public float abilityCD = 0.0f;
 
-    
+    //0 at start, 1 animation started, 2 animation complete
+    public int shotState;
     
     
     //public SpawnManager spawnManager;
@@ -92,7 +93,6 @@ public class EnemyRangedAttack : MonoBehaviour
 
     private void shoot()
     {
-
         //TODO: Pool GameObjects for performance
         //TODO: Animate the spawning of a new object and fire the current one (or animate current respawn and instantiate new)
 
@@ -108,7 +108,6 @@ public class EnemyRangedAttack : MonoBehaviour
         Destroy(firedGO, 30);
 
         //Debug.Log("Fired");
-        
 
 
     }

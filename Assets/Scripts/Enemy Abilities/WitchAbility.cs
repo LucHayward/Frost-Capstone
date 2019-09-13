@@ -68,18 +68,6 @@ public class WitchAbility : MonoBehaviour
 
     }
 
-    void abilityEnd()
-    {
-        animator.SetTrigger("ability2");
-    }
-
-    void ability2Start()
-    {
-
-
-
-    }
-
 
     void ability2()
     {
@@ -158,6 +146,14 @@ public class WitchAbility : MonoBehaviour
 
         Destroy(witchGO);
 
+    }
+
+    public void WitchStun()
+    {
+        Destroy(proj1);
+        Destroy(proj2);
+        Destroy(proj3);
+        Destroy(proj4);
     }
 
 }
