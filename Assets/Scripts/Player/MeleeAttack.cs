@@ -5,6 +5,8 @@ public class MeleeAttack : MonoBehaviour
 {
     public int damage;
     private bool isRanged = false;
+
+	
     void OnTriggerEnter(Collider other)
 	{
         if (other.gameObject.CompareTag("Enemy"))

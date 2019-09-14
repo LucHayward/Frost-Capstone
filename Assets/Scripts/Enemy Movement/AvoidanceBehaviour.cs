@@ -33,7 +33,8 @@ public class AvoidanceBehaviour : FlockBehaviour
 
                 else if(item.CompareTag("Obstacle"))
                 {
-                    avoidanceMove += 5*(agent.transform.position - item.position);
+                    //avoidanceMove += 5*(agent.transform.position - item.position);
+                    avoidanceMove += (agent.transform.position - item.position);
                 }  
             }
         }

@@ -19,7 +19,7 @@ public class FlockAgent : MonoBehaviour
     }
 
     /// <summary>
-    /// Moves the agent by calculating a distance uing a vecotr and time
+    /// Moves the agent by calculating a distance using a vector and time
     /// </summary>
     /// <param name="velocity"> the vector along which the agent will move </param>
     public void Move(Vector3 velocity)
