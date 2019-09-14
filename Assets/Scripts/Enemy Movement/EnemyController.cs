@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,7 +9,6 @@ using UnityEngine.AI;
 /// </summary>
 public class EnemyController : MonoBehaviour
 {
-
     public Animator animator;
     public NavMeshAgent agent;
     public float stoppingDistance;
@@ -24,29 +23,22 @@ public class EnemyController : MonoBehaviour
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
         playerTrasnform = playerGameObject.transform;
         enemy = gameObject.GetComponent<Enemy>();
-
     }
 
     private void Update()
     {
-
         MakeDecision();
 
         if (enemy.cantMove || enemy.isStunned)
         {
             StopMove();
-            
         }
         
         else
         {
             agent.isStopped = false;
             //flockAgent.enabled = true;
-            
         }
-
-        
-
     }
 
     /// <summary>
@@ -135,6 +127,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //TODO: @Keegan @Luc Fix this, can't have both active together
     /// <summary>
     /// Stops the agent from moving
     /// </summary>

@@ -32,14 +32,16 @@ public class EnemyManager
         return enemyScript.GetIdentifier();
     }
 
-    public void EnableMovement()
+	//TODO: @Keegan @Luc Remove this?
+	public void EnableMovement()
     {
         enemyController.ResumeMove();
         flockAgent.enabled = true;
         enemyController.enabled = true;
     }
 
-    public void DisableMovement()
+	//TODO: @Keegan @Luc Remove this?
+	public void DisableMovement()
     {
         enemyController.StopMove();
         flockAgent.enabled = false;

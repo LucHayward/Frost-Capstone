@@ -227,6 +227,7 @@ public class GameManager : MonoBehaviour
 		}
     }
 
+	//TODO: @Keegan @Luc Remove this?
     private void ResumeGame()
     {
         pauseMenu.ResumeGame();
@@ -234,7 +235,8 @@ public class GameManager : MonoBehaviour
         ResumeEnemyMovement();
     }
 
-    private void PauseGame()
+	//TODO: @Keegan @Luc Remove this?
+	private void PauseGame()
     {
         pauseMenu.PauseGame();
         PausePlayerMovement();
