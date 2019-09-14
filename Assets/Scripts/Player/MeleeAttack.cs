@@ -16,5 +16,4 @@ public class MeleeAttack : MonoBehaviour
             Debug.Log("Collision between staff and enemy");
         }
     }
-
 }

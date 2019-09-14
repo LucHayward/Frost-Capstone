@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ca942377c318e0d4db0899119890d67d
+guid: bf210c6c51b3f7c4380b1c1cd01114d2
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -79,7 +79,7 @@ ModelImporter:
     400070: Mutant:Spine1
     400072: Mutant:Spine2
     400074: //RootNode
-    7400000: Mutant Swiping
+    7400000: Sad Idle
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -110,18 +110,18 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Mutant Swiping
+      name: Sad Idle
       takeName: mixamo.com
       firstFrame: 0
-      lastFrame: 60
+      lastFrame: 120
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
+      loopTime: 1
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
@@ -132,28 +132,7 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events:
-      - time: 0
-        functionName: attackStart
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.49608555
-        functionName: attackDamage
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 1
-        functionName: attackEnd
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
+      events: []
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
