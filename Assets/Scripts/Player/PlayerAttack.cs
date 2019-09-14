@@ -20,6 +20,8 @@ public class PlayerAttack : MonoBehaviour
 	public AudioSource attackFailClip;
 	public AudioSource attackStunCastClip;
 
+	[HideInInspector]public bool inMelee = false; // used to notify PlayerMovement to face camera during melee
+
 	private LayerMask maskAll = -1;
 	private bool canAttack = true;
 
@@ -147,12 +149,14 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private IEnumerator MeleeAttack()
     {
+		inMelee = true;
 		canAttack = false;
         staffCollider.enabled = true;
         Debug.Log("Melee Attack");
 		animator.SetTrigger("meleeAttack");
 		yield return new WaitForSecondsRealtime(1.2f); // TODO: remove magic number (melee attack animation length)
         staffCollider.enabled = false;
+		inMelee = false;
 		ResetCanAttack();
     }
 
