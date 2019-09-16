@@ -42,26 +42,27 @@ public class EnemyController : MonoBehaviour
     }
 
     /// <summary>
-    /// Moves the current transform to the player at a variable speed
+    /// Moves the current transform to the player at a variable speed USING THE NAVMESH if close to player, otherwise 
     /// </summary>
     private void Move()
-    {
-            transform.LookAt(playerTransform.position);
-            float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-            if (distance > stoppingDistance)
-            {
-                flockAgent.enabled = false;
-                //agent.isStopped = false;
-                agent.SetDestination(playerTransform.position);
-            }
-            else
-            {
-                //agent.isStopped = true;
-                flockAgent.enabled = false;
-            }  
-    }
+	{
+		flockAgent.enabled = false;
+		transform.LookAt(playerTransform.position); //TODO Lerp this (see player movement)
+        float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
+        if (distance > stoppingDistance)
+        {
+            //agent.isStopped = false;
+            agent.SetDestination(playerTransform.position);
+		}
+		//else
+		//{
+		//    //agent.isStopped = true;
+		//    flockAgent.enabled = false;
+		//}  
+	}
     /// <summary>
     /// Controls the movment of the NPC for when they cannot see the player.
+	/// If the agent is close to the player, disable flocking and move to the player USING THE NAVMESH. Otherwise enable the flock agent component
     /// </summary>
     private void Wander()
     {
