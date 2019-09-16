@@ -27,11 +27,11 @@ public class CohesionBehaviour : FlockBehaviour
         {
             cohesiveMove += item.position;
         }
-        cohesiveMove /= context.Count;
-
         ///create offset from agent position
         cohesiveMove -= agent.transform.position;
+        cohesiveMove = cohesiveMove.normalized;
         cohesiveMove = Vector3.SmoothDamp(agent.transform.forward, cohesiveMove, ref currentVelocity, agentSmoothTime);
+        Debug.DrawRay(agent.transform.position, cohesiveMove, Color.blue, 1);
         return cohesiveMove;
     }
 }

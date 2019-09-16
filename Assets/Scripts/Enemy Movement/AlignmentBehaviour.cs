@@ -24,8 +24,9 @@ public class AlignmentBehaviour : FlockBehaviour
         {
             alignmentMove += item.transform.forward;
         }
-        alignmentMove /= context.Count;
-
+        
+        alignmentMove = alignmentMove.normalized;
+        Debug.DrawRay(agent.transform.position, alignmentMove, Color.yellow, 1);
         return alignmentMove;
     }
 }

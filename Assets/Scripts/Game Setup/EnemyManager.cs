@@ -32,23 +32,6 @@ public class EnemyManager
         return enemyScript.GetIdentifier();
     }
 
-	//TODO: @Keegan @Luc Remove this?
-	public void EnableMovement()
-    {
-        enemyController.ResumeMove();
-        flockAgent.enabled = true;
-        enemyController.enabled = true;
-    }
-
-	//TODO: @Keegan @Luc Remove this?
-	public void DisableMovement()
-    {
-        enemyController.StopMove();
-        flockAgent.enabled = false;
-        enemyController.enabled = false;
-    }
-
-
 	/// <summary>
 	/// Calculates the spawn point for this enemy as a random offset from the predetermined spawn locaiton
 	/// 

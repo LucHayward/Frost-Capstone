@@ -136,13 +136,4 @@ public class EnemyController : MonoBehaviour
         agent.isStopped = true;
         flockAgent.enabled = false;
     }
-
-    /// <summary>
-    /// Allows the agent to start moving
-    /// </summary>
-    public void ResumeMove()
-    {
-        agent.isStopped = false;
-        flockAgent.enabled = true;
-    }
 }

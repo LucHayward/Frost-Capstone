@@ -203,21 +203,6 @@ public class Enemy : MonoBehaviour
         //cantMove = false;
     }
 
-    public void DisableMovement()
-    {
-        enemyController.StopMove();
-        flockAgent.enabled = false;
-        enemyController.enabled = false;
-    }
-
-    public void EnableMovement()
-    {
-        enemyController.ResumeMove();
-        flockAgent.enabled = true;
-        enemyController.enabled = true;
-    }
-
-
     void StartDeath()
     {
         
