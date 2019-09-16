@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46f4006d9e8d2046a60733a35fdf84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 100
+  startingHealth: 10
   currrentHealth: 0
   healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
@@ -3024,12 +3024,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c21509f08011828468c38aed97595c0c, type: 3}
---- !u!4 &7273930371319461093 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5152882216638088190, guid: c21509f08011828468c38aed97595c0c,
-    type: 3}
-  m_PrefabInstance: {fileID: 2553688534054598427}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2528227847017093144 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 28877461722476291, guid: c21509f08011828468c38aed97595c0c,
@@ -3039,6 +3033,12 @@ Transform:
 --- !u!136 &5229319022832191839 stripped
 CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 7773991140060364356, guid: c21509f08011828468c38aed97595c0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2553688534054598427}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7273930371319461093 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5152882216638088190, guid: c21509f08011828468c38aed97595c0c,
     type: 3}
   m_PrefabInstance: {fileID: 2553688534054598427}
   m_PrefabAsset: {fileID: 0}

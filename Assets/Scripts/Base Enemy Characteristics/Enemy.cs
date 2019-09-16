@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
 
         //animator.SetBool("isDead", false);
         isDead = false;
+
     }
 
     // Update is called once per frame
@@ -92,6 +93,11 @@ public class Enemy : MonoBehaviour
             }
             isDead = true;
             GameManager.Get().RemovedDeadEnemy(identificationNumber, type);
+        }
+
+        if(GameManager.Get().gameOver == true)
+        {
+            Destroy(gameObject);
         }
     }
 

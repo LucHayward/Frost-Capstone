@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,9 +34,12 @@ public class GameManager : MonoBehaviour
     private Text levelText;
     private Text scoreText;
     private int score = 0;
+    public bool gameOver = false;
 
     private void Start()
     {
+        gameOver = false;
+        PlayerPrefs.SetInt("score", 0);
         startWait = new WaitForSeconds(startDelay);
         endWait = new WaitForSeconds(endDelay);
         GameObject levelUI = GameObject.Find("LevelUI");
@@ -132,7 +136,11 @@ public class GameManager : MonoBehaviour
 
         if(!ThereIsAPlayer())
         {
-            SpawnPlayer(); //TODO END GAME
+            if(SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                SpawnPlayer(); //TODO END GAME
+            }
+            
         }
         else
         {
@@ -225,6 +233,8 @@ public class GameManager : MonoBehaviour
 				Time.timeScale = 0;
 			}
 		}
+
+        
     }
 
     private void ResumeGame()
@@ -340,5 +350,10 @@ public class GameManager : MonoBehaviour
                     break;
                 }
         }
+    }
+
+    public int GetScore()
+    {
+        return score;
     }
 }

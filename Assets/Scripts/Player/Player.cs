@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     public bool hasShield;
     public bool isFast;
 
+    private int score;
     private bool isDamaged;
 
     [SerializeField] private PlayerMovement playerMovement = null; //Assigned in inspector
@@ -53,6 +54,7 @@ public class Player : MonoBehaviour
             Debug.Log("Player Died");
             OnDeath();
         }
+
     }
 
     /// <summary>
@@ -104,11 +106,24 @@ public class Player : MonoBehaviour
 		playerMovement.RandomizeDeathVariant();
 		playerMovement.animator.SetTrigger("die");
 
-		//TODO: Disable colliders and movement scripts etc
+        //TODO: Disable colliders and movement scripts etc
+        score = GameManager.Get().GetScore();
+        
+        
+        PlayerPrefs.SetInt("score", score);
 
-		Instantiate(gameObject);
+        SceneManager.LoadScene(2);
+
+        GameManager.Get().gameOver = true;
+
+        Instantiate(gameObject);
 		Destroy(gameObject);
-	}
+
+
+        
+
+
+    }
 
     public void OnDisable()
     {
@@ -121,4 +136,5 @@ public class Player : MonoBehaviour
         playerMovement.enabled = true;
         playerAttack.enabled = true;
     }
+
 }
