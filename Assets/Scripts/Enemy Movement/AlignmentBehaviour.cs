@@ -26,7 +26,7 @@ public class AlignmentBehaviour : FlockBehaviour
         }
         
         alignmentMove = alignmentMove.normalized;
-        Debug.DrawRay(agent.transform.position, alignmentMove, Color.yellow, 1);
+        Debug.DrawRay(agent.transform.position, alignmentMove, Color.green);
         return alignmentMove;
     }
 }

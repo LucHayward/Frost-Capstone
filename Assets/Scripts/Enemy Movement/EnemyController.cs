@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
     public NavMeshAgent agent;
     public float stoppingDistance;
     private GameObject playerGameObject;
-    private Transform playerTrasnform;
+    private Transform playerTransform;
     private Enemy enemy;
     private bool hasSeen = false;
     [SerializeField]private FlockAgent flockAgent = null; //Assigned in inspector
@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
 	void Start()
     {
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
-        playerTrasnform = playerGameObject.transform;
+        playerTransform = playerGameObject.transform;
         enemy = gameObject.GetComponent<Enemy>();
     }
 
@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
         
         else
         {
-            agent.isStopped = false;
+            //agent.isStopped = false;
             //flockAgent.enabled = true;
         }
     }
@@ -46,17 +46,17 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void Move()
     {
-            transform.LookAt(playerTrasnform.position);
+            transform.LookAt(playerTransform.position);
             float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
             if (distance > stoppingDistance)
             {
                 flockAgent.enabled = false;
-                agent.isStopped = false;
-                agent.SetDestination(playerTrasnform.position);
+                //agent.isStopped = false;
+                agent.SetDestination(playerTransform.position);
             }
             else
             {
-                agent.isStopped = true;
+                //agent.isStopped = true;
                 flockAgent.enabled = false;
             }  
     }
@@ -69,11 +69,11 @@ public class EnemyController : MonoBehaviour
             if (distance < 5)
             {
                 flockAgent.enabled = false;
-                agent.SetDestination(playerTrasnform.position);
+                agent.SetDestination(playerTransform.position);
             }
             else
            {
-                agent.isStopped = true;
+                //agent.isStopped = true;
                 flockAgent.enabled = true;
            }
     }
@@ -83,7 +83,7 @@ public class EnemyController : MonoBehaviour
     private void MakeDecision()
     {
         Vector3 currentPosition = new Vector3(transform.position.x, 1, transform.position.z);
-        Vector3 centralizedPlayerPosition = new Vector3(playerTrasnform.position.x, 1, playerTrasnform.position.z);
+        Vector3 centralizedPlayerPosition = new Vector3(playerTransform.position.x, 1, playerTransform.position.z);
         Vector3 directionToPlayer = centralizedPlayerPosition - currentPosition; // vector pointing from the enemy to the player       
         Ray eyeLine = new Ray(currentPosition, directionToPlayer);
         Debug.DrawRay(currentPosition, directionToPlayer);
@@ -133,7 +133,7 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     public void StopMove()
     {
-        agent.isStopped = true;
+        //agent.isStopped = true;
         flockAgent.enabled = false;
     }
 }

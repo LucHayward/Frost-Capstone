@@ -31,7 +31,7 @@ public class AvoidanceBehaviour : FilteredFlockBehaviour
             }
         }
         avoidanceMove = avoidanceMove.normalized;
-        Debug.DrawRay(agent.transform.position, avoidanceMove, Color.red, 1);
+        Debug.DrawRay(agent.transform.position, avoidanceMove, Color.red);
         return avoidanceMove;
     }
 }

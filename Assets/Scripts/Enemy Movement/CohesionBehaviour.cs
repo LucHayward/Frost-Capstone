@@ -31,7 +31,7 @@ public class CohesionBehaviour : FlockBehaviour
         cohesiveMove -= agent.transform.position;
         cohesiveMove = cohesiveMove.normalized;
         cohesiveMove = Vector3.SmoothDamp(agent.transform.forward, cohesiveMove, ref currentVelocity, agentSmoothTime);
-        Debug.DrawRay(agent.transform.position, cohesiveMove, Color.blue, 1);
+        Debug.DrawRay(agent.transform.position, cohesiveMove, Color.blue);
         return cohesiveMove;
     }
 }

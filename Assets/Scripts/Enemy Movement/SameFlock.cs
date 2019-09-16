@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Flock/Filter/Same Flock")]
-public class SameFilter : ContextFilter
+public class SameFlock : ContextFilter
 {
     public override List<Transform> Filter(FlockAgent agent, List<Transform> original)
     {

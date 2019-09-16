@@ -7,13 +7,16 @@ public class Enemy : MonoBehaviour
     public int health;
     private int identificationNumber;
     public Animator animator;
-    private Vector3 velocity;
-    public string type;
+
+	private Vector3 velocity;
+    public float velocityMagnitude;
+
+	public string type;
     public int abilityDamage;
     public int damage;
     public bool hasScreamed;
     public bool isStunned;
-    public float velocityMagnitude;
+   
     public bool cantMove;
     public bool isDead;
 

@@ -30,7 +30,7 @@ public class CompositeBehaviour : FlockBehaviour
             Vector3 partialMove = behaviours[i].CalculateMove(agent, context, flock) * weights[i];
             move += partialMove;
         }
-        Debug.DrawRay(agent.transform.position, move, Color.white, 1);
+        Debug.DrawRay(agent.transform.position, move, Color.white);
         return move;
     }
 }
