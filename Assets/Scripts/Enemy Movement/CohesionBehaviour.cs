@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Flock/Behaviour/Cohesion")]
-public class CohesionBehaviour : FlockBehaviour
+public class CohesionBehaviour : FilteredFlockBehaviour
 {
     Vector3 currentVelocity;
     public float agentSmoothTime = 1.5f;
@@ -17,16 +17,20 @@ public class CohesionBehaviour : FlockBehaviour
     /// <returns> the average position </returns>
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
-        ///if there are no neighbours return no adjustment
-        if (context.Count == 0)
-            return Vector3.zero;
+		List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
 
-        ///add all points together and average
-        Vector3 cohesiveMove = Vector3.zero;
-        foreach (Transform item in context)
+		///if there are no neighbours return no adjustment
+		if (filteredContext.Count == 0)
+			return Vector3.zero;
+
+		///add all points together and average
+		Vector3 cohesiveMove = Vector3.zero;
+        foreach (Transform item in filteredContext)
         {
             cohesiveMove += item.position;
         }
+		cohesiveMove /= filteredContext.Count;
+
         ///create offset from agent position
         cohesiveMove -= agent.transform.position;
         cohesiveMove = cohesiveMove.normalized;

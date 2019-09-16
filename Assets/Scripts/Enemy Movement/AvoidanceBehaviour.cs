@@ -14,14 +14,15 @@ public class AvoidanceBehaviour : FilteredFlockBehaviour
     /// <returns> the vector that the agent should move along </returns>
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
-        ///if there are no neighbours return no adjustment
-        if (context.Count == 0)
+		List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
+
+		///if there are no neighbours return no adjustment
+		if (filteredContext.Count == 0)
             return Vector3.zero;
 
         ///add all points together and average
         Vector3 avoidanceMove = Vector3.zero;
         int numberOfObjectsToAvoid = 0;
-        List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
         foreach (Transform item in filteredContext)
         {
             if(Vector3.SqrMagnitude(item.position - agent.transform.position) < flock.SquareAvoidanceRadius)

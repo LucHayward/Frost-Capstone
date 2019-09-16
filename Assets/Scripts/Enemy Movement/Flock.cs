@@ -20,6 +20,7 @@ public class Flock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		//TODO I think we should up this
         squareNeighbourRadius = neighbourRadius * neighbourRadius;
         squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
     }
@@ -86,4 +87,6 @@ public class Flock : MonoBehaviour
 			}
 		}
 	}
+
+
 }
