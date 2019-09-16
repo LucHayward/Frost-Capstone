@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
 	private Vector3 moveDirection;
 	private float jumpAnimTime;
 
+	private PlayerAttack playerAttack;
+
 	void Start()
 	{
 		characterController = GetComponent<CharacterController>();
@@ -33,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
 		Cursor.visible = false;
 
 		jumpAnimTime = jumpAnim.length;
+		playerAttack = GetComponent<PlayerAttack>();
 
 	}
 
@@ -81,9 +84,8 @@ public class PlayerMovement : MonoBehaviour
 		debugVelocity = characterController.velocity;
 		float speed = localVelocity.magnitude;
 		animator.SetFloat("velocity", speed);
-
-		// Prevents the character from "moving" when against a wall
-		if (speed > 0)
+		
+		if (speed > 0 || playerAttack.inMelee)
 		{
 			//Turn character
 			Quaternion newLookRotation = Quaternion.LookRotation(cameraTransform.forward, Vector3.up);
