@@ -20,6 +20,7 @@ public class Flock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+		//TODO I think we should up this
         squareNeighbourRadius = neighbourRadius * neighbourRadius;
         squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
     }
@@ -41,12 +42,13 @@ public class Flock : MonoBehaviour
                 squareMaxSpeed = maxSpeed * maxSpeed;
                 List<Transform> context = GetNearbyObjects(agent);
                 Vector3 move = behaviour.CalculateMove(agent, context, this);
-                move *= driveFactor;
+                move *= driveFactor; //Is this ever needed?
                 if (move.sqrMagnitude > squareMaxSpeed)
                 {
                     move = move.normalized * maxSpeed; /// make it one then times by max speed
                 }
 
+				Debug.DrawRay(agent.transform.position, move, Color.magenta);
                 agent.Move(move);
             }
 		}
@@ -61,14 +63,30 @@ public class Flock : MonoBehaviour
 	{
         List<Transform> context = new List<Transform>();
         Collider[] contextColliders = Physics.OverlapSphere(agent.transform.position, neighbourRadius);
+		
         foreach(Collider c in contextColliders)
         {
-            if(c != agent.AgentCollider)
+            if(c != agent.AgentCollider || c.tag == "Obstacle")
             {
                 context.Add(c.transform);
             }
         }
         return context;
 	}
-    
+
+	private void OnDrawGizmos()
+	{
+		foreach (FlockAgent agent in GameManager.Get().agents)
+		{
+			if (agent != null)
+			{
+				Gizmos.DrawWireSphere(agent.transform.position, neighbourRadius);
+				//Gizmos.color = Color.red;
+				//Gizmos.DrawWireSphere(agent.transform.position, neighbourRadius*avoidanceRadiusMultiplier);
+				//Gizmos.color = Color.white;
+			}
+		}
+	}
+
+
 }

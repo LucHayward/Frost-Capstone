@@ -7,13 +7,16 @@ public class Enemy : MonoBehaviour
     public int health;
     private int identificationNumber;
     public Animator animator;
-    private Vector3 velocity;
-    public string type;
+
+	private Vector3 velocity;
+    public float velocityMagnitude;
+
+	public string type;
     public int abilityDamage;
     public int damage;
     public bool hasScreamed;
     public bool isStunned;
-    public float velocityMagnitude;
+   
     public bool cantMove;
     public bool isDead;
 
@@ -208,21 +211,6 @@ public class Enemy : MonoBehaviour
         //isStunned = false;
         //cantMove = false;
     }
-
-    public void DisableMovement()
-    {
-        enemyController.StopMove();
-        flockAgent.enabled = false;
-        enemyController.enabled = false;
-    }
-
-    public void EnableMovement()
-    {
-        enemyController.ResumeMove();
-        flockAgent.enabled = true;
-        enemyController.enabled = true;
-    }
-
 
     void StartDeath()
     {
