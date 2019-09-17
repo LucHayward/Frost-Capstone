@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &5384478893018614382
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634123629885030911}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1060007, y: 2.0904, z: 1.0556002}
+  m_Center: {x: 0, y: 0.00000011920929, z: 0}
+--- !u!65 &1205656945327203265
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2634123630446305826}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.041574012, y: 0.016379999, z: 0.011830003}
+  m_Center: {x: -8.405723e-18, y: 0.0037570007, z: 0.0005915003}
 --- !u!1 &3129965894597452862
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,9 +35,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2800479380751321416}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: SpikedWall
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,6 +59,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2094985347097542180
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9160447016120121887}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.1060004, y: 2.0904, z: 1.0556002}
+  m_Center: {x: 0, y: 0.00000011920929, z: 0.0000009536743}
 --- !u!1001 &2634123629885065055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43,6 +82,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 76cc487c27f80774b8fc8f26cb26b8a9, type: 3}
       propertyPath: m_Name
       value: Block_2x2x1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 76cc487c27f80774b8fc8f26cb26b8a9, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 76cc487c27f80774b8fc8f26cb26b8a9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -102,6 +145,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76cc487c27f80774b8fc8f26cb26b8a9, type: 3}
+--- !u!1 &2634123629885030911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 76cc487c27f80774b8fc8f26cb26b8a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2634123629885065055}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2634123629885201887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 76cc487c27f80774b8fc8f26cb26b8a9,
@@ -118,6 +167,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 05b6e3626b16a408d8a7c57091e20527, type: 3}
       propertyPath: m_Name
       value: Wall_4x1x1_Ridged_Patterned_Spiked_Even_Spread
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 05b6e3626b16a408d8a7c57091e20527, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 05b6e3626b16a408d8a7c57091e20527, type: 3}
       propertyPath: m_LocalPosition.x
@@ -181,6 +234,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5813bea2584b457469c3c82aab5ba621, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05b6e3626b16a408d8a7c57091e20527, type: 3}
+--- !u!1 &2634123630446305826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 05b6e3626b16a408d8a7c57091e20527,
+    type: 3}
+  m_PrefabInstance: {fileID: 2634123630446339202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2634123630445952514 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 05b6e3626b16a408d8a7c57091e20527,
@@ -197,6 +256,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 76cc487c27f80774b8fc8f26cb26b8a9, type: 3}
       propertyPath: m_Name
       value: Block_2x2x1 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 76cc487c27f80774b8fc8f26cb26b8a9, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 76cc487c27f80774b8fc8f26cb26b8a9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -256,6 +319,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76cc487c27f80774b8fc8f26cb26b8a9, type: 3}
+--- !u!1 &9160447016120121887 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 76cc487c27f80774b8fc8f26cb26b8a9,
+    type: 3}
+  m_PrefabInstance: {fileID: 9160447016120220863}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9160447016120608319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 76cc487c27f80774b8fc8f26cb26b8a9,

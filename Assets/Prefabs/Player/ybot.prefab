@@ -760,7 +760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46f4006d9e8d2046a60733a35fdf84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10
+  startingHealth: 20
   currrentHealth: 0
   healthSlider: {fileID: 0}
   damageImage: {fileID: 0}
@@ -795,6 +795,7 @@ MonoBehaviour:
   attackClip: {fileID: 2145366186985326898}
   attackFailClip: {fileID: 4869729183207381234}
   attackStunCastClip: {fileID: 8858565467801058247}
+  inMelee: 0
 --- !u!114 &5048431004472485266
 MonoBehaviour:
   m_ObjectHideFlags: 0
