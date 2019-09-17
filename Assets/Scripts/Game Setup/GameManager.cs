@@ -224,83 +224,17 @@ public class GameManager : MonoBehaviour
         {
             if (pauseMenu.isPaused)
             {
-				Time.timeScale = 1;
-                ResumeGame();
+                Time.timeScale = 1;
+                pauseMenu.ResumeGame();
             }
             else
             {
-                PauseGame();
-				Time.timeScale = 0;
+                pauseMenu.PauseGame();
+                Time.timeScale = 0;
 			}
 		}
 
         
-    }
-
-    private void ResumeGame()
-    {
-        pauseMenu.ResumeGame();
-        ResumePlayerMovement();
-        ResumeEnemyMovement();
-    }
-
-    private void PauseGame()
-    {
-        pauseMenu.PauseGame();
-        PausePlayerMovement();
-        PauseEnemyMovement();
-    }
-
-    private void PausePlayerMovement()
-    {
-        foreach(PlayerManager player in players)
-        {
-            player.StopMovment();
-        }
-    }
-
-    private void ResumePlayerMovement()
-    {
-        foreach (PlayerManager player in players)
-        {
-            player.ResumeMovement();
-        }
-    }
-
-    private void PauseEnemyMovement()
-    {
-        foreach(EnemyManager meleeEnemy in meleeEnemies)
-        {
-            meleeEnemy.DisableMovement();
-        }
-
-        foreach (EnemyManager rangedEnemy in rangedEnemies)
-        {
-            rangedEnemy.DisableMovement();
-        }
-
-        foreach (EnemyManager bossEnemy in bossEnemies)
-        {
-            bossEnemy.DisableMovement();
-        }
-    }
-
-    private void ResumeEnemyMovement()
-    {
-        foreach (EnemyManager meleeEnemy in meleeEnemies)
-        {
-            meleeEnemy.EnableMovement();
-        }
-
-        foreach (EnemyManager rangedEnemy in rangedEnemies)
-        {
-            rangedEnemy.EnableMovement();
-        }
-
-        foreach (EnemyManager bossEnemy in bossEnemies)
-        {
-            bossEnemy.EnableMovement();
-        }
     }
 
     public void UpdateScore(int points)
