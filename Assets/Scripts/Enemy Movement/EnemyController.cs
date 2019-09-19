@@ -46,6 +46,11 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void Move()
 	{
+
+        if (!enemy.isStunned)
+        {
+            agent.isStopped = false;
+        }
 		flockAgent.enabled = false;
 		transform.LookAt(playerTransform.position); //TODO Lerp this (see player movement)
         float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
@@ -96,14 +101,14 @@ public class EnemyController : MonoBehaviour
             if (hit.collider.tag.Equals("Player"))
             {
                 hasSeen = true;
-                if(enemy.GetType().Equals("Melee"))
-                {
-                    if (enemy.hasScreamed == false)
-                    {
-                        animator.SetTrigger("scream");
-                        enemy.hasScreamed = true;
-                    }
-                }
+                //if(enemy.GetType().Equals("Melee"))
+                //{
+                //    if (enemy.hasScreamed == false)
+                //    {
+                //        animator.SetTrigger("scream");
+                //        enemy.hasScreamed = true;
+                //    }
+                //}
                 
 
                 Move();                
@@ -134,7 +139,7 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     public void StopMove()
     {
-        //agent.isStopped = true;
+        agent.isStopped = true;
         flockAgent.enabled = false;
     }
 }
