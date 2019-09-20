@@ -595,7 +595,9 @@ MonoBehaviour:
   blueFE: {fileID: 4363009250935096437, guid: a154b000aa43a8e4dbf83031296e75e3, type: 3}
   redFE: {fileID: 5766422981681890312, guid: 8f42a24229e850e4abf13b75e0721254, type: 3}
   greenFE: {fileID: 6363132546532352993, guid: 35aa42aa9a8560b4eb48badb6397c3d8, type: 3}
-  FEtransform: {fileID: 6999109079361835639}
+  redFEtransform: {fileID: 6999109079361835639}
+  blueFEtransform: {fileID: 6999109079361835639}
+  greenFEtransform: {fileID: 6999109079361835639}
   enemyController: {fileID: 5848736932314586638}
   flockAgent: {fileID: 8352413979453468287}
 --- !u!114 &5848736932314586638

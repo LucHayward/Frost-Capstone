@@ -60,6 +60,10 @@ public class Player : MonoBehaviour
             OnDeath();
         }
 
+        CapFrostEssence(blueFE);
+        CapFrostEssence(redFE);
+        CapFrostEssence(greenFE);
+
     }
 
     /// <summary>
@@ -140,6 +144,19 @@ public class Player : MonoBehaviour
     {
         playerMovement.enabled = true;
         playerAttack.enabled = true;
+    }
+
+    private void CapFrostEssence(int fe)
+    {
+        if(fe < 0)
+        {
+            fe = 0;
+        }
+
+        if(fe > 100)
+        {
+            fe = 100;
+        }
     }
 
     
