@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 5915185049464431045}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1408614494062364181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7920302278170919921}
+  m_Layer: 0
+  m_Name: FEspawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7920302278170919921
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1408614494062364181}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5915185049464430601}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1954854414764911705
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,6 +676,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5915185049464430603}
+  - {fileID: 7920302278170919921}
   m_Father: {fileID: 5915185049464430989}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2111,16 +2142,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   animator: {fileID: 5915185049473486441}
+  velocityMagnitude: 0
   type: Ranged
   abilityDamage: 4
   damage: 2
   hasScreamed: 0
   isStunned: 0
-  velocityMagnitude: 0
   cantMove: 0
+  isDead: 0
+  blueFE: {fileID: 4363009250935096437, guid: a154b000aa43a8e4dbf83031296e75e3, type: 3}
+  redFE: {fileID: 5766422981681890312, guid: 8f42a24229e850e4abf13b75e0721254, type: 3}
+  greenFE: {fileID: 6363132546532352993, guid: 35aa42aa9a8560b4eb48badb6397c3d8, type: 3}
+  redFEtransform: {fileID: 7920302278170919921}
+  blueFEtransform: {fileID: 7920302278170919921}
+  greenFEtransform: {fileID: 7920302278170919921}
   enemyController: {fileID: 8471785993963130964}
   flockAgent: {fileID: 6003557633375194241}
-  isDead: 0
 --- !u!114 &1860593735834247553
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2141,6 +2178,7 @@ MonoBehaviour:
   animator: {fileID: 5915185049473486441}
   navMeshAgent: {fileID: 3457713459428453073}
   abilityCD: 6
+  shotState: 0
   attackParticles: {fileID: 0}
   attackClip: {fileID: 0}
 --- !u!114 &8471785993963130964

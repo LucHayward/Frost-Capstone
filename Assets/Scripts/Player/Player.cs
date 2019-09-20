@@ -17,6 +17,11 @@ public class Player : MonoBehaviour
     public bool hasShield;
     public bool isFast;
 
+    //types of frost essence
+    public int blueFE = 0;
+    public int greenFE = 0;
+    public int redFE = 0;
+
     private int score;
     private bool isDamaged;
 
@@ -54,6 +59,10 @@ public class Player : MonoBehaviour
             Debug.Log("Player Died");
             OnDeath();
         }
+
+        CapFrostEssence(blueFE);
+        CapFrostEssence(redFE);
+        CapFrostEssence(greenFE);
 
     }
 
@@ -136,5 +145,20 @@ public class Player : MonoBehaviour
         playerMovement.enabled = true;
         playerAttack.enabled = true;
     }
+
+    private void CapFrostEssence(int fe)
+    {
+        if(fe < 0)
+        {
+            fe = 0;
+        }
+
+        if(fe > 100)
+        {
+            fe = 100;
+        }
+    }
+
+    
 
 }

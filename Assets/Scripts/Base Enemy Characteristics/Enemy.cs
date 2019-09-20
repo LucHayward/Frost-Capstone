@@ -20,6 +20,15 @@ public class Enemy : MonoBehaviour
     public bool cantMove;
     public bool isDead;
 
+    //types of frost essence
+    public GameObject blueFE;
+    public GameObject redFE;
+    public GameObject greenFE;
+
+    public Transform redFEtransform;
+    public Transform blueFEtransform;
+    public Transform greenFEtransform;
+
     private bool rangedDeath;
 
     [SerializeField] private EnemyController enemyController = null; //Assigned in inspector
@@ -27,6 +36,7 @@ public class Enemy : MonoBehaviour
 	private GameObject playerGO;
 	private Player player;
 	private Transform playerPos;
+
     private Vector3 prevTransform;
     private int numberOfStacks;
 
@@ -81,6 +91,7 @@ public class Enemy : MonoBehaviour
         prevTransform = transform.position;
         if (health <= 0 && isDead == false)
         {
+            cantMove = true;
             UpdateScore();
 
             //if melee: SetTrigger("meleeDeath")
@@ -220,6 +231,7 @@ public class Enemy : MonoBehaviour
 
     void EndDeath()
     {
+        DropEssence();
         if (type == "Ranged")
         {
             gameObject.GetComponent<WitchAbility>().witchDead();
@@ -229,6 +241,83 @@ public class Enemy : MonoBehaviour
 
         
 
+    }
+
+    void DropEssence()
+    {
+        if(type == "Ranged")
+        {
+            //random number to determine drop type. Higher range for weaker enemies (lower chance of drop)
+            var dropType = Random.Range(0, 15);
+
+
+            //random number to determine drop amount. Lower range for weaker enemies (lower amount dropped)
+            var dropAmount = Random.Range(10, 51);
+
+            if(dropType < 3)
+            {
+                GameObject blueFrostEssence = Instantiate(blueFE, gameObject.transform.position, Quaternion.identity) as GameObject;
+
+                blueFrostEssence.GetComponent<FrostEssence>().setAmount(dropAmount);
+            }
+            else if (dropType < 6)
+            {
+                GameObject redFrostEssence = Instantiate(redFE, gameObject.transform.position, Quaternion.identity) as GameObject;
+                redFrostEssence.GetComponent<FrostEssence>().setAmount(dropAmount);
+            }
+            else if(dropType < 9)
+            {
+                GameObject greenFrostEssence = Instantiate(greenFE, gameObject.transform.position, Quaternion.identity) as GameObject;
+                greenFrostEssence.GetComponent<FrostEssence>().setAmount(dropAmount);
+            }
+        }
+
+        else if (type == "Melee")
+        {
+            //random number to determine drop type. Higher range for weaker enemies (lower chance of drop)
+            var dropType = Random.Range(0, 20);
+
+            //random number to determine drop amount. Lower range for weaker enemies (lower amount dropped)
+            var dropAmount = Random.Range(5, 31);
+
+            if (dropType < 3)
+            {
+                GameObject blueFrostEssence = Instantiate(blueFE, gameObject.transform.position, Quaternion.identity) as GameObject;
+
+                blueFrostEssence.GetComponent<FrostEssence>().setAmount(dropAmount);
+            }
+            else if (dropType < 6)
+            {
+                GameObject redFrostEssence = Instantiate(redFE, gameObject.transform.position, Quaternion.identity) as GameObject;
+                redFrostEssence.GetComponent<FrostEssence>().setAmount(dropAmount);
+            }
+            else if (dropType < 9)
+            {
+                GameObject greenFrostEssence = Instantiate(greenFE, gameObject.transform.position, Quaternion.identity) as GameObject;
+                greenFrostEssence.GetComponent<FrostEssence>().setAmount(dropAmount);
+            }
+        }
+
+        else if (type == "Boss")
+        {
+            //random number to determine drop amount. Lower range for weaker enemies (lower amount dropped)
+            var redAmount = Random.Range(50, 91);
+            var blueAmount = Random.Range(50, 91);
+            var greenAmount = Random.Range(50, 91);
+
+
+            GameObject blueFrostEssence = Instantiate(blueFE, blueFEtransform.position, Quaternion.identity) as GameObject;
+            blueFrostEssence.GetComponent<FrostEssence>().setAmount(blueAmount);
+            
+            
+            GameObject redFrostEssence = Instantiate(redFE, redFEtransform.position, Quaternion.identity) as GameObject;
+            redFrostEssence.GetComponent<FrostEssence>().setAmount(redAmount);
+            
+            
+            GameObject greenFrostEssence = Instantiate(greenFE, greenFEtransform.position, Quaternion.identity) as GameObject;
+            greenFrostEssence.GetComponent<FrostEssence>().setAmount(greenAmount);
+            
+        }
     }
 
 
