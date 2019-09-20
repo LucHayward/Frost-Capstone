@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,12 +9,11 @@ using UnityEngine.AI;
 /// </summary>
 public class EnemyController : MonoBehaviour
 {
-
     public Animator animator;
     public NavMeshAgent agent;
     public float stoppingDistance;
     private GameObject playerGameObject;
-    private Transform playerTrasnform;
+    private Transform playerTransform;
     private Enemy enemy;
     private bool hasSeen = false;
     [SerializeField]private FlockAgent flockAgent = null; //Assigned in inspector
@@ -22,54 +21,48 @@ public class EnemyController : MonoBehaviour
 	void Start()
     {
         playerGameObject = GameObject.FindGameObjectWithTag("Player");
-        playerTrasnform = playerGameObject.transform;
+        playerTransform = playerGameObject.transform;
         enemy = gameObject.GetComponent<Enemy>();
-
     }
 
     private void Update()
     {
-
         MakeDecision();
 
         if (enemy.cantMove || enemy.isStunned)
         {
             StopMove();
-            
         }
         
         else
         {
-            agent.isStopped = false;
+            //agent.isStopped = false;
             //flockAgent.enabled = true;
-            
         }
-
-        
-
     }
 
     /// <summary>
-    /// Moves the current transform to the player at a variable speed
+    /// Moves the current transform to the player at a variable speed USING THE NAVMESH if close to player, otherwise 
     /// </summary>
     private void Move()
-    {
-            transform.LookAt(playerTrasnform.position);
-            float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-            if (distance > stoppingDistance)
-            {
-                flockAgent.enabled = false;
-                agent.isStopped = false;
-                agent.SetDestination(playerTrasnform.position);
-            }
-            else
-            {
-                agent.isStopped = true;
-                flockAgent.enabled = false;
-            }  
-    }
+	{
+		flockAgent.enabled = false;
+		transform.LookAt(playerTransform.position); //TODO Lerp this (see player movement)
+        float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
+        if (distance > stoppingDistance)
+        {
+            //agent.isStopped = false;
+            agent.SetDestination(playerTransform.position);
+		}
+		//else
+		//{
+		//    //agent.isStopped = true;
+		//    flockAgent.enabled = false;
+		//}  
+	}
     /// <summary>
     /// Controls the movment of the NPC for when they cannot see the player.
+	/// If the agent is close to the player, disable flocking and move to the player USING THE NAVMESH. Otherwise enable the flock agent component
     /// </summary>
     private void Wander()
     {
@@ -77,11 +70,11 @@ public class EnemyController : MonoBehaviour
             if (distance < 5)
             {
                 flockAgent.enabled = false;
-                agent.SetDestination(playerTrasnform.position);
+                agent.SetDestination(playerTransform.position);
             }
             else
            {
-                agent.isStopped = true;
+                //agent.isStopped = true;
                 flockAgent.enabled = true;
            }
     }
@@ -91,7 +84,7 @@ public class EnemyController : MonoBehaviour
     private void MakeDecision()
     {
         Vector3 currentPosition = new Vector3(transform.position.x, 1, transform.position.z);
-        Vector3 centralizedPlayerPosition = new Vector3(playerTrasnform.position.x, 1, playerTrasnform.position.z);
+        Vector3 centralizedPlayerPosition = new Vector3(playerTransform.position.x, 1, playerTransform.position.z);
         Vector3 directionToPlayer = centralizedPlayerPosition - currentPosition; // vector pointing from the enemy to the player       
         Ray eyeLine = new Ray(currentPosition, directionToPlayer);
         Debug.DrawRay(currentPosition, directionToPlayer);
@@ -135,21 +128,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    //TODO: @Keegan @Luc Fix this, can't have both active together
     /// <summary>
     /// Stops the agent from moving
     /// </summary>
     public void StopMove()
     {
-        agent.isStopped = true;
+        //agent.isStopped = true;
         flockAgent.enabled = false;
-    }
-
-    /// <summary>
-    /// Allows the agent to start moving
-    /// </summary>
-    public void ResumeMove()
-    {
-        agent.isStopped = false;
-        flockAgent.enabled = true;
     }
 }

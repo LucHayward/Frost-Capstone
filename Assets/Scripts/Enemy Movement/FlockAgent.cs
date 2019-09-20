@@ -25,7 +25,9 @@ public class FlockAgent : MonoBehaviour
     public void Move(Vector3 velocity)
     {
         if(this.enabled)
-        {     
+        {
+			float m = velocity.magnitude;
+			velocity = Vector3.ProjectOnPlane(velocity, Vector3.up).normalized * m;
             transform.forward = velocity;
             transform.position += velocity * Time.deltaTime;
         }   
