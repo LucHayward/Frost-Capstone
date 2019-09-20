@@ -17,6 +17,11 @@ public class Player : MonoBehaviour
     public bool hasShield;
     public bool isFast;
 
+    //types of frost essence
+    public int blueFE = 0;
+    public int greenFE = 0;
+    public int redFE = 0;
+
     private int score;
     private bool isDamaged;
 
@@ -136,5 +141,7 @@ public class Player : MonoBehaviour
         playerMovement.enabled = true;
         playerAttack.enabled = true;
     }
+
+    
 
 }
