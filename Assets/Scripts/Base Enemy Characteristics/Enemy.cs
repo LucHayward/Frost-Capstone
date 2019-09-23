@@ -258,17 +258,17 @@ public class Enemy : MonoBehaviour
             {
                 GameObject blueFrostEssence = Instantiate(blueFE, gameObject.transform.position, Quaternion.identity) as GameObject;
 
-                blueFrostEssence.GetComponent<FrostEssence>().setAmount(dropAmount);
+                blueFrostEssence.GetComponent<FrostEssence>().SetAmount(dropAmount);
             }
             else if (dropType < 6)
             {
                 GameObject redFrostEssence = Instantiate(redFE, gameObject.transform.position, Quaternion.identity) as GameObject;
-                redFrostEssence.GetComponent<FrostEssence>().setAmount(dropAmount);
+                redFrostEssence.GetComponent<FrostEssence>().SetAmount(dropAmount);
             }
             else if(dropType < 9)
             {
                 GameObject greenFrostEssence = Instantiate(greenFE, gameObject.transform.position, Quaternion.identity) as GameObject;
-                greenFrostEssence.GetComponent<FrostEssence>().setAmount(dropAmount);
+                greenFrostEssence.GetComponent<FrostEssence>().SetAmount(dropAmount);
             }
         }
 
@@ -284,17 +284,17 @@ public class Enemy : MonoBehaviour
             {
                 GameObject blueFrostEssence = Instantiate(blueFE, gameObject.transform.position, Quaternion.identity) as GameObject;
 
-                blueFrostEssence.GetComponent<FrostEssence>().setAmount(dropAmount);
+                blueFrostEssence.GetComponent<FrostEssence>().SetAmount(dropAmount);
             }
             else if (dropType < 6)
             {
                 GameObject redFrostEssence = Instantiate(redFE, gameObject.transform.position, Quaternion.identity) as GameObject;
-                redFrostEssence.GetComponent<FrostEssence>().setAmount(dropAmount);
+                redFrostEssence.GetComponent<FrostEssence>().SetAmount(dropAmount);
             }
             else if (dropType < 9)
             {
                 GameObject greenFrostEssence = Instantiate(greenFE, gameObject.transform.position, Quaternion.identity) as GameObject;
-                greenFrostEssence.GetComponent<FrostEssence>().setAmount(dropAmount);
+                greenFrostEssence.GetComponent<FrostEssence>().SetAmount(dropAmount);
             }
         }
 
@@ -307,15 +307,15 @@ public class Enemy : MonoBehaviour
 
 
             GameObject blueFrostEssence = Instantiate(blueFE, blueFEtransform.position, Quaternion.identity) as GameObject;
-            blueFrostEssence.GetComponent<FrostEssence>().setAmount(blueAmount);
+            blueFrostEssence.GetComponent<FrostEssence>().SetAmount(blueAmount);
             
             
             GameObject redFrostEssence = Instantiate(redFE, redFEtransform.position, Quaternion.identity) as GameObject;
-            redFrostEssence.GetComponent<FrostEssence>().setAmount(redAmount);
+            redFrostEssence.GetComponent<FrostEssence>().SetAmount(redAmount);
             
             
             GameObject greenFrostEssence = Instantiate(greenFE, greenFEtransform.position, Quaternion.identity) as GameObject;
-            greenFrostEssence.GetComponent<FrostEssence>().setAmount(greenAmount);
+            greenFrostEssence.GetComponent<FrostEssence>().SetAmount(greenAmount);
             
         }
     }

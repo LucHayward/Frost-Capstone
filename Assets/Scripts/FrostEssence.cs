@@ -14,6 +14,7 @@ public class FrostEssence : MonoBehaviour
     {
         //TODO: particle effects
         playerGO = GameObject.FindGameObjectWithTag("Player");
+        Destroy(gameObject, 15);
     }
 
     private void Update()
@@ -31,26 +32,37 @@ public class FrostEssence : MonoBehaviour
     {
         if (type == "Blue")
         {
-            player.GetComponent<Player>().blueFE += amount;
+            player.GetComponent<Player>().GainFrostEssence(type, amount);
             Destroy(gameObject);
         }
         else if (type == "Green")
         {
-            player.GetComponent<Player>().greenFE += amount;
+            player.GetComponent<Player>().GainFrostEssence(type, amount);
             Destroy(gameObject);
         }
-        else
+        else if (type == "Red")
         {
-            player.GetComponent<Player>().redFE += amount;
+            player.GetComponent<Player>().GainFrostEssence(type, amount);
             Destroy(gameObject);
         }
 
     }
 
 
-    public void setAmount(int value)
+
+    public void SetAmount(int value)
     {
         amount = value;
+    }
+
+    public string GetEssenceType()
+    {
+        return type;
+    }
+
+    public int GetEssenceAmount()
+    {
+        return amount;
     }
 
 
