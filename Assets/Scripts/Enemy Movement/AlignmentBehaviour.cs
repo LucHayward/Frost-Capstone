@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Flock/Behaviour/Alignment")]
-public class AlignmentBehaviour : FilteredFlockBehaviour
+public class AlignmentBehaviour : FlockBehaviour
 {
     /// <summary>
     /// Finds the alignment that each agent should have in the flock
@@ -14,18 +14,19 @@ public class AlignmentBehaviour : FilteredFlockBehaviour
     /// <returns> the ideal alignment </returns>
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
-		List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
-
 		///if there are no neighbours maintain parent alignment
-		if (filteredContext.Count == 0)
+		if (context.Count == 0)
             return agent.transform.forward;
 
 
 		///add all points tgether and average
 		Vector3 alignmentMove = Vector3.zero;
-        foreach (Transform item in filteredContext)
+        foreach (Transform item in context)
         {
-            alignmentMove += item.transform.forward;
+            if(item.CompareTag("Enemy"))
+            {
+                alignmentMove += item.transform.forward;
+            }
 			Debug.Log(item.transform.forward);
 		}
 		
