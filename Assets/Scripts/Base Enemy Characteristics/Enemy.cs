@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public int damage;
     public bool hasScreamed;
     public bool isStunned;
+    public bool inVulnerable = false;
    
     public bool cantMove;
     public bool isDead;
@@ -132,8 +133,12 @@ public class Enemy : MonoBehaviour
     /// <param name="damage"></param>
     public void TakeDamage(int damage, bool isRangedAtk)
     {
-        health -= damage;
-        rangedDeath = isRangedAtk;
+        if (!inVulnerable)
+        {
+            health -= damage;
+            rangedDeath = isRangedAtk;
+        }
+        
     }
 
 
@@ -196,7 +201,7 @@ public class Enemy : MonoBehaviour
     private IEnumerator StunRoutine()
     {
         //DisableMovement();
-        if (GetStackCount() > 0)
+        if (GetStackCount() > 0 && !inVulnerable)
         {
             if(type == "Ranged")
             {
