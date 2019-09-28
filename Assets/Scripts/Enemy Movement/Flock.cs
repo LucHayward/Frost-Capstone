@@ -66,7 +66,13 @@ public class Flock : MonoBehaviour
 		
         foreach(Collider c in contextColliders)
         {
-            if(c != agent.AgentCollider || c.tag == "Obstacle")
+			bool cte = c.tag == "Enemy";
+			bool ca = c != agent.AgentCollider;
+			bool cteAAca = cte && ca;
+			bool cto = c.tag == "Obstacle";
+			bool or = cteAAca || cto;
+
+			if ((c.tag == "Enemy" && c != agent.AgentCollider) || (c.tag == "Obstacle"))
             {
                 context.Add(c.transform);
             }
