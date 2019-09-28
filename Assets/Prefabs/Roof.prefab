@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!64 &4579001400497652497
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3546081822156900955}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
 --- !u!1 &4038851216565526311
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,9 +23,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2861801140055912181}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Roof
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,6 +50,76 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &183213559440884111
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4187532342246721777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300006, guid: e75ce98f5f7f2e748a25e0f44d9f81cf, type: 3}
+--- !u!64 &3875506293005847794
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5205117800608887487}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+--- !u!64 &9054556528543099611
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5753577685561810015}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+--- !u!64 &6072471847538241305
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6950446060989503853}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300006, guid: e75ce98f5f7f2e748a25e0f44d9f81cf, type: 3}
+--- !u!64 &8879727287883805538
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9063871605526477241}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
 --- !u!1001 &3546081822156803323
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -46,6 +130,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
       propertyPath: m_Name
       value: Roof_2x1x1_Straight
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -109,6 +201,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5bc7db521ed801a44b990ed29ec58e70, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+--- !u!1 &3546081822156900955 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 3546081822156803323}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3546081822157198971 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 45759b39aca0e402fad582c7bfb496cd,
@@ -125,6 +223,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf, type: 3}
       propertyPath: m_Name
       value: Standard_Roof_10x10_Flat
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -188,6 +294,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9e0e5fd0ef16a0147b6d37919b0be81d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf, type: 3}
+--- !u!1 &4187532342246721777 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 4187532342246690385}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4187532342246823121 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf,
@@ -204,6 +316,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
       propertyPath: m_Name
       value: Roof_2x1x1_Straight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -267,6 +387,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5bc7db521ed801a44b990ed29ec58e70, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+--- !u!1 &5205117800608887487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 5205117800608920607}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5205117800609050271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 45759b39aca0e402fad582c7bfb496cd,
@@ -283,6 +409,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
       propertyPath: m_Name
       value: Roof_2x1x1_Straight (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -346,6 +480,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5bc7db521ed801a44b990ed29ec58e70, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+--- !u!1 &5753577685561810015 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 5753577685561842431}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5753577685561442431 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 45759b39aca0e402fad582c7bfb496cd,
@@ -362,6 +502,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf, type: 3}
       propertyPath: m_Name
       value: Standard_Roof_10x10_Flat (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -425,6 +573,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9e0e5fd0ef16a0147b6d37919b0be81d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf, type: 3}
+--- !u!1 &6950446060989503853 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf,
+    type: 3}
+  m_PrefabInstance: {fileID: 6950446060989538253}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6950446060989662541 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: e75ce98f5f7f2e748a25e0f44d9f81cf,
@@ -441,6 +595,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
       propertyPath: m_Name
       value: Roof_2x1x1_Straight (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -504,6 +666,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 5bc7db521ed801a44b990ed29ec58e70, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45759b39aca0e402fad582c7bfb496cd, type: 3}
+--- !u!1 &9063871605526477241 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 45759b39aca0e402fad582c7bfb496cd,
+    type: 3}
+  m_PrefabInstance: {fileID: 9063871605526380313}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9063871605525980569 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 45759b39aca0e402fad582c7bfb496cd,

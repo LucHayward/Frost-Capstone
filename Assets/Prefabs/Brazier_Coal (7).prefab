@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 2037534357692601989}
   - component: {fileID: 2037534357691799207}
   - component: {fileID: 2037534357690700903}
-  m_Layer: 0
+  - component: {fileID: 4529534946526530591}
+  m_Layer: 9
   m_Name: Brazier_Coal (7)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,3 +78,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4529534946526530591
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037534357692631717}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 0fd43e7091a4e2a4991061ea3eb78ace, type: 3}

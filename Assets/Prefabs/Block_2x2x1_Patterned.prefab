@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3706552227828643529}
   - component: {fileID: 3706552227827873513}
   - component: {fileID: 3706552227826873385}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Block_2x2x1_Patterned
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
