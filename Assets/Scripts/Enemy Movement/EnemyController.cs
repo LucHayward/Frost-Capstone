@@ -92,12 +92,12 @@ public class EnemyController : MonoBehaviour
         Vector3 centralizedPlayerPosition = new Vector3(playerTransform.position.x, 1, playerTransform.position.z);
         Vector3 directionToPlayer = centralizedPlayerPosition - currentPosition; // vector pointing from the enemy to the player       
         Ray eyeLine = new Ray(currentPosition, directionToPlayer);
-        Debug.DrawRay(currentPosition, directionToPlayer);
+        //Debug.DrawRay(currentPosition, directionToPlayer);
         int layerMask = LayerMask.GetMask("Player", "Obstacle");
         // TODO fix the line of sight
         if (Physics.Raycast(eyeLine, out RaycastHit hit, layerMask))
         {
-            Debug.Log(hit.collider.tag);
+            //Debug.Log(hit.collider.tag);
             if (hit.collider.tag.Equals("Player"))
             {
                 hasSeen = true;

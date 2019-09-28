@@ -6,7 +6,7 @@ using UnityEngine;
 public class CohesionBehaviour : FlockBehaviour
 {
     Vector3 currentVelocity;
-    public float agentSmoothTime = 1.5f;
+    public float agentSmoothFactor;
 
     /// <summary>
     /// Finds middle point between all neighbours and tries to move there (smoothed version).
@@ -38,8 +38,10 @@ public class CohesionBehaviour : FlockBehaviour
         ///create offset from agent position
         cohesiveMove -= agent.transform.position;
         cohesiveMove = cohesiveMove.normalized;
-        cohesiveMove = Vector3.SmoothDamp(agent.transform.forward, cohesiveMove, ref currentVelocity, agentSmoothTime);
-        Debug.DrawRay(agent.transform.position, cohesiveMove, Color.blue);
+		//cohesiveMove = Vector3.SmoothDamp(cohesiveMove, agent.transform.forward, ref currentVelocity, agentSmoothTime);
+		cohesiveMove = Vector3.Lerp(agent.transform.forward, cohesiveMove, agentSmoothFactor);
+		//Debug.Log(cohesiveMove);
+		Debug.DrawRay(agent.transform.position, cohesiveMove, Color.blue);
         return cohesiveMove;
     }
 }

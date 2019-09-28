@@ -6,7 +6,7 @@ public class Flock : MonoBehaviour
 {
     public FlockBehaviour behaviour;
     [Range(1f, 100f)]
-    public float driveFactor = 10f;
+    public float baseSpeedFactor = 1f;
     [Range(1f, 10f)]
     public float neighbourRadius = 1.5f;
     [Range(0f, 1f)]
@@ -39,10 +39,12 @@ public class Flock : MonoBehaviour
                     maxSpeed = 1.5f;
                 else
                     maxSpeed = 5;
-                squareMaxSpeed = maxSpeed * maxSpeed;
+
+				maxSpeed *= baseSpeedFactor;
+				squareMaxSpeed = maxSpeed * maxSpeed;
                 List<Transform> context = GetNearbyObjects(agent);
                 Vector3 move = behaviour.CalculateMove(agent, context, this);
-                move *= driveFactor; //Is this ever needed?
+                move *= baseSpeedFactor; //Is this ever needed?
                 if (move.sqrMagnitude > squareMaxSpeed)
                 {
                     move = move.normalized * maxSpeed; /// make it one then times by max speed
@@ -87,7 +89,7 @@ public class Flock : MonoBehaviour
 		{
 			if (agent != null)
 			{
-				Gizmos.DrawWireSphere(agent.transform.position, neighbourRadius);
+				//Gizmos.DrawWireSphere(agent.transform.position, neighbourRadius);
 				//Gizmos.color = Color.red;
 				//Gizmos.DrawWireSphere(agent.transform.position, neighbourRadius*avoidanceRadiusMultiplier);
 				//Gizmos.color = Color.white;

@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public List<EnemyManager> bossEnemies;
     private WaitForSeconds startWait;
     private WaitForSeconds endWait;
-    private int roundNumber = 0;
+    private int roundNumber = 332;
     private bool spawnedEnemy = false;
     private Text levelText;
     private Text scoreText;
