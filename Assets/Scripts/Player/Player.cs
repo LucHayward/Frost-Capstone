@@ -60,9 +60,6 @@ public class Player : MonoBehaviour
             OnDeath();
         }
 
-        CapFrostEssence(blueFE);
-        CapFrostEssence(redFE);
-        CapFrostEssence(greenFE);
 
     }
 
@@ -146,16 +143,79 @@ public class Player : MonoBehaviour
         playerAttack.enabled = true;
     }
 
-    private void CapFrostEssence(int fe)
+    private void CapFrostEssence(string eType)
     {
-        if(fe < 0)
+        if(eType == "Blue")
         {
-            fe = 0;
+            if (blueFE < 0)
+            {
+                blueFE = 0;
+            }
+
+            else if (blueFE > 100)
+            {
+                blueFE = 100;
+            }
         }
 
-        if(fe > 100)
+        if(eType == "Green")
         {
-            fe = 100;
+            if (greenFE < 0)
+            {
+                greenFE = 0;
+            }
+
+            else if (greenFE > 100)
+            {
+                greenFE = 100;
+            }
+        }
+
+        if(eType == "Red")
+        {
+            if (redFE < 0)
+            {
+                redFE = 0;
+            }
+
+            else if (redFE > 100)
+            {
+                redFE = 100;
+            }
+        }
+        
+
+        
+
+        
+
+       
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Essence"))
+        {
+            GainFrostEssence(other.gameObject.GetComponent<FrostEssence>().GetEssenceType(), other.gameObject.GetComponent<FrostEssence>().GetEssenceAmount());
+        }
+    }
+
+    public void GainFrostEssence(string essenceType, int amount)
+    {
+        if(essenceType == "Blue")
+        {
+            blueFE += amount;
+            CapFrostEssence(essenceType);
+        }
+        else if(essenceType == "Green")
+        {
+            greenFE += amount;
+            CapFrostEssence(essenceType);
+        }
+        else if(essenceType == "Red")
+        {
+            redFE += amount;
+            CapFrostEssence(essenceType);
         }
     }
 
