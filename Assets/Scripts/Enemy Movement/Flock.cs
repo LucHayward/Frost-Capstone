@@ -66,11 +66,12 @@ public class Flock : MonoBehaviour
 		
         foreach(Collider c in contextColliders)
         {
-			bool cte = c.tag == "Enemy";
-			bool ca = c != agent.AgentCollider;
-			bool cteAAca = cte && ca;
-			bool cto = c.tag == "Obstacle";
-			bool or = cteAAca || cto;
+			//Guys just leave this until I take it out please, was having issues here
+			//bool cte = c.tag == "Enemy";
+			//bool ca = c != agent.AgentCollider;
+			//bool cteAAca = cte && ca;
+			//bool cto = c.tag == "Obstacle";
+			//bool or = cteAAca || cto;
 
 			if ((c.tag == "Enemy" && c != agent.AgentCollider) || (c.tag == "Obstacle"))
             {

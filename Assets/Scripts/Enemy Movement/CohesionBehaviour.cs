@@ -24,14 +24,16 @@ public class CohesionBehaviour : FlockBehaviour
 
 		///add all points together and average
 		Vector3 cohesiveMove = Vector3.zero;
+		int usedTransformCnt = 0;
         foreach (Transform item in context)
         {
             if(item.CompareTag("Enemy"))
             {
                 cohesiveMove += item.position;
-            } 
+				usedTransformCnt++;
+			} 
         }
-		cohesiveMove /= context.Count;
+		cohesiveMove /= usedTransformCnt;
 
         ///create offset from agent position
         cohesiveMove -= agent.transform.position;
