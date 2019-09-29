@@ -219,6 +219,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void GainHealth(int amount)
+    {
+        currrentHealth += amount;
+    }
+
     
 
 }

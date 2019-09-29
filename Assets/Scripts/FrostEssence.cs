@@ -9,26 +9,28 @@ public class FrostEssence : MonoBehaviour
     private int amount;
 
     private GameObject playerGO;
+    private Player[] players;
     // Start is called before the first frame update
     void Start()
     {
         //TODO: particle effects
-        playerGO = GameObject.FindGameObjectWithTag("Player");
+        players = FindObjectsOfType<Player>();
         Destroy(gameObject, 15);
     }
-
     private void Update()
     {
-        float dist = Vector3.Distance(playerGO.transform.position, gameObject.transform.position);
-
-        if(dist <= 1.5f)
+        for (int i = 0; i < players.Length; i++)
         {
-            transferEssence(playerGO, amount);
+            float dist = Vector3.Distance(players[i].transform.position, gameObject.transform.position);
+            if (dist <= 1.5f)
+            {
+                TransferEssence(players[i].gameObject, amount);
+            }
         }
     }
 
 
-    public void transferEssence(GameObject player, int amount)
+    public void TransferEssence(GameObject player, int amount)
     {
         if (type == "Blue")
         {
