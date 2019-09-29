@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 {
     public int startingHealth = 100;
     public int currrentHealth;
+    private int maxHealth = 100;
     public Slider healthSlider;
     public Image damageImage;
     public float flashSpeed = 5f;
@@ -222,6 +223,10 @@ public class Player : MonoBehaviour
     public void GainHealth(int amount)
     {
         currrentHealth += amount;
+        if(currrentHealth > maxHealth)
+        {
+            currrentHealth = maxHealth;
+        }
     }
 
     
