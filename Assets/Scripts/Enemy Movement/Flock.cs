@@ -6,7 +6,7 @@ public class Flock : MonoBehaviour
 {
     public FlockBehaviour behaviour;
     [Range(1f, 100f)]
-    public float driveFactor = 10f;
+    public float baseSpeedFactor = 1f;
     [Range(1f, 10f)]
     public float neighbourRadius = 1.5f;
     [Range(0f, 1f)]
@@ -39,10 +39,12 @@ public class Flock : MonoBehaviour
                     maxSpeed = 1.5f;
                 else
                     maxSpeed = 5;
-                squareMaxSpeed = maxSpeed * maxSpeed;
+
+				maxSpeed *= baseSpeedFactor;
+				squareMaxSpeed = maxSpeed * maxSpeed;
                 List<Transform> context = GetNearbyObjects(agent);
                 Vector3 move = behaviour.CalculateMove(agent, context, this);
-                move *= driveFactor; //Is this ever needed?
+                move *= baseSpeedFactor; //Is this ever needed?
                 if (move.sqrMagnitude > squareMaxSpeed)
                 {
                     move = move.normalized * maxSpeed; /// make it one then times by max speed
@@ -66,7 +68,14 @@ public class Flock : MonoBehaviour
 		
         foreach(Collider c in contextColliders)
         {
-            if(c != agent.AgentCollider || c.tag == "Obstacle")
+			//Guys just leave this until I take it out please, was having issues here
+			//bool cte = c.tag == "Enemy";
+			//bool ca = c != agent.AgentCollider;
+			//bool cteAAca = cte && ca;
+			//bool cto = c.tag == "Obstacle";
+			//bool or = cteAAca || cto;
+
+			if ((c.tag == "Enemy" && c != agent.AgentCollider) || (c.tag == "Obstacle"))
             {
                 context.Add(c.transform);
             }
@@ -80,7 +89,7 @@ public class Flock : MonoBehaviour
 		{
 			if (agent != null)
 			{
-				Gizmos.DrawWireSphere(agent.transform.position, neighbourRadius);
+				//Gizmos.DrawWireSphere(agent.transform.position, neighbourRadius);
 				//Gizmos.color = Color.red;
 				//Gizmos.DrawWireSphere(agent.transform.position, neighbourRadius*avoidanceRadiusMultiplier);
 				//Gizmos.color = Color.white;
