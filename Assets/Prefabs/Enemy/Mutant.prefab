@@ -928,10 +928,11 @@ MonoBehaviour:
   range: 4
   abilityRange: 6
   tauntRange: 10
+  comboRange: 4
   abilityCD: 5
   tauntCD: 12
   shotDelay: 2
-  comboCD: 6
+  comboCD: 10
 --- !u!114 &7513958634753537755
 MonoBehaviour:
   m_ObjectHideFlags: 0

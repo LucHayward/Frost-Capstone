@@ -18,20 +18,25 @@ public class EnemyAttack : MonoBehaviour
     private FlockAgent flockAgent;
     public NavMeshAgent navMeshAgent;
 
+    // Ranges
     public float range = 0.0f;
     public float abilityRange = 0.0f;
     public float tauntRange = 0.0f;
+
+    // Cooldowns
+    public float shotDelay = 0.0f;
     public float abilityCD = 0.0f;
     public float tauntCD = 0.0f;
+
+    // Attack Timers
+    private float lastAttackTime = 0.0f;
     private float lastAbilityTime = 0.0f;
     private float lastTauntTime = 0.0f;
-    private float lastComboTime = 0.0f;
 
     private float currentTime = 0.0f;
-    private float lastAttackTime = 0.0f;
-    public float shotDelay = 0.0f;
-    public float comboCD = 0.0f;
-
+    
+    // used for boss combo
+    private int attackCounter = 0;
     
 
     // Start is called before the first frame update
@@ -48,25 +53,34 @@ public class EnemyAttack : MonoBehaviour
         player = playerGO.GetComponent<Player>();
     }
 
-	// Update is called once per frame
-	void Update()
+    // Update is called once per frame
+    void Update()
     {
         currentTime = Time.time;
+
         
 
         if (Vector3.Distance(playerTransform.position, enemyTransform.position) < range)
         {
-            if(enemy.type == "Boss" && currentTime - lastAttackTime > comboCD)
-            {
-                animator.SetTrigger("combo");
-                lastComboTime = currentTime + comboCD;
-            }
             //Debug.Log("Close enough");
-            else if (currentTime - lastAttackTime > shotDelay)
+            if (currentTime - lastAttackTime > shotDelay)
             {
+                if(attackCounter != 4)
+                {
+                    animator.SetTrigger("atk");
+                    lastAttackTime = currentTime + shotDelay;
+                    attackCounter ++;
+                }
 
-                animator.SetTrigger("atk");
-                lastAttackTime = currentTime + shotDelay;
+                // if 5th attack then combo
+                else
+                {
+                    animator.SetTrigger("combo");
+                    lastAttackTime = currentTime + shotDelay;
+
+                    attackCounter = 0;
+                }
+                
 
             }
 
@@ -81,19 +95,21 @@ public class EnemyAttack : MonoBehaviour
 
 
             }
-            else if(enemy.type == "Boss")
+            else if (currentTime - lastTauntTime > tauntCD)
             {
-                if (currentTime - lastTauntTime > tauntCD)
+                if (enemy.GetType().Equals("Boss"))
                 {
                     animator.SetTrigger("taunt1");
                     lastTauntTime = currentTime + tauntCD;
 
                 }
             }
-            
-        }
 
+        }
         
+        
+
+
     }
 
     void attackStart()
