@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Flock/Behaviour/Cohesion")]
-public class CohesionBehaviour : FilteredFlockBehaviour
+public class CohesionBehaviour : FlockBehaviour
 {
     Vector3 currentVelocity;
-    public float agentSmoothTime = 1.5f;
+    public float agentSmoothFactor;
 
     /// <summary>
     /// Finds middle point between all neighbours and tries to move there (smoothed version).
@@ -17,25 +17,31 @@ public class CohesionBehaviour : FilteredFlockBehaviour
     /// <returns> the average position </returns>
     public override Vector3 CalculateMove(FlockAgent agent, List<Transform> context, Flock flock)
     {
-		List<Transform> filteredContext = (filter == null) ? context : filter.Filter(agent, context);
 
 		///if there are no neighbours return no adjustment
-		if (filteredContext.Count == 0)
+		if (context.Count == 0)
 			return Vector3.zero;
 
 		///add all points together and average
 		Vector3 cohesiveMove = Vector3.zero;
-        foreach (Transform item in filteredContext)
+		int usedTransformCnt = 0;
+        foreach (Transform item in context)
         {
-            cohesiveMove += item.position;
+            if(item.CompareTag("Enemy"))
+            {
+                cohesiveMove += item.position;
+				usedTransformCnt++;
+			} 
         }
-		cohesiveMove /= filteredContext.Count;
+		cohesiveMove /= usedTransformCnt;
 
         ///create offset from agent position
         cohesiveMove -= agent.transform.position;
         cohesiveMove = cohesiveMove.normalized;
-        cohesiveMove = Vector3.SmoothDamp(agent.transform.forward, cohesiveMove, ref currentVelocity, agentSmoothTime);
-        Debug.DrawRay(agent.transform.position, cohesiveMove, Color.blue);
+		//cohesiveMove = Vector3.SmoothDamp(cohesiveMove, agent.transform.forward, ref currentVelocity, agentSmoothTime);
+		cohesiveMove = Vector3.Lerp(agent.transform.forward, cohesiveMove, agentSmoothFactor);
+		//Debug.Log(cohesiveMove);
+		Debug.DrawRay(agent.transform.position, cohesiveMove, Color.blue);
         return cohesiveMove;
     }
 }
