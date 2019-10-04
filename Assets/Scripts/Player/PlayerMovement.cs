@@ -102,10 +102,6 @@ public class PlayerMovement : MonoBehaviour
 			animator.SetFloat("velocityX", localVelocity.x);
 			animator.SetFloat("velocityZ", localVelocity.z);
 
-			if (Input.GetButtonDown("Jump"))
-			{
-				animator.SetTrigger("jump");
-			}
 			moveDirection.y = gravity * -characterController.stepOffset/Time.deltaTime;
 		}
 		else
@@ -117,36 +113,6 @@ public class PlayerMovement : MonoBehaviour
 		characterController.Move(moveDirection * Time.deltaTime);
 	}
 
-	private void OnJumpEvent()
-	{
-		StartCoroutine(GravityPauseForJump());
-	}
-
-	//TODO Tweak this
-	IEnumerator GravityPauseForJump()
-	{
-		float tGrav = gravity;
-		float tCCHeight = characterController.height;
-		Vector3 tCCCenter = characterController.center;
-		Vector3 tPlayerPosition = transform.position;
-
-		gravity = -gravity;
-		//transform.position += Vector3.up * 0.5f;
-		//characterController.center = new Vector3(tCCCenter.x, 0.92f, tCCCenter.z);
-		//characterController.height = 1.391f;
-		//characterController.Move(Vector3.up * 1);
-
-
-		Debug.Log("Jumping");
-
-		yield return new WaitForSeconds(0.5f);
-
-		gravity = tGrav;
-		//characterController.center = tCCCenter;
-		//characterController.height = tCCHeight;
-
-		Debug.Log("End Jumping");
-	}
 
 	/// <summary>
 	/// Copys local Pos, Rotation and Scale onto a transform
