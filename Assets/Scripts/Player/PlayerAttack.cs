@@ -20,6 +20,7 @@ public class PlayerAttack : MonoBehaviour
 	public AudioSource attackFailClip;
 	public AudioSource attackStunCastClip;
 
+
 	[HideInInspector]public bool inMelee = false; // used to notify PlayerMovement to face camera during melee
 
 	private LayerMask maskAll = -1;
@@ -35,7 +36,14 @@ public class PlayerAttack : MonoBehaviour
 	{
 		if (Input.GetButtonDown("Fire1"))
 		{
-			Shoot();
+            if (gameObject.GetComponent<Player>().isRed)
+            {
+                Shoot(4);
+            }
+            else
+            {
+                Shoot(2);
+            }
 		}
 
         if(Input.GetButtonDown("Fire2"))
@@ -54,6 +62,19 @@ public class PlayerAttack : MonoBehaviour
 			meleeAttackClip.Play();
 			StartCoroutine(MeleeAttack());
         }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            gameObject.GetComponent<Player>().UseFrostEssence("Blue");
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            gameObject.GetComponent<Player>().UseFrostEssence("Red");
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            gameObject.GetComponent<Player>().UseFrostEssence("Green");
+        }
 	}
 
 	private float GetRelativeCameraOrientation()
@@ -71,7 +92,7 @@ public class PlayerAttack : MonoBehaviour
 		return GetRelativeCameraOrientation() < -0.7f;
 	}
 
-	private void Shoot()
+	private void Shoot(int dmg)
 	{
 		if (!canAttack || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") || CameraFacingBackwards())
 		{
@@ -91,6 +112,8 @@ public class PlayerAttack : MonoBehaviour
 		//TODO: Pool GameObjects for performance
 		//TODO: Animate the spawning of a new object and fire the current one (or animate current respawn and instantiate new)
 		GameObject firedGO = Instantiate(projectile, projectileSpawnPoint.position, Quaternion.identity) as GameObject;
+
+        firedGO.GetComponent<ProjectileAttack>().SetDamage(dmg);
 
 		// Hitting something we can aim at
 		if (hit.collider != null && !hit.collider.CompareTag("Player"))

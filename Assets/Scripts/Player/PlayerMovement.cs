@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 	public Vector3 debugVelocity;
 
 	private Vector3 moveDirection;
-	private float jumpAnimTime;
+	//private float jumpAnimTime;
 
 	private PlayerAttack playerAttack;
 
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 
-		jumpAnimTime = jumpAnim.length;
+		//mpAnimTime = jumpAnim.length;
 		playerAttack = GetComponent<PlayerAttack>();
 
 	}
@@ -141,6 +141,11 @@ public class PlayerMovement : MonoBehaviour
 		animator.SetFloat("deathVariant", Random.Range(0, 5));
 
 	}
+
+    public void SetSpeed(float speed)
+    {
+        speedMultiplier = speed;
+    }
 
 }
 
