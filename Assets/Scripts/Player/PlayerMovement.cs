@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
 {
 	CharacterController characterController;
 	public Animator animator;
-	[SerializeField] private AnimationClip jumpAnim = null; //Assigned in inspector
 
 	public Transform cameraTransform;
 	private Transform horizontalCameraTransform;
@@ -24,8 +23,6 @@ public class PlayerMovement : MonoBehaviour
 	public Vector3 debugVelocity;
 
 	private Vector3 moveDirection;
-	//private float jumpAnimTime;
-
 	private PlayerAttack playerAttack;
 
 	void Start()
@@ -33,8 +30,7 @@ public class PlayerMovement : MonoBehaviour
 		characterController = GetComponent<CharacterController>();
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
-
-		//mpAnimTime = jumpAnim.length;
+		
 		playerAttack = GetComponent<PlayerAttack>();
 
 	}
@@ -113,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
 		characterController.Move(moveDirection * Time.deltaTime);
 	}
 
-
+	
 	/// <summary>
 	/// Copys local Pos, Rotation and Scale onto a transform
 	/// </summary>
