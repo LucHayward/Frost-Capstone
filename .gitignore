@@ -52,3 +52,7 @@ crashlytics-build.properties
 Library/
 
 Assets/Models/demoScene.meta
+
+Assets/HDRI/
+
+Assets/HDRI.meta
