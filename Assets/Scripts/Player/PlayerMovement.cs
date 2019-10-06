@@ -34,6 +34,17 @@ public class PlayerMovement : MonoBehaviour
 		
 		playerAttack = GetComponent<PlayerAttack>();
 
+
+
+	}
+
+	private IEnumerator animationRandomizer()
+	{
+		RandomizeIdleVariant();
+		RandomizeReactHitVariant();
+		RandomizeDeathVariant();
+
+		yield return new WaitForSecondsRealtime(30);
 	}
 
 	public void setPlayerNum(int i)
