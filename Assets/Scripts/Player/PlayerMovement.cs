@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private Vector3 moveDirection;
 	private PlayerAttack playerAttack;
+	private bool isPlayer1;
 
 	void Start()
 	{
@@ -33,6 +34,11 @@ public class PlayerMovement : MonoBehaviour
 		
 		playerAttack = GetComponent<PlayerAttack>();
 
+	}
+
+	public void setPlayerNum(int i)
+	{
+		isPlayer1 = i == 1;
 	}
 
 	/// <summary>
@@ -60,10 +66,10 @@ public class PlayerMovement : MonoBehaviour
 
 		Vector3 forward = cameraTransform.GetChild(1).transform.forward;
 		forward.y = 0;
-		forward *= Input.GetAxis("Vertical");
+		forward *= Input.GetAxis(isPlayer1 ? "P1_Vertical" : "P2_Vertical");
 
 		Vector3 right = cameraTransform.right;
-		right *= Input.GetAxis("Horizontal");
+		right *= Input.GetAxis(isPlayer1 ? "P1_Horizontal" : "P2_Horizontal");
 
 		moveDirection += forward;
 		moveDirection += right;

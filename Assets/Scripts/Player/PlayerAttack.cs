@@ -25,6 +25,7 @@ public class PlayerAttack : MonoBehaviour
 
 	private LayerMask maskAll = -1;
 	private bool canAttack = true;
+	private bool isPlayer1;
 
 	private void Awake()
 	{
@@ -32,9 +33,14 @@ public class PlayerAttack : MonoBehaviour
         staffCollider.enabled = false;
 	}
 
+	public void setPlayerNum(int i)
+	{
+		isPlayer1 = i == 1;
+	}
+
 	void Update()
 	{
-		if (Input.GetButtonDown("Fire1"))
+		if (Input.GetButtonDown(isPlayer1 ? "P1_Fire" : "P2_Fire"))
 		{
             if (gameObject.GetComponent<Player>().isRed)
             {
@@ -46,12 +52,12 @@ public class PlayerAttack : MonoBehaviour
             }
 		}
 
-        if(Input.GetButtonDown("Fire2"))
+        if(Input.GetButtonDown(isPlayer1 ? "P1_Stun" : "P2_Stun"))
         {
             Stun();
         }
 
-        if(Input.GetButtonDown("Fire3"))
+        if(Input.GetButtonDown(isPlayer1 ? "P1_Melee" : "P2_Melee"))
         {
 			if (!canAttack || animator.GetCurrentAnimatorStateInfo(0).IsName("Melee Attack Stab"))
 			{
@@ -63,16 +69,19 @@ public class PlayerAttack : MonoBehaviour
 			StartCoroutine(MeleeAttack());
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
+        if (Input.GetButtonDown(isPlayer1 ? "P1_SpeedBoost" : "P2_SpeedBoost"))
+		{
+			// Speed
             gameObject.GetComponent<Player>().UseFrostEssence("Blue");
         }
-        if (Input.GetKeyDown(KeyCode.V))
-        {
+        if (Input.GetButtonDown(isPlayer1 ? "P1_DamageBoost" : "P2_DamageBoost"))
+		{
+			// Damage
             gameObject.GetComponent<Player>().UseFrostEssence("Red");
         }
-        if (Input.GetKeyDown(KeyCode.R))
-        {
+        if (Input.GetButtonDown(isPlayer1 ? "P1_Heal" : "P2_Heal"))
+		{
+			// Heal
             gameObject.GetComponent<Player>().UseFrostEssence("Green");
         }
 	}
