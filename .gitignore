@@ -53,6 +53,4 @@ Library/
 
 Assets/Models/demoScene.meta
 
-Assets/HDRI/
-
-Assets/HDRI.meta
+Assets/HDRI/*
