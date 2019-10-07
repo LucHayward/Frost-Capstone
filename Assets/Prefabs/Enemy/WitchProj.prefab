@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df97558c2aac2c142a3f9ce9158f6b1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 8
   objectLife: 10
   damageableTags:
   - Player

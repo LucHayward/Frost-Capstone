@@ -9,7 +9,12 @@ public class Player : MonoBehaviour
     public int startingHealth = 100;
     public int currrentHealth;
     private int maxHealth = 100;
+
     public Slider healthSlider;
+    public Slider blueSlider;
+    public Slider greenSlider;
+    public Slider redSlider;
+
     public Image damageImage;
     public float flashSpeed = 5f;
     public Color flashColor = new Color(1f, 0f, 0f, 0.1f);
@@ -43,6 +48,19 @@ public class Player : MonoBehaviour
     {
         GameObject healthUI = GameObject.Find("HealthUI");
         healthSlider = healthUI.GetComponentInChildren<Slider>();
+
+        GameObject blueUI = GameObject.Find("BlueFeUI");
+        blueSlider = blueUI.GetComponentInChildren<Slider>();
+        blueSlider.value = 0;
+
+        GameObject greenUI = GameObject.Find("GreenFeUI");
+        greenSlider = greenUI.GetComponentInChildren<Slider>();
+        greenSlider.value = 0;
+
+        GameObject redUI = GameObject.Find("RedFeUI");
+        redSlider = redUI.GetComponentInChildren<Slider>();
+        redSlider.value = 0;
+
         GameObject damageItem = GameObject.Find("Damage");
         damageImage = damageItem.GetComponentInChildren<Image>();
     }
@@ -72,6 +90,7 @@ public class Player : MonoBehaviour
             {
                 playerMovement.SetSpeed(10.0f);
                 blueFE -=0.3f;
+                blueSlider.value = blueFE;
             }
             else
             {
@@ -85,6 +104,7 @@ public class Player : MonoBehaviour
             if (redFE > 0)
             {
                 redFE -= 0.3f;
+                redSlider.value = redFE;
                 
             }
             else
@@ -237,6 +257,7 @@ public class Player : MonoBehaviour
             int heal = (int) greenFE;
             GainHealth(heal);
             greenFE = 0;
+            greenSlider.value = greenFE;
         }
     }
 
@@ -254,16 +275,19 @@ public class Player : MonoBehaviour
         {
             blueFE += amount;
             CapFrostEssence(essenceType);
+            blueSlider.value = blueFE;
         }
         else if(essenceType == "Green")
         {
             greenFE += amount;
             CapFrostEssence(essenceType);
+            greenSlider.value = greenFE;
         }
         else if(essenceType == "Red")
         {
             redFE += amount;
             CapFrostEssence(essenceType);
+            redSlider.value = redFE;
         }
     }
 
@@ -274,6 +298,7 @@ public class Player : MonoBehaviour
         {
             currrentHealth = maxHealth;
         }
+        healthSlider.value = currrentHealth;
     }
 
     

@@ -760,9 +760,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f46f4006d9e8d2046a60733a35fdf84f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 20
+  startingHealth: 100
   currrentHealth: 0
   healthSlider: {fileID: 0}
+  blueSlider: {fileID: 0}
+  greenSlider: {fileID: 0}
+  redSlider: {fileID: 0}
   damageImage: {fileID: 0}
   flashSpeed: 5
   flashColor: {r: 1, g: 0, b: 0, a: 0.1}
@@ -770,6 +773,12 @@ MonoBehaviour:
   healthText: {fileID: 0}
   hasShield: 0
   isFast: 0
+  blueFE: 0
+  greenFE: 0
+  redFE: 0
+  isGreen: 0
+  isBlue: 0
+  isRed: 0
   playerMovement: {fileID: 5048431004472485266}
   playerAttack: {fileID: 7032153780395422605}
 --- !u!114 &7032153780395422605
@@ -809,7 +818,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9176910311190146148}
-  jumpAnim: {fileID: 7400000, guid: 44bdd9a301942f046af439871591115a, type: 2}
   cameraTransform: {fileID: 0}
   speedMultiplier: 6
   jumpSpeed: 200

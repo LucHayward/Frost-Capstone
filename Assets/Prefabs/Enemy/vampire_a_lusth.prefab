@@ -587,7 +587,7 @@ MonoBehaviour:
   velocityMagnitude: 0
   type: Melee
   abilityDamage: 0
-  damage: 1
+  damage: 5
   hasScreamed: 0
   isStunned: 0
   inVulnerable: 0
@@ -661,10 +661,8 @@ MonoBehaviour:
   navMeshAgent: {fileID: 2275738578554044500}
   range: 1.8
   abilityRange: 0
-  tauntRange: 0
   shotDelay: 1
   abilityCD: 0
-  tauntCD: 0
 --- !u!195 &2275738578554044500
 NavMeshAgent:
   m_ObjectHideFlags: 0
