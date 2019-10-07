@@ -23,6 +23,7 @@ public class CameraController : MonoBehaviour
 
 	private Rigidbody rb;
 	private float desiredDistance; // Allows for return after pulling camera in front of geometry
+	private bool isPlayer1;
 
 	float x = 0.0f;
 	float y = 0.0f;
@@ -45,6 +46,11 @@ public class CameraController : MonoBehaviour
 		desiredDistance = distance;
 	}
 
+	public void setPlayerNum(int i)
+	{
+		isPlayer1 = i == 1;
+	}
+
 	/// <summary>
 	/// Translates mouse/joystick movement into camera orbit around a fixed point.
 	/// Prevents environment from passsing in front of camera and player by zooming camera in closer and returning when there is no longer an obstacle
@@ -53,8 +59,8 @@ public class CameraController : MonoBehaviour
 	{
 		if (orbitTarget)
 		{
-			x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
-			y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
+			x += Input.GetAxis(isPlayer1 ? "P1_MouseX" : "P2_MouseX") * xSpeed * distance * 0.02f;
+			y -= Input.GetAxis(isPlayer1 ? "P1_MouseY" : "P2_MouseY") * ySpeed * 0.02f;
 
 			y = ClampAngle(y, yMinLimit, yMaxLimit);
 

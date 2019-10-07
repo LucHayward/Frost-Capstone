@@ -23,6 +23,7 @@ public class PlayerManager
         cameraController = camera.GetComponent<CameraController>();
         playerScript = instanceOfPlayer.GetComponent<Player>();
         playerAttack = instanceOfPlayer.GetComponent<PlayerAttack>();
+		cameraController.setPlayerNum(playerNum);
 		playerAttack.setPlayerNum(playerNum);
 		playerMovement.setPlayerNum(playerNum);
         playerAttack.cam = camera;

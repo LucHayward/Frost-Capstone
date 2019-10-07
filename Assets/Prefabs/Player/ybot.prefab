@@ -770,6 +770,12 @@ MonoBehaviour:
   healthText: {fileID: 0}
   hasShield: 0
   isFast: 0
+  blueFE: 0
+  greenFE: 0
+  redFE: 0
+  isGreen: 0
+  isBlue: 0
+  isRed: 0
   playerMovement: {fileID: 5048431004472485266}
   playerAttack: {fileID: 7032153780395422605}
 --- !u!114 &7032153780395422605
@@ -809,7 +815,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 9176910311190146148}
-  jumpAnim: {fileID: 7400000, guid: 44bdd9a301942f046af439871591115a, type: 2}
   cameraTransform: {fileID: 0}
   speedMultiplier: 6
   jumpSpeed: 200
@@ -3002,26 +3007,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152882216638088190, guid: c21509f08011828468c38aed97595c0c,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152882216638088190, guid: c21509f08011828468c38aed97595c0c,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5152882216638088190, guid: c21509f08011828468c38aed97595c0c,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6732501858770098848, guid: c21509f08011828468c38aed97595c0c,
-        type: 3}
-      propertyPath: damage
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c21509f08011828468c38aed97595c0c, type: 3}
