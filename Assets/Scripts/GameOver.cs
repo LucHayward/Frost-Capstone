@@ -15,10 +15,10 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         //TODO update end scene correctly
-        GameObject finalScoreUI = GameObject.Find("FinalScore");
-        finalScoreText = finalScoreUI.GetComponentsInChildren<Text>()[0];
-        p1ScoreText = finalScoreUI.GetComponentsInChildren<Text>()[1];
-        p2ScoreText = finalScoreUI.GetComponentsInChildren<Text>()[2];
+        GameObject ScoreUI = GameObject.Find("Score");
+        finalScoreText = ScoreUI.GetComponentsInChildren<Text>()[0];
+        p1ScoreText = ScoreUI.GetComponentsInChildren<Text>()[1];
+        p2ScoreText = ScoreUI.GetComponentsInChildren<Text>()[2];
 
 
         int P1score, P2score;
