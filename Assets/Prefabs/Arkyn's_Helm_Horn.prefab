@@ -1,0 +1,355 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &517765918354757550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3392174038881683936}
+  - component: {fileID: 1892312533316527168}
+  m_Layer: 9
+  m_Name: Capsule
+  m_TagString: Obstacle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3392174038881683936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517765918354757550}
+  m_LocalRotation: {x: 0.24411154, y: -0.36402905, z: 0.7760735, w: 0.4534338}
+  m_LocalPosition: {x: -0.00688, y: -0.00294, z: -0.00139}
+  m_LocalScale: {x: 0.009831889, y: 0.009831886, z: 0.0098318895}
+  m_Children: []
+  m_Father: {fileID: 3895416849859501377}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 128.149, y: -175.472, z: -58.389984}
+--- !u!136 &1892312533316527168
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517765918354757550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000007
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: -0.000003814697, y: 0.0000016689291, z: 0.0000038146977}
+--- !u!1 &2999440068681552984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2305402490618580072}
+  - component: {fileID: 2496363789301860674}
+  m_Layer: 9
+  m_Name: Capsule (3)
+  m_TagString: Obstacle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2305402490618580072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999440068681552984}
+  m_LocalRotation: {x: -0.14547148, y: -0.74329686, z: 0.5182668, w: -0.39717418}
+  m_LocalPosition: {x: -0.00821, y: -0.01387, z: -0.0218}
+  m_LocalScale: {x: 0.0036203123, y: 0.0036203116, z: 0.0036203128}
+  m_Children: []
+  m_Father: {fileID: 3895416849859501377}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 117.62399, y: -71.47699, z: 155.07199}
+--- !u!136 &2496363789301860674
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2999440068681552984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000007
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: -0.000003814697, y: 0.0000016689291, z: 0.0000038146977}
+--- !u!1 &3895416849859723617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3895416849859501377}
+  - component: {fileID: 3895416849856601441}
+  - component: {fileID: 3895416849857732513}
+  m_Layer: 9
+  m_Name: Arkyn's_Helm_Horn
+  m_TagString: Obstacle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3895416849859501377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895416849859723617}
+  m_LocalRotation: {x: 0.054659527, y: 0.90032685, z: -0.41518015, w: 0.11853033}
+  m_LocalPosition: {x: 8.831375, y: -3.5715284, z: -7.6442947}
+  m_LocalScale: {x: 500.00024, y: 500, z: 500.0003}
+  m_Children:
+  - {fileID: 3392174038881683936}
+  - {fileID: 2349631918427103218}
+  - {fileID: 2567713609117182402}
+  - {fileID: 2305402490618580072}
+  - {fileID: 6720721543712758208}
+  - {fileID: 5489536258469189167}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 49.513, y: 165, z: 0}
+--- !u!33 &3895416849856601441
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895416849859723617}
+  m_Mesh: {fileID: 4300000, guid: ac12e299556bc455d884619a6d4f1bf6, type: 3}
+--- !u!23 &3895416849857732513
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895416849859723617}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 69fe8591e38f152409196559bde346b9, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1 &5572786407027650194
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2349631918427103218}
+  - component: {fileID: 871102435941762299}
+  m_Layer: 9
+  m_Name: Capsule (1)
+  m_TagString: Obstacle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2349631918427103218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5572786407027650194}
+  m_LocalRotation: {x: 0.09499775, y: -0.42788216, z: 0.8878385, w: 0.14012563}
+  m_LocalPosition: {x: -0.01409, y: -0.00998, z: -0.00913}
+  m_LocalScale: {x: 0.0069223377, y: 0.0069223354, z: 0.006922338}
+  m_Children: []
+  m_Father: {fileID: 3895416849859501377}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 128.149, y: -175.472, z: -15.735992}
+--- !u!136 &871102435941762299
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5572786407027650194}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000007
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: -0.000003814697, y: 0.0000016689291, z: 0.0000038146977}
+--- !u!1 &6650288701361123550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5489536258469189167}
+  - component: {fileID: 7446427935410665611}
+  m_Layer: 9
+  m_Name: Capsule (5)
+  m_TagString: Obstacle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5489536258469189167
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650288701361123550}
+  m_LocalRotation: {x: -0.101878874, y: -0.8761477, z: 0.0012378242, w: -0.4711522}
+  m_LocalPosition: {x: -0.00376, y: -0.00899, z: -0.02413}
+  m_LocalScale: {x: 0.0016166177, y: 0.0016166172, z: 0.0016166177}
+  m_Children: []
+  m_Father: {fileID: 3895416849859501377}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 174.366, y: -56.031982, z: 190.266}
+--- !u!136 &7446427935410665611
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650288701361123550}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000007
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: -0.000003814697, y: 0.0000016689291, z: 0.0000038146977}
+--- !u!1 &7294839327450594379
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2567713609117182402}
+  - component: {fileID: 4985302437842378957}
+  m_Layer: 9
+  m_Name: Capsule (2)
+  m_TagString: Obstacle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2567713609117182402
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7294839327450594379}
+  m_LocalRotation: {x: -0.090525426, y: -0.5757285, z: 0.7512808, w: -0.30970785}
+  m_LocalPosition: {x: -0.01262, y: -0.01487, z: -0.01682}
+  m_LocalScale: {x: 0.005081065, y: 0.0050810636, z: 0.0050810655}
+  m_Children: []
+  m_Father: {fileID: 3895416849859501377}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 112.907, y: -145.476, z: 68.090996}
+--- !u!136 &4985302437842378957
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7294839327450594379}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000007
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: -0.000003814697, y: 0.0000016689291, z: 0.0000038146977}
+--- !u!1 &7309336661796917182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6720721543712758208}
+  - component: {fileID: 3842626583847194313}
+  m_Layer: 9
+  m_Name: Capsule (4)
+  m_TagString: Obstacle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6720721543712758208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309336661796917182}
+  m_LocalRotation: {x: -0.20766371, y: -0.86171305, z: 0.19267097, w: -0.4209563}
+  m_LocalPosition: {x: -0.00544, y: -0.01165, z: -0.02377}
+  m_LocalScale: {x: 0.0025408622, y: 0.0025408615, z: 0.0025408622}
+  m_Children: []
+  m_Father: {fileID: 3895416849859501377}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 149.543, y: -48.485992, z: 193.121}
+--- !u!136 &3842626583847194313
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309336661796917182}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5000007
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: -0.000003814697, y: 0.0000016689291, z: 0.0000038146977}
