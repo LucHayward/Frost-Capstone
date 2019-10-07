@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4091145963204811910}
   - component: {fileID: 4091145963203845702}
   - component: {fileID: 2131472568846351292}
+  - component: {fileID: 1557512110485378031}
   - component: {fileID: 532975565981108347}
   m_Layer: 0
   m_Name: Crystal_Regular
@@ -89,6 +90,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e03b33c904214d4d8b5166e443ed814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1557512110485378031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4091145963206033542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cee7068bf95341e4a853da394b041c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!54 &532975565981108347

@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour
                 players[i].spawnPoint.position,
                 players[i].spawnPoint.rotation) as GameObject;
             players[i].playerNumber = i + 1;
-            players[i].Setup();
+            players[i].Setup(i);
         }
     }
 

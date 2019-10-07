@@ -57,4 +57,11 @@ public class ProjectileAttack : MonoBehaviour
 	//	// Return object to projectile pool
 	//}
 
+
+    //used for red frost essence ability
+    public void SetDamage(int dmg)
+    {
+        damage = dmg;
+    }
+
 }

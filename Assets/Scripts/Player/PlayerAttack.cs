@@ -20,10 +20,12 @@ public class PlayerAttack : MonoBehaviour
 	public AudioSource attackFailClip;
 	public AudioSource attackStunCastClip;
 
+
 	[HideInInspector]public bool inMelee = false; // used to notify PlayerMovement to face camera during melee
 
 	private LayerMask maskAll = -1;
 	private bool canAttack = true;
+	private bool isPlayer1;
 
 	private void Awake()
 	{
@@ -31,19 +33,31 @@ public class PlayerAttack : MonoBehaviour
         staffCollider.enabled = false;
 	}
 
+	public void setPlayerNum(int i)
+	{
+		isPlayer1 = i == 1;
+	}
+
 	void Update()
 	{
-		if (Input.GetButtonDown("Fire1"))
+		if (Input.GetButtonDown(isPlayer1 ? "P1_Fire" : "P2_Fire"))
 		{
-			Shoot();
+            if (gameObject.GetComponent<Player>().isRed)
+            {
+                Shoot(4);
+            }
+            else
+            {
+                Shoot(2);
+            }
 		}
 
-        if(Input.GetButtonDown("Fire2"))
+        if(Input.GetButtonDown(isPlayer1 ? "P1_Stun" : "P2_Stun"))
         {
             Stun();
         }
 
-        if(Input.GetButtonDown("Fire3"))
+        if(Input.GetButtonDown(isPlayer1 ? "P1_Melee" : "P2_Melee"))
         {
 			if (!canAttack || animator.GetCurrentAnimatorStateInfo(0).IsName("Melee Attack Stab"))
 			{
@@ -53,6 +67,22 @@ public class PlayerAttack : MonoBehaviour
 			}
 			meleeAttackClip.Play();
 			StartCoroutine(MeleeAttack());
+        }
+
+        if (Input.GetButtonDown(isPlayer1 ? "P1_SpeedBoost" : "P2_SpeedBoost"))
+		{
+			// Speed
+            gameObject.GetComponent<Player>().UseFrostEssence("Blue");
+        }
+        if (Input.GetButtonDown(isPlayer1 ? "P1_DamageBoost" : "P2_DamageBoost"))
+		{
+			// Damage
+            gameObject.GetComponent<Player>().UseFrostEssence("Red");
+        }
+        if (Input.GetButtonDown(isPlayer1 ? "P1_Heal" : "P2_Heal"))
+		{
+			// Heal
+            gameObject.GetComponent<Player>().UseFrostEssence("Green");
         }
 	}
 
@@ -71,7 +101,7 @@ public class PlayerAttack : MonoBehaviour
 		return GetRelativeCameraOrientation() < -0.7f;
 	}
 
-	private void Shoot()
+	private void Shoot(int dmg)
 	{
 		if (!canAttack || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack") || CameraFacingBackwards())
 		{
@@ -91,6 +121,8 @@ public class PlayerAttack : MonoBehaviour
 		//TODO: Pool GameObjects for performance
 		//TODO: Animate the spawning of a new object and fire the current one (or animate current respawn and instantiate new)
 		GameObject firedGO = Instantiate(projectile, projectileSpawnPoint.position, Quaternion.identity) as GameObject;
+
+        firedGO.GetComponent<ProjectileAttack>().SetDamage(dmg);
 
 		// Hitting something we can aim at
 		if (hit.collider != null && !hit.collider.CompareTag("Player"))

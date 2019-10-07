@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
 {
 	CharacterController characterController;
 	public Animator animator;
-	[SerializeField] private AnimationClip jumpAnim = null; //Assigned in inspector
 
 	public Transform cameraTransform;
 	private Transform horizontalCameraTransform;
@@ -24,19 +23,33 @@ public class PlayerMovement : MonoBehaviour
 	public Vector3 debugVelocity;
 
 	private Vector3 moveDirection;
-	private float jumpAnimTime;
-
 	private PlayerAttack playerAttack;
+	private bool isPlayer1;
 
 	void Start()
 	{
 		characterController = GetComponent<CharacterController>();
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
-
-		jumpAnimTime = jumpAnim.length;
+		
 		playerAttack = GetComponent<PlayerAttack>();
 
+
+
+	}
+
+	private IEnumerator animationRandomizer()
+	{
+		RandomizeIdleVariant();
+		RandomizeReactHitVariant();
+		RandomizeDeathVariant();
+
+		yield return new WaitForSecondsRealtime(30);
+	}
+
+	public void setPlayerNum(int i)
+	{
+		isPlayer1 = i == 1;
 	}
 
 	/// <summary>
@@ -64,10 +77,10 @@ public class PlayerMovement : MonoBehaviour
 
 		Vector3 forward = cameraTransform.GetChild(1).transform.forward;
 		forward.y = 0;
-		forward *= Input.GetAxis("Vertical");
+		forward *= Input.GetAxis(isPlayer1 ? "P1_Vertical" : "P2_Vertical");
 
 		Vector3 right = cameraTransform.right;
-		right *= Input.GetAxis("Horizontal");
+		right *= Input.GetAxis(isPlayer1 ? "P1_Horizontal" : "P2_Horizontal");
 
 		moveDirection += forward;
 		moveDirection += right;
@@ -102,10 +115,6 @@ public class PlayerMovement : MonoBehaviour
 			animator.SetFloat("velocityX", localVelocity.x);
 			animator.SetFloat("velocityZ", localVelocity.z);
 
-			if (Input.GetButtonDown("Jump"))
-			{
-				animator.SetTrigger("jump");
-			}
 			moveDirection.y = gravity * -characterController.stepOffset/Time.deltaTime;
 		}
 		else
@@ -117,37 +126,7 @@ public class PlayerMovement : MonoBehaviour
 		characterController.Move(moveDirection * Time.deltaTime);
 	}
 
-	private void OnJumpEvent()
-	{
-		StartCoroutine(GravityPauseForJump());
-	}
-
-	//TODO Tweak this
-	IEnumerator GravityPauseForJump()
-	{
-		float tGrav = gravity;
-		float tCCHeight = characterController.height;
-		Vector3 tCCCenter = characterController.center;
-		Vector3 tPlayerPosition = transform.position;
-
-		gravity = -gravity;
-		//transform.position += Vector3.up * 0.5f;
-		//characterController.center = new Vector3(tCCCenter.x, 0.92f, tCCCenter.z);
-		//characterController.height = 1.391f;
-		//characterController.Move(Vector3.up * 1);
-
-
-		Debug.Log("Jumping");
-
-		yield return new WaitForSeconds(0.5f);
-
-		gravity = tGrav;
-		//characterController.center = tCCCenter;
-		//characterController.height = tCCHeight;
-
-		Debug.Log("End Jumping");
-	}
-
+	
 	/// <summary>
 	/// Copys local Pos, Rotation and Scale onto a transform
 	/// </summary>
@@ -175,6 +154,11 @@ public class PlayerMovement : MonoBehaviour
 		animator.SetFloat("deathVariant", Random.Range(0, 5));
 
 	}
+
+    public void SetSpeed(float speed)
+    {
+        speedMultiplier = speed;
+    }
 
 }
 

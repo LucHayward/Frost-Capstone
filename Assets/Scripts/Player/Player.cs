@@ -23,6 +23,11 @@ public class Player : MonoBehaviour
     public int greenFE = 0;
     public int redFE = 0;
 
+    //used for frost essence abilities
+    public bool isGreen = false;
+    public bool isBlue = false;
+    public bool isRed = false;
+
     private int score;
     private bool isDamaged;
 
@@ -59,6 +64,34 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Player Died");
             OnDeath();
+        }
+
+        if (isBlue)
+        {
+            if (blueFE > 0)
+            {
+                playerMovement.SetSpeed(10.0f);
+                blueFE--;
+            }
+            else
+            {
+                playerMovement.SetSpeed(6.0f);
+                isBlue = false;
+            }
+            
+        }
+        if (isRed)
+        {
+            if (redFE > 0)
+            {
+                redFE--;
+                
+            }
+            else
+            {
+                isRed = false;
+            }
+
         }
 
 
@@ -185,12 +218,25 @@ public class Player : MonoBehaviour
             }
         }
         
-
-        
-
-        
-
        
+    }
+    public void UseFrostEssence(string type)
+    {
+        if(type == "Blue")
+        {
+            isBlue = true;
+        }
+
+        if(type == "Red")
+        {
+            isRed = true;
+        }
+
+        if(type == "Green")
+        {
+            GainHealth(greenFE);
+            greenFE = 0;
+        }
     }
 
     public void OnTriggerEnter(Collider other)

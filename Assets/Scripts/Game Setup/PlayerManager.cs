@@ -16,12 +16,16 @@ public class PlayerManager
 	public Camera camera;
     [HideInInspector] public int playerNumber;
 
-    public void Setup()
+    public void Setup(int playerNum)
     {
+		playerNumber = playerNum;
         playerMovement = instanceOfPlayer.GetComponent<PlayerMovement>();
         cameraController = camera.GetComponent<CameraController>();
         playerScript = instanceOfPlayer.GetComponent<Player>();
         playerAttack = instanceOfPlayer.GetComponent<PlayerAttack>();
+		cameraController.setPlayerNum(playerNum);
+		playerAttack.setPlayerNum(playerNum);
+		playerMovement.setPlayerNum(playerNum);
         playerAttack.cam = camera;
         playerMovement.cameraTransform = camera.transform;
         if(instanceOfPlayer.transform.GetChild(3) != null)
