@@ -34,6 +34,15 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement = null; //Assigned in inspector
 	[SerializeField] private PlayerAttack playerAttack = null; //Assigned in inspector
 
+    private bool isPlayer1;
+
+    public void SetPlayerNum(int i)
+    {
+        isPlayer1 = i == 0;
+        GameObject damageItem = GameObject.Find("Damage");
+        damageImage = damageItem.GetComponentsInChildren<Image>()[i];
+    }
+
     private void Awake()
     {
         currrentHealth = startingHealth;
@@ -43,9 +52,8 @@ public class Player : MonoBehaviour
     {
         GameObject healthUI = GameObject.Find("HealthUI");
         healthSlider = healthUI.GetComponentInChildren<Slider>();
-        GameObject damageItem = GameObject.Find("Damage");
-        damageImage = damageItem.GetComponentInChildren<Image>();
     }
+
 
     private void Update()
     {

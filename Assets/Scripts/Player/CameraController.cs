@@ -48,7 +48,7 @@ public class CameraController : MonoBehaviour
 
 	public void setPlayerNum(int i)
 	{
-		isPlayer1 = i == 1;
+		isPlayer1 = i == 0;
 	}
 
 	/// <summary>

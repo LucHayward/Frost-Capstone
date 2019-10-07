@@ -124,7 +124,37 @@ public class GameManager : MonoBehaviour
                 players[i].spawnPoint.position,
                 players[i].spawnPoint.rotation) as GameObject;
             players[i].playerNumber = i + 1;
+            players[i].camera.enabled = true;
             players[i].Setup(i);
+        }
+
+        // If there's only one player then disable the second camera and reset the UI values
+        if (players.Length == 1)
+        {
+            //Diasble Cam2 and change viewport on Cam1
+            players[0].camera.ResetAspect();
+            players[0].camera.rect = new Rect(0, 0, 1, 1);
+            players[0].camera.ResetAspect();
+
+            // Remove crosshair 2 and recentre crosshair 1
+            var p2Cross = GameObject.Find("P2_CrossHair");
+            p2Cross.SetActive(false);
+            var p1Cross = GameObject.Find("P1_CrossHair");
+            var rt1 = p1Cross.GetComponent<RectTransform>();
+            rt1.anchorMax = new Vector2(0.5f, 0.5f);
+            rt1.anchorMin = new Vector2(0.5f, 0.5f);
+            rt1.pivot = new Vector2(0.5f, 0.5f);
+            rt1.anchoredPosition = new Vector2(0, 0);
+            rt1.anchoredPosition3D = new Vector2(0, 0);
+
+            // Reset DamageImage1
+            var p1damageImage = GameObject.Find("P1_DamageImage");
+            var dirt1 = p1Cross.GetComponent<RectTransform>();
+            dirt1.anchorMax = new Vector2(1, 1);
+            dirt1.anchorMin = new Vector2(0, 0);
+            dirt1.pivot = new Vector2(0.5f, 0.5f);
+            dirt1.anchoredPosition = new Vector2(0, 0);
+            dirt1.anchoredPosition3D = new Vector2(0, 0);
         }
     }
 

@@ -23,7 +23,8 @@ public class PlayerManager
         cameraController = camera.GetComponent<CameraController>();
         playerScript = instanceOfPlayer.GetComponent<Player>();
         playerAttack = instanceOfPlayer.GetComponent<PlayerAttack>();
-		cameraController.setPlayerNum(playerNum);
+        playerScript.SetPlayerNum(playerNum);
+        cameraController.setPlayerNum(playerNum);
 		playerAttack.setPlayerNum(playerNum);
 		playerMovement.setPlayerNum(playerNum);
         playerAttack.cam = camera;
@@ -32,7 +33,7 @@ public class PlayerManager
         {
             cameraController.orbitTarget = instanceOfPlayer.transform.GetChild(3);
         }
-
+        instanceOfPlayer.name = "P" + (playerNum+1).ToString() + "_" + instanceOfPlayer.name;
 		healthResetValue = playerScript.currrentHealth;
     }
 
