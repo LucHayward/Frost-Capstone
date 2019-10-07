@@ -6,7 +6,7 @@ public class FrostEssence : MonoBehaviour
 {
     // type of drop (colour)
     public string type;
-    private int amount;
+    private float amount;
 
     private GameObject playerGO;
     private Player[] players;
@@ -30,7 +30,7 @@ public class FrostEssence : MonoBehaviour
     }
 
 
-    public void TransferEssence(GameObject player, int amount)
+    public void TransferEssence(GameObject player, float amount)
     {
         if (type == "Blue")
         {
@@ -52,7 +52,7 @@ public class FrostEssence : MonoBehaviour
 
 
 
-    public void SetAmount(int value)
+    public void SetAmount(float value)
     {
         amount = value;
     }
@@ -62,7 +62,7 @@ public class FrostEssence : MonoBehaviour
         return type;
     }
 
-    public int GetEssenceAmount()
+    public float GetEssenceAmount()
     {
         return amount;
     }
