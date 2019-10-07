@@ -155,12 +155,16 @@ public class GameManager : MonoBehaviour
 
             // Reset DamageImage1
             var p1damageImage = GameObject.Find("P1_DamageImage");
-            var dirt1 = p1Cross.GetComponent<RectTransform>();
+            var dirt1 = p1damageImage.GetComponent<RectTransform>();
             dirt1.anchorMax = new Vector2(1, 1);
             dirt1.anchorMin = new Vector2(0, 0);
             dirt1.pivot = new Vector2(0.5f, 0.5f);
             dirt1.anchoredPosition = new Vector2(0, 0);
             dirt1.anchoredPosition3D = new Vector2(0, 0);
+
+            //TODO: Remove the second player's health
+            GameObject.Find("P2_HealthUI").SetActive(false);
+            GameObject.Find("P2_ScoreUI").SetActive(false);
         }
     }
 
