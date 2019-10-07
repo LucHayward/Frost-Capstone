@@ -21,19 +21,19 @@ public class EnemyAttack : MonoBehaviour
     // Ranges
     public float range = 0.0f;
     public float abilityRange = 0.0f;
-    public float tauntRange = 0.0f;
 
     // Cooldowns
     public float shotDelay = 0.0f;
     public float abilityCD = 0.0f;
-    public float tauntCD = 0.0f;
 
     // Attack Timers
     private float lastAttackTime = 0.0f;
     private float lastAbilityTime = 0.0f;
-    private float lastTauntTime = 0.0f;
 
     private float currentTime = 0.0f;
+
+    // 0 jumpAttack, 1 taunt
+    private int abilityCounter = 0;
     
     // used for boss combo
     private int attackCounter = 0;
@@ -87,23 +87,29 @@ public class EnemyAttack : MonoBehaviour
         }
         else if (Vector3.Distance(playerTransform.position, enemyTransform.position) < abilityRange)
         {
+          
 
             if (currentTime - lastAbilityTime > abilityCD)
             {
-                animator.SetTrigger("ability");
-                lastAbilityTime = currentTime + abilityCD;
-
-
-            }
-            else if (currentTime - lastTauntTime > tauntCD)
-            {
-                if (enemy.GetType().Equals("Boss"))
+                if(abilityCounter == 0)
                 {
-                    animator.SetTrigger("taunt1");
-                    lastTauntTime = currentTime + tauntCD;
-
+                    animator.SetTrigger("ability");
+                    lastAbilityTime = currentTime + abilityCD;
+                    abilityCounter++;
                 }
+
+                else
+                {
+                        animator.SetTrigger("taunt1");
+                        lastAbilityTime = currentTime + abilityCD;
+                        abilityCounter = 0;
+                }
+                
+                
+
+
             }
+            
 
         }
         
@@ -122,7 +128,7 @@ public class EnemyAttack : MonoBehaviour
         // Calculate the distance between the player and the enemy
         float dist = Vector3.Distance(playerTransform.position, enemyWeaponTransform.position);
 
-        if (dist <= 1.5f && enemy.type != "Ranged")
+        if (dist <= 3.0f && enemy.type != "Ranged")
         {
             player.TakeDamage(enemy.damage);
         }

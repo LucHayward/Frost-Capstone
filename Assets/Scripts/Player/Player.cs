@@ -19,9 +19,9 @@ public class Player : MonoBehaviour
     public bool isFast;
 
     //types of frost essence
-    public int blueFE = 0;
-    public int greenFE = 0;
-    public int redFE = 0;
+    public float blueFE = 0;
+    public float greenFE = 0;
+    public float redFE = 0;
 
     //used for frost essence abilities
     public bool isGreen = false;
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
             if (blueFE > 0)
             {
                 playerMovement.SetSpeed(10.0f);
-                blueFE--;
+                blueFE -=0.3f;
             }
             else
             {
@@ -97,7 +97,7 @@ public class Player : MonoBehaviour
         {
             if (redFE > 0)
             {
-                redFE--;
+                redFE -= 0.3f;
                 
             }
             else
@@ -202,7 +202,7 @@ public class Player : MonoBehaviour
 
             else if (blueFE > 100)
             {
-                blueFE = 100;
+                blueFE = 100.0f;
             }
         }
 
@@ -215,7 +215,7 @@ public class Player : MonoBehaviour
 
             else if (greenFE > 100)
             {
-                greenFE = 100;
+                greenFE = 100.0f;
             }
         }
 
@@ -228,7 +228,7 @@ public class Player : MonoBehaviour
 
             else if (redFE > 100)
             {
-                redFE = 100;
+                redFE = 100.0f;
             }
         }
         
@@ -248,7 +248,8 @@ public class Player : MonoBehaviour
 
         if(type == "Green")
         {
-            GainHealth(greenFE);
+            int heal = (int) greenFE;
+            GainHealth(heal);
             greenFE = 0;
         }
     }
@@ -261,7 +262,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void GainFrostEssence(string essenceType, int amount)
+    public void GainFrostEssence(string essenceType, float amount)
     {
         if(essenceType == "Blue")
         {
