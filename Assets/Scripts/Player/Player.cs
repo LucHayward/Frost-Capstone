@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
 
     private int score;
     private bool isDamaged;
+    private bool alive = true;
 
     [SerializeField] private PlayerMovement playerMovement = null; //Assigned in inspector
 	[SerializeField] private PlayerAttack playerAttack = null; //Assigned in inspector
@@ -41,6 +42,12 @@ public class Player : MonoBehaviour
         isPlayer1 = i == 0;
         GameObject damageItem = GameObject.Find("Damage");
         damageImage = damageItem.GetComponentsInChildren<Image>()[i];
+
+        GameObject healthUI = GameObject.Find("P"+(i+1)+"_"+"HealthUI");
+        healthSlider = healthUI.GetComponentInChildren<Slider>();
+
+        MeleeAttack meleeAttack = GetComponentInChildren<MeleeAttack>();
+        meleeAttack.setPlayerNum(i);
     }
 
     private void Awake()
@@ -50,8 +57,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        GameObject healthUI = GameObject.Find("HealthUI");
-        healthSlider = healthUI.GetComponentInChildren<Slider>();
     }
 
 
@@ -155,22 +160,22 @@ public class Player : MonoBehaviour
 		playerMovement.animator.SetTrigger("die");
 
         //TODO: Disable colliders and movement scripts etc
-        score = GameManager.Get().GetScore();
-        
-        
-        PlayerPrefs.SetInt("score", score);
+        GameManager.Get().HandlePlayerDeath(isPlayer1 ? 0 : 1);
+        playerAttack.enabled = false;
+        playerMovement.enabled = false;
 
-        SceneManager.LoadScene(2);
+        alive = false;
+    }
 
-        GameManager.Get().gameOver = true;
+    public void Respawn()
+    {
+        alive = true;
+        playerAttack.enabled = true;
+        playerMovement.enabled = true;
 
-        Instantiate(gameObject);
-		Destroy(gameObject);
-
-
-        
-
-
+        gameObject.GetComponent<CharacterController>().enabled = false;
+        gameObject.transform.position = Vector3.zero;
+        gameObject.GetComponent<CharacterController>().enabled = true;
     }
 
     public void OnDisable()
@@ -183,6 +188,7 @@ public class Player : MonoBehaviour
     {
         playerMovement.enabled = true;
         playerAttack.enabled = true;
+        alive = true;
     }
 
     private void CapFrostEssence(string eType)
@@ -282,6 +288,11 @@ public class Player : MonoBehaviour
             currrentHealth = maxHealth;
         }
     }
+    public bool IsAlive()
+    {
+        return alive;
+    }
+
 
     
 

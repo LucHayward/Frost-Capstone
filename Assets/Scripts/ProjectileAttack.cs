@@ -13,10 +13,19 @@ public class ProjectileAttack : MonoBehaviour
 	public GameObject impactPrefab;
 
 	private ParticleSystem ps;
+
+    private int playerNumOriginator;
 	//private AudioSource audioSource;
 
     private bool isRanged = true;
-	public void Start()
+
+
+    public void setPlayerNumOriginator(int i)
+    {
+        playerNumOriginator = i;
+    }
+
+    public void Start()
 	{
 		ps = gameObject.GetComponentInChildren<ParticleSystem>();
 		//audioSource = gameObject.GetComponent<AudioSource>();
@@ -35,7 +44,7 @@ public class ProjectileAttack : MonoBehaviour
 			if (other.gameObject.CompareTag("Enemy"))
 			{
 				Enemy enemy = other.gameObject.GetComponent<Enemy>();
-				enemy.TakeDamage(damage, isRanged);
+				enemy.TakeDamage(damage, isRanged, playerNumOriginator);
                 enemy.AddStack();
 			}
             else if (other.gameObject.CompareTag("Player"))

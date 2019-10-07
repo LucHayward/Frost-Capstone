@@ -123,9 +123,10 @@ public class PlayerAttack : MonoBehaviour
 		GameObject firedGO = Instantiate(projectile, projectileSpawnPoint.position, Quaternion.identity) as GameObject;
 
         firedGO.GetComponent<ProjectileAttack>().SetDamage(dmg);
+        firedGO.GetComponent<ProjectileAttack>().setPlayerNumOriginator(isPlayer1 ? 0 : 1);
 
-		// Hitting something we can aim at
-		if (hit.collider != null && !hit.collider.CompareTag("Player"))
+        // Hitting something we can aim at
+        if (hit.collider != null && !hit.collider.CompareTag("Player"))
 		{
 			firedGO.transform.LookAt(hit.point);
 		}

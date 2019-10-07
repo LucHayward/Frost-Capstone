@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
 
     private Vector3 prevTransform;
     private int numberOfStacks;
+    private int lastHitByPlayerNum;
 
     //public bool isDead = false;
 
@@ -93,7 +94,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0 && isDead == false)
         {
             cantMove = true;
-            UpdateScore();
+            UpdateScore(lastHitByPlayerNum);
 
             //if melee: SetTrigger("meleeDeath")
             //animator.SetBool("isRanged", false);
@@ -131,10 +132,11 @@ public class Enemy : MonoBehaviour
     /// Reduce health by set amount
     /// </summary>
     /// <param name="damage"></param>
-    public void TakeDamage(int damage, bool isRangedAtk)
+    public void TakeDamage(int damage, bool isRangedAtk, int playerNum)
     {
         if (!inVulnerable)
         {
+            lastHitByPlayerNum = playerNum;
             health -= damage;
             rangedDeath = isRangedAtk;
         }
@@ -154,14 +156,14 @@ public class Enemy : MonoBehaviour
         flockAgent.enabled = true;
 	}
 
-    private void UpdateScore()
+    private void UpdateScore(int playerNum)
     {
         if (type == "Boss")
-            GameManager.Get().UpdateScore(5);
+            GameManager.Get().UpdateScore(5, playerNum);
         else if (type == "Melee")
-            GameManager.Get().UpdateScore(3);
+            GameManager.Get().UpdateScore(3, playerNum);
         else if (type == "Ranged")
-            GameManager.Get().UpdateScore(4);
+            GameManager.Get().UpdateScore(4, playerNum);
     }
 
     /// <summary>

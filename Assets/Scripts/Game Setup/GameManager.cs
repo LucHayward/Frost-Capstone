@@ -32,8 +32,10 @@ public class GameManager : MonoBehaviour
     private int roundNumber = 0;
     private bool spawnedEnemy = false;
     private Text levelText;
-    private Text scoreText;
-    private int score = 0;
+    private Text P1scoreText;
+    private Text P2scoreText;
+    private int P1score = 0;
+    private int P2score = 0;
     public bool gameOver = false;
 
     private void Start()
@@ -44,8 +46,12 @@ public class GameManager : MonoBehaviour
         endWait = new WaitForSeconds(endDelay);
         GameObject levelUI = GameObject.Find("LevelUI");
         levelText = levelUI.GetComponentInChildren<Text>();
-        GameObject scoreUI = GameObject.Find("ScoreUI");
-        scoreText = scoreUI.GetComponentInChildren<Text>();
+
+        GameObject P1scoreUI = GameObject.Find("P1_ScoreUI");
+        P1scoreText = P1scoreUI.GetComponentInChildren<Text>();
+        GameObject P2scoreUI = GameObject.Find("P2_ScoreUI");
+        P2scoreText = P2scoreUI.GetComponentInChildren<Text>();
+
         SpawnPlayer();
         StartCoroutine(GameLoop());    
     }
@@ -267,10 +273,17 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void UpdateScore(int points)
+    public void UpdateScore(int points, int playerNum)
     {
-        score += points;
-        scoreText.text = "SCORE " + score;
+        if (playerNum == 0)
+        {
+            P1score += points;
+            P1scoreText.text = "SCORE: " + P1score;
+        } else
+        {
+            P2score += points;
+            P2scoreText.text = "SCORE: " + P2score;
+        }
     }
 
     public void RemovedDeadEnemy(int ID, string type)
@@ -316,8 +329,39 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int GetScore()
+    public Vector2 GetScore()
     {
-        return score;
+        return new Vector2(P1score, P2score);
+    }
+
+    public void HandlePlayerDeath(int playerNum)
+    {
+        //TODO: Handle multiplayer variant
+        if (players.Length == 1)
+        {
+            PlayerPrefs.SetInt("P1score", P1score);
+            PlayerPrefs.SetInt("P2score", P2score);
+
+            SceneManager.LoadScene(2);
+
+            gameOver = true;
+
+        }
+        else
+        {
+            // If neither player is alive now
+            if (!(players[0].GetPlayerScript().IsAlive() || players[1].GetPlayerScript().IsAlive()))
+            {
+
+                PlayerPrefs.SetInt("P1score", P1score);
+                PlayerPrefs.SetInt("P2score", P2score);
+
+                SceneManager.LoadScene(2);
+
+                gameOver = true;
+
+            }
+        
+        }
     }
 }

@@ -37,6 +37,11 @@ public class PlayerManager
 		healthResetValue = playerScript.currrentHealth;
     }
 
+    public Player GetPlayerScript()
+    {
+        return playerScript;
+    }
+
     public void RoundReset()
     {
         ResetHealth();
