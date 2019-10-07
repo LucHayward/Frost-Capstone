@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
 	/// </summary>
 	void Update()
 	{
-		moveDirection = new Vector3();
+		moveDirection = new Vector3(0,0,0);
 
 		Vector3 forward = cameraTransform.GetChild(1).transform.forward;
 		forward.y = 0;

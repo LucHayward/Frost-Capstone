@@ -112,8 +112,17 @@ public class PlayerAttack : MonoBehaviour
 		canAttack = false;
 		animator.SetTrigger("attack");
 		attackClip.Play();
-		
-		Ray ray = cam.ScreenPointToRay(new Vector3(Screen.width/2, Screen.height/2, 0));
+
+        bool multiplayer = GameManager.Get().players.Length>1;
+        Ray ray;
+        if (multiplayer)
+        {
+            ray = cam.ScreenPointToRay(new Vector3((Screen.width / 4) + (isPlayer1?0:Screen.width/2), Screen.height / 2, 0));
+        }
+        else
+        {
+            ray = cam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        }
 
 		RaycastHit hit;
 		Physics.Raycast(ray, out hit, Mathf.Infinity, maskAll, QueryTriggerInteraction.Ignore);
