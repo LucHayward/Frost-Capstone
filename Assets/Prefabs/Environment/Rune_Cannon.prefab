@@ -46,7 +46,7 @@ MonoBehaviour:
   isTrap: 1
   type: 1
   projectileSpawnPoint: {fileID: 865672655014412560}
-  projectile: {fileID: 3959062128179041676, guid: 233f84cc00ce0d64c9a7ed1f2ebdd966,
+  projectile: {fileID: 3959062128179041676, guid: ca8b648d32e5f6f4685710a02bff355e,
     type: 3}
 --- !u!1 &2139871343545242311
 GameObject:

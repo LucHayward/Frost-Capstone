@@ -1008,8 +1008,8 @@ MonoBehaviour:
   animator: {fileID: 3636180929729888197}
   velocityMagnitude: 0
   type: Boss
-  abilityDamage: 5
-  damage: 3
+  abilityDamage: 20
+  damage: 15
   hasScreamed: 0
   isStunned: 0
   inVulnerable: 0

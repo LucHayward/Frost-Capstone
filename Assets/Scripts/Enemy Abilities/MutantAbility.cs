@@ -90,7 +90,7 @@ public class MutantAbility : MonoBehaviour
 
         float dist = Vector3.Distance(closestPlayerPosition, weaponTransform.position);
         
-        if (dist <= 3.0f)
+        if (dist <= 5.0f)
         {
             players[closestPlayerIndex].TakeDamage(mutant.abilityDamage);
         }
