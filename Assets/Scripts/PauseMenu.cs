@@ -7,20 +7,29 @@ public class PauseMenu : MonoBehaviour
 {
     public bool isPaused = false;
     public GameObject pausePanel;
-    GameObject player;
-    Player playerScript;
+    GameObject[] players;
+    Player[] playerScripts;
     // Update is called once per frame
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerScript = player.GetComponent<Player>();
+        players = GameObject.FindGameObjectsWithTag("Player");
+        playerScripts = new Player[players.Length];
+        for (int i = 0; i < players.Length; i++)
+        {
+            GameObject go = players[i];
+            playerScripts[i] = go.GetComponent<Player>();
+        }
         ResumeGame();
         
     }
 
     public void ResumeGame()
     {
-        playerScript.enabled = true;
+        foreach(Player playerScript in playerScripts)
+        {
+            playerScript.enabled = true;
+
+        }
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         pausePanel.SetActive(false);
@@ -28,7 +37,11 @@ public class PauseMenu : MonoBehaviour
     }
     public void PauseGame()
     {
-        playerScript.enabled = false;
+        foreach (Player playerScript in playerScripts)
+        {
+            playerScript.enabled = false;
+
+        }
         pausePanel.SetActive(true);
         isPaused = true;
         Cursor.lockState = CursorLockMode.Confined;

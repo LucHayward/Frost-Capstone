@@ -35,9 +35,37 @@ public class Player : MonoBehaviour
 
     private int score;
     private bool isDamaged;
+    private bool alive = true;
 
     [SerializeField] private PlayerMovement playerMovement = null; //Assigned in inspector
 	[SerializeField] private PlayerAttack playerAttack = null; //Assigned in inspector
+
+    private bool isPlayer1;
+
+    public void SetPlayerNum(int i)
+    {
+        isPlayer1 = i == 0;
+
+        damageImage = GameObject.Find("P" + (i + 1) + "_"+"DamageImage").GetComponent<Image>();
+
+        GameObject healthUI = GameObject.Find("P"+(i+1)+"_"+"HealthUI");
+        healthSlider = healthUI.GetComponentInChildren<Slider>();
+
+        GameObject blueUI = GameObject.Find("P" + (i + 1) + "_" + "BlueFeUI");
+        blueSlider = blueUI.GetComponentInChildren<Slider>();
+        blueSlider.value = 0;
+
+        GameObject greenUI = GameObject.Find("P"+(i+1)+"_"+"GreenFeUI");
+        greenSlider = greenUI.GetComponentInChildren<Slider>();
+        greenSlider.value = 0;
+
+        GameObject redUI = GameObject.Find("P"+(i+1)+"_"+"RedFeUI");
+        redSlider = redUI.GetComponentInChildren<Slider>();
+        redSlider.value = 0;
+
+        MeleeAttack meleeAttack = GetComponentInChildren<MeleeAttack>();
+        meleeAttack.setPlayerNum(i);
+    }
 
     private void Awake()
     {
@@ -46,24 +74,13 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        GameObject healthUI = GameObject.Find("HealthUI");
-        healthSlider = healthUI.GetComponentInChildren<Slider>();
 
-        GameObject blueUI = GameObject.Find("BlueFeUI");
-        blueSlider = blueUI.GetComponentInChildren<Slider>();
-        blueSlider.value = 0;
-
-        GameObject greenUI = GameObject.Find("GreenFeUI");
-        greenSlider = greenUI.GetComponentInChildren<Slider>();
-        greenSlider.value = 0;
-
-        GameObject redUI = GameObject.Find("RedFeUI");
-        redSlider = redUI.GetComponentInChildren<Slider>();
-        redSlider.value = 0;
+        
 
         GameObject damageItem = GameObject.Find("Damage");
         damageImage = damageItem.GetComponentInChildren<Image>();
     }
+
 
     private void Update()
     {
@@ -167,22 +184,24 @@ public class Player : MonoBehaviour
 		playerMovement.animator.SetTrigger("die");
 
         //TODO: Disable colliders and movement scripts etc
-        score = GameManager.Get().GetScore();
-        
-        
-        PlayerPrefs.SetInt("score", score);
+        GameManager.Get().HandlePlayerDeath(isPlayer1 ? 0 : 1);
+        playerAttack.enabled = false;
+        playerMovement.enabled = false;
 
-        SceneManager.LoadScene(2);
+        alive = false;
+    }
 
-        GameManager.Get().gameOver = true;
+    public void Respawn()
+    {
+        alive = true;
+        playerAttack.enabled = true;
+        playerMovement.enabled = true;
 
-        Instantiate(gameObject);
-		Destroy(gameObject);
+        gameObject.GetComponent<CharacterController>().enabled = false;
+        gameObject.transform.position = Vector3.zero;
+        gameObject.GetComponent<CharacterController>().enabled = true;
 
-
-        
-
-
+        playerMovement.animator.SetTrigger("respawn");
     }
 
     public void OnDisable()
@@ -195,6 +214,7 @@ public class Player : MonoBehaviour
     {
         playerMovement.enabled = true;
         playerAttack.enabled = true;
+        alive = true;
     }
 
     private void CapFrostEssence(string eType)
@@ -300,6 +320,11 @@ public class Player : MonoBehaviour
         }
         healthSlider.value = currrentHealth;
     }
+    public bool IsAlive()
+    {
+        return alive;
+    }
+
 
     
 

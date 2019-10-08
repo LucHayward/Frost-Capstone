@@ -34,12 +34,13 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private EnemyController enemyController = null; //Assigned in inspector
 	[SerializeField] private FlockAgent flockAgent = null; //Assigned in inspector
-	private GameObject playerGO;
-	private Player player;
-	private Transform playerPos;
+	//private GameObject playerGO;
+	//private Player player;
+	//private Transform playerPos;
 
     private Vector3 prevTransform;
     private int numberOfStacks;
+    private int lastHitByPlayerNum;
 
     //public bool isDead = false;
 
@@ -47,9 +48,9 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         prevTransform = transform.position;
-		playerGO = GameObject.FindGameObjectWithTag("Player");
-        player = playerGO.GetComponent<Player>();
-        playerPos = playerGO.transform;
+		//playerGO = GameObject.FindGameObjectWithTag("Player");
+        //player = playerGO.GetComponent<Player>();
+        //playerPos = playerGO.transform;
 
         //animator.SetBool("isDead", false);
         isDead = false;
@@ -62,13 +63,13 @@ public class Enemy : MonoBehaviour
         velocity = ((transform.position - prevTransform) / Time.deltaTime);
         velocityMagnitude = velocity.magnitude;
 
-        if(velocityMagnitude == 0.1f)
+        if(Mathf.Approximately(velocityMagnitude,0.1f))
         {
             animator.SetBool("Idle", false);
             animator.SetBool("Run", false);
             animator.SetBool("Walk", false);
         }
-        else if (velocityMagnitude == 0)
+        else if (Mathf.Approximately(velocityMagnitude, 0))
         {
             animator.SetBool("Idle", true);
             animator.SetBool("Run", false);
@@ -93,7 +94,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0 && isDead == false)
         {
             cantMove = true;
-            UpdateScore();
+            UpdateScore(lastHitByPlayerNum);
 
             //if melee: SetTrigger("meleeDeath")
             //animator.SetBool("isRanged", false);
@@ -131,10 +132,11 @@ public class Enemy : MonoBehaviour
     /// Reduce health by set amount
     /// </summary>
     /// <param name="damage"></param>
-    public void TakeDamage(int damage, bool isRangedAtk)
+    public void TakeDamage(int damage, bool isRangedAtk, int playerNum)
     {
         if (!inVulnerable)
         {
+            lastHitByPlayerNum = playerNum;
             health -= damage;
             rangedDeath = isRangedAtk;
         }
@@ -154,14 +156,14 @@ public class Enemy : MonoBehaviour
         flockAgent.enabled = true;
 	}
 
-    private void UpdateScore()
+    private void UpdateScore(int playerNum)
     {
         if (type == "Boss")
-            GameManager.Get().UpdateScore(5);
+            GameManager.Get().UpdateScore(5, playerNum);
         else if (type == "Melee")
-            GameManager.Get().UpdateScore(3);
+            GameManager.Get().UpdateScore(3, playerNum);
         else if (type == "Ranged")
-            GameManager.Get().UpdateScore(4);
+            GameManager.Get().UpdateScore(4, playerNum);
     }
 
     /// <summary>

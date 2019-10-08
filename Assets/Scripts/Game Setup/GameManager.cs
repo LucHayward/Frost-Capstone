@@ -32,8 +32,10 @@ public class GameManager : MonoBehaviour
     private int roundNumber = 0;
     private bool spawnedEnemy = false;
     private Text levelText;
-    private Text scoreText;
-    private int score = 0;
+    private Text P1scoreText;
+    private Text P2scoreText;
+    private int P1score = 0;
+    private int P2score = 0;
     public bool gameOver = false;
 
     private void Start()
@@ -44,8 +46,12 @@ public class GameManager : MonoBehaviour
         endWait = new WaitForSeconds(endDelay);
         GameObject levelUI = GameObject.Find("LevelUI");
         levelText = levelUI.GetComponentInChildren<Text>();
-        GameObject scoreUI = GameObject.Find("ScoreUI");
-        scoreText = scoreUI.GetComponentInChildren<Text>();
+
+        GameObject P1scoreUI = GameObject.Find("P1_ScoreUI");
+        P1scoreText = P1scoreUI.GetComponentInChildren<Text>();
+        GameObject P2scoreUI = GameObject.Find("P2_ScoreUI");
+        P2scoreText = P2scoreUI.GetComponentInChildren<Text>();
+
         SpawnPlayer();
         StartCoroutine(GameLoop());    
     }
@@ -124,7 +130,44 @@ public class GameManager : MonoBehaviour
                 players[i].spawnPoint.position,
                 players[i].spawnPoint.rotation) as GameObject;
             players[i].playerNumber = i + 1;
-            players[i].Setup();
+            players[i].camera.enabled = true;
+            players[i].Setup(i);
+        }
+
+        // If there's only one player then disable the second camera and reset the UI values
+        if (players.Length == 1)
+        {
+            //Diasble Cam2 and change viewport on Cam1
+            players[0].camera.ResetAspect();
+            players[0].camera.rect = new Rect(0, 0, 1, 1);
+            players[0].camera.ResetAspect();
+
+            // Remove crosshair 2 and recentre crosshair 1
+            var p2Cross = GameObject.Find("P2_CrossHair");
+            p2Cross.SetActive(false);
+            var p1Cross = GameObject.Find("P1_CrossHair");
+            var rt1 = p1Cross.GetComponent<RectTransform>();
+            rt1.anchorMax = new Vector2(0.5f, 0.5f);
+            rt1.anchorMin = new Vector2(0.5f, 0.5f);
+            rt1.pivot = new Vector2(0.5f, 0.5f);
+            rt1.anchoredPosition = new Vector2(0, 0);
+            rt1.anchoredPosition3D = new Vector2(0, 0);
+
+            // Reset DamageImage1
+            var p1damageImage = GameObject.Find("P1_DamageImage");
+            var dirt1 = p1damageImage.GetComponent<RectTransform>();
+            dirt1.anchorMax = new Vector2(1, 1);
+            dirt1.anchorMin = new Vector2(0, 0);
+            dirt1.pivot = new Vector2(0.5f, 0.5f);
+            dirt1.anchoredPosition = new Vector2(0, 0);
+            dirt1.anchoredPosition3D = new Vector2(0, 0);
+
+            
+            GameObject.Find("P2_HealthUI").SetActive(false);
+            GameObject.Find("P2_BlueFeUI").SetActive(false);
+            GameObject.Find("P2_GreenFeUI").SetActive(false);
+            GameObject.Find("P2_RedFeUI").SetActive(false);
+            GameObject.Find("P2_ScoreUI").SetActive(false);
         }
     }
 
@@ -237,10 +280,17 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void UpdateScore(int points)
+    public void UpdateScore(int points, int playerNum)
     {
-        score += points;
-        scoreText.text = "SCORE " + score;
+        if (playerNum == 0)
+        {
+            P1score += points;
+            P1scoreText.text = "SCORE: " + P1score;
+        } else
+        {
+            P2score += points;
+            P2scoreText.text = "SCORE: " + P2score;
+        }
     }
 
     public void RemovedDeadEnemy(int ID, string type)
@@ -286,8 +336,39 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int GetScore()
+    public Vector2 GetScore()
     {
-        return score;
+        return new Vector2(P1score, P2score);
+    }
+
+    public void HandlePlayerDeath(int playerNum)
+    {
+        //TODO: Handle multiplayer variant
+        if (players.Length == 1)
+        {
+            PlayerPrefs.SetInt("P1score", P1score);
+            PlayerPrefs.SetInt("P2score", P2score);
+
+            SceneManager.LoadScene(2);
+
+            gameOver = true;
+
+        }
+        else
+        {
+            // If neither player is alive now
+            if (!(players[0].GetPlayerScript().IsAlive() || players[1].GetPlayerScript().IsAlive()))
+            {
+
+                PlayerPrefs.SetInt("P1score", P1score);
+                PlayerPrefs.SetInt("P2score", P2score);
+
+                SceneManager.LoadScene(2);
+
+                gameOver = true;
+
+            }
+        
+        }
     }
 }

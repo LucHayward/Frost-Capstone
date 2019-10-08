@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,16 +13,26 @@ public class EnemyController : MonoBehaviour
     public Animator animator;
     public NavMeshAgent agent;
     public float stoppingDistance;
-    private GameObject playerGameObject;
-    private Transform playerTransform;
+    private GameObject[] playerGameObjects;
+    private Player[] players;
+    private Transform[] playerTransforms;
     private Enemy enemy;
     private bool hasSeen = false;
     [SerializeField]private FlockAgent flockAgent = null; //Assigned in inspector
 
 	void Start()
     {
-        playerGameObject = GameObject.FindGameObjectWithTag("Player");
-        playerTransform = playerGameObject.transform;
+        playerGameObjects = GameObject.FindGameObjectsWithTag("Player");
+        playerTransforms = new Transform[playerGameObjects.Length];
+        for(int i = 0; i < playerGameObjects.Length; i++)
+        {
+            playerTransforms[i] = playerGameObjects[i].transform;
+        }
+        players = new Player[playerGameObjects.Length];
+        for (int i = 0; i < playerGameObjects.Length; i++)
+        {
+            players[i] = playerGameObjects[i].GetComponent<Player>();
+        }
         enemy = gameObject.GetComponent<Enemy>();
     }
 
@@ -34,30 +45,56 @@ public class EnemyController : MonoBehaviour
             StopMove();
         }
         
-        else
+        //else
+        //{
+        //    //agent.isStopped = false;
+        //    //flockAgent.enabled = true;
+        //}
+    }
+
+    private Tuple<float, Transform> GetClosestPlayer()
+    {
+        float shortestDistance = float.MaxValue;
+        Transform closestPlayerTransform = null;
+        for (int i = 0; i < playerTransforms.Length; i++)
         {
-            //agent.isStopped = false;
-            //flockAgent.enabled = true;
+            if (players[i].IsAlive()) // If the player is dead stop targeting.
+            {
+                float newDistance = Vector3.Distance(transform.position, playerTransforms[i].position);
+                if (newDistance < shortestDistance)
+                {
+                    closestPlayerTransform = playerTransforms[i];
+                    shortestDistance = newDistance;
+                }
+            }
+
         }
+        return Tuple.Create(shortestDistance, closestPlayerTransform);
     }
 
     /// <summary>
-    /// Moves the current transform to the player at a variable speed USING THE NAVMESH if close to player, otherwise 
+    /// Moves the current transform to the closest player at a variable speed USING THE NAVMESH if close to player, otherwise 
     /// </summary>
     private void Move()
 	{
-
+        
         if (!enemy.isStunned)
         {
             agent.isStopped = false;
         }
 		flockAgent.enabled = false;
-		transform.LookAt(playerTransform.position); //TODO Lerp this (see player movement)
-        float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-        if (distance > stoppingDistance)
+        
+        
+        Tuple<float, Transform> tuple = GetClosestPlayer();
+        float shortestDistance = tuple.Item1;
+        Transform closestPlayerTransform = tuple.Item2;
+        transform.LookAt(closestPlayerTransform.position); //TODO Lerp this (see player movement)
+
+
+        if (shortestDistance > stoppingDistance)
         {
             //agent.isStopped = false;
-            agent.SetDestination(playerTransform.position);
+            agent.SetDestination(closestPlayerTransform.position);
 		}
 		//else
 		//{
@@ -71,25 +108,32 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     private void Wander()
     {
-            float distance = Vector3.Distance(transform.position, playerGameObject.transform.position);
-            if (distance < 5)
-            {
-                flockAgent.enabled = false;
-                agent.SetDestination(playerTransform.position);
-            }
-            else
-           {
-                //agent.isStopped = true;
-                flockAgent.enabled = true;
-           }
+        Tuple<float, Transform> tuple = GetClosestPlayer();
+        float shortestDistance = tuple.Item1;
+        Transform closestPlayerTransform = tuple.Item2;
+        if (shortestDistance < 5)
+        {
+            flockAgent.enabled = false;
+            agent.SetDestination(closestPlayerTransform.position);
+        }
+        else
+        
+            //agent.isStopped = true;
+            flockAgent.enabled = true;
+        
     }
     /// <summary>
     /// Determines whether the NPC can see the player and makes decisions based on this information
     /// </summary>
     private void MakeDecision()
     {
+        Tuple<float, Transform> tuple = GetClosestPlayer();
+        float shortestDistance = tuple.Item1;
+        Transform closestPlayerTransform = tuple.Item2;
+
+
         Vector3 currentPosition = new Vector3(transform.position.x, 1, transform.position.z);
-        Vector3 centralizedPlayerPosition = new Vector3(playerTransform.position.x, 1, playerTransform.position.z);
+        Vector3 centralizedPlayerPosition = new Vector3(closestPlayerTransform.position.x, 1, closestPlayerTransform.position.z);
         Vector3 directionToPlayer = centralizedPlayerPosition - currentPosition; // vector pointing from the enemy to the player       
         Ray eyeLine = new Ray(currentPosition, directionToPlayer);
         //Debug.DrawRay(currentPosition, directionToPlayer);
@@ -133,7 +177,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    //TODO: @Keegan @Luc Fix this, can't have both active together
+    
     /// <summary>
     /// Stops the agent from moving
     /// </summary>

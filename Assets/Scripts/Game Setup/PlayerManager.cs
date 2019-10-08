@@ -16,20 +16,30 @@ public class PlayerManager
 	public Camera camera;
     [HideInInspector] public int playerNumber;
 
-    public void Setup()
+    public void Setup(int playerNum)
     {
+		playerNumber = playerNum;
         playerMovement = instanceOfPlayer.GetComponent<PlayerMovement>();
         cameraController = camera.GetComponent<CameraController>();
         playerScript = instanceOfPlayer.GetComponent<Player>();
         playerAttack = instanceOfPlayer.GetComponent<PlayerAttack>();
+        playerScript.SetPlayerNum(playerNum);
+        cameraController.setPlayerNum(playerNum);
+		playerAttack.setPlayerNum(playerNum);
+		playerMovement.setPlayerNum(playerNum);
         playerAttack.cam = camera;
         playerMovement.cameraTransform = camera.transform;
         if(instanceOfPlayer.transform.GetChild(3) != null)
         {
             cameraController.orbitTarget = instanceOfPlayer.transform.GetChild(3);
         }
-
+        instanceOfPlayer.name = "P" + (playerNum+1).ToString() + "_" + instanceOfPlayer.name;
 		healthResetValue = playerScript.currrentHealth;
+    }
+
+    public Player GetPlayerScript()
+    {
+        return playerScript;
     }
 
     public void RoundReset()
