@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyRangedAttack : MonoBehaviour
@@ -11,13 +12,14 @@ public class EnemyRangedAttack : MonoBehaviour
     public Animator animator;
     private Enemy enemy;
 
-    private EnemyController enemyController;
-    private FlockAgent flockAgent;
+    //private EnemyController enemyController;
+    //private FlockAgent flockAgent;
     public NavMeshAgent navMeshAgent;
 
     Vector3 shotPath;
-    private GameObject playerGO;
-    private Transform playerTransform;
+    private GameObject[] playerGOs;
+    private Player[] players;
+    private Transform[] playerTransforms;
 
     
 
@@ -40,24 +42,52 @@ public class EnemyRangedAttack : MonoBehaviour
     private void Start()
     {
         enemy = gameObject.GetComponent<Enemy>();
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-        playerTransform = playerGO.GetComponent<Transform>();
+        playerGOs = GameObject.FindGameObjectsWithTag("Player");
+        playerTransforms = new Transform[playerGOs.Length];
+        for(int i = 0; i < playerGOs.Length; i++)
+        {
+            playerTransforms[i] = playerGOs[i].GetComponent<Transform>();
 
-        enemyController = gameObject.GetComponent<EnemyController>();
-        flockAgent = gameObject.GetComponent<FlockAgent>();
+        }
+        players = new Player[playerGOs.Length];
+        for (int i = 0; i < playerGOs.Length; i++)
+        {
+            players[i] = playerGOs[i].GetComponent<Player>();
+        }
 
-        //skull.gameObject.GetComponent<ParticleSystem>().Play();
+        //enemyController = gameObject.GetComponent<EnemyController>();
+        //flockAgent = gameObject.GetComponent<FlockAgent>();
+    }
+
+    private Tuple<float, Transform> GetClosestPlayer()
+    {
+        float shortestDistance = float.MaxValue;
+        Transform closestPlayerTransform = null;
+        for (int i = 1; i < playerTransforms.Length; i++)
+        {
+            if (players[i].IsAlive()) // If the player is dead stop targeting.
+            {
+                float newDistance = Vector3.Distance(transform.position, playerTransforms[i].position);
+                if (newDistance < shortestDistance)
+                {
+                    closestPlayerTransform = playerTransforms[i];
+                    shortestDistance = newDistance;
+                }
+            }
+        }
+        return Tuple.Create(shortestDistance, closestPlayerTransform);
     }
 
     void Update()
     {
-        Vector3 shotVector = new Vector3(playerTransform.position.x, 1, playerTransform.position.z);
+        Vector3 closestPlayerPosition = GetClosestPlayer().Item2.position;
+        Vector3 shotVector = new Vector3(closestPlayerPosition.x, 1, closestPlayerPosition.z);
         shotPath = shotVector - projectileSpawnPoint.position;
         currentTime = Time.time;
         
         if (currentTime - lastAbilityTime > abilityCD)   
         {
-            if (Vector3.Distance(playerTransform.position, projectileSpawnPoint.position) < abilityRange)
+            if (Vector3.Distance(closestPlayerPosition, projectileSpawnPoint.position) < abilityRange)
             {
                 
                 animator.SetTrigger("ability");
@@ -68,7 +98,7 @@ public class EnemyRangedAttack : MonoBehaviour
 
         }
 
-        else if (Vector3.Distance(playerTransform.position, projectileSpawnPoint.position) <= range)
+        else if (Vector3.Distance(closestPlayerPosition, projectileSpawnPoint.position) <= range)
         {
             if (currentTime - lastShotTime > shotDelay)
             {

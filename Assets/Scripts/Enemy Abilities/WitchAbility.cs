@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -9,16 +10,19 @@ public class WitchAbility : MonoBehaviour
     private Enemy witch;
     public GameObject projectile;
 
-    private GameObject playerGO;
-    private Player player;
+    private GameObject[] playerGOs;
+    private Player[] players;
+    private Transform[] playerTransforms;
+    private Vector3 closestPlayerPosition;
+
+
     public NavMeshAgent navMeshAgent;
 
     public Animator animator;
-    private EnemyController witchController;
-    private FlockAgent flockAgent;
+    //private EnemyController witchController;
+    //private FlockAgent flockAgent;
 
-    private Transform witchTransform;
-    private Transform playerTransform;
+    //private Transform witchTransform;
 
     private Vector3 shotPath1;
     private Vector3 shotPath2;
@@ -41,14 +45,22 @@ public class WitchAbility : MonoBehaviour
         
         witchGO = gameObject;
         witch = gameObject.GetComponent<Enemy>();
-        witchTransform = witch.GetComponent<Transform>();
+        //witchTransform = witch.GetComponent<Transform>();
 
-        witchController = witchGO.GetComponent<EnemyController>();
-        flockAgent = witchGO.GetComponent<FlockAgent>();
+        //witchController = witchGO.GetComponent<EnemyController>();
+        //flockAgent = witchGO.GetComponent<FlockAgent>();
 
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-        player = playerGO.GetComponent<Player>();
-        playerTransform = player.GetComponent<Transform>();
+        playerGOs = GameObject.FindGameObjectsWithTag("Player");
+        playerTransforms = new Transform[playerGOs.Length];
+        for (int i = 0; i < playerGOs.Length; i++)
+        {
+            playerTransforms[i] = playerGOs[i].GetComponent<Transform>();
+        }
+        players = new Player[playerGOs.Length];
+        for (int i = 0; i < playerGOs.Length; i++)
+        {
+            players[i] = playerGOs[i].GetComponent<Player>();
+        }
     }
 
 
@@ -69,9 +81,30 @@ public class WitchAbility : MonoBehaviour
     }
 
 
+    private Tuple<float, Transform> GetClosestPlayer()
+    {
+        float shortestDistance = float.MaxValue;
+        Transform closestPlayerTransform = null;
+        for (int i = 0; i < playerTransforms.Length; i++)
+        {
+            if (players[i].IsAlive()) // If the player is dead stop targeting.
+            {
+                float newDistance = Vector3.Distance(transform.position, playerTransforms[i].position);
+                if (newDistance < shortestDistance)
+                {
+                    closestPlayerTransform = playerTransforms[i];
+                    shortestDistance = newDistance;
+                }
+            }
+        }
+        return Tuple.Create(shortestDistance, closestPlayerTransform);
+    }
+
     void ability2()
     {
-        Vector3 shotVector = new Vector3(playerTransform.position.x, 1, playerTransform.position.z);
+        closestPlayerPosition = GetClosestPlayer().Item2.position;
+
+        Vector3 shotVector = new Vector3(closestPlayerPosition.x, 1, closestPlayerPosition.z);
 
         shotPath1 = shotVector - spawnPoints[0].position;
         shotPath2 = shotVector - spawnPoints[1].position;

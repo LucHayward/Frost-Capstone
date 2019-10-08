@@ -176,6 +176,8 @@ public class Player : MonoBehaviour
         gameObject.GetComponent<CharacterController>().enabled = false;
         gameObject.transform.position = Vector3.zero;
         gameObject.GetComponent<CharacterController>().enabled = true;
+
+        playerMovement.animator.SetTrigger("respawn");
     }
 
     public void OnDisable()

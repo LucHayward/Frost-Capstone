@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,11 +9,11 @@ public class EnemyAttack : MonoBehaviour
     public Transform enemyWeaponTransform;
     private Transform enemyTransform;
 
-    private Transform playerTransform;
     public Animator animator;
-	private GameObject playerGO;
     private Enemy enemy;
-    private Player player;
+    private GameObject[] playerGOs;
+    private Player[] players;
+    private Transform[] playerTransforms;
 
     private EnemyController enemyController;
     private FlockAgent flockAgent;
@@ -37,6 +38,9 @@ public class EnemyAttack : MonoBehaviour
     
     // used for boss combo
     private int attackCounter = 0;
+
+    private Vector3 closestPlayerPosition;
+    private int closestPlayerIndex;
     
 
     // Start is called before the first frame update
@@ -48,19 +52,49 @@ public class EnemyAttack : MonoBehaviour
         enemyController = gameObject.GetComponent<EnemyController>();
         flockAgent = gameObject.GetComponent<FlockAgent>();
 
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-        playerTransform = playerGO.GetComponent<Transform>();
-        player = playerGO.GetComponent<Player>();
+        playerGOs = GameObject.FindGameObjectsWithTag("Player");
+        playerTransforms = new Transform[playerGOs.Length];
+        for (int i = 0; i < playerGOs.Length; i++)
+        {
+            playerTransforms[i] = playerGOs[i].GetComponent<Transform>();
+        }
+        players = new Player[playerGOs.Length];
+        for (int i = 0; i < playerGOs.Length; i++)
+        {
+            players[i] = playerGOs[i].GetComponent<Player>();
+        }
+        
+    }
+
+    private Tuple<float, Transform> GetClosestPlayer()
+    {
+        float shortestDistance = float.MaxValue;
+        Transform closestPlayerTransform = null;
+        for (int i = 0; i < playerTransforms.Length; i++)
+        {
+            if (players[i].IsAlive()) // If the player is dead stop targeting.
+            {
+                float newDistance = Vector3.Distance(transform.position, playerTransforms[i].position);
+                if (newDistance < shortestDistance)
+                {
+                    closestPlayerIndex = i;
+                    closestPlayerTransform = playerTransforms[i];
+                    shortestDistance = newDistance;
+                }
+            }
+        }
+        return Tuple.Create(shortestDistance, closestPlayerTransform);
     }
 
     // Update is called once per frame
     void Update()
     {
+        closestPlayerPosition = GetClosestPlayer().Item2.position;
         currentTime = Time.time;
 
-        
 
-        if (Vector3.Distance(playerTransform.position, enemyTransform.position) < range)
+
+        if (Vector3.Distance(closestPlayerPosition, enemyTransform.position) < range)
         {
             //Debug.Log("Close enough");
             if (currentTime - lastAttackTime > shotDelay)
@@ -85,7 +119,7 @@ public class EnemyAttack : MonoBehaviour
             }
 
         }
-        else if (Vector3.Distance(playerTransform.position, enemyTransform.position) < abilityRange)
+        else if (Vector3.Distance(closestPlayerPosition, enemyTransform.position) < abilityRange)
         {
           
 
@@ -124,13 +158,14 @@ public class EnemyAttack : MonoBehaviour
     }
 
 	void attackDamage()
-    {  
+    {
+
         // Calculate the distance between the player and the enemy
-        float dist = Vector3.Distance(playerTransform.position, enemyWeaponTransform.position);
+        float dist = Vector3.Distance(closestPlayerPosition, enemyWeaponTransform.position);
 
         if (dist <= 3.0f && enemy.type != "Ranged")
         {
-            player.TakeDamage(enemy.damage);
+            players[closestPlayerIndex].TakeDamage(enemy.damage);
         }
         // If close enough, attack player
 		//Debug.Log("Attack");

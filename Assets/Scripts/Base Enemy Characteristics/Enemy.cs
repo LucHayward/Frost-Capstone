@@ -34,9 +34,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private EnemyController enemyController = null; //Assigned in inspector
 	[SerializeField] private FlockAgent flockAgent = null; //Assigned in inspector
-	private GameObject playerGO;
-	private Player player;
-	private Transform playerPos;
+	//private GameObject playerGO;
+	//private Player player;
+	//private Transform playerPos;
 
     private Vector3 prevTransform;
     private int numberOfStacks;
@@ -48,9 +48,9 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         prevTransform = transform.position;
-		playerGO = GameObject.FindGameObjectWithTag("Player");
-        player = playerGO.GetComponent<Player>();
-        playerPos = playerGO.transform;
+		//playerGO = GameObject.FindGameObjectWithTag("Player");
+        //player = playerGO.GetComponent<Player>();
+        //playerPos = playerGO.transform;
 
         //animator.SetBool("isDead", false);
         isDead = false;
@@ -63,13 +63,13 @@ public class Enemy : MonoBehaviour
         velocity = ((transform.position - prevTransform) / Time.deltaTime);
         velocityMagnitude = velocity.magnitude;
 
-        if(velocityMagnitude == 0.1f)
+        if(Mathf.Approximately(velocityMagnitude,0.1f))
         {
             animator.SetBool("Idle", false);
             animator.SetBool("Run", false);
             animator.SetBool("Walk", false);
         }
-        else if (velocityMagnitude == 0)
+        else if (Mathf.Approximately(velocityMagnitude, 0))
         {
             animator.SetBool("Idle", true);
             animator.SetBool("Run", false);

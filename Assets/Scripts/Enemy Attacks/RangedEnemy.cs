@@ -9,9 +9,9 @@ public class RangedEnemy : MonoBehaviour
     [SerializeField] private EnemyController enemyController = null; //Assigned in inspector
 	[SerializeField] private FlockAgent flockAgent = null; //Assigned in inspector
 
-	private GameObject playerGO;
-    private Player player;
-    private Transform playerPos;
+	//  private GameObject playerGO;
+    //  private Player player;
+    //  private Transform playerPos;
     public Animator animator;
     private Vector3 velocity;
 
@@ -23,9 +23,9 @@ public class RangedEnemy : MonoBehaviour
     void Start()
     {
         prevTransform = transform.position;
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-        player = playerGO.GetComponent<Player>();
-        playerPos = playerGO.transform;
+        // playerGO = GameObject.FindGameObjectWithTag("Player");
+        // player = playerGO.GetComponent<Player>();
+        // playerPos = playerGO.transform;
 
         animator.SetBool("isDead", false);
     }

@@ -5,22 +5,22 @@ using UnityEngine;
 public class MutantTaunt : MonoBehaviour
 {
 
-    private GameObject mutantGO;
+    //private GameObject mutantGO;
     private Enemy mutant;
 
 
     public Animator animator;
 
 
-    private Transform mutantTransform;
+    //private Transform mutantTransform;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        mutantGO = gameObject;
+        //mutantGO = gameObject;
         mutant = gameObject.GetComponent<Enemy>();
-        mutantTransform = mutant.GetComponent<Transform>();
+        //mutantTransform = mutant.GetComponent<Transform>();
 
     }
 
