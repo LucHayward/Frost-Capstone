@@ -144,6 +144,7 @@ GameObject:
   - component: {fileID: 5377971879787249144}
   - component: {fileID: 5377971879788379960}
   - component: {fileID: 3121308470864960006}
+  - component: {fileID: 3430988913373422118}
   m_Layer: 9
   m_Name: 'Metal_Jailer_Fence '
   m_TagString: Obstacle
@@ -226,3 +227,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.213759, y: 1.4548044, z: 0.1390104}
   m_Center: {x: 0.00071799755, y: 0.02921334, z: 0.0013402998}
+--- !u!114 &3430988913373422118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5377971879790371320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3e0ad55ed188c4f804c48e8cdab2ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gate: {fileID: 0}
+  isUnlockable: 0
+  scoreNeeded: 0
