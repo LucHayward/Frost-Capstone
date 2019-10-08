@@ -162,8 +162,11 @@ public class GameManager : MonoBehaviour
             dirt1.anchoredPosition = new Vector2(0, 0);
             dirt1.anchoredPosition3D = new Vector2(0, 0);
 
-            //TODO: Remove the second player's health
+            
             GameObject.Find("P2_HealthUI").SetActive(false);
+            GameObject.Find("P2_BlueFeUI").SetActive(false);
+            GameObject.Find("P2_GreenFeUI").SetActive(false);
+            GameObject.Find("P2_RedFeUI").SetActive(false);
             GameObject.Find("P2_ScoreUI").SetActive(false);
         }
     }

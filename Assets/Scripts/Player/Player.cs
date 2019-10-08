@@ -45,11 +45,23 @@ public class Player : MonoBehaviour
     public void SetPlayerNum(int i)
     {
         isPlayer1 = i == 0;
-        GameObject damageItem = GameObject.Find("Damage");
-        damageImage = damageItem.GetComponentsInChildren<Image>()[i];
+
+        damageImage = GameObject.Find("P" + (i + 1) + "_"+"DamageImage").GetComponent<Image>();
 
         GameObject healthUI = GameObject.Find("P"+(i+1)+"_"+"HealthUI");
         healthSlider = healthUI.GetComponentInChildren<Slider>();
+
+        GameObject blueUI = GameObject.Find("P" + (i + 1) + "_" + "BlueFeUI");
+        blueSlider = blueUI.GetComponentInChildren<Slider>();
+        blueSlider.value = 0;
+
+        GameObject greenUI = GameObject.Find("P"+(i+1)+"_"+"GreenFeUI");
+        greenSlider = greenUI.GetComponentInChildren<Slider>();
+        greenSlider.value = 0;
+
+        GameObject redUI = GameObject.Find("P"+(i+1)+"_"+"RedFeUI");
+        redSlider = redUI.GetComponentInChildren<Slider>();
+        redSlider.value = 0;
 
         MeleeAttack meleeAttack = GetComponentInChildren<MeleeAttack>();
         meleeAttack.setPlayerNum(i);
@@ -62,20 +74,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        GameObject healthUI = GameObject.Find("HealthUI");
-        healthSlider = healthUI.GetComponentInChildren<Slider>();
 
-        GameObject blueUI = GameObject.Find("BlueFeUI");
-        blueSlider = blueUI.GetComponentInChildren<Slider>();
-        blueSlider.value = 0;
-
-        GameObject greenUI = GameObject.Find("GreenFeUI");
-        greenSlider = greenUI.GetComponentInChildren<Slider>();
-        greenSlider.value = 0;
-
-        GameObject redUI = GameObject.Find("RedFeUI");
-        redSlider = redUI.GetComponentInChildren<Slider>();
-        redSlider.value = 0;
+        
 
         GameObject damageItem = GameObject.Find("Damage");
         damageImage = damageItem.GetComponentInChildren<Image>();
