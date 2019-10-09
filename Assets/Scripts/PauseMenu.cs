@@ -42,6 +42,7 @@ public class PauseMenu : MonoBehaviour
 		Cursor.visible = false;
 		pausePanel.SetActive(false);
 		isPaused = false;
+        Time.timeScale = 1;
 	}
 
 	/// <summary>

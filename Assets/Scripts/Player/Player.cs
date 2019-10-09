@@ -55,10 +55,19 @@ public class Player : MonoBehaviour
 	private bool alive = true;
 
 	[SerializeField] private PlayerMovement playerMovement = null; //Assigned in inspector
+    private float healTime = 0.0f;
+    private bool healUsed = false;
 	[SerializeField] private PlayerAttack playerAttack = null; //Assigned in inspector
 
 	private bool isPlayer1;
 
+
+    private GameObject speed1GO;
+    private GameObject speed2GO;
+    private GameObject damageGO;
+    private GameObject healGO;
+    private GameObject staffGO;
+    
 	/// <summary>
 	/// Sets up the references to different scene elements based on the player number passed by the GameManager
 	/// </summary>
@@ -96,13 +105,26 @@ public class Player : MonoBehaviour
 	private void Start()
 	{
 		doors = FindObjectsOfType<Unlockable>();
+        speed1GO = GameObject.Find("SpeedEffect");
+        speed2GO = GameObject.Find("SpeedEffect2");
+        damageGO = GameObject.Find("DamageEffect");
+        healGO = GameObject.Find("HealEffect");
+        staffGO = GameObject.Find("StaffEffect");
+        
+        speed1GO.SetActive(false);
+        speed2GO.SetActive(false);
+        damageGO.SetActive(false);
+        healGO.SetActive(false);
+        staffGO.SetActive(false);
 
 		GameObject damageItem = GameObject.Find("Damage");
 		damageImage = damageItem.GetComponentInChildren<Image>();
 	}
+       
 
 	private void Update()
 	{
+        float currentTime = Time.time;
 		if (currrentHealth <= 20)
 		{
 			LowHealth();
@@ -123,67 +145,97 @@ public class Player : MonoBehaviour
 		}
 		isDamaged = false;
 
-		if (isBlue)
-		{
-			if (blueFE > 0)
-			{
-				if (!faster)
-				{
-					speedAudio.Play();
-					faster = true;
-				}
+		
+        if (isBlue)
+        {
+            if (blueFE > 0)
+            {
+                if (!faster)
+                {
+                    speed1GO.SetActive(true);
+                    speed2GO.SetActive(true);
 
-				playerMovement.SetSpeed(10.0f);
-				blueFE -= 0.3f;
-				blueSlider.value = blueFE;
-			}
-			else
-			{
-				playerMovement.SetSpeed(6.0f);
-				isBlue = false;
-				speedAudio.Pause();
-				faster = false;
-			}
+                    speedAudio.Play();
+                    faster = true;
+                }
 
-		}
-		if (isRed)
-		{
-			if (!isFire)
-			{
-				fireAudio.Play();
-				isFire = true;
-			}
-			if (redFE > 0)
-			{
-				redFE -= 0.3f;
-				redSlider.value = redFE;
+                playerMovement.SetSpeed(10.0f);
+                blueFE -=0.3f;
+                blueSlider.value = blueFE;
+            }
+            else
+            {
+                speed1GO.SetActive(false);
+                speed2GO.SetActive(false);
+                playerMovement.SetSpeed(6.0f);
+                isBlue = false;
+                speedAudio.Pause();
+                faster = false;
+            }
+            
+        }
+        if (isRed)
+        {
+            if (!isFire)
+            {
+                staffGO.SetActive(true);
+                damageGO.SetActive(true);
+                fireAudio.Play();
+                isFire = true;
+            }
+            if (redFE > 0)
+            {
+                redFE -= 0.3f;
+                redSlider.value = redFE;
+                
+            }
+            else
+            {
+                staffGO.SetActive(false);
+                damageGO.SetActive(false);
+                fireAudio.Pause();
+                isFire = false;
+                isRed = false;
+            }
 
-			}
-			else
-			{
-				fireAudio.Pause();
-				isFire = false;
-				isRed = false;
-			}
+        }
 
-		}
+        if (isGreen)
+        {
+            if (healUsed == false)
+            {
+                healGO.SetActive(true);
+                healTime = currentTime + 1.0f;
+                healUsed = true;
+            }
+            else
+            {
+                if(currentTime-healTime >= 1.0f)
+                {
+                    healGO.SetActive(false);
+                    healUsed = false;
+                    isGreen = false;
+                }
+            }
+            
+        }
 
-		if (Input.GetButtonDown(isPlayer1 ? "P1_Interact" : "P2_Interact"))
-		{
-			foreach (Unlockable door in doors)
-			{
-				if (door.isUnlockable)
-				{
-					float dist = Vector3.Distance(door.gameObject.transform.position, transform.position);
+        if (Input.GetButtonDown(isPlayer1 ? "P1_Interact" : "P2_Interact"))
+        {
+            foreach(Unlockable door in doors)
+            {
+                if (door.isUnlockable)
+                {
+                    float dist = Vector3.Distance(door.gameObject.transform.position, transform.position);
 
-					if (dist <= 10.0f)
-					{
-						door.UnlockDoor();
-					}
-				}
-
-			}
-		}
+                    if (dist <= 10.0f)
+                    {
+                        door.UnlockDoor();
+                    }
+                }
+                
+            }
+        }
 
 
 
@@ -394,17 +446,21 @@ public class Player : MonoBehaviour
 	/// </summary>
 	/// <param name="amount"> by which to increment</param>
 	public void GainHealth(int amount)
-	{
-		healAudio.Play();
-		currrentHealth += amount;
-		if (currrentHealth > maxHealth)
-		{
-			currrentHealth = maxHealth;
-		}
-		healthSlider.value = currrentHealth;
-	}
-	public bool IsAlive()
-	{
-		return alive;
-	}
+    {
+        healAudio.Play();
+        currrentHealth += amount;
+        if(currrentHealth > maxHealth)
+        {
+            currrentHealth = maxHealth;
+        }
+        healthSlider.value = currrentHealth;
+        isGreen = true;
+    }
+    public bool IsAlive()
+    {
+        return alive;
+    }
+
+
+    
 }

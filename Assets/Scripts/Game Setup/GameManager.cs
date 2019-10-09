@@ -27,41 +27,51 @@ public class GameManager : MonoBehaviour
 	public PlayerManager[] players;
 	public EnemyManager[] enemyTypes;
 	public GameObject meleeEnemyPrefab;
-	[HideInInspector] public List<EnemyManager> meleeEnemies;
-	public GameObject rangedEnemyPrefab;
-	[HideInInspector] public List<EnemyManager> rangedEnemies;
-	public GameObject bossEnemyPrefab;
-	[HideInInspector] public List<EnemyManager> bossEnemies;
-	public bool gameOver = false;
+    [HideInInspector] public List<EnemyManager> meleeEnemies;
+    public GameObject rangedEnemyPrefab;
+    [HideInInspector] public List<EnemyManager> rangedEnemies;
+    public GameObject bossEnemyPrefab;
+    [HideInInspector] public List<EnemyManager> bossEnemies;
+    private WaitForSeconds startWait;
+    private WaitForSeconds endWait;
+    private int roundNumber = 0;
+    private bool spawnedEnemy = false;
+    private Text levelText;
+    private Text P1scoreText;
+    private Text P2scoreText;
+    private Text newAreaText;
+    private int P1score = 0;
+    private int P2score = 0;
+    public bool gameOver = false;
+    Vector2 score;
+    private float naTextTime = 0.0f;
+    private bool graveTextVisible = false;
+    private bool castleTextVisible = false;
+    private bool covernTextVisible = false;
 
-	private WaitForSeconds startWait;
-	private WaitForSeconds endWait;
-	private int roundNumber = 0;
-	private bool spawnedEnemy = false;
-	private Text levelText;
-	private Text P1scoreText;
-	private Text P2scoreText;
-	private int P1score = 0;
-	private int P2score = 0;
+    private void Start()
+    {
+        gameOver = false;
+        PlayerPrefs.SetInt("score", 0);
+        startWait = new WaitForSeconds(startDelay);
+        endWait = new WaitForSeconds(endDelay);
+        GameObject levelUI = GameObject.Find("LevelUI");
+        levelText = levelUI.GetComponentInChildren<Text>();
+
+        GameObject P1scoreUI = GameObject.Find("P1_ScoreUI");
+        P1scoreText = P1scoreUI.GetComponentInChildren<Text>();
+        GameObject P2scoreUI = GameObject.Find("P2_ScoreUI");
+        P2scoreText = P2scoreUI.GetComponentInChildren<Text>();
+
+        GameObject NewAreaUI = GameObject.Find("NewAreaUI");
+        newAreaText = NewAreaUI.GetComponentInChildren<Text>();
 
 
-	private void Start()
-	{
-		gameOver = false;
-		PlayerPrefs.SetInt("score", 0);
-		startWait = new WaitForSeconds(startDelay);
-		endWait = new WaitForSeconds(endDelay);
-		GameObject levelUI = GameObject.Find("LevelUI");
-		levelText = levelUI.GetComponentInChildren<Text>();
+        SpawnPlayer();
+        StartCoroutine(GameLoop());    
+    }
 
-		GameObject P1scoreUI = GameObject.Find("P1_ScoreUI");
-		P1scoreText = P1scoreUI.GetComponentInChildren<Text>();
-		GameObject P2scoreUI = GameObject.Find("P2_ScoreUI");
-		P2scoreText = P2scoreUI.GetComponentInChildren<Text>();
-
-		SpawnPlayer();
-		StartCoroutine(GameLoop());
-	}
+	
 
 	private void SpawnMeleeEnemies(int numberOfEnemies)
 	{
@@ -279,6 +289,7 @@ public class GameManager : MonoBehaviour
 	/// </summary>
 	private void Update()
 	{
+        float currentTime = Time.time;
 		float x = Time.timeScale;
 		if (Input.GetKeyDown(KeyCode.Escape))
 		{
@@ -294,8 +305,66 @@ public class GameManager : MonoBehaviour
 			}
 		}
 
+        score = GetScore();
 
-	}
+        if(score[0]+score[1] >= 80)
+        {
+            if(graveTextVisible == false)
+            {
+                
+                newAreaText.text = "The Graveyard is now unlockable";
+                naTextTime = currentTime + 6.0f;
+                graveTextVisible = true;
+            }
+            else
+            {
+                if (currentTime - naTextTime >= 6.0f)
+                {
+                    newAreaText.text = "";
+                }
+            }
+            
+        }
+
+        if (score[0] + score[1] >= 150)
+        {
+            if (castleTextVisible == false)
+            {
+                newAreaText.text = "The Castle is now unlockable";
+                naTextTime = currentTime + 6.0f;
+                castleTextVisible = true;
+            }
+            else
+            {
+                if (currentTime - naTextTime >= 6.0f)
+                {
+                    newAreaText.text = "";
+                }
+            }
+
+        }
+
+        if (score[0] + score[1] >= 250)
+        {
+            if (covernTextVisible == false)
+            {
+                newAreaText.text = "The Enchanted Covern is now unlockable";
+                naTextTime = currentTime + 6.0f;
+                covernTextVisible = true;
+            }
+            else
+            {
+                if (currentTime - naTextTime >= 6.0f)
+                {
+                    newAreaText.text = "";
+                }
+            }
+
+        }
+
+
+    }
+
 
 	public void UpdateScore(int points, int playerNum)
 	{
