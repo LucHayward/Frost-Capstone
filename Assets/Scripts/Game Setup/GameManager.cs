@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     private int P2score = 0;
     public bool gameOver = false;
 
+    
     private void Start()
     {
         gameOver = false;

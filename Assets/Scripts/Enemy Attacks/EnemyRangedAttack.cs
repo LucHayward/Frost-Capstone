@@ -63,7 +63,7 @@ public class EnemyRangedAttack : MonoBehaviour
     {
         float shortestDistance = float.MaxValue;
         Transform closestPlayerTransform = null;
-        for (int i = 1; i < playerTransforms.Length; i++)
+        for (int i = 0; i < playerTransforms.Length; i++)
         {
             if (players[i].IsAlive()) // If the player is dead stop targeting.
             {
