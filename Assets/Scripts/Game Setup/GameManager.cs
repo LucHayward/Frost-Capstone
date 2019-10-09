@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
         GameObject NewAreaUI = GameObject.Find("NewAreaUI");
         newAreaText = NewAreaUI.GetComponentInChildren<Text>();
 
-
         SpawnPlayer();
         StartCoroutine(GameLoop());    
     }
@@ -103,9 +102,9 @@ public class GameManager : MonoBehaviour
 	private int CalculateBossEnemies()
 	{
 		if (roundNumber % 5 != 0)
-			return 1;
-		else
 			return 0;
+		else
+			return 1;
 
 	}
 
@@ -126,17 +125,20 @@ public class GameManager : MonoBehaviour
 
 	private void SpawnBossEnemy(int numberOfEnemies)
 	{
-		for (int i = 0; i < numberOfEnemies; i++)
-		{
-			Transform spawnPoint = enemyTypes[2].CalculateSpawnPoint();
-			bossEnemies.Add(new EnemyManager());
-			bossEnemies[i].instanceOfEnemy = Instantiate(bossEnemyPrefab,
-				spawnPoint.position,
-				spawnPoint.rotation) as GameObject;
+        
+        for (int i = 0; i < numberOfEnemies; i++)
+        {
+            Transform spawnPoint = enemyTypes[2].CalculateSpawnPoint();
+            bossEnemies.Add(new EnemyManager());
+            bossEnemies[i].instanceOfEnemy = Instantiate(bossEnemyPrefab,
+                spawnPoint.position,
+                spawnPoint.rotation) as GameObject;
 
-			bossEnemies[i].Setup(i);
-			agents.Add(bossEnemies[i].GetFlockAgent());
-		}
+            bossEnemies[i].Setup(i);
+            agents.Add(bossEnemies[i].GetFlockAgent());
+        }
+        
+		
 	}
 
 	/// <summary>
@@ -309,9 +311,13 @@ public class GameManager : MonoBehaviour
 
         if(score[0]+score[1] >= 80)
         {
+            
             if(graveTextVisible == false)
             {
-                
+                foreach(EnemyManager em in enemyTypes)
+                {
+                    em.SetUnlocked(1);
+                }
                 newAreaText.text = "The Graveyard is now unlockable";
                 naTextTime = currentTime + 6.0f;
                 graveTextVisible = true;
@@ -330,6 +336,10 @@ public class GameManager : MonoBehaviour
         {
             if (castleTextVisible == false)
             {
+                foreach (EnemyManager em in enemyTypes)
+                {
+                    em.SetUnlocked(2);
+                }
                 newAreaText.text = "The Castle is now unlockable";
                 naTextTime = currentTime + 6.0f;
                 castleTextVisible = true;
@@ -348,6 +358,10 @@ public class GameManager : MonoBehaviour
         {
             if (covernTextVisible == false)
             {
+                foreach (EnemyManager em in enemyTypes)
+                {
+                    em.SetUnlocked(3);
+                }
                 newAreaText.text = "The Enchanted Covern is now unlockable";
                 naTextTime = currentTime + 6.0f;
                 covernTextVisible = true;

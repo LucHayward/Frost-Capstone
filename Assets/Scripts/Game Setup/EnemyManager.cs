@@ -14,6 +14,9 @@ public class EnemyManager
 	private Enemy enemyScript;
 	private EnemyController enemyController;
 	private FlockAgent flockAgent;
+    
+    private int unlockedAreas = 0;
+    private GameManager gameManager;
 
 	/// <summary>
 	/// Sets up the enemy components after the Game manager is ready to load them into the scene.
@@ -21,11 +24,15 @@ public class EnemyManager
 	/// <param name="ID">Random identifier</param>
 	public void Setup(int ID)
 	{
+        gameManager = GameManager.Get();
 		enemyController = instanceOfEnemy.GetComponent<EnemyController>();
 		enemyScript = instanceOfEnemy.GetComponent<Enemy>();
 		flockAgent = instanceOfEnemy.GetComponent<FlockAgent>();
 		enemyScript.SetIdentifier(ID);
 	}
+    
+
+ 
 
 	/// <summary>
 	/// Returns the random id of this enemy
@@ -44,28 +51,48 @@ public class EnemyManager
 	public Transform CalculateSpawnPoint()
 	{
 		const int Radius = 2;
-		bool foundSpawnPoint;
-		foundSpawnPoint = false;
-		int spawnPointRef = Random.Range(0, spawnPoints.Length - 1);
-		Vector3 originalSpawnPoint = spawnPoints[spawnPointRef].position;
-		nearbyColliders = Physics.OverlapSphere(spawnPoints[spawnPointRef].position, Radius);
-		if (!Physics.CheckSphere(spawnPoints[spawnPointRef].position, Radius))
-		{
-			foundSpawnPoint = true;
-			Vector2 spawnOffset = Random.insideUnitCircle * Radius;
-			Vector3 newSpawnpoint = new Vector3(originalSpawnPoint.x + spawnOffset.x, 0, originalSpawnPoint.z + spawnOffset.y);
-			spawnPoints[spawnPointRef].position = newSpawnpoint;
-		}
+        bool foundSpawnPoint;
+        foundSpawnPoint = false;
+        int spawnPointRef;
+        
 
-		while (!foundSpawnPoint)
-		{
-			Vector2 spawnOffset = Random.insideUnitCircle * Radius;
-			Vector3 newSpawnpoint = new Vector3(originalSpawnPoint.x + spawnOffset.x, 0, originalSpawnPoint.z + spawnOffset.y);
-			spawnPoints[spawnPointRef].position = newSpawnpoint;
-			if (nearbyColliders[0] == null)
-			{
-				foundSpawnPoint = true;
-			}
+        //Single original spawn point
+        spawnPointRef = 0;
+        //All areas unlocked
+        if (unlockedAreas == 3)
+        {
+            spawnPointRef = Random.Range(0, spawnPoints.Length - 1);
+        }
+        //Castle unlocked
+        else if (unlockedAreas == 2)
+        {
+            spawnPointRef = Random.Range(0, 3);
+        }
+        //Graveyard unlocked
+        else if (unlockedAreas == 1) {
+            spawnPointRef = Random.Range(0, 2);          
+        }
+
+        Vector3 originalSpawnPoint = spawnPoints[spawnPointRef].position;
+        nearbyColliders = Physics.OverlapSphere(spawnPoints[spawnPointRef].position, Radius);
+        if(!Physics.CheckSphere(spawnPoints[spawnPointRef].position, Radius))
+        {
+            foundSpawnPoint = true;
+            Vector2 spawnOffset = Random.insideUnitCircle * Radius;
+            Vector3 newSpawnpoint = new Vector3(originalSpawnPoint.x + spawnOffset.x, 0, originalSpawnPoint.z + spawnOffset.y);
+            spawnPoints[spawnPointRef].position = newSpawnpoint;
+        }
+      
+        while (!foundSpawnPoint)
+        {
+            Vector2 spawnOffset = Random.insideUnitCircle * Radius;
+            Vector3 newSpawnpoint = new Vector3(originalSpawnPoint.x + spawnOffset.x, 0, originalSpawnPoint.z + spawnOffset.y);
+            spawnPoints[spawnPointRef].position = newSpawnpoint;
+            if (nearbyColliders[0] == null)
+            {
+                foundSpawnPoint = true;
+            }
+           
 			foreach (Collider collider in nearbyColliders)
 			{
 				foundSpawnPoint = true;
@@ -91,5 +118,10 @@ public class EnemyManager
 	{
 		enemyScript.StunCoroutineWrapper();
 	}
+
+    public void SetUnlocked(int numberOfAreas)
+    {
+        unlockedAreas = numberOfAreas;
+    }
 
 }
