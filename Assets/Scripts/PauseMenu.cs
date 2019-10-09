@@ -25,7 +25,7 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumeGame()
     {
-        foreach(Player playerScript in playerScripts)
+        foreach (Player playerScript in playerScripts)
         {
             playerScript.enabled = true;
 
