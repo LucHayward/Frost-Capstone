@@ -22,11 +22,15 @@ public class Player : MonoBehaviour
 	public TextMeshProUGUI healthText;
     public bool hasShield;
     public bool isFast;
+    public bool lowHP = false;
 
     //types of frost essence
     public float blueFE = 0;
     public float greenFE = 0;
     public float redFE = 0;
+
+    //Audio
+    public AudioSource lowHealth;
 
     //used for frost essence abilities
     public bool isGreen = false;
@@ -84,6 +88,17 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (currrentHealth <= 20)
+        {
+            LowHealth();
+        }
+        else
+        {
+            lowHealth.Pause();
+            lowHP = false;
+            
+        }
+
         if (isDamaged)
         {
             damageImage.color = flashColor;
@@ -159,6 +174,16 @@ public class Player : MonoBehaviour
 			OnDeath();
 		}
 	}
+
+    //For low health Audio
+    public void LowHealth()
+    {
+        if (lowHP == false)
+        {
+            lowHealth.Play();
+            lowHP = true;
+        }
+    }
 
 	/// <summary>
 	/// Handle player death sequence

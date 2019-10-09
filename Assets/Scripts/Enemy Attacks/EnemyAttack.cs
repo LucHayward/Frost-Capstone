@@ -102,6 +102,7 @@ public class EnemyAttack : MonoBehaviour
                 if(attackCounter != 4)
                 {
                     animator.SetTrigger("atk");
+                    enemy.inVulnerable = false;
                     lastAttackTime = currentTime + shotDelay;
                     attackCounter ++;
                 }
@@ -110,6 +111,7 @@ public class EnemyAttack : MonoBehaviour
                 else
                 {
                     animator.SetTrigger("combo");
+                    enemy.inVulnerable = false;
                     lastAttackTime = currentTime + shotDelay;
 
                     attackCounter = 0;
@@ -128,6 +130,7 @@ public class EnemyAttack : MonoBehaviour
                 if(abilityCounter == 0)
                 {
                     animator.SetTrigger("ability");
+                    enemy.inVulnerable = false;
                     lastAbilityTime = currentTime + abilityCD;
                     abilityCounter++;
                 }
