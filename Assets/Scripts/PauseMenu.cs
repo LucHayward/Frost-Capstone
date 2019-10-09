@@ -1,15 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Handles the Pause menu interaction as well as pausing the necessary game elements
+/// </summary>
 public class PauseMenu : MonoBehaviour
 {
-    public bool isPaused = false;
+    public bool isPaused;
     public GameObject pausePanel;
     GameObject[] players;
     Player[] playerScripts;
-    // Update is called once per frame
+
+    /// <summary>
+    /// Setup knowledge of the players in order to pause them when needed.
+    /// </summary>
     private void Start()
     {
         players = GameObject.FindGameObjectsWithTag("Player");
@@ -20,12 +24,15 @@ public class PauseMenu : MonoBehaviour
             playerScripts[i] = go.GetComponent<Player>();
         }
         ResumeGame();
-        
+
     }
 
+    /// <summary>
+    /// Enables all players and resets the cursor to a locked state
+    /// </summary>
     public void ResumeGame()
     {
-        foreach(Player playerScript in playerScripts)
+        foreach (Player playerScript in playerScripts)
         {
             playerScript.enabled = true;
 
@@ -35,6 +42,10 @@ public class PauseMenu : MonoBehaviour
         pausePanel.SetActive(false);
         isPaused = false;
     }
+
+    /// <summary>
+    /// Disables all players and frees the cursor for use in the menu
+    /// </summary>
     public void PauseGame()
     {
         foreach (Player playerScript in playerScripts)
@@ -46,11 +57,6 @@ public class PauseMenu : MonoBehaviour
         isPaused = true;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
-    }
-
-    public void OpenSettings()
-    {
-
     }
 
     public void QuitGame()

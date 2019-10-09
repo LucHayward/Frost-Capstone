@@ -2,16 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Handles the Mask Trap objects scripting
+/// </summary>
 public class MaskTrap : MonoBehaviour
 {
     private float shotCD = 0.3f;
-    private float currentTime = 0.0f;
-    private float lastShotTime = 0.0f;
+    private float currentTime;
+    private float lastShotTime;
 
     public bool isTrap;
     public int type;
 
-    private int counter = 0;
+    private int counter;
     public Transform projectileSpawnPoint;
 
     public GameObject projectile;
@@ -21,12 +24,15 @@ public class MaskTrap : MonoBehaviour
     {
 
         shotPath = gameObject.transform.forward;
-        if(type == 3)
+        if (type == 3)
         {
             shotCD = 0.6f;
         }
     }
-    // Update is called once per frame
+
+    /// <summary>
+    /// Fires a shot on an interval
+    /// </summary>
     void Update()
     {
         currentTime = Time.time;
@@ -42,7 +48,7 @@ public class MaskTrap : MonoBehaviour
                 }
                 else
                 {
-                    if(type != 3)
+                    if (type != 3)
                     {
                         lastShotTime = currentTime + shotCD + 1.0f;
                     }
@@ -50,15 +56,18 @@ public class MaskTrap : MonoBehaviour
                     {
                         lastShotTime = currentTime + shotCD;
                     }
-                    
+
                     counter = 0;
                 }
-                
+
             }
         }
-        
+
     }
 
+    /// <summary>
+    /// Fires the projectile
+    /// </summary>
     private void Shoot()
     {
         GameObject firedGO = Instantiate(projectile, projectileSpawnPoint.position, Quaternion.identity) as GameObject;

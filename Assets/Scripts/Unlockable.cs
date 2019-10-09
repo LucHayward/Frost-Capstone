@@ -1,7 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Handles the unlocking of doors
+/// </summary>
 public class Unlockable : MonoBehaviour
 {
     public bool isUnlockable;
@@ -28,6 +29,6 @@ public class Unlockable : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        
+
     }
 }
