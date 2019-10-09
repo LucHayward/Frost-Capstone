@@ -1,49 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Controls the scripting of the health pickup respawns
+/// </summary>
 public class HealthSpawn : MonoBehaviour
 {
-    private float currentTime = 0.0f;
-    public float healthDropCD = 0.0f;
-    private float timeUsed = 0.0f;
-    private bool isHealth = false;
+	public float healthDropCD = 0.0f;
+	public Transform spawnPoint;
 
-    public Transform spawnPoint;
+	public GameObject healthDropGO;
 
-    public GameObject healthDropGO;
-    // Start is called before the first frame update
-    void Start()
-    {
-        SpawnHealth();
-    }
+	private float currentTime = 0.0f;
+	private float timeUsed = 0.0f;
+	private bool isHealth = false;
 
-    // Update is called once per frame
-    void Update()
-    {
-        currentTime = Time.time;
 
-        if(currentTime - timeUsed > healthDropCD)
-        {
-            if (!isHealth)
-            {
-                SpawnHealth();
-                isHealth = true;
-            }
-        }
+	void Start()
+	{
+		SpawnHealth();
+	}
 
-        
-    }
+	void Update()
+	{
+		currentTime = Time.time;
 
-    public void HealthUsed()
-    {
-        timeUsed = currentTime + healthDropCD;
-        isHealth = false;
-    }
+		if (currentTime - timeUsed > healthDropCD)
+		{
+			if (!isHealth)
+			{
+				SpawnHealth();
+				isHealth = true;
+			}
+		}
+	}
 
-    public void SpawnHealth()
-    {
-        GameObject healthDrop = Instantiate(healthDropGO, spawnPoint.position, Quaternion.identity) as GameObject;
-        isHealth = true;
-    }
+	public void HealthUsed()
+	{
+		timeUsed = currentTime + healthDropCD;
+		isHealth = false;
+	}
+
+	public void SpawnHealth()
+	{
+		GameObject healthDrop = Instantiate(healthDropGO, spawnPoint.position, Quaternion.identity) as GameObject;
+		isHealth = true;
+	}
 }
