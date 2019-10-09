@@ -5,30 +5,32 @@
 /// </summary>
 public class Unlockable : MonoBehaviour
 {
-    public bool isUnlockable;
-    public float scoreNeeded;
-    private float currentScore;
-    private GameManager gameManager;
-    private Vector2 scoreVector;
-    // Start is called before the first frame update
-    void Start()
-    {
-        gameManager = FindObjectOfType<GameManager>();
+	public bool isUnlockable;
+	public float scoreNeeded;
 
-    }
+	private Vector2 scoreVector;
+	private float currentScore;
+	private GameManager gameManager;
+	
 
-    public void UnlockDoor()
-    {
-        if (isUnlockable)
-        {
-            scoreVector = gameManager.GetScore();
-            currentScore = scoreVector[0] + scoreVector[1];
+	void Start()
+	{
+		gameManager = FindObjectOfType<GameManager>();
 
-            if (currentScore >= scoreNeeded)
-            {
-                Destroy(gameObject);
-            }
-        }
+	}
 
-    }
+	public void UnlockDoor()
+	{
+		if (isUnlockable)
+		{
+			scoreVector = gameManager.GetScore();
+			currentScore = scoreVector[0] + scoreVector[1];
+
+			if (currentScore >= scoreNeeded)
+			{
+				Destroy(gameObject);
+			}
+		}
+
+	}
 }

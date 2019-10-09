@@ -6,61 +6,62 @@ using UnityEngine.SceneManagement;
 /// </summary>
 public class PauseMenu : MonoBehaviour
 {
-    public bool isPaused;
-    public GameObject pausePanel;
-    GameObject[] players;
-    Player[] playerScripts;
+	public bool isPaused;
+	public GameObject pausePanel;
 
-    /// <summary>
-    /// Setup knowledge of the players in order to pause them when needed.
-    /// </summary>
-    private void Start()
-    {
-        players = GameObject.FindGameObjectsWithTag("Player");
-        playerScripts = new Player[players.Length];
-        for (int i = 0; i < players.Length; i++)
-        {
-            GameObject go = players[i];
-            playerScripts[i] = go.GetComponent<Player>();
-        }
-        ResumeGame();
+	GameObject[] players;
+	Player[] playerScripts;
 
-    }
+	/// <summary>
+	/// Setup knowledge of the players in order to pause them when needed.
+	/// </summary>
+	private void Start()
+	{
+		players = GameObject.FindGameObjectsWithTag("Player");
+		playerScripts = new Player[players.Length];
+		for (int i = 0; i < players.Length; i++)
+		{
+			GameObject go = players[i];
+			playerScripts[i] = go.GetComponent<Player>();
+		}
+		ResumeGame();
 
-    /// <summary>
-    /// Enables all players and resets the cursor to a locked state
-    /// </summary>
-    public void ResumeGame()
-    {
-        foreach (Player playerScript in playerScripts)
-        {
-            playerScript.enabled = true;
+	}
 
-        }
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        pausePanel.SetActive(false);
-        isPaused = false;
-    }
+	/// <summary>
+	/// Enables all players and resets the cursor to a locked state
+	/// </summary>
+	public void ResumeGame()
+	{
+		foreach (Player playerScript in playerScripts)
+		{
+			playerScript.enabled = true;
 
-    /// <summary>
-    /// Disables all players and frees the cursor for use in the menu
-    /// </summary>
-    public void PauseGame()
-    {
-        foreach (Player playerScript in playerScripts)
-        {
-            playerScript.enabled = false;
+		}
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
+		pausePanel.SetActive(false);
+		isPaused = false;
+	}
 
-        }
-        pausePanel.SetActive(true);
-        isPaused = true;
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
-    }
+	/// <summary>
+	/// Disables all players and frees the cursor for use in the menu
+	/// </summary>
+	public void PauseGame()
+	{
+		foreach (Player playerScript in playerScripts)
+		{
+			playerScript.enabled = false;
 
-    public void QuitGame()
-    {
-        SceneManager.LoadScene(0);
-    }
+		}
+		pausePanel.SetActive(true);
+		isPaused = true;
+		Cursor.lockState = CursorLockMode.Confined;
+		Cursor.visible = true;
+	}
+
+	public void QuitGame()
+	{
+		SceneManager.LoadScene(0);
+	}
 }
