@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
     public bool isFast;
     public bool lowHP = false;
 
+    public AudioSource playerTakeDamageAudio;
+    public AudioSource playerDeathAudio;
+
     //types of frost essence
     public float blueFE = 0;
     public float greenFE = 0;
@@ -156,7 +159,7 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damageAmount)
 	{
         isDamaged = true;
-
+        playerTakeDamageAudio.Play();
 		// If the player is currently in it's hit animation don't set trigger again.
 		if (playerMovement.animator.GetCurrentAnimatorStateInfo(0).IsName("Hit Reaction Blend Tree"))
 		{
@@ -205,6 +208,7 @@ public class Player : MonoBehaviour
 	/// </summary>
 	private void OnDeath()
 	{
+        playerDeathAudio.Play();
 		playerMovement.RandomizeDeathVariant();
 		playerMovement.animator.SetTrigger("die");
 
