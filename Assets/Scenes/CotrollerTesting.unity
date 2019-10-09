@@ -1741,6 +1741,8 @@ MonoBehaviour:
   - P2_DamageBoost
   - P2_MouseX
   - P2_MouseY
+  - P1_Interact
+  - P2_Interact
   axisLabels:
   - {fileID: 281182652}
   - {fileID: 403844145}
