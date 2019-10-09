@@ -58,6 +58,10 @@ public class GameManager : MonoBehaviour
         GameObject levelUI = GameObject.Find("LevelUI");
         levelText = levelUI.GetComponentInChildren<Text>();
 
+        GameObject P1scoreUI = GameObject.Find("P1_ScoreUI");
+        P1scoreText = P1scoreUI.GetComponentInChildren<Text>();
+        GameObject P2scoreUI = GameObject.Find("P2_ScoreUI");
+        P2scoreText = P2scoreUI.GetComponentInChildren<Text>();
 
         GameObject NewAreaUI = GameObject.Find("NewAreaUI");
         newAreaText = NewAreaUI.GetComponentInChildren<Text>();
@@ -67,14 +71,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(GameLoop());    
     }
 
-		GameObject P1scoreUI = GameObject.Find("P1_ScoreUI");
-		P1scoreText = P1scoreUI.GetComponentInChildren<Text>();
-		GameObject P2scoreUI = GameObject.Find("P2_ScoreUI");
-		P2scoreText = P2scoreUI.GetComponentInChildren<Text>();
-
-		SpawnPlayer();
-		StartCoroutine(GameLoop());
-	}
+	
 
 	private void SpawnMeleeEnemies(int numberOfEnemies)
 	{
@@ -358,7 +355,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-	}
 
 	public void UpdateScore(int points, int playerNum)
 	{
