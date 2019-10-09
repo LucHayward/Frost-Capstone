@@ -175,6 +175,7 @@ public class WitchAbility : MonoBehaviour
 
     public void witchDead()
     {
+        laughAudio.Pause();
         Destroy(proj1);
         Destroy(proj2);
         Destroy(proj3);

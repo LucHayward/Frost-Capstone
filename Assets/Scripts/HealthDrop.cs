@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthDrop : MonoBehaviour
 {
-    
+
     private int amount = 20;
 
     Player[] players;
@@ -43,7 +43,6 @@ public class HealthDrop : MonoBehaviour
                 spawn[i].HealthUsed();
             }
         }
-        
         Destroy(gameObject);
     }
 }

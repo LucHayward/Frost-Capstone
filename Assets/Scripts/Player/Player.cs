@@ -22,10 +22,17 @@ public class Player : MonoBehaviour
 	public TextMeshProUGUI healthText;
     public bool hasShield;
     public bool isFast;
+
+    //Used to play audio at start of abilities
     public bool lowHP = false;
+    private bool faster = false;
+    private bool isFire = false;
 
     public AudioSource playerTakeDamageAudio;
     public AudioSource playerDeathAudio;
+    public AudioSource healAudio;
+    public AudioSource speedAudio;
+    public AudioSource fireAudio;
 
     //types of frost essence
     public float blueFE = 0;
@@ -127,6 +134,12 @@ public class Player : MonoBehaviour
         {
             if (blueFE > 0)
             {
+                if (!faster)
+                {
+                    speedAudio.Play();
+                    faster = true;
+                }
+
                 playerMovement.SetSpeed(10.0f);
                 blueFE -=0.3f;
                 blueSlider.value = blueFE;
@@ -135,11 +148,18 @@ public class Player : MonoBehaviour
             {
                 playerMovement.SetSpeed(6.0f);
                 isBlue = false;
+                speedAudio.Pause();
+                faster = false;
             }
             
         }
         if (isRed)
         {
+            if (!isFire)
+            {
+                fireAudio.Play();
+                isFire = true;
+            }
             if (redFE > 0)
             {
                 redFE -= 0.3f;
@@ -148,6 +168,8 @@ public class Player : MonoBehaviour
             }
             else
             {
+                fireAudio.Pause();
+                isFire = false;
                 isRed = false;
             }
 
@@ -316,6 +338,7 @@ public class Player : MonoBehaviour
         if(type == "Blue")
         {
             isBlue = true;
+            
         }
 
         if(type == "Red")
@@ -364,6 +387,7 @@ public class Player : MonoBehaviour
 
     public void GainHealth(int amount)
     {
+        healAudio.Play();
         currrentHealth += amount;
         if(currrentHealth > maxHealth)
         {
