@@ -26,7 +26,8 @@ public class Unlockable : MonoBehaviour
 
 			if (currentScore >= scoreNeeded)
 			{
-				Destroy(gameObject);
+                isUnlockable = false;
+                gameObject.SetActive(false);
 			}
 		}
 

@@ -125,7 +125,8 @@ public class Player : MonoBehaviour
 	private void Update()
 	{
         float currentTime = Time.time;
-		if (currrentHealth <= 20)
+
+        if (currrentHealth <= 20)
 		{
 			LowHealth();
 		}
@@ -295,6 +296,7 @@ public class Player : MonoBehaviour
 	/// </summary>
 	private void OnDeath()
 	{
+        lowHealth.Pause();
 		playerDeathAudio.Play();
 		playerMovement.RandomizeDeathVariant();
 		playerMovement.animator.SetTrigger("die");
