@@ -8,28 +8,22 @@ public class ProjectileAttack : MonoBehaviour
 	public int objectLife;
 
 	[TagSelector]
-	public string [] damageableTags;
+	public string[] damageableTags;
 
 	public GameObject impactPrefab;
 
-	private ParticleSystem ps;
+	private int playerNumOriginator;
 
-    private int playerNumOriginator;
-	//private AudioSource audioSource;
+	private bool isRanged = true;
 
-    private bool isRanged = true;
-
-
-    public void setPlayerNumOriginator(int i)
-    {
-        playerNumOriginator = i;
-    }
-
-    public void Start()
+	public void setPlayerNumOriginator(int i)
 	{
-		ps = gameObject.GetComponentInChildren<ParticleSystem>();
-		//audioSource = gameObject.GetComponent<AudioSource>();
-		Destroy(gameObject, objectLife); // TODO Do we need this>?
+		playerNumOriginator = i;
+	}
+
+	public void Start()
+	{
+		Destroy(gameObject, objectLife);
 	}
 
 	/// <summary>
@@ -45,14 +39,15 @@ public class ProjectileAttack : MonoBehaviour
 			{
 				Enemy enemy = other.gameObject.GetComponent<Enemy>();
 				enemy.TakeDamage(damage, isRanged, playerNumOriginator);
-                enemy.AddStack();
+				enemy.AddStack();
 			}
-            else if (other.gameObject.CompareTag("Player"))
-            {
+			else if (other.gameObject.CompareTag("Player"))
+			{
 				Player player = other.gameObject.GetComponent<Player>();
 				player.TakeDamage(damage);
 			}
 		}
+
 		// Instantiate the impact effect at the projectile transform pointing in the direction of the contact normals
 		Vector3 contactNormal = other.GetContact(0).normal;
 		Quaternion rotation = Quaternion.LookRotation(contactNormal);
@@ -60,17 +55,12 @@ public class ProjectileAttack : MonoBehaviour
 		Destroy(gameObject);
 	}
 
-	//TODO implement object pooling for player projectiles 
-	//public void OnDestroy()
-	//{
-	//	// Return object to projectile pool
-	//}
-
-
-    //used for red frost essence ability
-    public void SetDamage(int dmg)
-    {
-        damage = dmg;
-    }
+	/// <summary>
+	/// used for red frost essence 
+	/// </summary>
+	public void SetDamage(int dmg)
+	{
+		damage = dmg;
+	}
 
 }
