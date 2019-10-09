@@ -18,6 +18,10 @@ public class MutantCombo : MonoBehaviour
 
 
     public Animator animator;
+
+    //Audio
+    public AudioSource attackClip;
+
     //private EnemyController mutantController;
     //private FlockAgent flockAgent;
 
@@ -82,7 +86,7 @@ public class MutantCombo : MonoBehaviour
 
         float dist = Vector3.Distance(closestPlayerPosition, weaponTransform.position);
 
-        if (dist <= 2.0f)
+        if (dist <= 5.0f)
         {
             players[closestPlayerIndex].TakeDamage(mutant.abilityDamage);
         }
@@ -95,11 +99,15 @@ public class MutantCombo : MonoBehaviour
 
         float dist = Vector3.Distance(closestPlayerPosition, weaponTransform.position);
 
-        if (dist <= 2.0f)
+        if (dist <= 5.0f)
         {
             players[closestPlayerIndex].TakeDamage(mutant.abilityDamage);
         }
 
+    }
+    void PlayAudio()
+    {
+        attackClip.Play();
     }
 
     void Damage3()
@@ -108,7 +116,7 @@ public class MutantCombo : MonoBehaviour
 
         float dist = Vector3.Distance(closestPlayerPosition, weaponTransform.position);
 
-        if (dist <= 2.0f)
+        if (dist <= 5.0f)
         {
             players[closestPlayerIndex].TakeDamage(mutant.abilityDamage);
         }

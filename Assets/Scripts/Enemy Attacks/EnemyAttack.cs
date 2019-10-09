@@ -39,6 +39,9 @@ public class EnemyAttack : MonoBehaviour
     // used for boss combo
     private int attackCounter = 0;
 
+    //Audio
+    public AudioSource attackClip;
+
     private Vector3 closestPlayerPosition;
     private int closestPlayerIndex;
     
@@ -158,6 +161,12 @@ public class EnemyAttack : MonoBehaviour
     void attackStart()
     {
         enemy.cantMove = true;
+        
+    }
+
+    void PlayAudio()
+    {
+        attackClip.Play();
     }
 
 	void attackDamage()
@@ -170,6 +179,7 @@ public class EnemyAttack : MonoBehaviour
         {
             players[closestPlayerIndex].TakeDamage(enemy.damage);
         }
+        
         // If close enough, attack player
 		//Debug.Log("Attack");
     }

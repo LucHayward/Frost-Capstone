@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour
     //Audio
     public AudioSource deathAudio;
 
+
     //types of frost essence
     public GameObject blueFE;
     public GameObject redFE;

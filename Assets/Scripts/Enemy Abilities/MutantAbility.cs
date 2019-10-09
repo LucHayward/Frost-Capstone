@@ -19,6 +19,10 @@ public class MutantAbility : MonoBehaviour
     public NavMeshAgent navMeshAgent;
 
     public Animator animator;
+
+    //Audio
+    public AudioSource roarAudio;
+    public AudioSource landAudio;
     //private EnemyController mutantController;
     //private FlockAgent flockAgent;
 
@@ -75,6 +79,7 @@ public class MutantAbility : MonoBehaviour
     void jumpAttackStart()
     {
         mutant.cantMove = true;
+        roarAudio.Play();
     }
 
     void jumpAttackMove()
@@ -83,9 +88,15 @@ public class MutantAbility : MonoBehaviour
 
     }
 
+    void PlayLandAudio()
+    {
+        landAudio.Play();
+    }
+
     //TODO REFACTOR JESSE: This is the same as in MutantCombo
     void jumpAttackDamage()
     {
+        roarAudio.Pause();
         closestPlayerPosition = GetClosestPlayer().Item2.position;
 
         float dist = Vector3.Distance(closestPlayerPosition, weaponTransform.position);
@@ -94,9 +105,10 @@ public class MutantAbility : MonoBehaviour
         {
             players[closestPlayerIndex].TakeDamage(mutant.abilityDamage);
         }
-
+        
+        
     }
-
+    
     void jumpAttackLand()
     {
         mutant.cantMove = true;
@@ -105,7 +117,9 @@ public class MutantAbility : MonoBehaviour
 
     void jumpAttackEnd()
     {
+        
         mutant.cantMove = false;
+        landAudio.Pause();
 
     }
 }

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Unlockable : MonoBehaviour
 {
-    public GameObject gate;
     public bool isUnlockable;
     public float scoreNeeded;
     private float currentScore;
@@ -17,18 +16,18 @@ public class Unlockable : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UnlockDoor()
     {
         if (isUnlockable)
         {
             scoreVector = gameManager.GetScore();
             currentScore = scoreVector[0] + scoreVector[1];
-            
+
             if (currentScore >= scoreNeeded)
             {
                 Destroy(gameObject);
             }
         }
+        
     }
 }

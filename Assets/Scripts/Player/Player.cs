@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     public float greenFE = 0;
     public float redFE = 0;
 
+    Unlockable[] doors;
+
     //Audio
     public AudioSource lowHealth;
 
@@ -82,7 +84,9 @@ public class Player : MonoBehaviour
     private void Start()
     {
 
+
         
+        doors = FindObjectsOfType<Unlockable>();
 
         GameObject damageItem = GameObject.Find("Damage");
         damageImage = damageItem.GetComponentInChildren<Image>();
@@ -148,6 +152,24 @@ public class Player : MonoBehaviour
             }
 
         }
+
+        if (Input.GetButtonDown(isPlayer1 ? "P1_Interact" : "P2_Interact"))
+        {
+            foreach(Unlockable door in doors)
+            {
+                if (door.isUnlockable)
+                {
+                    float dist = Vector3.Distance(door.gameObject.transform.position, transform.position);
+
+                    if (dist <= 10.0f)
+                    {
+                        door.UnlockDoor();
+                    }
+                }
+                
+            }
+        }
+
 
 
     }

@@ -37,7 +37,9 @@ public class WitchAbility : MonoBehaviour
     private GameObject proj3;
     private GameObject proj4;
 
-    
+    public AudioSource laughAudio;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -68,6 +70,7 @@ public class WitchAbility : MonoBehaviour
     void abilityStart()
     {
         witch.cantMove = true;
+        laughAudio.Play();
     }
 
     void ability()
