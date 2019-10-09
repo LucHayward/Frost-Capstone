@@ -14,7 +14,6 @@ public class HealthSpawn : MonoBehaviour
 	private float timeUsed = 0.0f;
 	private bool isHealth = false;
 
-
 	void Start()
 	{
 		SpawnHealth();

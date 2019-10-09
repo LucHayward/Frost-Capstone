@@ -6,191 +6,143 @@ using UnityEngine.AI;
 public class WitchAbility : MonoBehaviour
 {
 
-    private GameObject witchGO;
-    private Enemy witch;
-    public GameObject projectile;
+	private GameObject witchGO;
+	private Enemy witch;
+	public GameObject projectile;
 
-    private GameObject[] playerGOs;
-    private Player[] players;
-    private Transform[] playerTransforms;
-    private Vector3 closestPlayerPosition;
+	private Vector3 closestPlayerPosition;
 
+	public NavMeshAgent navMeshAgent;
 
-    public NavMeshAgent navMeshAgent;
+	public Animator animator;
 
-    public Animator animator;
-    //private EnemyController witchController;
-    //private FlockAgent flockAgent;
-
-    //private Transform witchTransform;
-
-    private Vector3 shotPath1;
-    private Vector3 shotPath2;
-    private Vector3 shotPath3;
-    private Vector3 shotPath4;
+	private Vector3 shotPath1;
+	private Vector3 shotPath2;
+	private Vector3 shotPath3;
+	private Vector3 shotPath4;
 
 
-    public Transform [] spawnPoints;
+	public Transform[] spawnPoints;
 
-    private GameObject proj1;
-    private GameObject proj2;
-    private GameObject proj3;
-    private GameObject proj4;
+	private GameObject proj1;
+	private GameObject proj2;
+	private GameObject proj3;
+	private GameObject proj4;
 
-    public AudioSource laughAudio;
-    public AudioSource attackAudio;
+	public AudioSource laughAudio;
+	public AudioSource attackAudio;
 
+	void Start()
+	{
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-        witchGO = gameObject;
-        witch = gameObject.GetComponent<Enemy>();
-        //witchTransform = witch.GetComponent<Transform>();
-
-        //witchController = witchGO.GetComponent<EnemyController>();
-        //flockAgent = witchGO.GetComponent<FlockAgent>();
-
-        playerGOs = GameObject.FindGameObjectsWithTag("Player");
-        playerTransforms = new Transform[playerGOs.Length];
-        for (int i = 0; i < playerGOs.Length; i++)
-        {
-            playerTransforms[i] = playerGOs[i].GetComponent<Transform>();
-        }
-        players = new Player[playerGOs.Length];
-        for (int i = 0; i < playerGOs.Length; i++)
-        {
-            players[i] = playerGOs[i].GetComponent<Player>();
-        }
-    }
+		witchGO = gameObject;
+		witch = gameObject.GetComponent<Enemy>();
+	}
 
 
 
-    void abilityStart()
-    {
-        witch.cantMove = true;
-        laughAudio.Play();
-    }
+	void abilityStart()
+	{
+		witch.cantMove = true;
+		laughAudio.Play();
+	}
 
-    void ability()
-    {
-        proj1 = Instantiate(projectile, spawnPoints[0].position, Quaternion.identity) as GameObject;
-        proj2 = Instantiate(projectile, spawnPoints[1].position, Quaternion.identity) as GameObject;
-        proj3 = Instantiate(projectile, spawnPoints[2].position, Quaternion.identity) as GameObject;
-        proj4 = Instantiate(projectile, spawnPoints[3].position, Quaternion.identity) as GameObject;
+	void ability()
+	{
+		proj1 = Instantiate(projectile, spawnPoints[0].position, Quaternion.identity) as GameObject;
+		proj2 = Instantiate(projectile, spawnPoints[1].position, Quaternion.identity) as GameObject;
+		proj3 = Instantiate(projectile, spawnPoints[2].position, Quaternion.identity) as GameObject;
+		proj4 = Instantiate(projectile, spawnPoints[3].position, Quaternion.identity) as GameObject;
+	}
 
+	void ability2()
+	{
+		closestPlayerPosition = GameManager.Get().GetClosestPlayer(transform).Item2.position;
 
-    }
+		Vector3 shotVector = new Vector3(closestPlayerPosition.x, 1, closestPlayerPosition.z);
 
+		shotPath1 = shotVector - spawnPoints[0].position;
+		shotPath2 = shotVector - spawnPoints[1].position;
+		shotPath3 = shotVector - spawnPoints[2].position;
+		shotPath4 = shotVector - spawnPoints[3].position;
 
-    private Tuple<float, Transform> GetClosestPlayer()
-    {
-        float shortestDistance = float.MaxValue;
-        Transform closestPlayerTransform = null;
-        for (int i = 0; i < playerTransforms.Length; i++)
-        {
-            if (players[i].IsAlive()) // If the player is dead stop targeting.
-            {
-                float newDistance = Vector3.Distance(transform.position, playerTransforms[i].position);
-                if (newDistance < shortestDistance)
-                {
-                    closestPlayerTransform = playerTransforms[i];
-                    shortestDistance = newDistance;
-                }
-            }
-        }
-        return Tuple.Create(shortestDistance, closestPlayerTransform);
-    }
+		if (proj1 != null)
+		{
+			proj1.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(proj1.transform.forward, shotPath1, 100f, 100f));
+		}
+		if (proj2 != null)
+		{
+			proj2.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(proj2.transform.forward, shotPath2, 100f, 100f));
+		}
+		if (proj3 != null)
+		{
+			proj3.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(proj3.transform.forward, shotPath3, 100f, 100f));
+		}
+		if (proj4 != null)
+		{
+			proj4.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(proj4.transform.forward, shotPath4, 100f, 100f));
+		}
+		attackAudio.Play();
+		if (proj1 != null)
+		{
+			proj1.GetComponent<Rigidbody>().AddForce(proj1.transform.forward * 20, ForceMode.VelocityChange);
+		}
+		if (proj2 != null)
+		{
+			proj2.GetComponent<Rigidbody>().AddForce(proj2.transform.forward * 20, ForceMode.VelocityChange);
+		}
+		if (proj3 != null)
+		{
+			proj3.GetComponent<Rigidbody>().AddForce(proj3.transform.forward * 20, ForceMode.VelocityChange);
+		}
+		if (proj4 != null)
+		{
+			proj4.GetComponent<Rigidbody>().AddForce(proj4.transform.forward * 20, ForceMode.VelocityChange);
+		}
 
-    void ability2()
-    {
-        closestPlayerPosition = GetClosestPlayer().Item2.position;
+	}
 
-        Vector3 shotVector = new Vector3(closestPlayerPosition.x, 1, closestPlayerPosition.z);
+	void ability2End()
+	{
+		witch.cantMove = false;
 
-        shotPath1 = shotVector - spawnPoints[0].position;
-        shotPath2 = shotVector - spawnPoints[1].position;
-        shotPath3 = shotVector - spawnPoints[2].position;
-        shotPath4 = shotVector - spawnPoints[3].position;
+		if (proj1 != null)
+		{
+			Destroy(proj1, 3);
+		}
+		if (proj1 != null)
+		{
+			Destroy(proj2, 3);
+		}
+		if (proj1 != null)
+		{
+			Destroy(proj3, 3);
+		}
+		if (proj1 != null)
+		{
+			Destroy(proj4, 3);
+		}
 
-        if (proj1 != null)
-        {
-            proj1.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(proj1.transform.forward, shotPath1, 100f, 100f));
-        }
-        if (proj2 != null)
-        {
-            proj2.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(proj2.transform.forward, shotPath2, 100f, 100f));
-        }
-        if (proj3 != null)
-        {
-            proj3.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(proj3.transform.forward, shotPath3, 100f, 100f));
-        }
-        if (proj4 != null)
-        {
-            proj4.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(proj4.transform.forward, shotPath4, 100f, 100f));
-        }
-        attackAudio.Play();
-        if (proj1 != null)
-        {
-            proj1.GetComponent<Rigidbody>().AddForce(proj1.transform.forward * 20, ForceMode.VelocityChange);
-        }
-        if (proj2 != null)
-        {
-            proj2.GetComponent<Rigidbody>().AddForce(proj2.transform.forward * 20, ForceMode.VelocityChange);
-        }
-        if (proj3 != null)
-        {
-            proj3.GetComponent<Rigidbody>().AddForce(proj3.transform.forward * 20, ForceMode.VelocityChange);
-        }
-        if (proj4 != null)
-        {
-            proj4.GetComponent<Rigidbody>().AddForce(proj4.transform.forward * 20, ForceMode.VelocityChange);
-        }
+	}
 
-    }
+	public void witchDead()
+	{
+		laughAudio.Pause();
+		Destroy(proj1);
+		Destroy(proj2);
+		Destroy(proj3);
+		Destroy(proj4);
 
-    void ability2End()
-    {
-        witch.cantMove = false;
+		Destroy(witchGO);
 
-        if(proj1 != null)
-        {
-            Destroy(proj1, 3);
-        }
-        if (proj1 != null)
-        {
-            Destroy(proj2, 3);
-        }
-        if (proj1 != null)
-        {
-            Destroy(proj3, 3);
-        }
-        if (proj1 != null)
-        {
-            Destroy(proj4, 3);
-        }
-        
-    }
+	}
 
-    public void witchDead()
-    {
-        laughAudio.Pause();
-        Destroy(proj1);
-        Destroy(proj2);
-        Destroy(proj3);
-        Destroy(proj4);
-
-        Destroy(witchGO);
-
-    }
-
-    public void WitchStun()
-    {
-        Destroy(proj1);
-        Destroy(proj2);
-        Destroy(proj3);
-        Destroy(proj4);
-    }
+	public void WitchStun()
+	{
+		Destroy(proj1);
+		Destroy(proj2);
+		Destroy(proj3);
+		Destroy(proj4);
+	}
 
 }

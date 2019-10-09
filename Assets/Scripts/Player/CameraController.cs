@@ -1,6 +1,12 @@
 ﻿using System;
 using UnityEngine;
 
+/// <summary>
+/// Controls the camera
+/// Enables the camera to orbit the player
+/// Dynamically adjusts the camera distance to ensure the camera neither enters the environment
+/// nor is the player occluded by any obstacles
+/// </summary>
 public class CameraController : MonoBehaviour
 {
 	public Transform orbitTarget;
@@ -16,8 +22,6 @@ public class CameraController : MonoBehaviour
 	public float cameraSmoothingFactor;
 	public Transform bufferPos;
 	
-
-
 	public float distanceMin = .5f;
 	public float distanceMax = 15f;
 
@@ -28,13 +32,8 @@ public class CameraController : MonoBehaviour
 	float x = 0.0f;
 	float y = 0.0f;
 
-	// Use this for initialization
 	void Start()
 	{
-		//Vector3 angles = transform.eulerAngles;
-		//x = angles.y;
-		//y = angles.x;
-
 		rb = GetComponent<Rigidbody>();
 
 		// Make the rigid body not change rotation
@@ -66,7 +65,6 @@ public class CameraController : MonoBehaviour
 
 			Quaternion rotation = Quaternion.Euler(y, x, 0);
 
-			// TODO Do we want to be able to zoom in/out with the camera
 			float scrollAmount = Input.GetAxis("Mouse ScrollWheel");
 			if (scrollAmount != 0)
 			{
@@ -74,8 +72,7 @@ public class CameraController : MonoBehaviour
 				desiredDistance = Mathf.Clamp(desiredDistance - scrollAmount*5, distanceMin, distanceMax);
 			}
 
-
-			// Handle preventing the camera being BEHIND an object
+			// Handles preventing the camera being BEHIND an object
 			RaycastHit hit;
 			if (distance>desiredDistance)
 			{

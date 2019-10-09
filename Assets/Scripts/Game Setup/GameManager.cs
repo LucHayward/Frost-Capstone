@@ -129,6 +129,11 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Spawns the player(s)
+	/// If only one player exists, update the UI layout to remove all references to Player2,
+	/// disables the P2_Camera and changes the viewport of the P1_Camera to fill the screen.
+	/// </summary>
 	private void SpawnPlayer()
 	{
 		for (int i = 0; i < players.Length; i++)
@@ -178,6 +183,10 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Custom Game Loop using coroutines to allow for easy tracking of the different round states.
+	/// </summary>
+	/// <returns></returns>
 	private IEnumerator GameLoop()
 	{
 		yield return StartCoroutine(RoundStarting());
@@ -188,9 +197,8 @@ public class GameManager : MonoBehaviour
 		{
 			if (SceneManager.GetActiveScene().buildIndex == 1)
 			{
-				SpawnPlayer(); //TODO END GAME
+				SpawnPlayer();
 			}
-
 		}
 		else
 		{
@@ -259,7 +267,6 @@ public class GameManager : MonoBehaviour
 		}
 		if (numberOfNull == agents.Count)
 		{
-			Debug.Log("Returned False");
 			return false;
 		}
 
@@ -267,6 +274,9 @@ public class GameManager : MonoBehaviour
 			return true;
 	}
 
+	/// <summary>
+	/// Handles monitoring for pause menu input
+	/// </summary>
 	private void Update()
 	{
 		float x = Time.timeScale;
@@ -344,11 +354,21 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
+	/// <summary>
+	/// Returns the score as a Vec2(P1,P2)
+	/// </summary>
+	/// <returns></returns>
 	public Vector2 GetScore()
 	{
 		return new Vector2(P1score, P2score);
 	}
 
+	/// <summary>
+	/// Handles the player death
+	/// In the case of a single player games, ends the round
+	/// For multiplayer, ensures all players are dead before ending the round
+	/// </summary>
+	/// <param name="playerNum"></param>
 	public void HandlePlayerDeath(int playerNum)
 	{
 		//TODO: Handle multiplayer variant
@@ -380,7 +400,12 @@ public class GameManager : MonoBehaviour
 		}
 	}
 
-	public Tuple<float, Transform> GetClosestPlayer(Transform transform)
+	/// <summary>
+	/// Returns the closest living player in the scene
+	/// </summary>
+	/// <param name="transform"> the transform of the GameObject needing to be compared to the players</param>
+	/// <returns> a tuple of the distance to (and the transform of) the closest player who is alive. Otherwise <0,null> </returns>
+	public Tuple<float, Transform, Player> GetClosestPlayer(Transform transform)
 	{
 		float shortestDistance = float.MaxValue;
 		Transform closestPlayerTransform = null;
@@ -397,6 +422,7 @@ public class GameManager : MonoBehaviour
 			players[i] = this.players[i].GetPlayerScript();
 		}
 
+		int closestIndex = 0;
 		for (int i = 0; i < playerTransforms.Length; i++)
 		{
 			if (players[i].IsAlive()) // If the player is dead stop targeting.
@@ -404,11 +430,12 @@ public class GameManager : MonoBehaviour
 				float newDistance = Vector3.Distance(transform.position, playerTransforms[i].position);
 				if (newDistance < shortestDistance)
 				{
+					closestIndex = i;
 					closestPlayerTransform = playerTransforms[i];
 					shortestDistance = newDistance;
 				}
 			}
 		}
-		return Tuple.Create(shortestDistance, closestPlayerTransform);
+		return Tuple.Create(shortestDistance, closestPlayerTransform, players[closestIndex]);
 	}
 }

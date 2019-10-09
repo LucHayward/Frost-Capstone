@@ -4,50 +4,29 @@ using UnityEngine;
 using UnityEngine.AI;
 public class ZombieScream : MonoBehaviour
 {
+	private Enemy zombie;
 
-    private GameObject zombieGO;
-    private Enemy zombie;
+	public NavMeshAgent navMeshAgent;
 
-    private GameObject playerGO;
-    private Player player;
-    public NavMeshAgent navMeshAgent;
+	public Animator animator;
+	void Start()
+	{
+		zombie = gameObject.GetComponent<Enemy>();
+	}
 
-    public Animator animator;
-    //private EnemyController zombieController;
-    //private FlockAgent flockAgent;
+	void screamStart()
+	{
+		zombie.cantMove = true;
+	}
 
-    //private Transform zombieTransform;
-    //private Transform playerTransform;
+	void scream()
+	{
 
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        zombieGO = gameObject;
-        zombie = gameObject.GetComponent<Enemy>();
-        //zombieTransform = zombie.GetComponent<Transform>();
+	}
 
-        //zombieController = zombieGO.GetComponent<EnemyController>();
-        //flockAgent = zombieGO.GetComponent<FlockAgent>();
-
-        playerGO = GameObject.FindGameObjectWithTag("Player");
-        player = playerGO.GetComponent<Player>();
-        //playerTransform = player.GetComponent<Transform>();
-    }
-
-    void screamStart()
-    {
-        zombie.cantMove = true;
-    }
-
-    void scream()
-    {
-        //do something here. Attracts other enemies?
-    }
-
-    void screamEnd()
-    {
-        zombie.cantMove = false;
-    }
+	void screamEnd()
+	{
+		zombie.cantMove = false;
+	}
 
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -11,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
 	public Animator animator;
 
 	public Transform cameraTransform;
-	private Transform horizontalCameraTransform;
 
 	public float speedMultiplier = 6.0f;
 	public float jumpSpeed = 8.0f;
@@ -19,8 +17,6 @@ public class PlayerMovement : MonoBehaviour
 
 	[Range(0, 1)]
 	public float turnSpeed;
-
-	public Vector3 debugVelocity;
 
 	private Vector3 moveDirection;
 	private PlayerAttack playerAttack;
@@ -31,11 +27,8 @@ public class PlayerMovement : MonoBehaviour
 		characterController = GetComponent<CharacterController>();
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
-		
+
 		playerAttack = GetComponent<PlayerAttack>();
-
-
-
 	}
 
 	private IEnumerator animationRandomizer()
@@ -73,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 	/// </summary>
 	void Update()
 	{
-		moveDirection = new Vector3(0,0,0);
+		moveDirection = new Vector3(0, 0, 0);
 
 		Vector3 forward = cameraTransform.GetChild(1).transform.forward;
 		forward.y = 0;
@@ -87,26 +80,21 @@ public class PlayerMovement : MonoBehaviour
 
 		if (moveDirection.sqrMagnitude > 1)
 		{
-			//Debug.Log("Diagonal Movement");
 			moveDirection.Normalize();
 		}
 
 		moveDirection *= speedMultiplier;
 
 		Vector3 localVelocity = cameraTransform.InverseTransformDirection(characterController.velocity);
-		debugVelocity = characterController.velocity;
+		
 		float speed = localVelocity.magnitude;
 		animator.SetFloat("velocity", speed);
-		
+
 		if (speed > 0 || playerAttack.inMelee)
 		{
-			//Turn character
 			Quaternion newLookRotation = Quaternion.LookRotation(cameraTransform.forward, Vector3.up);
 			newLookRotation.x = 0;
 			newLookRotation.z = 0;
-			//transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, Time.deltaTime * turnSpeed);
-			//transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, turnSpeed);
-			//transform.rotation = Quaternion.Slerp(transform.rotation, newLookRotation, Time.deltaTime * turnSpeed);
 			transform.rotation = Quaternion.Lerp(transform.rotation, newLookRotation, turnSpeed); //TODO: Decide on one of these 4 lines lines
 		}
 
@@ -115,18 +103,17 @@ public class PlayerMovement : MonoBehaviour
 			animator.SetFloat("velocityX", localVelocity.x);
 			animator.SetFloat("velocityZ", localVelocity.z);
 
-			moveDirection.y = gravity * -characterController.stepOffset/Time.deltaTime;
+			moveDirection.y = gravity * -characterController.stepOffset / Time.deltaTime;
 		}
 		else
 		{
 			moveDirection.y -= gravity * Time.deltaTime;
 		}
 
-		// Move the controller
 		characterController.Move(moveDirection * Time.deltaTime);
 	}
 
-	
+
 	/// <summary>
 	/// Copys local Pos, Rotation and Scale onto a transform
 	/// </summary>
@@ -136,9 +123,9 @@ public class PlayerMovement : MonoBehaviour
 	{
 		lhs.localPosition = toBeCopied.localPosition;
 		lhs.localRotation = toBeCopied.localRotation;
-		lhs.localScale    = toBeCopied.localScale;
+		lhs.localScale = toBeCopied.localScale;
 	}
-	
+
 	private void RandomizeIdleVariant()
 	{
 		animator.SetFloat("idleVariant", Random.Range(0, 7));
@@ -155,10 +142,10 @@ public class PlayerMovement : MonoBehaviour
 
 	}
 
-    public void SetSpeed(float speed)
-    {
-        speedMultiplier = speed;
-    }
+	public void SetSpeed(float speed)
+	{
+		speedMultiplier = speed;
+	}
 
 }
 

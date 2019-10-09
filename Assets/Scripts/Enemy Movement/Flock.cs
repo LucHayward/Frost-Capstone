@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Flock : MonoBehaviour
@@ -13,19 +12,19 @@ public class Flock : MonoBehaviour
     public float avoidanceRadiusMultiplier = 0.5f;
     float squareMaxSpeed;
     float squareNeighbourRadius;
-    float squareAvoidanceRadius;
+	float squareAvoidanceRadius;
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
     private float maxSpeed;
 
-    // Start is called before the first frame update
     void Start()
     {
-		//TODO I think we should up this
         squareNeighbourRadius = neighbourRadius * neighbourRadius;
         squareAvoidanceRadius = squareNeighbourRadius * avoidanceRadiusMultiplier * avoidanceRadiusMultiplier;
     }
 
-    // Update is called once per frame
+	/// <summary>
+	/// Moves every flock agent by the calculated amount each frame
+	/// </summary>
     void Update()
     {
         foreach (FlockAgent agent in GameManager.Get().agents)
@@ -44,13 +43,12 @@ public class Flock : MonoBehaviour
 				squareMaxSpeed = maxSpeed * maxSpeed;
                 List<Transform> context = GetNearbyObjects(agent);
                 Vector3 move = behaviour.CalculateMove(agent, context, this);
-                move *= baseSpeedFactor; //Is this ever needed?
+                move *= baseSpeedFactor; 
                 if (move.sqrMagnitude > squareMaxSpeed)
                 {
                     move = move.normalized * maxSpeed; /// make it one then times by max speed
                 }
 
-				Debug.DrawRay(agent.transform.position, move, Color.magenta);
                 agent.Move(move);
             }
 		}
@@ -68,13 +66,6 @@ public class Flock : MonoBehaviour
 		
         foreach(Collider c in contextColliders)
         {
-			//Guys just leave this until I take it out please, was having issues here
-			//bool cte = c.tag == "Enemy";
-			//bool ca = c != agent.AgentCollider;
-			//bool cteAAca = cte && ca;
-			//bool cto = c.tag == "Obstacle";
-			//bool or = cteAAca || cto;
-
 			if ((c.tag == "Enemy" && c != agent.AgentCollider) || (c.tag == "Obstacle"))
             {
                 context.Add(c.transform);
@@ -82,20 +73,4 @@ public class Flock : MonoBehaviour
         }
         return context;
 	}
-
-	private void OnDrawGizmos()
-	{
-		foreach (FlockAgent agent in GameManager.Get().agents)
-		{
-			if (agent != null)
-			{
-				//Gizmos.DrawWireSphere(agent.transform.position, neighbourRadius);
-				//Gizmos.color = Color.red;
-				//Gizmos.DrawWireSphere(agent.transform.position, neighbourRadius*avoidanceRadiusMultiplier);
-				//Gizmos.color = Color.white;
-			}
-		}
-	}
-
-
 }

@@ -11,12 +11,10 @@ public class Unlockable : MonoBehaviour
 	private Vector2 scoreVector;
 	private float currentScore;
 	private GameManager gameManager;
-	
 
 	void Start()
 	{
 		gameManager = FindObjectOfType<GameManager>();
-
 	}
 
 	public void UnlockDoor()

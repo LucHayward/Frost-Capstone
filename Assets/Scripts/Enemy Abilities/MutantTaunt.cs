@@ -1,41 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class MutantTaunt : MonoBehaviour
 {
+	public Animator animator;
 
-    //private GameObject mutantGO;
-    private Enemy mutant;
+	private Enemy mutant;
 
+	void Start()
+	{
+		mutant = gameObject.GetComponent<Enemy>();
+	}
 
-    public Animator animator;
+	void TauntStart()
+	{
+		mutant.cantMove = true;
+		mutant.inVulnerable = true;
+	}
 
-
-    //private Transform mutantTransform;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        //mutantGO = gameObject;
-        mutant = gameObject.GetComponent<Enemy>();
-        //mutantTransform = mutant.GetComponent<Transform>();
-
-    }
-
-
-    void TauntStart()
-    {
-        mutant.cantMove = true;
-        mutant.inVulnerable = true;
-    }
-
-
-    void TauntEnd()
-    {
-        mutant.cantMove = false;
-        mutant.inVulnerable = false;
-
-    }
+	void TauntEnd()
+	{
+		mutant.cantMove = false;
+		mutant.inVulnerable = false;
+	}
 }

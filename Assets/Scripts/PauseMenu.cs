@@ -52,7 +52,6 @@ public class PauseMenu : MonoBehaviour
 		foreach (Player playerScript in playerScripts)
 		{
 			playerScript.enabled = false;
-
 		}
 		pausePanel.SetActive(true);
 		isPaused = true;

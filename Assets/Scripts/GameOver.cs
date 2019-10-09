@@ -22,7 +22,6 @@ public class GameOver : MonoBehaviour
 		P1score = PlayerPrefs.GetInt("P1score");
 		P2score = PlayerPrefs.GetInt("P2score");
 
-
 		finalScore = P1score + P2score;
 		finalScoreText.text = "Final Score: " + finalScore;
 		p1ScoreText.text = "Player 1 Score: " + P1score;

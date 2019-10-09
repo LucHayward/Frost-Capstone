@@ -26,7 +26,6 @@ public class HealthDrop : MonoBehaviour
 		}
 	}
 
-
 	public void TransferHealth(GameObject player, int amount)
 	{
 		player.GetComponent<Player>().GainHealth(amount);

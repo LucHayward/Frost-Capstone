@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+/// <summary>
+/// Handles the melee attack trigger for the player
+/// </summary>
 public class MeleeAttack : MonoBehaviour
 {
     public int damage;
@@ -18,7 +21,6 @@ public class MeleeAttack : MonoBehaviour
         {
             Enemy enemy = other.gameObject.GetComponent<Enemy>();
             enemy.TakeDamage(damage, isRanged, playerNum);
-            Debug.Log("Collision between staff and enemy");
         }
     }
 }

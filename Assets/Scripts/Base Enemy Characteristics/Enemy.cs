@@ -217,14 +217,11 @@ public class Enemy : MonoBehaviour
             isStunned = true;
             //Start stun animation
             animator.SetBool("isStunned", true);
-            //DisableMovement();
             float stunTime = GetStackCount() * 2.0f;
-            Debug.Log("Stun time " + stunTime + "s");
             yield return new WaitForSecondsRealtime(stunTime);
 
             //End stun animation
             animator.SetBool("isStunned", false);
-            //yield return new WaitForSecondsRealtime(10);
             isStunned = false;
             cantMove = false;
             ResetStackCount();
