@@ -83,7 +83,7 @@ public class PlayerAttack : MonoBehaviour
         }
         if (Input.GetButtonDown(isPlayer1 ? "P1_Heal" : "P2_Heal"))
 		{
-			// Heal
+            // Heal
             gameObject.GetComponent<Player>().UseFrostEssence("Green");
         }
 	}

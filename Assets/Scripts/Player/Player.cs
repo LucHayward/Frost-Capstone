@@ -53,10 +53,22 @@ public class Player : MonoBehaviour
     private bool isDamaged;
     private bool alive = true;
 
+    private float healTime = 0.0f;
+    private bool healUsed = false;
+
     [SerializeField] private PlayerMovement playerMovement = null; //Assigned in inspector
 	[SerializeField] private PlayerAttack playerAttack = null; //Assigned in inspector
 
     private bool isPlayer1;
+
+
+    private GameObject speed1GO;
+    private GameObject speed2GO;
+    private GameObject damageGO;
+    private GameObject healGO;
+    private GameObject staffGO;
+
+
 
     public void SetPlayerNum(int i)
     {
@@ -90,9 +102,18 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        speed1GO = GameObject.Find("SpeedEffect");
+        speed2GO = GameObject.Find("SpeedEffect2");
+        damageGO = GameObject.Find("DamageEffect");
+        healGO = GameObject.Find("HealEffect");
+        staffGO = GameObject.Find("StaffEffect");
 
+        speed1GO.SetActive(false);
+        speed2GO.SetActive(false);
+        damageGO.SetActive(false);
+        healGO.SetActive(false);
+        staffGO.SetActive(false);
 
-        
         doors = FindObjectsOfType<Unlockable>();
 
         GameObject damageItem = GameObject.Find("Damage");
@@ -102,6 +123,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        float currentTime = Time.time;
         if (currrentHealth <= 20)
         {
             LowHealth();
@@ -136,6 +158,9 @@ public class Player : MonoBehaviour
             {
                 if (!faster)
                 {
+                    speed1GO.SetActive(true);
+                    speed2GO.SetActive(true);
+
                     speedAudio.Play();
                     faster = true;
                 }
@@ -146,6 +171,8 @@ public class Player : MonoBehaviour
             }
             else
             {
+                speed1GO.SetActive(false);
+                speed2GO.SetActive(false);
                 playerMovement.SetSpeed(6.0f);
                 isBlue = false;
                 speedAudio.Pause();
@@ -157,6 +184,8 @@ public class Player : MonoBehaviour
         {
             if (!isFire)
             {
+                staffGO.SetActive(true);
+                damageGO.SetActive(true);
                 fireAudio.Play();
                 isFire = true;
             }
@@ -168,11 +197,33 @@ public class Player : MonoBehaviour
             }
             else
             {
+                staffGO.SetActive(false);
+                damageGO.SetActive(false);
                 fireAudio.Pause();
                 isFire = false;
                 isRed = false;
             }
 
+        }
+
+        if (isGreen)
+        {
+            if (healUsed == false)
+            {
+                healGO.SetActive(true);
+                healTime = currentTime + 1.0f;
+                healUsed = true;
+            }
+            else
+            {
+                if(currentTime-healTime >= 1.0f)
+                {
+                    healGO.SetActive(false);
+                    healUsed = false;
+                    isGreen = false;
+                }
+            }
+            
         }
 
         if (Input.GetButtonDown(isPlayer1 ? "P1_Interact" : "P2_Interact"))
@@ -394,6 +445,7 @@ public class Player : MonoBehaviour
             currrentHealth = maxHealth;
         }
         healthSlider.value = currrentHealth;
+        isGreen = true;
     }
     public bool IsAlive()
     {
