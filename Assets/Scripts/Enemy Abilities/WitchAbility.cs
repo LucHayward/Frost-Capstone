@@ -38,7 +38,7 @@ public class WitchAbility : MonoBehaviour
     private GameObject proj4;
 
     public AudioSource laughAudio;
-
+    public AudioSource attackAudio;
 
 
     // Start is called before the first frame update
@@ -130,7 +130,7 @@ public class WitchAbility : MonoBehaviour
         {
             proj4.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(proj4.transform.forward, shotPath4, 100f, 100f));
         }
-
+        attackAudio.Play();
         if (proj1 != null)
         {
             proj1.GetComponent<Rigidbody>().AddForce(proj1.transform.forward * 20, ForceMode.VelocityChange);

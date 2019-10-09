@@ -2224,6 +2224,7 @@ MonoBehaviour:
   - {fileID: 7401453996136912107}
   - {fileID: 2318873213990230124}
   laughAudio: {fileID: 2464573579470605170}
+  attackAudio: {fileID: 6609766530887987470}
 --- !u!114 &6003557633375194241
 MonoBehaviour:
   m_ObjectHideFlags: 0
