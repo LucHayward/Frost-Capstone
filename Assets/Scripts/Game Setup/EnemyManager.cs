@@ -13,14 +13,16 @@ public class EnemyManager
     private Enemy enemyScript;
     private EnemyController enemyController;
     private FlockAgent flockAgent;
-
-	//TODO: write docs
+    private int unlockedAreas = 0;
+    private GameManager gameManager;
+    //TODO: write docs
     /// <summary>
     /// 
     /// </summary>
     /// <param name="ID"></param>
     public void Setup(int ID)
     {
+        gameManager = GameManager.Get();
         enemyController = instanceOfEnemy.GetComponent<EnemyController>();
         enemyScript = instanceOfEnemy.GetComponent<Enemy>();
         flockAgent = instanceOfEnemy.GetComponent<FlockAgent>();
@@ -42,7 +44,26 @@ public class EnemyManager
 		const int Radius = 2;
         bool foundSpawnPoint;
         foundSpawnPoint = false;
-        int spawnPointRef = Random.Range(0, spawnPoints.Length - 1);
+        int spawnPointRef;
+        
+
+        //Single original spawn point
+        spawnPointRef = 0;
+        //All areas unlocked
+        if (unlockedAreas == 3)
+        {
+            spawnPointRef = Random.Range(0, spawnPoints.Length - 1);
+        }
+        //Castle unlocked
+        else if (unlockedAreas == 2)
+        {
+            spawnPointRef = Random.Range(0, 3);
+        }
+        //Graveyard unlocked
+        else if (unlockedAreas == 1) {
+            spawnPointRef = Random.Range(0, 2);          
+        }
+
         Vector3 originalSpawnPoint = spawnPoints[spawnPointRef].position;
         nearbyColliders = Physics.OverlapSphere(spawnPoints[spawnPointRef].position, Radius);
         if(!Physics.CheckSphere(spawnPoints[spawnPointRef].position, Radius))
@@ -86,6 +107,11 @@ public class EnemyManager
     public void Stun()
     {
         enemyScript.StunCoroutineWrapper();
+    }
+
+    public void SetUnlocked(int numberOfAreas)
+    {
+        unlockedAreas = numberOfAreas;
     }
 
 }

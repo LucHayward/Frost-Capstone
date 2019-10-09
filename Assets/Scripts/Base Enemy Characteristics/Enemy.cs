@@ -122,6 +122,11 @@ public class Enemy : MonoBehaviour
     }
 
 
+    public string GetEnemyType()
+    {
+        return type;
+    }
+
     public void SetIdentifier(int ID)
     {
         identificationNumber = ID;
@@ -331,6 +336,7 @@ public class Enemy : MonoBehaviour
             
         }
     }
+
 
 
 }
