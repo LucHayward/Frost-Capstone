@@ -68,6 +68,8 @@ public class ControllerTest : MonoBehaviour
         axisLabels[15].text = AxisNames[15] + ": " + Input.GetButtonDown(AxisNames[15]);
         axisLabels[16].text = AxisNames[16] + ": " + Input.GetAxis(AxisNames[16]);
         axisLabels[17].text = AxisNames[17] + ": " + Input.GetAxis(AxisNames[17]);
+        axisLabels[18].text = AxisNames[18] + ": " + Input.GetButtonDown(AxisNames[18]);
+        axisLabels[19].text = AxisNames[19] + ": " + Input.GetButtonDown(AxisNames[19]);
 
         Debug.Log(Input.GetButtonDown("P2_Fire"));
     }

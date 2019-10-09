@@ -27,6 +27,8 @@ public class PlayerAttack : MonoBehaviour
 	private bool canAttack = true;
 	private bool isPlayer1;
 
+    private float lastStunCast = 0;
+
 	private void Awake()
 	{
         //skull.gameObject.GetComponent<ParticleSystem>().Play();
@@ -160,7 +162,7 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void Stun()
     {
-		if (!canAttack || animator.GetCurrentAnimatorStateInfo(0).IsName("Cast Stun"))
+		if (!canAttack || animator.GetCurrentAnimatorStateInfo(0).IsName("Cast Stun") || Time.time - lastStunCast < 8)
 		{
 			// TODO: Find new fail clip
 			attackFailClip.Play();
@@ -168,6 +170,7 @@ public class PlayerAttack : MonoBehaviour
 		}
 		canAttack = false;
 		attackStunCastClip.Play();
+        lastStunCast = Time.time;
 
 		animator.SetTrigger("castStun");
 		foreach (EnemyManager meleeEnemy in GameManager.Get().meleeEnemies)
