@@ -130,6 +130,7 @@ public class EnemyRangedAttack : MonoBehaviour
         
 
         firedGO.transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(firedGO.transform.forward, shotPath, 100f, 100f));
+        attackClip.Play();
         firedGO.GetComponent<Rigidbody>().AddForce(firedGO.transform.forward * 20, ForceMode.VelocityChange);
         //Debug.DrawRay(projectileSpawnPoint.position, firedGO.transform.forward * 3, Color.green, Vector3.Distance(projectileSpawnPoint.position, shotPath));
 

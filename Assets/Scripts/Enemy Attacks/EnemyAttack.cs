@@ -39,6 +39,9 @@ public class EnemyAttack : MonoBehaviour
     // used for boss combo
     private int attackCounter = 0;
 
+    //Audio
+    public AudioSource attackClip;
+
     private Vector3 closestPlayerPosition;
     private int closestPlayerIndex;
     
@@ -102,6 +105,7 @@ public class EnemyAttack : MonoBehaviour
                 if(attackCounter != 4)
                 {
                     animator.SetTrigger("atk");
+                    enemy.inVulnerable = false;
                     lastAttackTime = currentTime + shotDelay;
                     attackCounter ++;
                 }
@@ -110,6 +114,7 @@ public class EnemyAttack : MonoBehaviour
                 else
                 {
                     animator.SetTrigger("combo");
+                    enemy.inVulnerable = false;
                     lastAttackTime = currentTime + shotDelay;
 
                     attackCounter = 0;
@@ -128,6 +133,7 @@ public class EnemyAttack : MonoBehaviour
                 if(abilityCounter == 0)
                 {
                     animator.SetTrigger("ability");
+                    enemy.inVulnerable = false;
                     lastAbilityTime = currentTime + abilityCD;
                     abilityCounter++;
                 }
@@ -155,6 +161,12 @@ public class EnemyAttack : MonoBehaviour
     void attackStart()
     {
         enemy.cantMove = true;
+        
+    }
+
+    void PlayAudio()
+    {
+        attackClip.Play();
     }
 
 	void attackDamage()
@@ -167,6 +179,7 @@ public class EnemyAttack : MonoBehaviour
         {
             players[closestPlayerIndex].TakeDamage(enemy.damage);
         }
+        
         // If close enough, attack player
 		//Debug.Log("Attack");
     }

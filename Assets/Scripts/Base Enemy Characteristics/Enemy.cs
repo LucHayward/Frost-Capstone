@@ -17,9 +17,13 @@ public class Enemy : MonoBehaviour
     public bool hasScreamed;
     public bool isStunned;
     public bool inVulnerable = false;
-   
+
     public bool cantMove;
     public bool isDead;
+
+    //Audio
+    public AudioSource deathAudio;
+
 
     //types of frost essence
     public GameObject blueFE;
@@ -234,6 +238,7 @@ public class Enemy : MonoBehaviour
     {
         
         cantMove = true;
+        deathAudio.Play();
     }
 
     void EndDeath()

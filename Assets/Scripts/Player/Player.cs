@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 	public TextMeshProUGUI healthText;
     public bool hasShield;
     public bool isFast;
+    public bool lowHP = false;
 
     public AudioSource playerTakeDamageAudio;
     public AudioSource playerDeathAudio;
@@ -30,6 +31,11 @@ public class Player : MonoBehaviour
     public float blueFE = 0;
     public float greenFE = 0;
     public float redFE = 0;
+
+    Unlockable[] doors;
+
+    //Audio
+    public AudioSource lowHealth;
 
     //used for frost essence abilities
     public bool isGreen = false;
@@ -78,7 +84,9 @@ public class Player : MonoBehaviour
     private void Start()
     {
 
+
         
+        doors = FindObjectsOfType<Unlockable>();
 
         GameObject damageItem = GameObject.Find("Damage");
         damageImage = damageItem.GetComponentInChildren<Image>();
@@ -87,6 +95,17 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (currrentHealth <= 20)
+        {
+            LowHealth();
+        }
+        else
+        {
+            lowHealth.Pause();
+            lowHP = false;
+            
+        }
+
         if (isDamaged)
         {
             damageImage.color = flashColor;
@@ -134,6 +153,24 @@ public class Player : MonoBehaviour
 
         }
 
+        if (Input.GetButtonDown(isPlayer1 ? "P1_Interact" : "P2_Interact"))
+        {
+            foreach(Unlockable door in doors)
+            {
+                if (door.isUnlockable)
+                {
+                    float dist = Vector3.Distance(door.gameObject.transform.position, transform.position);
+
+                    if (dist <= 10.0f)
+                    {
+                        door.UnlockDoor();
+                    }
+                }
+                
+            }
+        }
+
+
 
     }
 
@@ -162,6 +199,16 @@ public class Player : MonoBehaviour
 			OnDeath();
 		}
 	}
+
+    //For low health Audio
+    public void LowHealth()
+    {
+        if (lowHP == false)
+        {
+            lowHealth.Play();
+            lowHP = true;
+        }
+    }
 
 	/// <summary>
 	/// Handle player death sequence
